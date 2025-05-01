@@ -2,5 +2,33 @@
   "HomePage": {
     "title": "مرحبااا",
     "about": "نبذة عنا"
+  },
+  "BooksPage": {
+    "bookTitle": "عنوان الكتاب",
+    "author": "المؤلف",
+    "rating": "التقييم",
+    "description": "الوصف",
+    "search_by_title": "البحث حسب العنوان",
+    "new_arrivals": "الإصدارات الجديدة",
+    "top_rated": "الأعلى تقييماً",
+    "top_rated_in": "الأعلى تقييماً في",
+    "categories": "الفئات",
+    "all": "الكل",
+    "novel": "رواية",
+    "science": "علوم",
+    "children": "أطفال",
+    "history": "تاريخ",
+    "biography": "سيرة ذاتية",
+    "religion": "دين",
+    "fantasy": "خيال",
+    "education": "تعليم",
+    "filter_sidebar": {
+      "price_range": "نطاق السعر",
+      "rating_filter": "تصفية التقييم",
+      "category_filter": "تصفية الفئات",
+      "select_category": "اختر الفئة",
+      "select_language": "اختر اللغة",
+      "select_rating": "اختر التقييم"
+    }
   }
 }
