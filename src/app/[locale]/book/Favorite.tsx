@@ -7,7 +7,7 @@ const Favorite = () => {
   return (
     <button
       onClick={() => setFavorite(!isFavorite)}
-      className="py-1.5 px-1.5 cursor-pointer rounded-md border-2 border-black hover:bg-black hover:text-[#f8e7d0] transition-colors font-medium text-sm sm:text-base"
+      className="py-1.5 px-1.5 cursor-pointer rounded-md border-2 border-black hover:bg-black hover:text-beige-100 transition-colors font-medium text-sm sm:text-base"
     >
       {isFavorite ? <FaHeart /> : <FaRegHeart />}
     </button>

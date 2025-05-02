@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/rules-of-hooks */
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import bookImage from "@/assets/Rich_Dad_Poor_Dad.jpg";
 import { FaStar, FaStarHalf, FaComment } from "react-icons/fa";
@@ -7,6 +9,7 @@ import SuggestedBooks from "../SuggestedBooks";
 import books from "../books";
 
 const page = () => {
+  const t = useTranslations("BookPage");
   const starsCount = Math.floor(book.rating);
   const stars = new Array(starsCount).fill(0);
   const halfStar = book.rating % 1 >= 0.5;
@@ -22,10 +25,10 @@ const page = () => {
               alt="Book Image"
             />
             <div className="flex gap-1 mt-2">
-              <button className="py-1.5 px-1.5 cursor-pointer rounded-md border-2 border-black hover:bg-black hover:text-[#f8e7d0] transition-colors font-medium w-full text-sm sm:text-base">
-                Want to read
+              <button className="py-1.5 px-1.5 cursor-pointer rounded-md border-2 border-black hover:bg-black hover:text-beige-100 transition-colors font-medium w-full text-sm sm:text-base">
+                {t("Want to read")}
               </button>
-              <button className="py-1.5 px-1.5 cursor-pointer rounded-md border-2 border-black hover:bg-black hover:text-[#f8e7d0] transition-colors font-medium text-sm sm:text-base">
+              <button className="py-1.5 px-1.5 cursor-pointer rounded-md border-2 border-black hover:bg-black hover:text-beige-100 transition-colors font-medium text-sm sm:text-base">
                 <FaComment />
               </button>
               <Favorite />
@@ -54,14 +57,14 @@ const page = () => {
             </div>
             <div className="flex gap-2 overflow-x-scroll">
               <div className="py-1.5 flex-none text-base sm:text-lg font-medium">
-                Genres :
+                {t("Genres")} :
               </div>
               <div className="flex gap-2 overflow-x-scroll">
                 {book.genres.map((genre, id) => {
                   return (
                     <div
                       key={id}
-                      className="flex-none py-1.5 px-1.5 cursor-pointer rounded-md border-2 border-black hover:bg-black hover:text-[#f8e7d0] transition-colors font-medium text-sm sm:text-base"
+                      className="flex-none py-1.5 px-1.5 cursor-pointer rounded-md border-2 border-black hover:bg-black hover:text-beige-100 transition-colors font-medium text-sm sm:text-base"
                     >
                       {genre}
                     </div>
@@ -70,14 +73,18 @@ const page = () => {
               </div>
             </div>
             <div className="mt-5 flex flex-wrap items-center justify-between font-medium text-sm sm:text-base">
-              <span>{book.pages} Pages</span>
-              <span>First published {book.publishTime}</span>
+              <span>
+                {book.pages} {t("Pages")}
+              </span>
+              <span>
+                {t("First published")} {book.publishTime}
+              </span>
             </div>
             <div className="mt-5 flex items-center gap-2 flex-wrap">
               <Rate />
               {book.price > 0 && (
-                <button className="py-1.5 px-1.5 cursor-pointer rounded-md border-2 border-black hover:bg-black hover:text-[#f8e7d0] transition-colors font-medium text-sm sm:text-base">
-                  Buy now for just {book.price}$
+                <button className="py-1.5 px-1.5 cursor-pointer rounded-md border-2 border-black hover:bg-black hover:text-beige-100 transition-colors font-medium text-sm sm:text-base">
+                  {t("Buy now for just")} {book.price}$
                 </button>
               )}
             </div>

@@ -1,4 +1,5 @@
 "use client";
+import { useTranslations } from "next-intl";
 import { useRef } from "react";
 import BookCard from "./BookCard";
 import { book } from "./books";
@@ -9,13 +10,14 @@ interface Props {
 }
 
 const SuggestedBooks = ({ books }: Props) => {
+  const t = useTranslations("BookPage");
   const scrollerRef = useRef<HTMLDivElement>(null);
 
   return (
     <div className="h-[500px]">
       <div className="flex justify-between items-center mt-5 lg:mt-0">
         <h2 className="text-lg sm:text-2xl text-black font-medium">
-          You may also like
+          {t("You may also like")}
         </h2>
         <div className="flex text-lg font-medium text-black rounded-sm border-2 border-black overflow-hidden">
           <button
@@ -23,7 +25,7 @@ const SuggestedBooks = ({ books }: Props) => {
               (scrollerRef.current!.scrollLeft -=
                 scrollerRef.current!.clientWidth)
             }
-            className="p-1 hover:text-[#f8e7d0] hover:bg-black border-r-2 border-black transition-colors duration-200"
+            className="p-1 hover:text-beige-100 hover:bg-black border-r-2 border-black transition-colors duration-200"
           >
             <MdKeyboardArrowLeft className="sm:w-6 sm:h-6" />
           </button>
@@ -32,7 +34,7 @@ const SuggestedBooks = ({ books }: Props) => {
               (scrollerRef.current!.scrollLeft +=
                 scrollerRef.current!.clientWidth)
             }
-            className="p-1 hover:text-[#f8e7d0] hover:bg-black transition-colors duration-200"
+            className="p-1 hover:text-beige-100 hover:bg-black transition-colors duration-200"
           >
             <MdKeyboardArrowRight className="sm:w-6 sm:h-6" />
           </button>

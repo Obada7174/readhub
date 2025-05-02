@@ -2,5 +2,20 @@
   "HomePage": {
     "title": "Hello world!",
     "about": "Go to the about page"
+  },
+  "BookPage": {
+    "Genres": "Genres",
+    "Want to read": "Want to read",
+    "Pages": "Pages",
+    "First published": "First published",
+    "Share Your Rate": "Share Your Rate",
+    "Buy now for just": "Buy now for just",
+    "You may also like": "You may also like",
+    "Rate": "Rate",
+    "between 1 and 5": "between 1 and 5",
+    "Rate field is required": "Rate field is required",
+    "Review (optional)": "Review (optional)",
+    "We'd love to hear your review": "We'd love to hear your review",
+    "Send": "Send"
   }
 }
