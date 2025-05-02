@@ -1,0 +1,21 @@
+{
+  "HomePage": {
+    "title": "مرحبااا",
+    "about": "نبذة عنا"
+  },
+  "BookPage": {
+    "Genres": "النوعية",
+    "Want to read": "تريد القراءة",
+    "Pages": "صفحة",
+    "First published": "نشرت لأول مرة",
+    "Share Your Rate": "شارك تقييمك",
+    "Buy now for just": "اشتر الأن فقط ب",
+    "You may also like": "قد يعجبك ايضا",
+    "Rate": "التقييم",
+    "between 1 and 5": "بين ال 1 وال 5",
+    "Rate field is required": "حقل التقييم مطلوب",
+    "Review (optional)": "المراجعة (اختياري)",
+    "We'd love to hear your review": "يسرنا أن تسمع رأيك",
+    "Send": "ارسال"
+  }
+}
