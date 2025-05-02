@@ -2,5 +2,14 @@
   "HomePage": {
     "title": "Hello world!",
     "about": "Go to the about page"
+  },
+  "navigation":{
+    "home" : "Home",
+    "books" : "Books",
+    "about" : "About",
+    "categories":"Categories",
+    "competitions" : "Competitions",
+    "contact":"Contact",
+    "search":"Search"
   }
 }

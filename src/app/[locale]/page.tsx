@@ -7,13 +7,13 @@ export default function HomePage() {
     <div>
       <h1 className=''>{t('title')}</h1>
       <Link href="/about">{t('about')}</Link>
+      {/* <Link href="/about">{t('about')}</Link>
       <Link href="/about">{t('about')}</Link>
       <Link href="/about">{t('about')}</Link>
       <Link href="/about">{t('about')}</Link>
       <Link href="/about">{t('about')}</Link>
       <Link href="/about">{t('about')}</Link>
-      <Link href="/about">{t('about')}</Link>
-      <Link href="/about">{t('about')}</Link>
+      <Link href="/about">{t('about')}</Link> */}
     </div>
   );
 }

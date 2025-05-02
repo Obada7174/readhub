@@ -2,5 +2,15 @@
   "HomePage": {
     "title": "مرحبااا",
     "about": "نبذة عنا"
+  },
+  "navigation":{
+    "home" : "الصفحة الرئيسية",
+    "books" : "الكتب",
+    "about" : "نبذة عنا",
+    "competitions" : "المسابقات",
+    "contact":"تواصل معنا",
+    "categories":"التصنيفات",
+    "search":"البحث"
   }
+  
 }
