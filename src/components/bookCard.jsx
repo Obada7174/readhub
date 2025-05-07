@@ -30,7 +30,7 @@ const BookCard = ({ book, large = false, detailed = false }) => {
         width: '100%',
         height: large ? 260 : 200,
         boxShadow: '12px',
-        backgroundColor: 'var(--beige-100)',
+        backgroundColor: 'var(--background)',
         transition: 'transform 0.3s ease, box-shadow 0.3s ease',
         '&:hover': {
           transform: 'scale(1.05)',
@@ -46,7 +46,7 @@ const BookCard = ({ book, large = false, detailed = false }) => {
           width: large ? 200 : 150,
           height: '100%',
           objectFit: 'cover',
-          backgroundColor: 'var(--beige-100)',
+          // backgroundColor: 'var(--beige-100)',
         }}
       />
       <CardContent

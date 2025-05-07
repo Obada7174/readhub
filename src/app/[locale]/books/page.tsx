@@ -3,8 +3,6 @@ import { useState } from "react";
 import FilterSidebar from "@/components/Sidebar";
 import BookCard from "@/components/bookCard";
 import TextField from "@mui/material/TextField";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
 import { InputAdornment } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { useTranslation } from "react-i18next";
@@ -76,10 +74,8 @@ const books = [
     rating: 4.7,
   },
 ];
-
 const Page = () => {
   const { t, i18n } = useTranslation();
-
   const [selectedCategory, setSelectedCategory] = useState<string[]>([]);
   const [priceRange, setPriceRange] = useState<string | null>(null);
   const [rating, setRating] = useState<number | null>(null);
@@ -112,7 +108,8 @@ const Page = () => {
 
   return (
     <div className="flex">
-      <div className="w-1/6">
+      {/* Sidebar with divider */}
+      <div className="w-[12%]  border-brown pr-1" style={{ borderRightWidth: "1px" }}>
         <FilterSidebar
           selectedCategory={selectedCategory}
           setSelectedCategory={setSelectedCategory}
@@ -125,26 +122,27 @@ const Page = () => {
         />
       </div>
 
+      {/* Main Content */}
       <div className="w-5/6 p-6">
         <div className="mb-6 w-[300px]">
           <TextField
-            label={t("search_by_title")}
+            label={t("search by title")}
             variant="standard"
             fullWidth
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             sx={{
-              "& label": { color: "var(--brown-100)" },
-              "& label.Mui-focused": { color: "var(--brown-100)" },
+              "& label": { color: "black" },
+              "& label.Mui-focused": { color: "black" },
               "& input": { color: "black" },
-              "& .MuiInput-underline:before": { borderBottomColor: "var(--brown-100)" },
-              "& .MuiInput-underline:hover:not(.Mui-disabled):before": { borderBottomColor: "black" },
-              "& .MuiInput-underline:after": { borderBottomColor: "var(--brown-100)" },
+              "& .MuiInput-underline:before": { borderBottomColor: "black" },
+              "& .MuiInput-underline:hover:not(.Mui-disabled):before": { borderBottomColor: "var(--brown-100)" },
+              "& .MuiInput-underline:after": { borderBottomColor: "black" },
             }}
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
-                  <SearchIcon sx={{ color: "var(--brown-100)" }} />
+                  <SearchIcon sx={{ color: "black" }} />
                 </InputAdornment>
               ),
             }}
@@ -153,7 +151,7 @@ const Page = () => {
 
         {newBooks.length > 0 && (
           <div className="mb-10">
-            <h2 className="text-xl font-semibold text-brown-100 mb-4">🆕 {t("new_arrivals")}</h2>
+            <h2 className="text-xl font-semibold text-brown-100 mb-4">🆕 {t("new_arrivals:")}</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {newBooks.map((book) => (
                 <div key={book.id}>
@@ -164,7 +162,7 @@ const Page = () => {
           </div>
         )}
 
-        <Tabs
+        {/* <Tabs
           value={value}
           onChange={handleTabChange}
           textColor="secondary"
@@ -176,8 +174,11 @@ const Page = () => {
             justifyContent: "flex-end",
             "& .MuiTabs-flexContainer": { justifyContent: "flex-end" },
             "& .MuiTab-root": { color: "black" },
-            "& .Mui-selected": { color: "var(--brown-100)" },
+            "& .Mui-selected": { color: "var(--brown-100)",
+            fontWeight: "bold"
+            },
             "& .MuiTabs-indicator": { backgroundColor: "var(--brown-100)" },
+            
           }}
         >
           <Tab value="all" label={t("all")} />
@@ -189,7 +190,7 @@ const Page = () => {
           <Tab value="Religion" label={t("Religion")} />
           <Tab value="Fantasy" label={t("Fantasy")} />
           <Tab value="Education" label={t("Education")} />
-        </Tabs>
+        </Tabs> */}
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {filteredBooksWithoutNew.map((book) => (
