@@ -32,5 +32,32 @@
       "select_language": "Select Language",
       "select_rating": "Select Rating"
     }
+  },
+  "SignUpPage":{
+    "title": "Create a New Account",
+    "first_name": "First Name",
+    "last_name": "Last Name",
+    "email": "Email",
+    "password": "Password",
+    "sign_up": "Sign Up",
+    "terms_of_service": "Terms of Service",
+    "privacy_policy": "Privacy Policy",
+    "help": "Help",
+    "success_message": "Sign Up Successful!",
+    "error_message": "Sign Up Failed",
+    "already_have_account": "Already have an account?",
+    "sign in":" Sign in"
+  },
+  "LoginPage": {
+    "title": "Welcome Back",
+    "email": "Email",
+    "password": "Password",
+    "sign_in": "Sign In",
+    "success_message": "Login Successful!",
+    "error_message": "Login Failed",
+    "something_went_wrong": "Something went wrong. Please try again later.",
+    "dont_have_account": "Don't have an account?",
+    "sign_up": "Sign Up"
   }
+  
 }

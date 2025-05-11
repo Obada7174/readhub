@@ -70,11 +70,11 @@ const BookCard = ({ book, large = false, detailed = false }) => {
             {book.author}
           </Typography>
 
-          <div style={{ display: 'flex', gap: 2, alignItems: 'center', marginBottom: 4 }}>
+          <div className='flex gap-2 items-center mb-1' >
             {renderStars(book.rating)}
           </div>
 
-          <Typography
+          {/* <Typography
             variant="body2"
             sx={{
               color: 'text.secondary',
@@ -87,7 +87,7 @@ const BookCard = ({ book, large = false, detailed = false }) => {
             }}
           >
             {book.description}
-          </Typography>
+          </Typography> */}
         </div>
 
         <CardActions

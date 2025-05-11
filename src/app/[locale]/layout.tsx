@@ -9,15 +9,14 @@ export default async function LocaleLayout({
   children: React.ReactNode;
   params: Promise<{locale: string}>;
 }) {
-  // Ensure that the incoming `locale` is valid
+
   const {locale} = await params;
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
- 
   return (
     <html lang={locale} suppressHydrationWarning>
-      <body>
+      <body className='bg-gray-200'>
         <NextIntlClientProvider>{children}</NextIntlClientProvider>
       </body>
     </html>

@@ -30,5 +30,30 @@
       "select_language": "اختر اللغة",
       "select_rating": "اختر التقييم"
     }
+  },
+  "SignUpPage": {
+    "title": "إنشاء حساب جديد",
+    "first_name": "الاسم الأول",
+    "last_name": "الاسم الأخير",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "sign_up": "تسجيل حساب",
+    "terms_of_service": "شروط الخدمة",
+    "privacy_policy": "سياسة الخصوصية",
+    "help": "مساعدة",
+    "success_message": "تم التسجيل بنجاح!",
+    "error_message": "فشل التسجيل",
+    "already_have_account": "هل لديك حساب؟ سجل دخولك"
+  },
+  "LoginPage": {
+    "title": "مرحبًا بعودتك",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "sign_in": "تسجيل الدخول",
+    "success_message": "تم تسجيل الدخول بنجاح!",
+    "error_message": "فشل تسجيل الدخول",
+    "something_went_wrong": "حدث خطأ ما. يرجى المحاولة مرة أخرى لاحقًا.",
+    "dont_have_account": "ليس لديك حساب؟",
+    "sign_up": "تسجيل حساب"
   }
 }
