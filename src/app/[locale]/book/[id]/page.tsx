@@ -1,5 +1,5 @@
 import Image from "next/image";
-import bookImage from "@/assets/Rich_Dad_Poor_Dad.jpg";
+import bookImage from "@/assets/images/Rich_Dad_Poor_Dad.jpg";
 import { FaStar, FaStarHalf, FaComment } from "react-icons/fa";
 import Rate from "../Rate";
 import Favorite from "../Favorite";
@@ -27,6 +27,7 @@ const page = () => {
               </button>
               <button className="py-1.5 px-1.5 cursor-pointer rounded-md border-2 border-black hover:bg-black hover:text-[#f8e7d0] transition-colors font-medium text-sm sm:text-base">
                 <FaComment />
+                {}
               </button>
               <Favorite />
             </div>

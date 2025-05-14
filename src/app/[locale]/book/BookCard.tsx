@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { book } from "./books";
-import bookImage from "@/assets/Rich_Dad_Poor_Dad.jpg";
+import bookImage from "@/assets/images/Rich_Dad_Poor_Dad.jpg";
 import { FaStar, FaStarHalf } from "react-icons/fa";
 import Link from "next/link";
 

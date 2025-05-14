@@ -12,7 +12,7 @@ import {
     FormControl,
     InputLabel
 } from '@mui/material';
-import readhub from '@/assets/readhub logo.svg'
+import readhub from '@/assets/images/readhub-logo.svg'
 import {
     //  LuBookOpen,
     LuShoppingCart,
@@ -32,7 +32,7 @@ export default function Header() {
     const t = useTranslations();
 
     return (
-        <header className="border-b border-brown-100 bg-beige-100 shadow-lg fixed w-full t-0 l-0">
+        <header className="border-b border-gray-300 bg-gray-200 shadow-lg fixed w-full t-0 l-0 z-50">
             <div className="container mx-auto px-4 py-1.5">
                 <div className="flex items-center justify-between">
                     <Link href='/' className="flex gap-1.5 items-center">
@@ -41,16 +41,16 @@ export default function Header() {
                             alt="readhub logo"
                             width={60}
                         />
-                        <h1 className="font-funnel-display text-2xl text-brown-100"><span className='font-light'>read</span><strong>hub</strong></h1>
+                        <h1 className="font-funnel-display text-2xl text-gray-800"><span className='font-light'>read</span><strong>hub</strong></h1>
                     </Link>
 
                     {/* Desktop Navigation */}
                     <nav className="hidden md:flex items-center space-x-8">
-                        <Link href="/" className="text-brown-100 hover:text-amber-950 duration-150">{t('navigation.home')}</Link>
-                        <Link href="/books" className="text-brown-100 hover:text-amber-950 duration-150">{t('navigation.books')}</Link>
-                        <Link href="/about" className="text-brown-100 hover:text-amber-950 duration-150">{t('navigation.about')}</Link>
-                        <Link href="/categories" className="text-brown-100 hover:text-amber-950 duration-150">{t('navigation.categories')}</Link>
-                        <Link href="/competitions" className="text-brown-100 hover:text-amber-950 duration-150">{t('navigation.competitions')}</Link>
+                        <Link href="/" className="text-gray-800 hover:text-gray-900 duration-150">{t('navigation.home')}</Link>
+                        <Link href="/books" className="text-gray-800 hover:text-gray-900 duration-150">{t('navigation.books')}</Link>
+                        <Link href="/about" className="text-gray-800 hover:text-gray-900 duration-150">{t('navigation.about')}</Link>
+                        <Link href="/categories" className="text-gray-800 hover:text-gray-900 duration-150">{t('navigation.categories')}</Link>
+                        <Link href="/competitions" className="text-gray-800 hover:text-gray-900 duration-150">{t('navigation.competitions')}</Link>
                     </nav>
 
                     {/* <nav className="hidden md:flex items-center space-x-8">
@@ -67,7 +67,7 @@ export default function Header() {
                                 type="search"
                                 placeholder={t('navigation.search')}
                                 // placeholder={"search"}
-                                className="w-64 pl-8 bg-beige-100 opacity-90"
+                                className="w-64 pl-8 bg-gray-300 opacity-90"
                             />
                             < LuSearch className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
                         </div>
@@ -99,19 +99,19 @@ export default function Header() {
 
                         <Link href="/dashboard">
                             <CustomButton variantType="ghost" sizeType="icon" className=''>
-                                < LuLayoutDashboard className="h-5 w-5  text-brown-100" />
+                                < LuLayoutDashboard className="h-5 w-5  text-gray-800" />
                             </CustomButton>
                         </Link>
 
                         <Link href="/cart">
                             <CustomButton variantType="ghost" sizeType="icon" className=''>
-                                < LuShoppingCart className="h-5 w-5 text-brown-100" />
+                                < LuShoppingCart className="h-5 w-5 text-gray-800" />
                             </CustomButton>
                         </Link>
 
                         <Link href="/account">
                             <CustomButton variantType="ghost" sizeType="icon" className=''>
-                                < LuUser className="h-5 w-5 text-brown-100" />
+                                < LuUser className="h-5 w-5 text-gray-800" />
                             </CustomButton>
                         </Link>
                     </div>
