@@ -24,9 +24,9 @@ import {
     LuX,
     LuLayoutDashboard
 } from 'react-icons/lu';
+import ThemeSwitcher from './ThemeSwitcher';
 
 export default function Header() {
-    // const { theme, setTheme } = useTheme();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const t = useTranslations();
@@ -84,18 +84,7 @@ export default function Header() {
                             </Select>
                         </FormControl>
 
-
-                        {/* <CustomButton
-                            variantType="ghost"
-                            sizeType="icon"
-                            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                        >
-                            {theme === 'dark' ? (
-                                < LuSun className="h-5 w-5" />
-                            ) : (
-                                    < LuMoon className="h-5 w-5" />
-                            )}
-                        </CustomButton> */}
+                        <ThemeSwitcher/>
 
                         <Link href="/dashboard">
                             <CustomButton variantType="ghost" sizeType="icon" className=''>
@@ -140,11 +129,7 @@ export default function Header() {
                             <Link href="/categories" className="hover:text-primary">{'categories'}</Link>
                             <Link href="/about" className="hover:text-primary">{'about'}</Link>
                             <Link href="/dashboard" className="hover:text-primary">{'dashboard'}</Link>
-                            {/* <Link href="/books" className="hover:text-primary">{t('navigation.books')}</Link>
-              <Link href="/ebooks" className="hover:text-primary">{t('navigation.ebooks')}</Link>
-              <Link href="/categories" className="hover:text-primary">{t('navigation.categories')}</Link>
-              <Link href="/about" className="hover:text-primary">{t('navigation.about')}</Link>
-              <Link href="/dashboard" className="hover:text-primary">{t('navigation.dashboard')}</Link> */}
+                            
                             <div className="relative">
                                 <Input
                                     type="search"
