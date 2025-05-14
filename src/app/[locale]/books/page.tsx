@@ -6,12 +6,12 @@ import { useTranslation } from "react-i18next";
 import Navbar from "@/components/Navbar";
 import { InputAdornment, TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-
 const books = [
   {
     id: 1,
     title: "The Great Gatsby",
-    description: "The Great Gatsby is a timeless classic that explores themes of wealth, love, and the American Dream...",
+    description:
+      "The Great Gatsby is a timeless classic that explores themes of wealth, love, the pursuit of the American Dream, and the illusion of happiness. Set in the Roaring Twenties, it follows the mysterious millionaire Jay Gatsby and his obsession with the beautiful Daisy Buchanan, revealing the corruption and decadence hidden beneath the surface of glamour.",
     author: "F. Scott Fitzgerald",
     price: "$10",
     language: "en",
@@ -24,7 +24,8 @@ const books = [
   {
     id: 2,
     title: "موسوعة المعرفة",
-    description: "تُعد موسوعة المعرفة مرجعًا شاملاً يحتوي على معلومات موسوعية...",
+    description:
+      "تُعد موسوعة المعرفة مرجعًا شاملاً يحتوي على معلومات موسوعية في مختلف المجالات كالتاريخ، الجغرافيا، العلوم، الأدب، الفلسفة، والفنون. تُمكن القارئ من استكشاف مواضيع متعددة بلغة بسيطة وموثوقة، وتعتبر أداة تعليمية مثالية للطلاب والباحثين والراغبين في توسيع معارفهم العامة بشكل دقيق ومبسط.",
     author: "ف. سكوت فيتزجيرالد",
     price: "$15",
     language: "ar",
@@ -37,7 +38,8 @@ const books = [
   {
     id: 3,
     title: "To Kill a Mockingbird",
-    description: "Harper Lee’s Pulitzer Prize-winning novel delves into issues of race and injustice...",
+    description:
+      "Harper Lee’s Pulitzer Prize-winning novel delves into issues of race, injustice, and moral growth in the Deep South of the United States. Through the innocent eyes of Scout Finch, readers witness the prejudices and harsh realities faced by African Americans in a racially divided society. It is a story of courage, empathy, and the loss of innocence.",
     author: "Harper Lee",
     price: "$12",
     language: "en",
@@ -50,7 +52,8 @@ const books = [
   {
     id: 4,
     title: "ألف ليلة وليلة",
-    description: "ألف ليلة وليلة هي مجموعة من الحكايات الشعبية التي تتميز بالسحر والمغامرة...",
+    description:
+      "ألف ليلة وليلة هي مجموعة من الحكايات الشعبية التي تناقلتها الأجيال في الشرق الأوسط وشمال أفريقيا. تتضمن قصصًا عن السحر، والمغامرات، والملوك، والجن، والبطولات. تسرد شهرزاد قصصًا مشوقة كل ليلة للملك شهريار، في إطار من الإبداع والدهاء والذكاء الذي جعل هذه المجموعة من أبرز الأعمال الأدبية في التراث العربي.",
     author: "غير معروف (تجميع تراثي)",
     price: "$20",
     language: "ar",
@@ -63,7 +66,8 @@ const books = [
   {
     id: 5,
     title: "Pride and Prejudice",
-    description: "Jane Austen’s celebrated novel is a brilliant critique of social class...",
+    description:
+      "Jane Austen’s celebrated novel is a brilliant critique of social class, marriage, and morality in 19th-century England. It follows the spirited Elizabeth Bennet as she navigates issues of manners, upbringing, and misunderstandings—especially with the proud Mr. Darcy. With wit and insight, Austen delivers a timeless commentary on human relationships and societal expectations.",
     author: "Jane Austen",
     price: "$11",
     language: "en",
@@ -74,6 +78,7 @@ const books = [
     rating: 4.7,
   },
 ];
+
 const Page = () => {
   const { t, i18n } = useTranslation();
   const [selectedCategory, setSelectedCategory] = useState<string[]>([]);
@@ -130,9 +135,8 @@ const Page = () => {
         </div>
       )}
   
-      {/* المحتوى الرئيسي مع السايدبار لسطح المكتب */}
       <div className="sm:flex sm:gap-6 p-6">
-        {/* Sidebar لسطح المكتب */}
+
         <div className="hidden sm:block sm:w-1/5">
           <FilterSidebar
             selectedCategory={selectedCategory}
@@ -145,10 +149,8 @@ const Page = () => {
             setRating={setRating}
           />
         </div>
-  
-        {/* Main content */}
+
         <main className="w-full sm:w-4/5 space-y-4">
-          {/* البحث */}
           <div className="w-full max-w-sm px-4 py-2 sm:px-0">
             <TextField
               label={t("search by title")}
@@ -173,7 +175,7 @@ const Page = () => {
               }}
             />
           </div>
-          <div className="flex justify-center">
+          <div className="flex ">
   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
     {filteredBooks.map((book) => (
       <div key={book.id} className="flex justify-center">

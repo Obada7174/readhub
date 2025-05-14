@@ -71,7 +71,7 @@ const Page = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-slate-100">
-      <div className="bg-white p-8 rounded-3xl shadow-xl w-full max-w-md">
+      <div className="bg-white p-8 rounded-3xl shadow-xl w-full max-w-md mx-4">
         <h2 className="text-3xl font-bold text-center mb-6 text-slate-700">
           {t("Welcome Back")}
         </h2>

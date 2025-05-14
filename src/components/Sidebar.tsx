@@ -29,10 +29,10 @@ const StyledMenuItem = styled(MenuItem)<{ selected?: boolean }>(({ selected }) =
   borderRadius: 6,
   marginBottom: 4,
   transition: "all 0.3s ease",
-  backgroundColor: selected ? "var(--beige-200)" : "transparent",
+  backgroundColor: selected ? "slate-500" : "transparent",
   color: "#000",
   "&:hover": {
-    backgroundColor: "var(--beige-200)",
+    backgroundColor: "slate-700",
     color: "#000",
   },
 }));
@@ -63,9 +63,9 @@ const StyledDetails = styled(AccordionDetails)({
 });
 
 const CustomCheckbox = styled(Checkbox)({
-  color: "var(--brown-100)",
+  color: "slate-800",
   '&.Mui-checked': {
-    color: "var(--brown-100)",
+    color: "slate-100",
   },
 });
 
@@ -100,7 +100,7 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({
     <div className="w-full sm:w-[180px] px-2 pt-4">
       
       {/* Image above filters */}
-      <Box sx={{ mb: 4 }}>
+      {/* <Box sx={{ mb: 4 }}>
   <Image 
     src="/assets/logo.png" 
     alt="Filter Image" 
@@ -108,7 +108,7 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({
     height={100} 
     style={{ borderRadius: "8px" }}
   />
-</Box>
+</Box> */}
 
       {/* Language Selection */}
       <StyledAccordion>
