@@ -64,7 +64,7 @@ const TopRatedBooks = () => {
 
 
     return (
-        <section className="px-6 md:px-16 py-16 bg-white dark:bg-gray-900 transition-colors duration-300">
+        <section className="px-6 md:px-16 py-16 transition-colors duration-300">
             <h2 className="text-2xl md:text-3xl font-bold text-gray-800 dark:text-gray-100 mb-6">
                 {t('topRatedBooks')}
             </h2>

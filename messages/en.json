@@ -11,5 +11,32 @@
     "competitions" : "Competitions",
     "contact":"Contact",
     "search":"Search"
+  },
+  "footer":{
+    "about": {
+      "title": "About readhub",
+      "description": "Your one-stop destination for both physical and digital books. Discover new worlds through reading."
+    },
+    "quickLinks": {
+      "title": "Quick Links",
+      "books": "Books",
+      "ebooks": "eBooks",
+      "categories": "Categories",
+      "aboutUs": "About Us"
+    },
+    "customerService": {
+      "title": "Customer Service",
+      "contactUs": "Contact Us",
+      "shippingInfo": "Shipping Info",
+      "returns": "Returns",
+      "faq": "FAQ"
+    },
+    "newsletter": {
+      "title": "Newsletter",
+      "description": "Subscribe to get updates about new releases and special offers.",
+      "emailPlaceholder": "Enter your email",
+      "subscribeButton": "Subscribe"
+    },
+    "copyright": "© 2025 readhub. All rights reserved."
   }
 }

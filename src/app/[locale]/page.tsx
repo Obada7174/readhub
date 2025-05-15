@@ -6,7 +6,9 @@ export default function HomePage() {
   return (
     <div>
       <Hero/>
+      <div className='container mx-auto px-4'>
       <TopRatedBooks/>
+      </div>
     </div>
   );
 }

@@ -11,6 +11,34 @@
     "contact":"تواصل معنا",
     "categories":"التصنيفات",
     "search":"البحث"
-  }
+  },
+  "footer":{
+    "about": {
+      "title": "عن ريد هاب",
+      "description": "وجهتك الشاملة للكتب الورقية والرقمية. اكتشف عوالم جديدة من خلال القراءة."
+    },
+    "quickLinks": {
+      "title": "روابط سريعة",
+      "books": "كتب",
+      "ebooks": "كتب إلكترونية",
+      "categories": "فئات",
+      "aboutUs": "من نحن"
+    },
+    "customerService": {
+      "title": "خدمة العملاء",
+      "contactUs": "اتصل بنا",
+      "shippingInfo": "معلومات الشحن",
+      "returns": "الإرجاع",
+      "faq": "الأسئلة الشائعة"
+    },
+    "newsletter": {
+      "title": "النشرة الإخبارية",
+      "description": "اشترك لتلقي تحديثات حول الإصدارات الجديدة والعروض الخاصة.",
+      "emailPlaceholder": "أدخل بريدك الإلكتروني",
+      "subscribeButton": "اشترك"
+    },
+    "copyright": "© 2025 readhub. جميع الحقوق محفوظة."
+    }
+  
   
 }
