@@ -38,7 +38,7 @@ const Hero = () => {
             books, and curated content tailored just for you.
           </p>
           <div className="flex gap-4">
-            <Link href='' className='cursor-pointer py-2 px-6 bg-gray-950 text-gray-50 text-lg rounded hover:bg-gray-800 duration-200'>Browse Books</Link>
+            <Link href='' className='cursor-pointer py-2 px-6 bg-gray-950 text-gray-50 text-lg rounded hover:bg-gray-800 duration-200 border border-gray-400'>Browse Books</Link>
             <Link href='' className='cursor-pointer py-2 px-6 text-gray-800 bg-gray-100 text-lg rounded hover:bg-gray-950 hover:text-gray-50 border border-gray-950 duration-200'>Learn More</Link>
           </div>
         </div>

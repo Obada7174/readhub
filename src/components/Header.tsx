@@ -2,22 +2,12 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation'; // <-- جديد
 import { useTranslations } from 'next-intl';
 import { CustomButton } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 import Image from 'next/image';
-import { SelectChangeEvent } from '@mui/material/Select';
+import LanguageSwitcher from './LanguageSwitcher';
 
-// Material UI imports
-import {
-    Select,
-    MenuItem,
-    FormControl,
-    InputLabel
-} from '@mui/material';
-
-// Icons & Images
 import readhub from '@/assets/images/readhub-logo.svg';
 import readhubdarkmode from "@/assets/images/readhub-darkmode.svg";
 import {
@@ -29,7 +19,6 @@ import {
     LuLayoutDashboard
 } from 'react-icons/lu';
 
-// Theme & Auth Components
 import ThemeSwitcher from './ThemeSwitcher';
 import { useTheme } from 'next-themes';
 
@@ -38,30 +27,11 @@ export default function Header() {
     const [mounted, setMounted] = useState(false);
     const { theme } = useTheme();
     const t = useTranslations();
-
-    const router = useRouter(); // <-- هنا نستخدم useRouter
-
-    // للتأكد من أن الـ theme يعمل بشكل صحيح بدون مشاكل SSR
     useEffect(() => {
         setMounted(true);
     }, []);
 
-
-    const handleLanguageChange = (e: SelectChangeEvent<string>) => {
-        const lang = e.target.value as string;
-        const currentPath = window.location.pathname;
-
-        const segments = currentPath.split('/');
-
-        if (segments[1] && ['en', 'ar'].includes(segments[1])) {
-            segments[1] = lang;
-        } else {
-            segments.splice(1, 0, lang);
-        }
-
-        const newPath = segments.join('/');
-        router.push(newPath);
-    };
+    
 
     return (
         <header className="border-b border-gray-300 bg-gray-200 dark:bg-gray-800 dark:border-gray-700 shadow-lg fixed w-full top-0 left-0 z-50">
@@ -102,18 +72,7 @@ export default function Header() {
                         </div>
 
                         {/* Language Switcher - Desktop */}
-                        <FormControl variant="standard" sx={{ minWidth: 100 }}>
-                            <Select
-                                labelId="lang-select-label"
-                                id="lang-select"
-                                defaultValue="en"
-                                onChange={handleLanguageChange} // <-- هنا نضيف event handler
-                                className="text-black dark:text-white"
-                            >
-                                <MenuItem value="en">English</MenuItem>
-                                <MenuItem value="ar">العربية</MenuItem>
-                            </Select>
-                        </FormControl>
+                        <LanguageSwitcher/>
 
                         <ThemeSwitcher />
 
@@ -171,19 +130,7 @@ export default function Header() {
                             </div>
 
                             {/* Language Switcher - Mobile */}
-                            <FormControl variant="standard" fullWidth>
-                                <InputLabel id="lang-select-label-mobile" className="text-black dark:text-white">Language</InputLabel>
-                                <Select
-                                    labelId="lang-select-label-mobile"
-                                    id="lang-select-mobile"
-                                    defaultValue="en"
-                                    onChange={handleLanguageChange}
-                                    className="text-black dark:text-white"
-                                >
-                                    <MenuItem value="en">English</MenuItem>
-                                    <MenuItem value="ar">العربية</MenuItem>
-                                </Select>
-                            </FormControl>
+                            <LanguageSwitcher />
                         </nav>
                     </div>
                 )}
