@@ -1,0 +1,59 @@
+{
+  "HomePage": {
+    "title": "مرحبااا",
+    "about": "نبذة عنا"
+  },
+  "BooksPage": {
+    "bookTitle": "عنوان الكتاب",
+    "author": "المؤلف",
+    "rating": "التقييم",
+    "description": "الوصف",
+    "search_by_title": "البحث حسب العنوان",
+    "new_arrivals": "الإصدارات الجديدة",
+    "top_rated": "الأعلى تقييماً",
+    "top_rated_in": "الأعلى تقييماً في",
+    "categories": "الفئات",
+    "all": "الكل",
+    "novel": "رواية",
+    "science": "علوم",
+    "children": "أطفال",
+    "history": "تاريخ",
+    "biography": "سيرة ذاتية",
+    "religion": "دين",
+    "fantasy": "خيال",
+    "education": "تعليم",
+    "filter_sidebar": {
+      "price_range": "نطاق السعر",
+      "rating_filter": "تصفية التقييم",
+      "category_filter": "تصفية الفئات",
+      "select_category": "اختر الفئة",
+      "select_language": "اختر اللغة",
+      "select_rating": "اختر التقييم"
+    }
+  },
+  "SignUpPage": {
+    "title": "إنشاء حساب جديد",
+    "first_name": "الاسم الأول",
+    "last_name": "الاسم الأخير",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "sign_up": "تسجيل حساب",
+    "terms_of_service": "شروط الخدمة",
+    "privacy_policy": "سياسة الخصوصية",
+    "help": "مساعدة",
+    "success_message": "تم التسجيل بنجاح!",
+    "error_message": "فشل التسجيل",
+    "already_have_account": "هل لديك حساب؟ سجل دخولك"
+  },
+  "LoginPage": {
+    "title": "مرحبًا بعودتك",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "sign_in": "تسجيل الدخول",
+    "success_message": "تم تسجيل الدخول بنجاح!",
+    "error_message": "فشل تسجيل الدخول",
+    "something_went_wrong": "حدث خطأ ما. يرجى المحاولة مرة أخرى لاحقًا.",
+    "dont_have_account": "ليس لديك حساب؟",
+    "sign_up": "تسجيل حساب"
+  }
+}
