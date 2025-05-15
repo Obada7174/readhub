@@ -1,6 +1,7 @@
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from 'next-intl';
-
+import Image from "next/image";
+import logo from '@/assets/images/readhub-darkmode.svg'
 export default function Footer() {
     const t = useTranslations('footer');
 
@@ -9,7 +10,14 @@ export default function Footer() {
             <div className="container mx-auto px-4 py-8">
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                     <div>
-                        <h3 className="font-semibold text-lg mb-4">{t('about.title')}</h3>
+                        <div className="flex items-center">
+                            <Image
+                                src={logo}
+                                alt='logo'
+                                width={100}
+                            />
+                            <h3 className="font-semibold text-lg mb-4 font-funnel-display">readhub</h3>
+                        </div>
                         <p className="text-muted-foreground">
                             {t('about.description')}
                         </p>
