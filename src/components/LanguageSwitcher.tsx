@@ -6,11 +6,13 @@ import { useEffect, useState } from 'react';
 
 export default function LanguageSwitcher() {
     const router = useRouter();
-    const { theme } = useTheme();
+    const { theme, systemTheme } = useTheme();
     const [selectedLang, setSelectedLang] = useState('en');
+    const [mounted, setMounted] = useState(false);
 
-    // قراءة اللغة من الرابط
     useEffect(() => {
+        setMounted(true);
+
         const pathSegments = window.location.pathname.split('/');
         if (pathSegments[1] && ['en', 'ar'].includes(pathSegments[1])) {
             setSelectedLang(pathSegments[1]);
@@ -32,13 +34,17 @@ export default function LanguageSwitcher() {
         setSelectedLang(newLang);
     };
 
+    if (!mounted) return <div className='w-20 h-8 animate-pulse bg-gray-400 rounded '/>;
+
+    const currentTheme = theme === 'system' ? systemTheme : theme;
+
     return (
         <div className="relative group">
             <button
                 className={`cursor-pointer flex items-center justify-between gap-2 px-4 py-2 rounded-md border text-sm font-medium
                     transition-all duration-200 transform
                     focus:outline-none focus:ring-2 focus:ring-offset-2
-                    ${theme === 'dark'
+                    ${currentTheme === 'dark'
                         ? 'border-gray-600 text-white bg-gray-800 hover:bg-gray-700 focus:ring-gray-500'
                         : 'border-gray-300 text-gray-800 bg-white hover:bg-gray-100 focus:ring-blue-500'
                     }
@@ -82,7 +88,9 @@ export default function LanguageSwitcher() {
                                 transition-colors duration-150
                                 ${selectedLang === 'en'
                                     ? 'bg-primary text-white'
-                                    : 'hover:bg-gray-100 dark:hover:bg-gray-700'
+                                    : currentTheme === 'dark'
+                                        ? 'hover:bg-gray-700'
+                                        : 'hover:bg-gray-100'
                                 }
                             `}
                         >
@@ -97,7 +105,9 @@ export default function LanguageSwitcher() {
                                 transition-colors duration-150
                                 ${selectedLang === 'ar'
                                     ? 'bg-primary text-white'
-                                    : 'hover:bg-gray-100 dark:hover:bg-gray-700'
+                                    : currentTheme === 'dark'
+                                        ? 'hover:bg-gray-700'
+                                        : 'hover:bg-gray-100'
                                 }
                             `}
                         >

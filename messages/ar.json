@@ -1,7 +1,10 @@
 {
   "HomePage": {
     "title": "مرحبااا",
-    "about": "نبذة عنا"
+    "about": "نبذة عنا",
+    "topRatedSection":{
+      "topRatedBooks":"الكتب الإعلى تقييماً"
+    }
   },
   "navigation":{
     "home" : "الصفحة الرئيسية",
