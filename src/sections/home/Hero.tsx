@@ -1,37 +1,50 @@
-'use client';
-
-import heroAnimation from "@/assets/animations/animation.json"
-import dynamic from "next/dynamic";
-const DynamicLottie = dynamic(() => import("lottie-react"), { ssr: false });
-
+import Image from "next/image"
+import { Link } from "@/i18n/navigation"
+import logo from "@/assets/images/readhub-darkmode.svg"
 const Hero = () => {
   return (
-    <section className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center px-6 md:px-16 py-20 bg-white -translate-y-24">
-      {/* Text content */}
-      <div className="space-y-6">
-        <h1 className="text-5xl md:text-7xl font-funnel-display text-gray-900 leading-tight">
-          <span className="font-light">read</span>
-          <strong>hub</strong>
-        </h1>
-        <p className="text-gray-600 text-lg leading-relaxed max-w-xl">
-          Discover and explore the world of knowledge with ease. Dive into articles, books, and curated content tailored just for you.
-        </p>
-        <div className="flex flex-wrap gap-4">
-          <button className="cursor-pointer rounded-full bg-gray-900 text-white px-6 py-3 font-semibold hover:bg-gray-700 transition">
-            Download App
-          </button>
-          <button className="cursor-pointer rounded-full border-2 border-gray-900 text-gray-900 px-6 py-3 font-semibold hover:bg-gray-900 hover:text-white transition">
-            Learn More
-          </button>
-        </div>
+    <section className="relative h-[600px] flex items-center">
+      {/* Background Image */}
+      <div
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: 'url(https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&q=80)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
+        <div className="absolute inset-0 bg-black/50" />
       </div>
 
-      {/* Lottie Animation */}
-      <div className="">
-        <DynamicLottie animationData={heroAnimation} className="" loop={false} />
+      {/* Content */}
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="max-w-2xl text-white ">
+          <div className="flex items-center gap-4 max-w-4xl">
+
+          <Image
+            src={logo}
+            alt="readhub logo"
+            width={150}
+            height={logo.height}
+            className=""
+          />
+          <h1 className="text-5xl md:text-7xl font-funnel-display leading-tight mb-4">
+            <span className="font-light">read</span>
+            <strong>hub</strong>
+          </h1>
+            </div>
+          <p className="text-xl mb-8">
+            Discover and explore the world of knowledge with ease. Dive into articles,
+            books, and curated content tailored just for you.
+          </p>
+          <div className="flex gap-4">
+            <Link href='' className='cursor-pointer py-2 px-6 bg-gray-950 text-gray-50 text-lg rounded hover:bg-gray-800 duration-200'>Browse Books</Link>
+            <Link href='' className='cursor-pointer py-2 px-6 text-gray-800 bg-gray-100 text-lg rounded hover:bg-gray-950 hover:text-gray-50 border border-gray-950 duration-200'>Learn More</Link>
+          </div>
+        </div>
       </div>
     </section>
   )
 }
 
-export default Hero;
+export default Hero

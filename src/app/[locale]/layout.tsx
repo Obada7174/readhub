@@ -3,9 +3,8 @@ import Header from '@/components/Header';
 import type { Metadata } from "next";
 import { Funnel_Display } from "next/font/google";
 import { useLocale } from 'next-intl';
-// import "../globals.css";
+import Footer from '@/components/Footer';
 import { ThemeProvider } from "next-themes";
-
 const funnelDisplay = Funnel_Display({
   variable: "--font-funnel-display",
   subsets: ["latin"],
@@ -27,18 +26,18 @@ export default function LocaleLayout({
   return (
     <html lang={locale} suppressHydrationWarning dir={locale == 'en' ? 'ltr' : 'rtl'} className="dark scheme-light dark:scheme-dark"
     >
-          <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-      <body suppressHydrationWarning className={`${funnelDisplay.variable} antialiased dark bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-50`}>
+      <body suppressHydrationWarning className={`${funnelDisplay.variable} antialiased bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-50`}>
         <NextIntlClientProvider>
+          <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
             <Header />
-            <div className='pt-24 container mx-auto px-4'>
 
+            <div className='pt-16'>
               {children}
-
             </div>
+          <Footer/>
+          </ThemeProvider>
         </NextIntlClientProvider>
       </body>
-          </ThemeProvider>
     </html>
   );
 }
