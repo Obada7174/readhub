@@ -16,25 +16,25 @@ const SuggestedBooks = ({ books }: Props) => {
   return (
     <div className="max-h-fit border-t border-[#cfccc9] pt-5">
       <div className="flex justify-between items-center mt-5 lg:mt-0">
-        <h2 className="text-lg sm:text-xl text-black font-semibold">
+        <h2 className="text-lg sm:text-xl font-semibold">
           {t("You may also like")}
         </h2>
-        <div className="max-lg:hidden flex text-lg font-medium text-black rounded-sm border-2 border-[#3f8363] overflow-hidden">
+        <div className="max-lg:hidden flex text-lg font-medium rounded-sm border-2 overflow-hidden">
           <button
             onClick={() =>
               (scrollerRef.current!.scrollLeft -=
                 scrollerRef.current!.clientWidth)
             }
-            className="p-1 border-r-2 border-[#3f8363] hover:bg-[#0000000d] transition-colors duration-200"
+            className="p-1 border-r-2 hover:bg-[#0000000d] transition-colors duration-200"
           >
-            <MdKeyboardArrowLeft className="sm:w-6 sm:h-6" />
+            <MdKeyboardArrowLeft className="sm:w-6 sm:h-6 cursor-pointer" />
           </button>
           <button
             onClick={() =>
               (scrollerRef.current!.scrollLeft +=
                 scrollerRef.current!.clientWidth)
             }
-            className="p-1 hover:bg-[#0000000d] transition-colors duration-200"
+            className="p-1 hover:bg-[#0000000d] transition-colors duration-200 cursor-pointer"
           >
             <MdKeyboardArrowRight className="sm:w-6 sm:h-6" />
           </button>

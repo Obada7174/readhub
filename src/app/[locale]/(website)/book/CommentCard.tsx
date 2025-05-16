@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Comment } from "./CommentsSection";
-import UserImage from "@/assets/Rich_Dad_Poor_Dad.jpg";
+import UserImage from "@/assets/images/Rich_Dad_Poor_Dad.jpg";
 import Reply from "./Reply";
 import CommentFunc from "./Comment";
 
@@ -32,7 +32,7 @@ const CommentCard = ({ comment, first }: Props) => {
         </div>
         <div className={`${first ? "" : "lg:border-t border-[#cfccc9]"} pt-5`}>
           <p>{comment.comment}</p>
-          <div className="my-3 flex gap-5 text-gray-two">
+          <div className="my-3 flex gap-5 ">
             <span>100 likes</span>
             <span>76 comments</span>
           </div>

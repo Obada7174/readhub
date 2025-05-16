@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Comment } from "./CommentsSection";
-import UserImage from "@/assets/Rich_Dad_Poor_Dad.jpg";
+import UserImage from "@/assets/images/Rich_Dad_Poor_Dad.jpg";
 
 interface Props {
   reply: Comment;

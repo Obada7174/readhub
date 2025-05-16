@@ -15,10 +15,10 @@ const page = () => {
   const halfStar = book.rating % 1 >= 0.5;
 
   return (
-    <div className="container mx-auto flex justify-center h-screen">
+    <div className="container mx-auto flex justify-center my-10">
       <div className="w-full md:w-4/5 px-2 sm:px-0 grid grid-cols-12 gap-6">
         <div className="col-span-full lg:col-span-3 pt-2 sm:pt-5">
-          <div className="sticky top-6 max-w-2xs mx-auto">
+          <div className="sticky top-28 max-w-2xs mx-auto">
             <div className="w-4/5 mx-auto">
               <Image
                 className="w-full h-auto object-cover rounded-tr-md rounded-br-md max-w-2xs mx-auto"
@@ -27,15 +27,15 @@ const page = () => {
               />
             </div>
             <div className="flex flex-col gap-4 my-6">
-              <div className="bg-[#3f8363] px-5 py-2.5 text-white rounded-full">
-                <button className="text-sm sm:text-base text-center w-full font-semibold">
+              <div className="bg-[#E5E7EB] shadow-xl dark:bg-white px-5 py-2.5 rounded-full cursor-pointer">
+                <button className="text-sm sm:text-base text-center w-full font-bold cursor-pointer dark:text-[#101828]">
                   {t("Want to read")}
                 </button>
               </div>
-              <div className="border border-[#3f8363] hover:bg-[#0000000d] px-5 py-2.5 rounded-full transition-colors">
-                <button className="text-sm sm:text-base text-center w-full font-bold">
+              <div className="border hover:bg-[#0000000d] px-5 py-2.5 rounded-full transition-colors cursor-pointer">
+                <button className="text-sm sm:text-base text-center w-full font-bold cursor-pointer">
                   {/* {t("Want to read")} */}
-                  Kindle $5.99
+                  {t("Kindle")} $5.99
                 </button>
               </div>
               <Rate />
@@ -46,7 +46,7 @@ const page = () => {
           <div>
             <h1 className="text-2xl sm:text-4xl font-semibold">{book.title}</h1>
             <div className="flex flex-wrap items-center justify-between mt-1">
-              <h2 className="text-lg sm:text-2xl font-normal text-gray-two">
+              <h2 className="text-lg sm:text-2xl font-normal ">
                 {book.author}
               </h2>
               <div className="flex gap-1 items-center pr-2 text-2xl">
@@ -56,11 +56,9 @@ const page = () => {
                 {halfStar ? (
                   <MdStarHalf className="text-yellow-500" />
                 ) : (
-                  <MdStarBorder className="text-gray-two" />
+                  <MdStarBorder className="" />
                 )}
-                <span className="font-medium text-gray-two text-xl">
-                  {book.rating}
-                </span>
+                <span className="font-medium  text-xl">{book.rating}</span>
               </div>
             </div>
           </div>
@@ -68,21 +66,21 @@ const page = () => {
             <p>{book.description}</p>
           </div>
           <div className="flex gap-3 items-center flex-wrap">
-            <div className="text-base sm:text-lg text-gray-one font-medium">
+            <div className="text-base sm:text-lg font-medium">
               {t("Genres")}
             </div>
             {book.genres.map((genre, id) => {
               return (
                 <div
                   key={id}
-                  className="cursor-pointer border-b-2 border-[#3f8363] transition-colors text-sm sm:text-base font-medium"
+                  className="cursor-pointer border-b-2 border-green-cool transition-colors text-sm sm:text-base font-medium"
                 >
                   {genre}
                 </div>
               );
             })}
           </div>
-          <div className="my-5 flex flex-col gap-1.5 text-xsm sm:text-sm text-gray-two">
+          <div className="my-5 flex flex-col gap-1.5 text-xsm sm:text-sm ">
             <span>
               {book.pages} {t("Pages")}
             </span>
@@ -92,7 +90,7 @@ const page = () => {
           </div>
           {/* <div className="mt-5 flex items-center gap-2 flex-wrap">
             {/* {book.price > 0 && ( */}
-          {/* <button className="py-1.5 px-1.5 cursor-pointer rounded-md border-2 border-black hover:bg-black hover:text-beige-100 transition-colors font-medium text-sm sm:text-base"> */}
+          {/* <button className="py-1.5 px-1.5 cursor-pointer rounded-md border-2  hover:bg-black hover:text-beige-100 transition-colors font-medium text-sm sm:text-base"> */}
           {/* {t("Buy now for just")} {book.price}$ */}
           {/* </button> */}
           {/* )} */}

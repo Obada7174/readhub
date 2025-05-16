@@ -46,7 +46,7 @@ const Rate = () => {
     <>
       <div
         onMouseLeave={() => setActive(0)}
-        className="flex gap-1.5 justify-center text-3xl w-fit mx-auto"
+        className="flex gap-1.5 justify-center text-3xl w-fit mx-auto cursor-pointer"
       >
         {starArr.map((_, i) => {
           return i < active ? (
@@ -59,7 +59,7 @@ const Rate = () => {
             <MdStarBorder
               key={i}
               onMouseEnter={() => setActive(i + 1)}
-              className="text-gray-two"
+              className=""
             />
           );
         })}
@@ -74,7 +74,7 @@ const Rate = () => {
         <div className="w-screen h-screen fixed left-0 top-0 flex justify-center items-center bg-[#0000004d] p-2">
           <form
             onSubmit={handleSubmit}
-            className="flex flex-col gap-2.5 bg-white p-2.5 rounded-md w-full max-w-[500px] border-2 border-black"
+            className="flex flex-col gap-2.5 bg-white p-2.5 rounded-md w-full max-w-[500px] border-2 "
           >
             <div className="flex justify-end">
               <FaX
@@ -88,7 +88,7 @@ const Rate = () => {
               </label>
               <div className="flex gap-1.5">
                 <input
-                  className="p-1 outline-none border-2 border-black rounded-sm text-sm sm:base w-full"
+                  className="p-1 outline-none border-2  rounded-sm text-sm sm:base w-full"
                   type="number"
                   id="rate"
                   value={rate || ""}
@@ -123,14 +123,14 @@ const Rate = () => {
               </label>
               <textarea
                 rows={6}
-                className="p-1 outline-none border-2 border-black rounded-sm text-sm sm:base"
+                className="p-1 outline-none border-2  rounded-sm text-sm sm:base"
                 id="review"
                 value={review || ""}
                 onChange={(e) => setReview(e.target.value)}
                 placeholder={t("We'd love to hear your review")}
               />
             </div>
-            <button className="py-1.5 px-1.5 cursor-pointer rounded-md border-2 border-black hover:bg-black hover:text-beige-100 transition-colors font-medium text-sm sm:text-base">
+            <button className="py-1.5 px-1.5 cursor-pointer rounded-md border-2  hover:bg-black hover:text-beige-100 transition-colors font-medium text-sm sm:text-base">
               {t("Send")}
             </button>
           </form>

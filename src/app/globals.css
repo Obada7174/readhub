@@ -18,6 +18,7 @@
   --color-beige-200: var(--beige-200);
   --color-brown-100: var(--brown-100);
   --color-gray-750: var(--gray-750);
+  --color-green-cool: var(--green-cool);
 }
 
 /* @media (prefers-color-scheme: dark) {
