@@ -1,12 +1,14 @@
-import {useTranslations} from 'next-intl';
-import {Link} from '@/i18n/navigation';
- 
+import Hero from '@/sections/home/Hero'; 
+import TopRatedBooks from '@/sections/home/TopRatedBooks'; 
+import FaqSection from '@/sections/faq/FAQSection';
 export default function HomePage() {
-  const t = useTranslations('HomePage');
   return (
     <div>
-      <h1 className='text-beige'>{t('title')}</h1>
-      <Link href="/about">{t('about')}</Link>
+      <Hero/>
+      <div className='container mx-auto px-4'>
+      <TopRatedBooks/>
+        <FaqSection faqPath='HomePage.faqSection'/>
+      </div>
     </div>
   );
 }

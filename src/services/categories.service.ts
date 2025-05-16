@@ -1,0 +1,21 @@
+import axios from "@/services/axios";
+import { Category } from "@/types/category";
+
+export const getCategories = async (): Promise<Category[]> => {
+  const res = await axios.get("/categories");
+  return res.data;
+};
+
+export const createCategory = async (category: Omit<Category, "id">): Promise<Category> => {
+  const res = await axios.post("/categories", category);
+  return res.data;
+};
+
+export const updateCategory = async (category: Category): Promise<Category> => {
+  const res = await axios.put(`/categories/${category.id}`, category);
+  return res.data;
+};
+
+export const deleteCategory = async (id: number): Promise<void> => {
+  await axios.delete(`/categories/${id}`);
+};

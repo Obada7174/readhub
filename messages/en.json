@@ -1,7 +1,175 @@
 {
   "HomePage": {
     "title": "Hello world!",
-    "about": "Go to the about page"
+    "about": "Go to the about page",
+    "topRatedSection": {
+      "topRatedBooks": "Top Rated Books"
+    },
+    "faqSection": {
+      "sectionTitle": "Frequently Asked Questions",
+      "sectionDescription": "If you have any questions, the answer might be here!",
+      "faqs": [
+        {
+          "question": "What is readhub?",
+          "answer": "readhub is a platform that offers both physical and digital books across various categories to provide a comprehensive and enjoyable reading experience."
+        },
+        {
+          "question": "How can I buy a book?",
+          "answer": "You can browse books through the dedicated section, choose the one you like, then click 'Buy' to proceed with the purchase."
+        },
+        {
+          "question": "Are there free books available?",
+          "answer": "Yes, we offer a collection of free books you can download at no cost. Look for the 'Free' category in our store."
+        },
+        {
+          "question": "How do I contact customer support?",
+          "answer": "You can reach out to our support team through the Contact page or via the email address provided at the bottom of the site."
+        },
+        {
+          "question": "Do you support Arabic language?",
+          "answer": "Yes! We support both English and Arabic. You can switch languages using the language button in the header."
+        }
+      ]
+    }
+  },
+  "navigation": {
+    "home": "Home",
+    "books": "Books",
+    "about": "About",
+    "categories": "Categories",
+    "competitions": "Competitions",
+    "contact": "Contact",
+    "search": "Search"
+  },
+
+  "BooksPage": {
+    "categories": "Categories",
+    "price": "Price",
+    "language": "Language",
+    "rating": "Rating",
+    "english": "English",
+    "arabic": "Arabic",
+    "science": "Science",
+    "art": "Art",
+    "search_by_title": "Search by title",
+    "new_arrivals": "New Arrivals",
+    "top_rated": "Top Rated",
+    "top_rated_in": "Top Rated in {{category}}",
+    "all": "All",
+    "novel": "Novel",
+    "children": "Children",
+    "history": "History",
+    "biography": "Biography",
+    "religion": "Religion",
+    "fantasy": "Fantasy",
+    "education": "Education",
+    "filter_sidebar": {
+      "price_range": "Price Range",
+      "rating_filter": "Rating Filter",
+      "category_filter": "Category Filter",
+      "select_category": "Select Category",
+      "select_language": "Select Language",
+      "select_rating": "Select Rating"
+    }
+  },
+  "SignUpPage": {
+    "title": "Create a New Account",
+    "first_name": "First Name",
+    "last_name": "Last Name",
+    "email": "Email",
+    "password": "Password",
+    "sign_up": "Sign Up",
+    "terms_of_service": "Terms of Service",
+    "privacy_policy": "Privacy Policy",
+    "help": "Help",
+    "success_message": "Sign Up Successful!",
+    "error_message": "Sign Up Failed",
+    "already_have_account": "Already have an account?",
+    "sign in": " Sign in"
+  },
+  "LoginPage": {
+    "title": "Welcome Back",
+    "email": "Email",
+    "password": "Password",
+    "sign_in": "Sign In",
+    "success_message": "Login Successful!",
+    "error_message": "Login Failed",
+    "something_went_wrong": "Something went wrong. Please try again later.",
+    "dont_have_account": "Don't have an account?",
+    "sign_up": "Sign Up"
+  },
+  "footer": {
+    "about": {
+      "title": "About readhub",
+      "description": "Your one-stop destination for both physical and digital books. Discover new worlds through reading."
+    },
+    "quickLinks": {
+      "title": "Quick Links",
+      "books": "Books",
+      "ebooks": "eBooks",
+      "categories": "Categories",
+      "aboutUs": "About Us"
+    },
+    "customerService": {
+      "title": "Customer Service",
+      "contactUs": "Contact Us",
+      "shippingInfo": "Shipping Info",
+      "returns": "Returns",
+      "faq": "FAQ"
+    },
+    "newsletter": {
+      "title": "Newsletter",
+      "description": "Subscribe to get updates about new releases and special offers.",
+      "emailPlaceholder": "Enter your email",
+      "subscribeButton": "Subscribe"
+    },
+    "copyright": "© 2025 readhub. All rights reserved."
+  },
+  "faqPage": {
+    "sectionTitle": "Frequently Asked Questions",
+    "sectionDescription": "If you have any questions, the answer might be here!",
+    "faqs": [
+      {
+        "question": "What is readhub?",
+        "answer": "readhub is a platform that offers both physical and digital books across various categories to provide a comprehensive and enjoyable reading experience."
+      },
+      {
+        "question": "How can I buy a book?",
+        "answer": "You can browse books through the dedicated section, choose the one you like, then click 'Buy' to proceed with the purchase."
+      },
+      {
+        "question": "Are there free books available?",
+        "answer": "Yes, we offer a collection of free books you can download at no cost. Look for the 'Free' category in our store."
+      },
+      {
+        "question": "How do I contact customer support?",
+        "answer": "You can reach out to our support team through the Contact page or via the email address provided at the bottom of the site."
+      },
+      {
+        "question": "Do you support Arabic language?",
+        "answer": "Yes! We support both English and Arabic. You can switch languages using the language button in the header."
+      },
+      {
+        "question": "How long does shipping take?",
+        "answer": "Shipping usually takes between 3 to 7 business days depending on your location."
+      },
+      {
+        "question": "Can I return a book after purchase?",
+        "answer": "Yes, you can return physical books within 14 days of delivery if they are in original condition."
+      },
+      {
+        "question": "Are there discounts for bulk purchases?",
+        "answer": "Yes, we offer special pricing and discounts for bulk orders. Contact our sales team for more information."
+      },
+      {
+        "question": "Is my payment information secure?",
+        "answer": "Absolutely. We use industry-standard encryption and security measures to protect your payment details."
+      },
+      {
+        "question": "Do you offer refunds for digital books?",
+        "answer": "Unfortunately, due to the nature of digital products, we do not offer refunds for downloaded eBooks."
+      }
+    ]
   },
   "BookPage": {
     "Genres": "Genres",
