@@ -108,7 +108,7 @@ export default function CartPage() {
                                                     size="icon"
                                                     onClick={() => updateQuantity(item.id, 1)}
                                                 >
-                                                    <LuPlus className="h-4 w-4" />
+                                                    <LuPlus className="h-4 w-4"/>
                                                 </Button>
                                             </div>
                                         </TableCell>

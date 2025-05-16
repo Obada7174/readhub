@@ -1,9 +1,9 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
+import { useEffect, useState } from "react";
 
-// 🔹 أنواع المتغيرات (variant) والمقاسات (size)
 type ButtonVariant =
     | "default"
     | "outline"
@@ -31,9 +31,13 @@ export default function Button({
     fullWidth = false,
     className = "",
 }: ButtonProps) {
-    const { theme } = useTheme();
+    const { theme, systemTheme } = useTheme();
+    const [mounted, setMounted] = useState(false);
 
-    // 🔹 تحديد أبعاد الزر بناءً على الحجم
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
     const getSizeStyles = () => {
         switch (size) {
             case "sm":
@@ -41,17 +45,18 @@ export default function Button({
             case "lg":
                 return "h-11 rounded-md px-8";
             case "icon":
-                return "h-10 w-10 p-0 flex items-center justify-center";
+                return "h-10 w-10 p-2 flex items-center justify-center text-bold";
             case "default":
             default:
                 return "h-10 px-4 py-2";
         }
     };
 
-    // 🔹 تحديد ألوان الزر بناءً على variant والنوع (light/dark)
+    const currentTheme = theme === "system" ? systemTheme : theme;
+
     const getVariantStyles = () => {
         if (variant === "outline") {
-            return theme === "dark"
+            return currentTheme === "dark"
                 ? "text-white border border-gray-600 hover:bg-gray-800 focus:ring-gray-500"
                 : "text-gray-800 border border-gray-800 hover:bg-gray-100 focus:ring-gray-500";
         }
@@ -61,28 +66,32 @@ export default function Button({
         }
 
         if (variant === "ghost") {
-            return theme === "dark"
+            return currentTheme === "dark"
                 ? "hover:bg-gray-800 hover:text-gray-300"
                 : "hover:bg-gray-200 hover:text-gray-900";
         }
 
         if (variant === "destructive") {
-            return theme === "dark"
+            return currentTheme === "dark"
                 ? "bg-red-700 text-white hover:bg-red-800 focus:ring-red-500"
                 : "bg-red-600 text-white hover:bg-red-700 focus:ring-red-500";
         }
 
         // variant === "default"
-        return theme === "dark"
+        return currentTheme === "dark"
             ? "bg-gray-900 text-white hover:bg-gray-800 focus:ring-gray-700"
             : "bg-gray-800 text-white hover:bg-gray-900 focus:ring-gray-600";
     };
 
     const baseClasses =
-        "inline-flex items-center justify-center whitespace-nowrap font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2";
+        "inline-flex items-center justify-center whitespace-nowrap font-medium transition-colors duration-200 focus:outline-none focus:ring-2 cursor-pointer rounded";
 
     const finalClasses = `${baseClasses} ${getSizeStyles()} ${getVariantStyles()} ${fullWidth ? "w-full" : "w-auto"
         } ${className}`;
+
+    if (!mounted) {
+        return <div className={`${getSizeStyles()} animate-pulse bg-gray-400 rounded`} />; 
+    }
 
     if (href) {
         return (

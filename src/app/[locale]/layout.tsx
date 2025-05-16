@@ -5,6 +5,8 @@ import { Funnel_Display } from "next/font/google";
 import { useLocale } from 'next-intl';
 import Footer from '@/components/Footer';
 import { ThemeProvider } from "next-themes";
+import ReactQueryProvider from '@/providers/ReactQueryProvider';
+
 const funnelDisplay = Funnel_Display({
   variable: "--font-funnel-display",
   subsets: ["latin"],
@@ -29,12 +31,14 @@ export default function LocaleLayout({
       <body suppressHydrationWarning className={`${funnelDisplay.variable} antialiased bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-50`}>
         <NextIntlClientProvider>
           <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-            <Header />
+            <ReactQueryProvider>
+              <Header />
 
-            <div className='pt-16'>
-              {children}
-            </div>
-          <Footer/>
+              <div className='pt-16 min-h-[50vh]'>
+                {children}
+              </div>
+              <Footer />
+            </ReactQueryProvider>
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>
