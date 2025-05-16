@@ -1,10 +1,9 @@
-// 'use client';
 import axios from "@/services/axios";
 import { Book } from "@/types/book";
 
 export const getBooks = async (): Promise<Book[]> => {
   const res = await axios.get("/books");
-  return res.data;
+  return res.data.data;
 };
 
 export const createBook = async (book: Omit<Book, "id">): Promise<Book> => {
