@@ -1,117 +1,104 @@
-import React from 'react';
-import Button from '@mui/material/Button';
-import { styled } from '@mui/material/styles';
-import { ButtonProps as MuiButtonProps } from '@mui/material/Button';
+"use client";
 
-type Variant = 'default' | 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link';
-type Size = 'default' | 'sm' | 'lg' | 'icon';
+import { useTheme } from "next-themes";
+import Link from "next/link";
 
-interface CustomButtonProps extends MuiButtonProps {
-    variantType?: Variant;
-    sizeType?: Size;
-    className?: string; // ✅ تأكد أن className موجود هنا
+// 🔹 أنواع المتغيرات (variant) والمقاسات (size)
+type ButtonVariant =
+    | "default"
+    | "outline"
+    | "link"
+    | "ghost"
+    | "destructive";
+type ButtonSize = "default" | "sm" | "lg" | "icon";
+
+interface ButtonProps {
+    href?: string;
+    onClick?: () => void;
+    children: React.ReactNode;
+    variant?: ButtonVariant;
+    size?: ButtonSize;
+    fullWidth?: boolean;
+    className?: string;
 }
 
-const StyledButton = styled(Button, {
-    shouldForwardProp: (prop) => prop !== 'variantType' && prop !== 'sizeType',
-})<CustomButtonProps>(({ theme, variantType = 'default', sizeType = 'default' }) => {
-    const baseStyles = {
-        textTransform: 'none',
-        borderRadius: '6px',
-        fontWeight: 500,
+export default function Button({
+    href,
+    onClick,
+    children,
+    variant = "default",
+    size = "default",
+    fullWidth = false,
+    className = "",
+}: ButtonProps) {
+    const { theme } = useTheme();
+
+    // 🔹 تحديد أبعاد الزر بناءً على الحجم
+    const getSizeStyles = () => {
+        switch (size) {
+            case "sm":
+                return "h-9 rounded-md px-3";
+            case "lg":
+                return "h-11 rounded-md px-8";
+            case "icon":
+                return "h-10 w-10 p-0 flex items-center justify-center";
+            case "default":
+            default:
+                return "h-10 px-4 py-2";
+        }
     };
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const variantStyles: Record<Variant, any> = {
-        default: {
-            backgroundColor: theme.palette.primary.main,
-            color: theme.palette.primary.contrastText,
-            '&:hover': {
-                backgroundColor: theme.palette.primary.dark,
-            },
-        },
-        destructive: {
-            backgroundColor: theme.palette.error.main,
-            color: theme.palette.error.contrastText,
-            '&:hover': {
-                backgroundColor: theme.palette.error.dark,
-            },
-        },
-        outline: {
-            border: `1px solid ${theme.palette.divider}`,
-            backgroundColor: 'transparent',
-            '&:hover': {
-                backgroundColor: theme.palette.action.hover,
-            },
-        },
-        secondary: {
-            backgroundColor: theme.palette.secondary.main,
-            color: theme.palette.secondary.contrastText,
-            '&:hover': {
-                backgroundColor: theme.palette.secondary.dark,
-            },
-        },
-        ghost: {
-            backgroundColor: 'transparent',
-            '&:hover': {
-                backgroundColor: theme.palette.action.hover,
-            },
-        },
-        link: {
-            backgroundColor: 'transparent',
-            color: theme.palette.primary.main,
-            textDecoration: 'underline',
-            '&:hover': {
-                textDecoration: 'none',
-            },
-        },
+    // 🔹 تحديد ألوان الزر بناءً على variant والنوع (light/dark)
+    const getVariantStyles = () => {
+        if (variant === "outline") {
+            return theme === "dark"
+                ? "text-white border border-gray-600 hover:bg-gray-800 focus:ring-gray-500"
+                : "text-gray-800 border border-gray-800 hover:bg-gray-100 focus:ring-gray-500";
+        }
+
+        if (variant === "link") {
+            return "text-primary underline-offset-4 hover:underline";
+        }
+
+        if (variant === "ghost") {
+            return theme === "dark"
+                ? "hover:bg-gray-800 hover:text-gray-300"
+                : "hover:bg-gray-200 hover:text-gray-900";
+        }
+
+        if (variant === "destructive") {
+            return theme === "dark"
+                ? "bg-red-700 text-white hover:bg-red-800 focus:ring-red-500"
+                : "bg-red-600 text-white hover:bg-red-700 focus:ring-red-500";
+        }
+
+        // variant === "default"
+        return theme === "dark"
+            ? "bg-gray-900 text-white hover:bg-gray-800 focus:ring-gray-700"
+            : "bg-gray-800 text-white hover:bg-gray-900 focus:ring-gray-600";
     };
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const sizeStyles: Record<Size, any> = {
-        default: {
-            height: '40px',
-            padding: '8px 16px',
-        },
-        sm: {
-            height: '36px',
-            padding: '6px 12px',
-        },
-        lg: {
-            height: '44px',
-            padding: '10px 24px',
-        },
-        icon: {
-            width: '40px',
-            height: '40px',
-            padding: 0,
-            minWidth: 0,
-        },
-    };
+    const baseClasses =
+        "inline-flex items-center justify-center whitespace-nowrap font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2";
 
-    return {
-        ...baseStyles,
-        ...variantStyles[variantType],
-        ...sizeStyles[sizeType],
-    };
-});
-const CustomButton = React.forwardRef<HTMLButtonElement, CustomButtonProps>(
-    ({ variantType = 'default', sizeType = 'default', className, ...props }, ref) => {
+    const finalClasses = `${baseClasses} ${getSizeStyles()} ${getVariantStyles()} ${fullWidth ? "w-full" : "w-auto"
+        } ${className}`;
+
+    if (href) {
         return (
-            <div className={className}>
-                <StyledButton
-                    ref={ref}
-                    variantType={variantType}
-                    sizeType={sizeType}
-                    // className={className}
-                    {...props}
-                />
-            </div>
+            <Link href={href} className={finalClasses}>
+                {children}
+            </Link>
         );
     }
-);
 
-
-CustomButton.displayName = 'CustomButton';
-
-export { CustomButton };
+    return (
+        <button
+            type="button"
+            onClick={onClick}
+            className={finalClasses}
+        >
+            {children}
+        </button>
+    );
+}

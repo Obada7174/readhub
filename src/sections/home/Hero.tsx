@@ -3,7 +3,7 @@ import { Link } from "@/i18n/navigation"
 import logo from "@/assets/images/readhub-darkmode.svg"
 const Hero = () => {
   return (
-    <section className="relative h-[600px] flex items-center">
+    <section className="relative h-[600px] min-h-[600px] flex items-center">
       {/* Background Image */}
       <div
         className="absolute inset-0 z-0"

@@ -10,13 +10,13 @@ export default function Footer() {
             <div className="container mx-auto px-4 py-8">
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                     <div>
-                        <div className="flex items-center">
+                        <div className="flex items-center gap-3">
                             <Image
                                 src={logo}
                                 alt='logo'
-                                width={100}
+                                width={60}
                             />
-                            <h3 className="font-semibold text-lg mb-4 font-funnel-display">readhub</h3>
+                            <h3 className="font-semibold text-xl mb-4 font-funnel-display">readhub</h3>
                         </div>
                         <p className="text-muted-foreground">
                             {t('about.description')}
@@ -52,11 +52,11 @@ export default function Footer() {
                             <input
                                 type="email"
                                 placeholder={t('newsletter.emailPlaceholder')}
-                                className="w-full px-3 py-2 border rounded-md bg-background"
+                                className="w-full px-3 py-2 border rounded-md "
                             />
                             <button
                                 type="submit"
-                                className="w-full px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90"
+                                className="w-full px-4 py-2 bg-gray-50 text-gray-900 rounded-md cursor-pointer"
                             >
                                 {t('newsletter.subscribeButton')}
                             </button>

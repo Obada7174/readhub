@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
-import { CustomButton } from '@/components/ui/Button';
+import Button  from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 import Image from 'next/image';
 import LanguageSwitcher from './LanguageSwitcher';
@@ -80,28 +80,27 @@ export default function Header() {
                         <ThemeSwitcher />
 
                         <Link href="/dashboard">
-                            <CustomButton variantType="ghost" sizeType="icon">
+                            <Button variant="ghost" size="icon">
                                 <LuLayoutDashboard className="h-5 w-5 text-gray-800 dark:text-white" />
-                            </CustomButton>
+                            </Button>
                         </Link>
 
                         <Link href="/cart">
-                            <CustomButton variantType="ghost" sizeType="icon">
+                            <Button variant="ghost" size="icon">
                                 <LuShoppingCart className="h-5 w-5 text-gray-800 dark:text-white" />
-                            </CustomButton>
+                            </Button>
                         </Link>
 
                         <Link href="/account">
-                            <CustomButton variantType="ghost" sizeType="icon">
+                            <Button variant="ghost" size="icon">
                                 <LuUser className="h-5 w-5 text-gray-800 dark:text-white" />
-                            </CustomButton>
+                            </Button>
                         </Link>
                     </div>
 
-                    {/* Mobile Menu Button */}
-                    <CustomButton
-                        variantType="ghost"
-                        sizeType='icon'
+                    <Button
+                        variant="ghost"
+                        size='icon'
                         className="md:hidden"
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
                     >
@@ -110,7 +109,7 @@ export default function Header() {
                         ) : (
                             <LuMenu className="h-5 w-5 text-gray-800 dark:text-white" />
                         )}
-                    </CustomButton>
+                    </Button>
                 </div>
 
                 {/* Mobile Menu */}
