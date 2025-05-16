@@ -70,7 +70,10 @@
       "category_filter": "Category Filter",
       "select_category": "Select Category",
       "select_language": "Select Language",
-      "select_rating": "Select Rating"
+      "select_rating": "Select Rating",
+      "price":"Price",
+      "categories":"Categories",
+      "search for books": "Search For Books"
     }
   },
   "SignUpPage": {

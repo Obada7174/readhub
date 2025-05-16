@@ -1,11 +1,12 @@
 "use client";
 import { useState } from "react";
-import FilterSidebar from "@/components/booksui/Sidebar";
-import BookCard from "@/components/booksui/BookCard";
 import { useTranslation } from "react-i18next";
+import FilterHorizontal from "@/components/booksui/filterbooks"; 
+import BookCardSecond from "@/components/booksui/bookcardsecond"; 
+import { Input } from "@/components/ui/Input"; 
+import { LuSearch } from "react-icons/lu";
 
-import { InputAdornment, TextField } from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
+
 const books = [
   {
     id: 1,
@@ -20,6 +21,7 @@ const books = [
     pdf: "https://www.planetebook.com/free-ebooks/the-great-gatsby.pdf",
     category: "Novel",
     rating: 4.5,
+    pages:456
   },
   {
     id: 2,
@@ -34,6 +36,7 @@ const books = [
     pdf: "https://example.com/maarefa.pdf",
     category: "Science",
     rating: 4.2,
+    pages:300
   },
   {
     id: 3,
@@ -48,6 +51,7 @@ const books = [
     pdf: "https://example.com/mock.pdf",
     category: "Novel",
     rating: 4.8,
+    pages:234
   },
   {
     id: 4,
@@ -62,6 +66,7 @@ const books = [
     pdf: "https://example.com/1001nights.pdf",
     category: "Children",
     rating: 4.6,
+    pages:234
   },
   {
     id: 5,
@@ -76,9 +81,9 @@ const books = [
     pdf: "https://www.planetebook.com/free-ebooks/pride-and-prejudice.pdf",
     category: "Novel",
     rating: 4.7,
+    pagas:290
   },
 ];
-
 const Page = () => {
   const { t, i18n } = useTranslation();
   const [selectedCategory, setSelectedCategory] = useState<string[]>([]);
@@ -86,7 +91,8 @@ const Page = () => {
   const [rating, setRating] = useState<number | null>(null);
   const [selectedLanguage, setSelectedLanguage] = useState<string>(i18n.language || "en");
   const [searchQuery, setSearchQuery] = useState<string>("");
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const isRTL = i18n.language === "ar";
 
   const filteredBooks = books.filter((book) => {
     if (selectedLanguage !== book.language) return false;
@@ -104,92 +110,51 @@ const Page = () => {
   });
 
   return (
-    <div className="min-h-screen">
-<button
-  onClick={() => setIsSidebarOpen(true)}
-  className="sm:hidden fixed top-20 right-4 z-4 px-3 py-2 rounded shadow"
->
-  ☰
-</button>
-
-      {isSidebarOpen && (
-  <div className="sm:hidden fixed top-0 left-0 w-full h-full bg-white p-4 z-50 overflow-auto">
-   <button
-  onClick={() => setIsSidebarOpen(false)}
-  className="absolute top-4 right-4 bg-gray-200 rounded-full w-8 h-8 flex items-center justify-center shadow"
->
-  ✕
-</button>
-    <FilterSidebar
-            selectedCategory={selectedCategory}
-            setSelectedCategory={setSelectedCategory}
-            priceRange={priceRange}
-            setPriceRange={setPriceRange}
-            selectedLanguage={selectedLanguage}
-            setSelectedLanguage={setSelectedLanguage}
-            rating={rating}
-            setRating={setRating}
-          />
-        </div>
-      )}
-  
-      <div className="sm:flex sm:gap-6 p-6">
-
-        <div className="hidden sm:block sm:w-1/5">
-          <FilterSidebar
-            selectedCategory={selectedCategory}
-            setSelectedCategory={setSelectedCategory}
-            priceRange={priceRange}
-            setPriceRange={setPriceRange}
-            selectedLanguage={selectedLanguage}
-            setSelectedLanguage={setSelectedLanguage}
-            rating={rating}
-            setRating={setRating}
-          />
-        </div>
-
-        <main className="w-full sm:w-4/5 space-y-4">
-          <div className="w-full max-w-sm px-4 py-2 sm:px-0">
-            <TextField
-              label={t("search by title")}
-              variant="standard"
-              fullWidth
+    <div className="min-h-screen p-6 space-y-6 container" dir={isRTL ? "rtl" : "ltr"}>
+      {/* فلاتر + مربع البحث */}
+      
+     
+      <div className={`flex flex-wrap gap-4 items-center justify-between rounded-lg shadow p-4 ${isRTL ? "flex-row-reverse" : ""}`}>
+      <div className="min-w-[250px]">
+          <div className="relative">
+            <Input
+              type="search"
+              placeholder={t("search for books")}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              sx={{
-                "& label": { color: "black" },
-                "& label.Mui-focused": { color: "black" },
-                "& input": { color: "black" },
-                "& .MuiInput-underline:before": { borderBottomColor: "black" },
-                "& .MuiInput-underline:hover:not(.Mui-disabled):before": { borderBottomColor: "#8B5E3C" },
-                "& .MuiInput-underline:after": { borderBottomColor: "black" },
-              }}
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <SearchIcon sx={{ color: "black" }} />
-                  </InputAdornment>
-                ),
-              }}
+              className="w-64 pl-8 bg-gray-100 dark:bg-gray-300 text-black dark:text-white"
             />
+            <LuSearch className={`absolute top-2.5 h-4 w-4 text-gray-200 dark:text-gray-300 ${isRTL ? "right-2" : "left-2"}`} />
           </div>
-          <div className="flex ">
-  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-    {filteredBooks.map((book) => (
-      <div key={book.id} className="flex justify-center">
-        <div className="w-full sm:w-fit">
-          <BookCard book={book} />
         </div>
-      </div>
-    ))}
-  </div>
-</div>
+        {/* الفلاتر الأفقية */}
 
-        </main>
+        <div className="flex-1 min-w-[300px] overflow-x-auto">
+          <FilterHorizontal
+            selectedCategory={selectedCategory}
+            setSelectedCategory={setSelectedCategory}
+            priceRange={priceRange}
+            setPriceRange={setPriceRange}
+            selectedLanguage={selectedLanguage}
+            setSelectedLanguage={setSelectedLanguage}
+            rating={rating}
+            setRating={setRating}
+          />
+        </div>
+
+        {/* مربع البحث */}
+      
       </div>
+
+      {/* بطاقات الكتب */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+  {filteredBooks.map((book) => (
+    <BookCardSecond key={book.id} book={book} />
+  ))}
+</div>
     </div>
   );
-  
 };
+
 
 export default Page;

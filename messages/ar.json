@@ -71,6 +71,8 @@
   
   "BooksPage": {
     "bookTitle": "عنوان الكتاب",
+    "price": "السعر",
+    "language":"اللغة",
     "author": "المؤلف",
     "rating": "التقييم",
     "description": "الوصف",
@@ -92,9 +94,10 @@
       "price_range": "نطاق السعر",
       "rating_filter": "تصفية التقييم",
       "category_filter": "تصفية الفئات",
-      "select_category": "اختر الفئة",
+      "categories": "الفئات",
       "select_language": "اختر اللغة",
-      "select_rating": "اختر التقييم"
+      "select_rating": "اختر التقييم",
+      "search for books": "ابحث عن كتب"
     }
   },
   "SignUpPage": {
