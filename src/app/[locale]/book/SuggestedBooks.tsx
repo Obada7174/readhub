@@ -14,18 +14,18 @@ const SuggestedBooks = ({ books }: Props) => {
   const scrollerRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div className="h-[500px]">
+    <div className="h-[500px] border-t border-[#cfccc9] py-5">
       <div className="flex justify-between items-center mt-5 lg:mt-0">
-        <h2 className="text-lg sm:text-2xl text-black font-medium">
+        <h2 className="text-lg sm:text-xl text-black font-semibold">
           {t("You may also like")}
         </h2>
-        <div className="flex text-lg font-medium text-black rounded-sm border-2 border-black overflow-hidden">
+        <div className="flex text-lg font-medium text-black rounded-sm border-2 border-[#3f8363] overflow-hidden">
           <button
             onClick={() =>
               (scrollerRef.current!.scrollLeft -=
                 scrollerRef.current!.clientWidth)
             }
-            className="p-1 hover:text-beige-100 hover:bg-black border-r-2 border-black transition-colors duration-200"
+            className="p-1 border-r-2 border-[#3f8363] hover:bg-[#0000000d] transition-colors duration-200"
           >
             <MdKeyboardArrowLeft className="sm:w-6 sm:h-6" />
           </button>
@@ -34,7 +34,7 @@ const SuggestedBooks = ({ books }: Props) => {
               (scrollerRef.current!.scrollLeft +=
                 scrollerRef.current!.clientWidth)
             }
-            className="p-1 hover:text-beige-100 hover:bg-black transition-colors duration-200"
+            className="p-1 hover:bg-[#0000000d] transition-colors duration-200"
           >
             <MdKeyboardArrowRight className="sm:w-6 sm:h-6" />
           </button>
@@ -42,14 +42,14 @@ const SuggestedBooks = ({ books }: Props) => {
       </div>
       <div
         ref={scrollerRef}
-        className="flex gap-8 overflow-x-scroll mt-3 scroll-smooth py-5 h-full"
+        className="flex overflow-x-scroll scroll-smooth py-5 h-full"
       >
         {books.map((book) => {
           return (
             <BookCard
-              key={book.id}
+              key={book.id + Math.random()}
               book={book}
-              style="flex-none w-full max-w-[300px]"
+              style="flex-none w-full max-w-[230px]"
             />
           );
         })}
