@@ -41,6 +41,8 @@
     "contact": "Contact",
     "search": "Search"
   },
+
+  
   "BooksPage": {
     "categories": "Categories",
     "price": "Price",
@@ -170,4 +172,4 @@
       }
     ]
   }
-}
+    }

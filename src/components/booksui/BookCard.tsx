@@ -1,51 +1,75 @@
+"use client";
 import Image from "next/image";
+import { FaStar } from "react-icons/fa";
+import { Tooltip, Box, Typography, Rating } from "@mui/material";
 
 const BookCardSecond = ({ book }: any) => {
   return (
-    <div className="relative w-[190px] shadow hover:shadow-lg cursor-pointer border border-gray-200 bg-white rounded-lg overflow-visible">
-      <div className="relative w-full h-[280px] group">
-        <Image
-          src={book.image}
-          alt="book"
-          layout="fill"
-          objectFit="cover"
-        />
-
-        <div
-          className="
-            hidden
-            group-hover:block
-            absolute
-            top-0
-            left-full
-            ml-2
-            w-72
-            max-h-[calc(1.5rem*7)]
-            overflow-hidden
-            bg-white
-            border border-gray-200
-            shadow-lg
-            rounded-lg
-            p-4
-            text-sm
-            z-10
-          "
-        >
-          <p className="line-clamp-7 text-gray-700">{book.description}</p>
-        </div>
-      </div>
-
-      <div className="p-3 space-y-1">
-        <div className="font-semibold text-sm line-clamp-2 hover:cursor-pointer hover:underline">
-          {book.title}
-        </div>
-        <div className="text-gray-700 text-xs">
-          <div className="flex items-center justify-between">
-            <span>{book.author}</span>
-            <span>{book.rating} ⭐</span>
-          </div>
-        </div>
-      </div>
+    <div className="relative w-[150px] cursor-pointer">
+      <Tooltip
+        placement="right"
+        enterDelay={300}
+        leaveDelay={200}
+        arrow
+        componentsProps={{
+          tooltip: {
+            sx: {
+              bgcolor: "background.paper",
+              color: "text.primary",
+              boxShadow: 3,
+              maxWidth: 300,
+              p: 2,
+            },
+          },
+        }}
+        title={
+          <Box>
+            <Typography variant="h6" gutterBottom>
+              {book.title}
+            </Typography>
+            <Typography variant="subtitle2" color="text.secondary" gutterBottom>
+              by {book.author}
+            </Typography>
+            <Box display="flex" alignItems="center" mb={1}>
+              <Rating
+                value={book.rating}
+                precision={0.5}
+                size="small"
+                readOnly
+                sx={{
+                  color: "#1e293b",
+                  "& .MuiRating-iconEmpty": {
+                    color: "#1e293b",
+                    opacity: 0.55,
+                  },
+                }}
+                emptyIcon={<FaStar fontSize="inherit" />}
+                icon={<FaStar fontSize="inherit" />}
+              />
+              <Typography variant="body2" ml={1} color="#1e293b">
+                {book.rating}
+              </Typography>
+            </Box>
+            <Typography variant="body2" paragraph>
+              {book.description}
+            </Typography>
+            <Typography variant="caption" color="text.secondary">
+              Published: {book.publishedDate}
+            </Typography>
+          </Box>
+        }
+      >
+        {/* خلي الـ Box بحجم الصورة فقط وبدون أي padding/margin */}
+        <Box className="relative w-[150px] h-[200px]">
+          <Image
+            src={book.image}
+            alt={book.title}
+            fill
+            style={{ objectFit: "cover" }}
+            sizes="150px"
+          />
+        </Box>
+      </Tooltip>
     </div>
   );
 };
