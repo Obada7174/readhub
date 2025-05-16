@@ -15,13 +15,13 @@ const page = () => {
   const halfStar = book.rating % 1 >= 0.5;
 
   return (
-    <div className="container mx-auto min-h-screen flex justify-center h-screen">
+    <div className="container mx-auto flex justify-center h-screen">
       <div className="w-full md:w-4/5 px-2 sm:px-0 grid grid-cols-12 gap-6">
-        <div className="col-span-3 pt-2 sm:pt-5">
-          <div className="sticky top-6">
+        <div className="col-span-full lg:col-span-3 pt-2 sm:pt-5">
+          <div className="sticky top-6 max-w-2xs mx-auto">
             <div className="w-4/5 mx-auto">
               <Image
-                className="w-full h-auto object-cover rounded-tr-md rounded-br-md"
+                className="w-full h-auto object-cover rounded-tr-md rounded-br-md max-w-2xs mx-auto"
                 src={bookImage}
                 alt="Book Image"
               />
@@ -41,9 +41,8 @@ const page = () => {
               <Rate />
             </div>
           </div>
-          {/* <Favorite /> */}
         </div>
-        <div className="col-span-9 pl-8 pt-2 sm:pt-5">
+        <div className="col-span-full lg:col-span-9 lg:pl-8 pt-2 sm:pt-5">
           <div>
             <h1 className="text-2xl sm:text-4xl font-semibold">{book.title}</h1>
             <div className="flex flex-wrap items-center justify-between mt-1">
@@ -65,25 +64,23 @@ const page = () => {
               </div>
             </div>
           </div>
-          <div className="text-sm sm:text-base mt-5 mb-8 font-medium w-10/12">
+          <div className="text-sm sm:text-base mt-5 mb-8 font-medium w-10/12 max-lg:mb-5">
             <p>{book.description}</p>
           </div>
-          <div className="flex gap-2 overflow-x-scroll">
-            <div className="py-1.5 flex-none text-base sm:text-lg text-gray-one font-medium">
+          <div className="flex gap-3 items-center flex-wrap">
+            <div className="text-base sm:text-lg text-gray-one font-medium">
               {t("Genres")}
             </div>
-            <div className="flex items-center gap-2 overflow-x-scroll">
-              {book.genres.map((genre, id) => {
-                return (
-                  <div
-                    key={id}
-                    className="flex-none py-0 mx-1.5 cursor-pointer border-b-2 border-[#3f8363] transition-colors text-sm sm:text-base font-medium"
-                  >
-                    {genre}
-                  </div>
-                );
-              })}
-            </div>
+            {book.genres.map((genre, id) => {
+              return (
+                <div
+                  key={id}
+                  className="cursor-pointer border-b-2 border-[#3f8363] transition-colors text-sm sm:text-base font-medium"
+                >
+                  {genre}
+                </div>
+              );
+            })}
           </div>
           <div className="my-5 flex flex-col gap-1.5 text-xsm sm:text-sm text-gray-two">
             <span>

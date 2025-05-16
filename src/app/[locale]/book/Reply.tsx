@@ -9,9 +9,9 @@ interface Props {
 const Reply = ({ reply }: Props) => {
   return (
     <>
-      <div className="flex gap-3 my-5">
+      <div className="flex gap-3 my-5 max-lg:ml-3">
         <Image
-          className="w-10 h-10 rounded-full"
+          className="w-10 h-10 rounded-full shrink-0"
           src={UserImage}
           alt="User Image"
         />

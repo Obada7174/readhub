@@ -15,7 +15,7 @@ interface Props {
 
 const CommentsSection = ({ comments }: Props) => {
   return (
-    <div className="my-5 border-t border-[#cfccc9] pt-2 pb-5">
+    <div className="border-t border-[#cfccc9] pt-2 pb-5">
       {comments.length ? (
         comments.map((comment, i) => {
           return (

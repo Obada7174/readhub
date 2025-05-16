@@ -1,8 +1,8 @@
 "use client";
 import { useTranslations } from "next-intl";
 import { FormEvent, useEffect, useState } from "react";
-import { FaStar, FaStarHalf, FaX } from "react-icons/fa6";
-import { MdStar, MdStarBorder } from "react-icons/md";
+import { FaX } from "react-icons/fa6";
+import { MdStar, MdStarBorder, MdStarHalf } from "react-icons/md";
 
 const Rate = () => {
   const t = useTranslations("BookPage");
@@ -16,6 +16,7 @@ const Rate = () => {
   const starsCount = Math.floor(rate ? +rate : 0);
   const stars = new Array(starsCount).fill(0);
   const halfStar = rate ? +rate % 1 >= 0.5 : false;
+  const emptyStars = new Array(5 - starsCount - (halfStar ? 1 : 0)).fill(0);
 
   const clear = () => {
     setRate("");
@@ -104,9 +105,12 @@ const Rate = () => {
                 />
                 <div className="flex gap-1 items-center pr-2">
                   {stars.map((_, i) => {
-                    return <FaStar key={i} />;
+                    return <MdStar key={i} />;
                   })}
-                  {halfStar && <FaStarHalf />}
+                  {halfStar && <MdStarHalf />}
+                  {emptyStars.map((_, i) => {
+                    return <MdStarBorder key={i + Math.random()} />;
+                  })}
                 </div>
               </div>
               {rateError && (

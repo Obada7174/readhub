@@ -12,19 +12,25 @@ interface Props {
 const CommentCard = ({ comment, first }: Props) => {
   return (
     <>
-      <div className={`my-5 ${first ? "mt-0" : ""} flex gap-8 p-2`}>
-        <div className="shrink-0 mt-3">
+      <div
+        className={`my-5 ${
+          first ? "mt-0" : "max-lg:border-t max-lg:border-[#cfccc9]"
+        } flex max-lg:flex-col lg:gap-8 p-2`}
+      >
+        <div className="flex max-lg:gap-3 lg:flex-col shrink-0 mt-3">
           <Image
             className="w-12 h-12 rounded-full"
             src={UserImage}
             alt="User Image"
           />
-          <h3 className="text-sm sm:text-base mt-1">
-            {comment.userName} {comment.id}
-          </h3>
-          <h4 className="text-xs sm:text-sm">25 days ago</h4>
+          <div>
+            <h3 className="text-sm sm:text-base mt-1">
+              {comment.userName} {comment.id}
+            </h3>
+            <h4 className="text-xs sm:text-sm">25 days ago</h4>
+          </div>
         </div>
-        <div className={`${first ? "" : "border-t border-[#cfccc9]"} pt-5`}>
+        <div className={`${first ? "" : "lg:border-t border-[#cfccc9]"} pt-5`}>
           <p>{comment.comment}</p>
           <div className="my-3 flex gap-5 text-gray-two">
             <span>100 likes</span>
