@@ -13,6 +13,8 @@
   --color-beige-100: var(--beige-100);
   --color-beige-200: var(--beige-200);
   --color-brown-100: var(--brown-100);
+  --color-gray-one: var(--gray-one);
+  --color-gray-two: var(--gray-two);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,13 +24,16 @@
     --beige-100: #f8e7d0;
     --beige-200: #e1af7e;
     --brown-100: #895029;
+    --gray-one: #707070;
+    --gray-two: #4f4f4d;
   }
 }
 
 body {
-  background: var(--background);
+  background: white;
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  font-style: italic !important;
 }
 
 ::-webkit-scrollbar {
