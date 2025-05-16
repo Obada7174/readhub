@@ -1,0 +1,34 @@
+// import { QueryClient } from '@tanstack/react-query';
+
+// export const makeQueryClient = () => {
+//   return new QueryClient({
+//     defaultOptions: {
+//       queries: {
+//         staleTime: 60 * 1000, // 1 دقيقة
+//       },
+//     },
+//   });
+// };
+
+// let browserQueryClient: QueryClient | undefined = undefined;
+
+// export const getQueryClient = () => {
+//   if (typeof window === 'undefined') {
+//     return makeQueryClient();
+//   } else {
+//     if (!browserQueryClient) {
+//       browserQueryClient = makeQueryClient();
+//     }
+//     return browserQueryClient;
+//   }
+// };
+import { QueryClient } from "@tanstack/react-query";
+
+let client: QueryClient | null = null;
+
+export const getQueryClient = () => {
+  if (!client) {
+    client = new QueryClient();
+  }
+  return client;
+};
