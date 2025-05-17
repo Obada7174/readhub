@@ -10,6 +10,7 @@ const TopRatedBooks = async () => {
 
     // جلب الكتب باستخدام service في Server Component (async)
     const books = await getBooks();
+    console.log(books);
     // console.log(books);
 
     return (

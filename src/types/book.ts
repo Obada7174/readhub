@@ -15,3 +15,14 @@ export interface Book {
   created_at: string;
   categories: Category[];
   }
+  // export interface BookAuthor {
+  //   id: number;
+  //   title: string;
+  //   description: string;
+  //   image: string;
+  //   price: string;
+  //   rating: number;
+  //   publishedDate: string;
+  // }
+  
+  

@@ -36,15 +36,16 @@ export default function BookCarousel({ books }: Props) {
                 allowTouchMove={false}
                 className="swiper"
             >
-                {books.map((book) => (
-                    <SwiperSlide
-                        key={book.id}
-                        className="w-[200px] md:w-[240px] lg:w-[280px] shrink-0"
-                        style={{ width: "auto" }}
-                    >
-                        <BookCard book={book} />
-                    </SwiperSlide>
-                ))}
+              {Array.isArray(books) && books.map((book) => (
+  <SwiperSlide
+    key={book.id}
+    className="w-[200px] md:w-[240px] lg:w-[280px] shrink-0"
+    style={{ width: "auto" }}
+  >
+    <BookCard book={book} />
+  </SwiperSlide>
+))}
+
             </Swiper>
         </div>
     );
