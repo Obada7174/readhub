@@ -27,8 +27,8 @@ const page = () => {
               />
             </div>
             <div className="flex flex-col gap-4 my-6">
-              <div className="bg-[#E5E7EB] shadow-xl dark:bg-white px-5 py-2.5 rounded-full cursor-pointer">
-                <button className="text-sm sm:text-base text-center w-full font-bold cursor-pointer dark:text-[#101828]">
+              <div className="bg-[#101828] dark:bg-white px-5 py-2.5 rounded-full cursor-pointer">
+                <button className="text-sm sm:text-base text-center w-full font-bold cursor-pointer text-white dark:text-[#101828]">
                   {t("Want to read")}
                 </button>
               </div>
