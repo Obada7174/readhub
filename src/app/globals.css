@@ -13,11 +13,12 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  --font-funnel-display : var(--font-funnel-display);
+  --font-funnel-display: var(--font-funnel-display);
   --color-beige-100: var(--beige-100);
   --color-beige-200: var(--beige-200);
   --color-brown-100: var(--brown-100);
   --color-gray-750: var(--gray-750);
+  --color-green-cool: var(--green-cool);
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -27,6 +28,8 @@
     --beige-100: #f8e7d0;
     --beige-200: #e1af7e;
     --brown-100: #895029;
+    --gray-one: #707070;
+    --gray-two: #4f4f4d;
   }
 } */
 

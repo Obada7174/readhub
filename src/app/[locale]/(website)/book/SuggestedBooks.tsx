@@ -1,4 +1,5 @@
 "use client";
+import { useTranslations } from "next-intl";
 import { useRef } from "react";
 import BookCard from "./BookCard";
 import { book } from "./books";
@@ -9,30 +10,31 @@ interface Props {
 }
 
 const SuggestedBooks = ({ books }: Props) => {
+  const t = useTranslations("BookPage");
   const scrollerRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div className="h-[500px]">
+    <div className="max-h-fit border-t border-[#cfccc9] pt-5">
       <div className="flex justify-between items-center mt-5 lg:mt-0">
-        <h2 className="text-lg sm:text-2xl text-black font-medium">
-          You may also like
+        <h2 className="text-lg sm:text-xl font-semibold">
+          {t("You may also like")}
         </h2>
-        <div className="flex text-lg font-medium text-black rounded-sm border-2 border-black overflow-hidden">
+        <div className="max-lg:hidden flex text-lg font-medium rounded-sm border-2 overflow-hidden">
           <button
             onClick={() =>
               (scrollerRef.current!.scrollLeft -=
                 scrollerRef.current!.clientWidth)
             }
-            className="p-1 hover:text-[#f8e7d0] hover:bg-black border-r-2 border-black transition-colors duration-200"
+            className="p-1 border-r-2 hover:bg-[#0000000d] transition-colors duration-200"
           >
-            <MdKeyboardArrowLeft className="sm:w-6 sm:h-6" />
+            <MdKeyboardArrowLeft className="sm:w-6 sm:h-6 cursor-pointer" />
           </button>
           <button
             onClick={() =>
               (scrollerRef.current!.scrollLeft +=
                 scrollerRef.current!.clientWidth)
             }
-            className="p-1 hover:text-[#f8e7d0] hover:bg-black transition-colors duration-200"
+            className="p-1 hover:bg-[#0000000d] transition-colors duration-200 cursor-pointer"
           >
             <MdKeyboardArrowRight className="sm:w-6 sm:h-6" />
           </button>
@@ -40,14 +42,14 @@ const SuggestedBooks = ({ books }: Props) => {
       </div>
       <div
         ref={scrollerRef}
-        className="flex gap-8 overflow-x-scroll mt-3 scroll-smooth py-5 h-full"
+        className="flex gap-4 overflow-x-scroll scroll-smooth py-5 h-full"
       >
         {books.map((book) => {
           return (
             <BookCard
-              key={book.id}
+              key={book.id + Math.random()}
               book={book}
-              style="flex-none w-full max-w-[300px]"
+              style="flex-none w-1/3 max-w-48"
             />
           );
         })}
