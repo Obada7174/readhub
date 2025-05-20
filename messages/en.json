@@ -42,7 +42,6 @@
     "search": "Search"
   },
 
-  
   "BooksPage": {
     "categories": "Categories",
     "price": "Price",
@@ -70,7 +69,10 @@
       "category_filter": "Category Filter",
       "select_category": "Select Category",
       "select_language": "Select Language",
-      "select_rating": "Select Rating"
+      "select_rating": "Select Rating",
+      "price":"Price",
+      "categories":"Categories",
+      "search for books": "Search For Books"
     }
   },
   "SignUpPage": {
@@ -171,5 +173,20 @@
         "answer": "Unfortunately, due to the nature of digital products, we do not offer refunds for downloaded eBooks."
       }
     ]
+  },
+  "BookPage": {
+    "Genres": "Genres",
+    "Want to read": "Want to read",
+    "Pages": "Pages",
+    "First published": "First published",
+    "Share Your Rate": "Share Your Rate",
+    "Kindle": "Kindle",
+    "You may also like": "You may also like",
+    "Rate": "Rate",
+    "between 1 and 5": "between 1 and 5",
+    "Rate field is required": "Rate field is required",
+    "Review (optional)": "Review (optional)",
+    "We'd love to hear your review": "We'd love to hear your review",
+    "Send": "Send"
   }
-    }
+}

@@ -62,7 +62,7 @@ const BookCardSecond = ({ book }: any) => {
         {/* خلي الـ Box بحجم الصورة فقط وبدون أي padding/margin */}
         <Box className="relative w-[150px] h-[200px]">
           <Image
-            src={book.image}
+            src={book.img}
             alt={book.title}
             fill
             style={{ objectFit: "cover" }}

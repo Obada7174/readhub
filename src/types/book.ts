@@ -15,3 +15,14 @@ export interface Book {
   created_at: string;
   categories: Category[];
   }
+
+  
+export interface ApiResponse {
+  data: Book[];
+  meta: { total: number; page: number; limit: number; total_pages: number };
+}
+
+export interface CategoryOption {
+  id: number;
+  title: string;
+}

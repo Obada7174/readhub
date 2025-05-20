@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { Funnel_Display } from "next/font/google";
 import { useLocale } from 'next-intl';
 import { ThemeProvider } from "next-themes";
-import ReactQueryProvider from '@/providers/ReactQueryProvider';
+import ReactQueryProvider from "@/providers/ReactQueryProvider";
 
 const funnelDisplay = Funnel_Display({
   variable: "--font-funnel-display",
@@ -23,9 +23,16 @@ export default function LocaleLayout({
   const locale = useLocale();
 
   return (
-    <html lang={locale} suppressHydrationWarning dir={locale == 'en' ? 'ltr' : 'rtl'} className="dark scheme-light dark:scheme-dark"
+    <html
+      lang={locale}
+      suppressHydrationWarning
+      dir={locale == "en" ? "ltr" : "rtl"}
+      className="dark scheme-light dark:scheme-dark"
     >
-      <body suppressHydrationWarning className={`${funnelDisplay.variable} antialiased bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-50`}>
+      <body
+        suppressHydrationWarning
+        className={`${funnelDisplay.variable} antialiased bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-50`}
+      >
         <NextIntlClientProvider>
           <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
             <ReactQueryProvider >

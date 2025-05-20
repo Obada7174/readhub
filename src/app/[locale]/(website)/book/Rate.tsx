@@ -1,16 +1,22 @@
 "use client";
+import { useTranslations } from "next-intl";
 import { FormEvent, useEffect, useState } from "react";
-import { FaStar, FaStarHalf, FaX } from "react-icons/fa6";
+import { FaX } from "react-icons/fa6";
+import { MdStar, MdStarBorder, MdStarHalf } from "react-icons/md";
 
 const Rate = () => {
+  const t = useTranslations("BookPage");
   const [showRate, setShowRate] = useState<boolean>(false);
   const [rate, setRate] = useState<string | null>(null);
   const [rateError, setRateError] = useState<string | null>(null);
   const [review, setReview] = useState<string | null>(null);
+  const [active, setActive] = useState<number>(0);
 
+  const starArr = new Array(5).fill(0);
   const starsCount = Math.floor(rate ? +rate : 0);
   const stars = new Array(starsCount).fill(0);
   const halfStar = rate ? +rate % 1 >= 0.5 : false;
+  const emptyStars = new Array(5 - starsCount - (halfStar ? 1 : 0)).fill(0);
 
   const clear = () => {
     setRate("");
@@ -30,7 +36,7 @@ const Rate = () => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (!rate) {
-      setRateError("Rate field is required");
+      setRateError(t("Rate field is required"));
     } else {
       setShowRate(false);
     }
@@ -38,17 +44,37 @@ const Rate = () => {
 
   return (
     <>
+      <div
+        onMouseLeave={() => setActive(0)}
+        className="flex gap-1.5 justify-center text-3xl w-fit mx-auto cursor-pointer"
+      >
+        {starArr.map((_, i) => {
+          return i < active ? (
+            <MdStar
+              key={i}
+              onMouseEnter={() => setActive(i + 1)}
+              className="text-yellow-500"
+            />
+          ) : (
+            <MdStarBorder
+              key={i}
+              onMouseEnter={() => setActive(i + 1)}
+              className=""
+            />
+          );
+        })}
+      </div>
       <button
-        className="py-1.5 px-1.5 cursor-pointer rounded-md border-2 border-black hover:bg-black hover:text-[#f8e7d0] transition-colors font-medium text-sm sm:text-base"
+        className="cursor-pointer font-bold text-sm sm:text-base"
         onClick={() => setShowRate(true)}
       >
-        Share Your Rate
+        {t("Share Your Rate")}
       </button>
       {showRate && (
         <div className="w-screen h-screen fixed left-0 top-0 flex justify-center items-center bg-[#0000004d] p-2">
           <form
             onSubmit={handleSubmit}
-            className="flex flex-col gap-2.5 bg-white p-2.5 rounded-md w-full max-w-[500px] border-2 border-black"
+            className="flex flex-col gap-2.5 bg-white p-2.5 rounded-md w-full max-w-[500px] border-2 "
           >
             <div className="flex justify-end">
               <FaX
@@ -58,11 +84,11 @@ const Rate = () => {
             </div>
             <div className="flex flex-col gap-1">
               <label className="font-medium text-sm sm:base" htmlFor="rate">
-                Rate
+                {t("Rate")}
               </label>
               <div className="flex gap-1.5">
                 <input
-                  className="p-1 outline-none border-2 border-black rounded-sm text-sm sm:base w-full"
+                  className="p-1 outline-none border-2  rounded-sm text-sm sm:base w-full"
                   type="number"
                   id="rate"
                   value={rate || ""}
@@ -75,13 +101,16 @@ const Rate = () => {
                       setRate(e.target.value);
                     }
                   }}
-                  placeholder="between 1 and 5"
+                  placeholder={t("between 1 and 5")}
                 />
                 <div className="flex gap-1 items-center pr-2">
                   {stars.map((_, i) => {
-                    return <FaStar key={i} />;
+                    return <MdStar key={i} />;
                   })}
-                  {halfStar && <FaStarHalf />}
+                  {halfStar && <MdStarHalf />}
+                  {emptyStars.map((_, i) => {
+                    return <MdStarBorder key={i + Math.random()} />;
+                  })}
                 </div>
               </div>
               {rateError && (
@@ -90,19 +119,19 @@ const Rate = () => {
             </div>
             <div className="flex flex-col gap-1">
               <label className="font-medium text-sm sm:base" htmlFor="review">
-                Review (optional)
+                {t("Review (optional)")}
               </label>
               <textarea
                 rows={6}
-                className="p-1 outline-none border-2 border-black rounded-sm text-sm sm:base"
+                className="p-1 outline-none border-2  rounded-sm text-sm sm:base"
                 id="review"
                 value={review || ""}
                 onChange={(e) => setReview(e.target.value)}
-                placeholder="We'd love to hear your review"
+                placeholder={t("We'd love to hear your review")}
               />
             </div>
-            <button className="py-1.5 px-1.5 cursor-pointer rounded-md border-2 border-black hover:bg-black hover:text-[#f8e7d0] transition-colors font-medium text-sm sm:text-base">
-              Submit
+            <button className="py-1.5 px-1.5 cursor-pointer rounded-md border-2  hover:bg-black hover:text-beige-100 transition-colors font-medium text-sm sm:text-base">
+              {t("Send")}
             </button>
           </form>
         </div>
