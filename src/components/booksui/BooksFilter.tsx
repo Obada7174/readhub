@@ -1,18 +1,21 @@
 "use client";
 import React from "react";
 import FilterHorizontal from "@/components/booksui/filterbooks";
-import { Dispatch, SetStateAction } from "react";
 import { Input } from "@/components/ui/Input";
 import { LuSearch } from "react-icons/lu";
 
 interface Props {
   categories: { id: number; title: string }[];
-  selectedCategory: string[];            
-  setSelectedCategory: Dispatch<SetStateAction<string[]>>;  
+  selectedCategory: string[];
+  setSelectedCategory: React.Dispatch<React.SetStateAction<string[]>>;
   priceRange: string | null;
   setPriceRange: (range: string) => void;
   rating: number | null;
   setRating: (value: number | null) => void;
+  lang: string | null;
+  setLang: React.Dispatch<React.SetStateAction<string | null>>;
+  searchQuery: string;
+  setSearchQuery: (query: string) => void;
 }
 
 export default function BooksFilters({
@@ -23,6 +26,12 @@ export default function BooksFilters({
   setPriceRange,
   rating,
   setRating,
+  lang,
+  setLang,
+
+
+  searchQuery,
+  setSearchQuery,
 }: Props) {
   return (
     <div className="flex flex-wrap gap-4 items-center justify-between rounded-lg shadow p-4">
@@ -31,9 +40,9 @@ export default function BooksFilters({
         <div className="relative">
           <Input
             type="search"
-            placeholder="Search..."
-            value={priceRange || ""}
-            onChange={e => setPriceRange(e.target.value)}
+            placeholder="بحث..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
             className="w-64 pl-8 bg-gray-300 dark:bg-gray-700 text-black dark:text-white"
           />
           <LuSearch className="absolute left-2 top-2.5 h-4 w-4 text-gray-600 dark:text-gray-300" />
@@ -50,8 +59,8 @@ export default function BooksFilters({
           setPriceRange={setPriceRange}
           rating={rating}
           setRating={setRating}
-          selectedLanguage="en"
-          setSelectedLanguage={() => {}}
+          selectedLanguage={lang || "en"}
+          setSelectedLanguage={setLang}
         />
       </div>
     </div>
