@@ -1,9 +1,7 @@
 import { NextIntlClientProvider } from 'next-intl';
-import Header from '@/components/Header';
 import type { Metadata } from "next";
 import { Funnel_Display } from "next/font/google";
 import { useLocale } from 'next-intl';
-import Footer from '@/components/Footer';
 import { ThemeProvider } from "next-themes";
 import ReactQueryProvider from '@/providers/ReactQueryProvider';
 
@@ -22,7 +20,6 @@ export default function LocaleLayout({
   children: React.ReactNode;
 }) {
 
-  // Ensure that the incoming `locale` is valid
   const locale = useLocale();
 
   return (
@@ -31,13 +28,10 @@ export default function LocaleLayout({
       <body suppressHydrationWarning className={`${funnelDisplay.variable} antialiased bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-50`}>
         <NextIntlClientProvider>
           <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-            <ReactQueryProvider>
-              <Header />
-
-              <div className='pt-16 min-h-[50vh]'>
+            <ReactQueryProvider >
+              <div className=''>
                 {children}
               </div>
-              <Footer />
             </ReactQueryProvider>
           </ThemeProvider>
         </NextIntlClientProvider>
