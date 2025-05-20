@@ -9,7 +9,7 @@ import { getQueryClient } from "@/lib/queryClient";
 
 type Props = {
     children: ReactNode;
-    dehydratedState: unknown;
+    dehydratedState?: unknown;
 };
 
 export default function ReactQueryProvider({
