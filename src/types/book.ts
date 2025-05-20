@@ -15,14 +15,14 @@ export interface Book {
   created_at: string;
   categories: Category[];
   }
-  // export interface BookAuthor {
-  //   id: number;
-  //   title: string;
-  //   description: string;
-  //   image: string;
-  //   price: string;
-  //   rating: number;
-  //   publishedDate: string;
-  // }
+
   
-  
+export interface ApiResponse {
+  data: Book[];
+  meta: { total: number; page: number; limit: number; total_pages: number };
+}
+
+export interface CategoryOption {
+  id: number;
+  title: string;
+}

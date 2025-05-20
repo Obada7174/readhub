@@ -1,18 +1,15 @@
 import Image from "next/image";
 import { LuStar, LuShoppingCart } from "react-icons/lu";
-import { PiBookOpenTextLight } from "react-icons/pi"; // أيقونة صفحات
 
 const BookCardSecond = ({ book }: any) => {
   return (
-    <div className="relative w-[220px] rounded-xl border border-gray-200 bg-gray-100 dark:bg-gray-300 text-black dark:text-white shadow-sm hover:shadow-md transition-shadow duration-200 cursor-pointer">
+    <div className="relative w-[220px] rounded-xl border border-gray-300 bg-white dark:bg-slate-800 text-gray-900 dark:text-gray-100 shadow-sm hover:shadow-md transition-shadow duration-200 cursor-pointer">
       
       {/* صورة الغلاف */}
       <div className="relative w-full h-[280px] rounded-t-xl overflow-hidden">
-        <Image
-          src={book.image}
+        <img
+          src={book.img}
           alt={book.title}
-          layout="fill"
-          objectFit="cover"
           className="rounded-t-xl"
         />
       </div>
@@ -26,15 +23,15 @@ const BookCardSecond = ({ book }: any) => {
         </h3>
 
         {/* اسم المؤلف */}
-        <p className="text-gray-700 text-xs font-medium">{book.author}</p>
+        <p className="text-gray-700 dark:text-gray-300 text-xs font-medium">{book.author}</p>
 
         {/* وصف مختصر - سطرين */}
-        <p className="text-gray-600 text-xs line-clamp-2">
+        <p className="text-gray-600 dark:text-gray-400 text-xs line-clamp-2">
           {book.description}
         </p>
 
         {/* السعر والتقييم */}
-        <div className="flex justify-between items-center text-sm font-semibold text-gray-900 mt-1">
+        <div className="flex justify-between items-center text-sm font-semibold text-gray-900 dark:text-gray-100 mt-1">
           <span>{book.price}</span>
           <span className="flex items-center gap-1 text-yellow-500">
             {book.rating}
@@ -44,12 +41,12 @@ const BookCardSecond = ({ book }: any) => {
 
         {/* عدد الصفحات وأيقونة السلة */}
         <div className="flex justify-between items-center mt-2">
-          <div className="flex items-center gap-1 text-gray-600 text-xs font-medium">
-            <span>{book.pages} (pages)</span>
+          <div className="flex items-center gap-1 text-gray-600 dark:text-gray-400 text-xs font-medium">
+            <span>{book.total_pages} (pages)</span>
           </div>
 
           <button
-            className="text-gray-900 hover:text-gray-700 dark:hover:text-white"
+            className="text-gray-900 dark:text-gray-100 hover:text-gray-700 dark:hover:text-white"
             aria-label="Add to cart"
             onClick={() => alert(`تمت إضافة ${book.title} إلى السلة`)}
           >
