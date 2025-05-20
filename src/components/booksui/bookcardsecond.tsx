@@ -3,14 +3,13 @@ import { LuStar, LuShoppingCart } from "react-icons/lu";
 
 const BookCardSecond = ({ book }: any) => {
   return (
-    <div className="relative w-[220px] rounded-xl border border-gray-300 bg-white dark:bg-slate-800 text-gray-900 dark:text-gray-100 shadow-sm hover:shadow-md transition-shadow duration-200 cursor-pointer">
+    <div className="relative w-[220px] rounded-[10px] border border-gray-300 bg-white dark:bg-slate-800 text-gray-900 dark:text-gray-100 shadow-sm hover:shadow-md transition-shadow duration-200 cursor-pointer">
       
       {/* صورة الغلاف */}
-      <div className="relative w-full h-[280px] rounded-t-xl overflow-hidden">
+      <div className="relative w-full h-[330px] rounded-t-[10px] overflow-hidden">
         <img
           src={book.img}
           alt={book.title}
-          className="rounded-t-xl"
         />
       </div>
 
