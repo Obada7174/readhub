@@ -39,7 +39,6 @@ export default function LocaleLayout({
           <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
             <ReactQueryProvider>
               <Header />
-
               <div className="pt-16 min-h-[50vh]">{children}</div>
               <Footer />
             </ReactQueryProvider>

@@ -3,6 +3,7 @@ import { Comment } from "./CommentsSection";
 import UserImage from "@/assets/images/Rich_Dad_Poor_Dad.jpg";
 import Reply from "./Reply";
 import CommentFunc from "./Comment";
+import { useTranslations } from "next-intl";
 
 interface Props {
   comment: Comment;
@@ -10,6 +11,8 @@ interface Props {
 }
 
 const CommentCard = ({ comment, first }: Props) => {
+  const t = useTranslations("Comments");
+
   return (
     <>
       <div
@@ -27,14 +30,14 @@ const CommentCard = ({ comment, first }: Props) => {
             <h3 className="text-sm sm:text-base mt-1">
               {comment.userName} {comment.id}
             </h3>
-            <h4 className="text-xs sm:text-sm">25 days ago</h4>
+            <h4 className="text-xs sm:text-sm">25 {t("days ago")}</h4>
           </div>
         </div>
         <div className={`${first ? "" : "lg:border-t border-[#cfccc9]"} pt-5`}>
           <p>{comment.comment}</p>
           <div className="my-3 flex gap-5 ">
-            <span>100 likes</span>
-            <span>76 comments</span>
+            <span>100 {t("likes")}</span>
+            <span>76 {t("comments")}</span>
           </div>
           <CommentFunc />
           <div
