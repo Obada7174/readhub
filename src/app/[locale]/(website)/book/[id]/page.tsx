@@ -1,18 +1,33 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { useTranslations } from "next-intl";
+"use client";
+import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
-import bookImage from "@/assets/images/Rich_Dad_Poor_Dad.jpg";
 import Rate from "../Rate";
 import SuggestedBooks from "../SuggestedBooks";
 import books from "../books";
 import CommentsSection, { Comment } from "../CommentsSection";
 import { MdStar, MdStarBorder, MdStarHalf } from "react-icons/md";
+import { useBookQuery } from "@/hooks/react-query/books/useBooksQuery";
+import BookLoadingSkeleton from "../BookLoadingSkeleton";
 
-const page = () => {
+interface Props {
+  params: { id: string };
+}
+
+const page = ({ params: { id } }: Props) => {
+  const local = useLocale();
+  const ar = local === "ar";
   const t = useTranslations("BookPage");
-  const starsCount = Math.floor(book.rating);
+  const { data: book, isLoading, error } = useBookQuery(id);
+
+  if (isLoading) return <BookLoadingSkeleton />;
+  if (error) return <div>Error loading book</div>;
+  if (!book) return <div>Book not found</div>;
+
+  const discount = +book.discount > 0;
+  const starsCount = Math.floor(+book.rating);
   const stars = new Array(starsCount).fill(0);
-  const halfStar = book.rating % 1 >= 0.5;
+  const halfStar = +book.rating % 1 >= 0.5;
 
   return (
     <div className="container mx-auto flex justify-center my-10">
@@ -21,81 +36,115 @@ const page = () => {
           <div className="sticky top-28 max-w-2xs mx-auto">
             <div className="w-4/5 mx-auto">
               <Image
-                className="w-full h-auto object-cover rounded-tr-md rounded-br-md max-w-2xs mx-auto"
-                src={bookImage}
+                className={`w-full h-auto object-cover ${
+                  ar
+                    ? "rounded-tl-md rounded-bl-md"
+                    : "rounded-tr-md rounded-br-md"
+                } max-w-2xs mx-auto`}
+                width={500}
+                height={500}
+                src={book.img}
                 alt="Book Image"
               />
             </div>
             <div className="flex flex-col gap-4 my-6">
-              <div className="bg-[#E5E7EB] shadow-xl dark:bg-white px-5 py-2.5 rounded-full cursor-pointer">
-                <button className="text-sm sm:text-base text-center w-full font-bold cursor-pointer dark:text-[#101828]">
+              <div className="bg-[#101828] dark:bg-white px-5 py-2.5 rounded-full cursor-pointer">
+                <button className="text-sm sm:text-base text-center w-full font-bold cursor-pointer text-white dark:text-[#101828]">
                   {t("Want to read")}
                 </button>
               </div>
-              <div className="border hover:bg-[#0000000d] px-5 py-2.5 rounded-full transition-colors cursor-pointer">
-                <button className="text-sm sm:text-base text-center w-full font-bold cursor-pointer">
-                  {/* {t("Want to read")} */}
-                  {t("Kindle")} $5.99
-                </button>
+              <div
+                className={`border ${
+                  discount
+                    ? " border-red-500 cursor-not-allowed"
+                    : "cursor-pointer hover:bg-[#0000000d]"
+                } px-5 py-2.5 rounded-full transition-colors`}
+              >
+                <div
+                  className={`flex gap-2 justify-center flex-wrap text-sm sm:text-base text-center w-full font-bold ${
+                    discount ? "line-through text-red-500" : "cursor-pointer"
+                  }`}
+                >
+                  <span>{t("Kindle")}</span>
+                  <span>${book.price}</span>
+                </div>
               </div>
+              {discount && (
+                <div
+                  className={`border cursor-pointer hover:bg-[#0000000d] px-5 py-2.5 rounded-full transition-colors`}
+                >
+                  <div
+                    className={`flex gap-2 justify-center flex-wrap text-sm sm:text-base text-center w-full font-bold cursor-pointer`}
+                  >
+                    <span>{t("Kindle")}</span>
+                    <span>${book.discounted_price}</span>
+                  </div>
+                </div>
+              )}
               <Rate />
             </div>
           </div>
         </div>
         <div className="col-span-full lg:col-span-9 lg:pl-8 pt-2 sm:pt-5">
           <div>
-            <h1 className="text-2xl sm:text-4xl font-semibold">{book.title}</h1>
+            <h1 className="text-2xl sm:text-4xl font-semibold">
+              {ar ? book.ar_title : book.title}
+            </h1>
             <div className="flex flex-wrap items-center justify-between mt-1">
               <h2 className="text-lg sm:text-2xl font-normal ">
                 {book.author}
               </h2>
               <div className="flex gap-1 items-center pr-2 text-2xl">
                 {stars.map((_, i) => {
-                  return <MdStar key={i} className="text-yellow-500" />;
+                  return (
+                    <MdStar
+                      key={i}
+                      className="text-yellow-500 max-sm:w-5 max-sm:h-5"
+                    />
+                  );
                 })}
                 {halfStar ? (
-                  <MdStarHalf className="text-yellow-500" />
+                  <MdStarHalf
+                    className={`text-yellow-500 max-sm:w-5 max-sm:h-5 ${
+                      ar ? "scale-x-[-1]" : ""
+                    }`}
+                  />
                 ) : (
-                  <MdStarBorder className="" />
+                  <MdStarBorder className="max-sm:w-5 max-sm:h-5" />
                 )}
-                <span className="font-medium  text-xl">{book.rating}</span>
+                <span className="font-medium text-lg sm:text-xl">
+                  {book.rating}
+                </span>
               </div>
             </div>
           </div>
           <div className="text-sm sm:text-base mt-5 mb-8 font-medium w-10/12 max-lg:mb-5">
-            <p>{book.description}</p>
+            <p>{ar ? book.ar_description : book.description}</p>
           </div>
           <div className="flex gap-3 items-center flex-wrap">
             <div className="text-base sm:text-lg font-medium">
               {t("Genres")}
             </div>
-            {book.genres.map((genre, id) => {
+            {book.categories.map((genre) => {
               return (
                 <div
-                  key={id}
+                  key={genre.id}
                   className="cursor-pointer border-b-2 border-green-cool transition-colors text-sm sm:text-base font-medium"
                 >
-                  {genre}
+                  {genre.title}
                 </div>
               );
             })}
           </div>
           <div className="my-5 flex flex-col gap-1.5 text-xsm sm:text-sm ">
             <span>
-              {book.pages} {t("Pages")}
+              {book.total_pages} {t("Pages")}
             </span>
             <span>
-              {t("First published")} {book.publishTime}
+              {t("First published")} {book.created_at}
             </span>
           </div>
-          {/* <div className="mt-5 flex items-center gap-2 flex-wrap">
-            {/* {book.price > 0 && ( */}
-          {/* <button className="py-1.5 px-1.5 cursor-pointer rounded-md border-2  hover:bg-black hover:text-beige-100 transition-colors font-medium text-sm sm:text-base"> */}
-          {/* {t("Buy now for just")} {book.price}$ */}
-          {/* </button> */}
-          {/* )} */}
-          {/* </div>  */}
-          <SuggestedBooks books={books} />
+          <SuggestedBooks books={books} ar={ar} />
           <CommentsSection comments={comments} />
         </div>
       </div>
@@ -103,26 +152,6 @@ const page = () => {
   );
 };
 export default page;
-
-const book = {
-  id: 1,
-  title: "Rich Dad Poor Dad",
-  author: "Robert T. Kiyosaki",
-  publishedYear: 1997,
-  description:
-    'Rich Dad Poor Dad is Robert\'s story of growing up with two dads — his real father and the father of his best friend, his "rich dad" — and the ways in which both men shaped his thoughts about money and investing. The book explodes the myth that you need to earn a high income to be rich and explains the difference between working for money and having your money work for you.',
-  genres: [
-    "Personal Finance",
-    "Self-Help",
-    "Business",
-    "Investing",
-    "Motivational",
-  ],
-  rating: 4.3,
-  pages: 195,
-  publishTime: "April 8, 1997",
-  price: 10,
-};
 
 const comments: Comment[] = [
   {

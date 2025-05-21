@@ -5,8 +5,10 @@ import Like from "./Like";
 
 import UserImage from "@/assets/images/Rich_Dad_Poor_Dad.jpg";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 const Comment = () => {
+  const t = useTranslations("Comments");
   const [add, setAdd] = useState<boolean>(false);
   const [comment, setComment] = useState<string>("");
 
@@ -16,10 +18,10 @@ const Comment = () => {
         <Like />
         <div
           onClick={() => setAdd(!add)}
-          className="flex items-center gap-0.5 cursor-pointer"
+          className="flex items-end gap-1 cursor-pointer"
         >
           <FaRegComment size={18} />
-          <span>Comment</span>
+          <span>{t("Comment")}</span>
         </div>
       </div>
       {add && (

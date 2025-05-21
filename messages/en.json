@@ -200,5 +200,12 @@
       "Competitions": "Competitions",
       "Settings": "Settings",
       "Notifications": "Notifications"
+  },
+  "Comments": {
+    "likes": "likes",
+    "comments": "comments",
+    "days ago": "days ago",
+    "Like": "Like",
+    "Comment": "Comment"
   }
 }
