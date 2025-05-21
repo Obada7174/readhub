@@ -188,5 +188,17 @@
     "Review (optional)": "Review (optional)",
     "We'd love to hear your review": "We'd love to hear your review",
     "Send": "Send"
+  },
+  "SideBar":{
+      "Home": "Home",
+      "Profile": "Profile",
+      "Library": "Library",
+      "Favorites": "Favorites",
+      "My Books": "My Books",
+      "Pdf Reader": "Pdf Reader",
+      "Comments": "Comments",
+      "Competitions": "Competitions",
+      "Settings": "Settings",
+      "Notifications": "Notifications"
   }
 }

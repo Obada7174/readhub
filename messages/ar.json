@@ -185,5 +185,17 @@
     "Review (optional)": "المراجعة (اختياري)",
     "We'd love to hear your review": "يسرنا أن نسمع رأيك",
     "Send": "ارسال"
+  },
+  "SideBar":{
+    "Home": "الرئيسية",
+    "Profile": "الملف الشخصي",
+    "Library": "المكتبة",
+    "Favorites": "المفضلة",
+    "My Books": "كتبي",
+    "Pdf Reader": "قارئ PDF",
+    "Comments": "التعليقات",
+    "Competitions": "المسابقات",
+    "Settings": "الإعدادات",
+    "Notifications": "الإشعارات"
   }
 }
