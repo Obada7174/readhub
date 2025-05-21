@@ -185,5 +185,12 @@
     "Review (optional)": "Review (optional)",
     "We'd love to hear your review": "We'd love to hear your review",
     "Send": "Send"
+  },
+  "Comments": {
+    "likes": "likes",
+    "comments": "comments",
+    "days ago": "days ago",
+    "Like": "Like",
+    "Comment": "Comment"
   }
 }

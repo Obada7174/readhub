@@ -182,5 +182,12 @@
     "Review (optional)": "المراجعة (اختياري)",
     "We'd love to hear your review": "يسرنا أن نسمع رأيك",
     "Send": "ارسال"
+  },
+  "Comments": {
+    "likes": "اعجاب",
+    "comments": "تعليق",
+    "days ago": "يوم",
+    "Like": "اعجاب",
+    "Comment": "تعليق"
   }
 }

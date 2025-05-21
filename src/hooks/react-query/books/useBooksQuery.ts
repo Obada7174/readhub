@@ -1,11 +1,19 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import {
+  getBook,
   getBooks,
   createBook,
   updateBook,
   deleteBook,
 } from "@/services/books.service";
 import { Book } from "@/types/book";
+
+export const useBookQuery = (id: string) => {
+  return useQuery<Book>({
+    queryKey: ["books", { id }],
+    queryFn: () => getBook(id),
+  });
+};
 
 export const useBooksQuery = () => {
   return useQuery<Book[]>({

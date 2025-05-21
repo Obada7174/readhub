@@ -7,9 +7,10 @@ import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from "react-icons/md";
 
 interface Props {
   books: book[];
+  ar: boolean;
 }
 
-const SuggestedBooks = ({ books }: Props) => {
+const SuggestedBooks = ({ books, ar }: Props) => {
   const t = useTranslations("BookPage");
   const scrollerRef = useRef<HTMLDivElement>(null);
 
@@ -19,7 +20,11 @@ const SuggestedBooks = ({ books }: Props) => {
         <h2 className="text-lg sm:text-xl font-semibold">
           {t("You may also like")}
         </h2>
-        <div className="max-lg:hidden flex text-lg font-medium rounded-sm border-2 overflow-hidden">
+        <div
+          className={`max-lg:hidden flex text-lg font-medium rounded-sm border-2 overflow-hidden ${
+            ar ? "flex-row-reverse" : ""
+          }`}
+        >
           <button
             onClick={() =>
               (scrollerRef.current!.scrollLeft -=
@@ -50,6 +55,7 @@ const SuggestedBooks = ({ books }: Props) => {
               key={book.id + Math.random()}
               book={book}
               style="flex-none w-1/3 max-w-48"
+              ar={ar}
             />
           );
         })}
