@@ -6,7 +6,7 @@ import { LuStar, LuShoppingCart } from "react-icons/lu";
 import { useLocale } from "next-intl";
 
 const BookCardSecond = ({ book }: any) => {
-  const locale = useLocale(); // لتحديد اللغة الحالية (ar أو en)
+  const locale = useLocale(); 
 
   return (
     <Link href={`/${locale}/book/${book.id}`} passHref>
@@ -47,7 +47,7 @@ const BookCardSecond = ({ book }: any) => {
               className="text-gray-900 dark:text-gray-100 hover:text-gray-700 dark:hover:text-white"
               aria-label="Add to cart"
               onClick={(e) => {
-                e.stopPropagation(); // منع النقرة من التسبب بالتوجيه
+                e.stopPropagation(); 
                 alert(`تمت إضافة ${book.title} إلى السلة`);
               }}
             >
