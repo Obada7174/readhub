@@ -1,5 +1,4 @@
-"use client"; // ضروري لأننا نستخدم useLocale
-
+"use client"; 
 import Link from "next/link";
 import Image from "next/image";
 import { LuStar, LuShoppingCart } from "react-icons/lu";
@@ -46,10 +45,6 @@ const BookCardSecond = ({ book }: any) => {
             <button
               className="text-gray-900 dark:text-gray-100 hover:text-gray-700 dark:hover:text-white"
               aria-label="Add to cart"
-              onClick={(e) => {
-                e.stopPropagation(); 
-                alert(`تمت إضافة ${book.title} إلى السلة`);
-              }}
             >
               <LuShoppingCart size={20} />
             </button>
