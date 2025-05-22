@@ -7,20 +7,23 @@ import Link from "next/link";
 interface Props {
   book: book;
   style?: string;
+  ar: boolean;
 }
 
-const BookCard = ({ book, style = "" }: Props) => {
+const BookCard = ({ book, style = "", ar }: Props) => {
   return (
     <Link href={"/book/" + book.id} className={style}>
       <Image
-        className="w-full h-auto rounded-tr-md rounded-br-md"
+        className={`w-full h-auto ${
+          ar ? "rounded-tl-md rounded-bl-md" : "rounded-tr-md rounded-br-md"
+        }`}
         src={bookImage}
         alt="Book Image"
       />
-      <div className="py-5 px-2">
+      <div className="p-2">
         <h1 className="sm:text-lg font-medium">{book.title}</h1>
         <h2 className="max-sm:text-sm font-normal ">{book.author}</h2>
-        <div className="flex gap-1 items-center pr-2">
+        <div className="flex gap-1 items-center">
           <MdStar className="text-lg text-yellow-500" />
           <span className="font-medium">{book.rating}</span>
         </div>

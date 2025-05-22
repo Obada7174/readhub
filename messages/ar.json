@@ -186,6 +186,25 @@
     "We'd love to hear your review": "يسرنا أن نسمع رأيك",
     "Send": "ارسال"
   },
+  "SideBar":{
+    "Home": "الرئيسية",
+    "Profile": "الملف الشخصي",
+    "Library": "المكتبة",
+    "Favorites": "المفضلة",
+    "My Books": "كتبي",
+    "Pdf Reader": "قارئ PDF",
+    "Comments": "التعليقات",
+    "Competitions": "المسابقات",
+    "Settings": "الإعدادات",
+    "Notifications": "الإشعارات"
+  },
+  "Comments": {
+    "likes": "اعجاب",
+    "comments": "تعليق",
+    "days ago": "يوم",
+    "Like": "اعجاب",
+    "Comment": "تعليق"
+  },
   "Dashboard":{
     "dashboard": "لوحة التحكم",
     "libraryManagement": "إدارة المكتبة",

@@ -53,6 +53,10 @@ const Rate = () => {
             <MdStar
               key={i}
               onMouseEnter={() => setActive(i + 1)}
+              onClick={() => {
+                setRate((i + 1).toString());
+                setShowRate(true);
+              }}
               className="text-yellow-500"
             />
           ) : (
@@ -74,7 +78,7 @@ const Rate = () => {
         <div className="w-screen h-screen fixed left-0 top-0 flex justify-center items-center bg-[#0000004d] p-2">
           <form
             onSubmit={handleSubmit}
-            className="flex flex-col gap-2.5 bg-white p-2.5 rounded-md w-full max-w-[500px] border-2 "
+            className="flex flex-col gap-2.5 bg-white dark:bg-[#101828] p-2.5 rounded-md w-full max-w-[500px] border-2 "
           >
             <div className="flex justify-end">
               <FaX
@@ -88,7 +92,7 @@ const Rate = () => {
               </label>
               <div className="flex gap-1.5">
                 <input
-                  className="p-1 outline-none border-2  rounded-sm text-sm sm:base w-full"
+                  className="p-1 outline-none border-2 rounded-sm text-sm sm:base w-full"
                   type="number"
                   id="rate"
                   value={rate || ""}
@@ -130,7 +134,7 @@ const Rate = () => {
                 placeholder={t("We'd love to hear your review")}
               />
             </div>
-            <button className="py-1.5 px-1.5 cursor-pointer rounded-md border-2  hover:bg-black hover:text-beige-100 transition-colors font-medium text-sm sm:text-base">
+            <button className="py-1.5 px-1.5 cursor-pointer rounded-md border-2 hover:text-beige-100 transition-colors font-medium text-sm sm:text-base">
               {t("Send")}
             </button>
           </form>

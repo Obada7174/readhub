@@ -204,6 +204,24 @@
     "publishers": "Publishers",
     "addPublisher": "Add Publisher",
     "competitions": "Competitions",
-    "addCompetition": "Add Competition"
+    "addCompetition": "Add Competition"},
+  "SideBar":{
+      "Home": "Home",
+      "Profile": "Profile",
+      "Library": "Library",
+      "Favorites": "Favorites",
+      "My Books": "My Books",
+      "Pdf Reader": "Pdf Reader",
+      "Comments": "Comments",
+      "Competitions": "Competitions",
+      "Settings": "Settings",
+      "Notifications": "Notifications"
+  },
+  "Comments": {
+    "likes": "likes",
+    "comments": "comments",
+    "days ago": "days ago",
+    "Like": "Like",
+    "Comment": "Comment"
   }
 }

@@ -15,7 +15,6 @@ import StarIcon from "@mui/icons-material/Star";
 import { useTranslations } from "next-intl";
 import { Dispatch, SetStateAction } from "react";
 
-// تعريف النوع الجديد للتصنيفات
 interface CategoryOption {
   id: number;
   title: string;
@@ -49,7 +48,6 @@ const FilterHorizontal: React.FC<FilterProps> = ({
 
   const priceRanges = ["Free", "$0 - $10", "$10 - $20", "$20+"];
 
-  // ضبط ألوان حسب الوضع (dark/light)
   const inputBgColor = theme.palette.mode === "dark" ? "#333" : "#f5f5f5";
   const textColor = theme.palette.mode === "dark" ? "#eee" : "#222";
   const borderColor = theme.palette.mode === "dark" ? "#555" : "#ccc";
@@ -84,14 +82,14 @@ const FilterHorizontal: React.FC<FilterProps> = ({
         }}
       >
         <InputLabel>{t("language")}</InputLabel>
-        <Select
-          value={selectedLanguage}
-          label={t("language")}
-          onChange={e => setSelectedLanguage(e.target.value)}
-        >
-          <MenuItem value="en">English</MenuItem>
-          <MenuItem value="ar">العربية</MenuItem>
-        </Select>
+  <Select
+    value={selectedLanguage}
+    label={t("language")}
+    onChange={(e) => setSelectedLanguage(e.target.value)}
+  >
+    <MenuItem value="en">English</MenuItem>
+    <MenuItem value="ar">العربية</MenuItem>
+  </Select>
       </FormControl>
 
       {/* سعر */}
