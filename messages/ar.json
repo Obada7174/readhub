@@ -185,5 +185,22 @@
     "Review (optional)": "المراجعة (اختياري)",
     "We'd love to hear your review": "يسرنا أن نسمع رأيك",
     "Send": "ارسال"
+  },
+  "Dashboard":{
+    "dashboard": "لوحة التحكم",
+    "libraryManagement": "إدارة المكتبة",
+    "mainDashboard": "الرئيسية",
+    "users": "المستخدمين",
+    "addUser": "إضافة مستخدم",
+    "books": "الكتب",
+    "addBook": "إضافة كتاب",
+    "categories": "التصنيفات",
+    "addCategory": "إضافة تصنيف",
+    "authors": "المؤلفين",
+    "addAuthor": "إضافة مؤلف",
+    "publishers": "دور النشر",
+    "addPublisher": "إضافة دار نشر",
+    "competitions": "المسابقات",
+    "addCompetition": "إضافة مسابقة"
   }
 }
