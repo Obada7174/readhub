@@ -17,11 +17,9 @@ import {
 } from 'react-icons/lu';
 
 import ThemeSwitcher from './ThemeSwitcher';
-import { useTheme } from 'next-themes';
 
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const { theme } = useTheme();
     const t = useTranslations();
     
 
@@ -43,7 +41,6 @@ export default function Header() {
                     </nav>
 
                     <div className="hidden md:flex items-center space-x-4">
-                        {/* Search Box */}
 
                         <div className="relative">
                             <Input
@@ -55,11 +52,8 @@ export default function Header() {
                         </div>
 
 
-                        {/* Language Switcher - Desktop */}
                         <LanguageSwitcher />
-
                         <ThemeSwitcher />
-
                         <Link href="/dashboard">
                             <Button variant="ghost" size="icon">
                                 <LuLayoutDashboard className="h-5 w-5 text-gray-800 dark:text-white" />
@@ -112,7 +106,6 @@ export default function Header() {
                                 <LuSearch className="absolute left-2 top-2.5 h-4 w-4 text-gray-600 dark:text-gray-300" />
                             </div>
 
-                            {/* Language Switcher - Mobile */}
                             <LanguageSwitcher />
                         </nav>
                     </div>

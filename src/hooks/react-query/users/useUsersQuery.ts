@@ -4,13 +4,22 @@ import {
   createUser,
   updateUser,
   deleteUser,
+  getUser,
 } from "@/services/users.service";
-import { User } from "@/types/user";
+import { UpdateUserPayload, User } from "@/types/user";
 
 export const useUsersQuery = () => {
   return useQuery<User[]>({
     queryKey: ["users"],
     queryFn: getUsers,
+  });
+};
+
+export const useUserQuery = (id: number) => {
+  return useQuery({
+    queryKey: ['user', id],
+    queryFn: () => getUser(id),
+    enabled: !!id,
   });
 };
 
@@ -25,11 +34,13 @@ export const useCreateUser = () => {
 export const useUpdateUser = () => {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: updateUser,
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["users"] }),
+    mutationFn: ({ id, data }: { id: number; data: UpdateUserPayload }) =>
+      updateUser(id, data),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['users'] });
+    },
   });
 };
-
 export const useDeleteUser = () => {
   const queryClient = useQueryClient();
   return useMutation({

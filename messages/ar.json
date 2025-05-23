@@ -221,11 +221,11 @@
     "competitions": "المسابقات",
     "addCompetition": "إضافة مسابقة",
     "sidebar": {
-      "users": "إدارة المستخدمين",
-      "books": "إدارة الكتب",
-      "categories": "إدارة التصنيفات",
-      "competitions": "إدارة المسابقات",
-      "authors": "إدارة المؤلفين"
+      "users": "المستخدمين",
+      "books": "الكتب",
+      "categories": "التصنيفات",
+      "competitions": "المسابقات",
+      "authors": "المؤلفين"
     }
   }
 }

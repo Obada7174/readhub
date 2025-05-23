@@ -206,11 +206,11 @@
     "competitions": "Competitions",
     "addCompetition": "Add Competition",
     "sidebar":{
-      "users":"Users Management",
-      "books":"Books Management",
-      "categories":"Categories Management",
-      "competitions":"Competitions Management",
-      "authors":"Authors Management"
+      "users":"Users",
+      "books":"Books",
+      "categories":"Categories",
+      "competitions":"Competitions",
+      "authors":"Authors"
       
     }
   },

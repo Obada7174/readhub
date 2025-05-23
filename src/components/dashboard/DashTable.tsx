@@ -121,7 +121,7 @@ export default function DashTable<T extends { id: number | string }>({
                     }}
                 >
                     <Input
-                        className="max-w-md dark:border-b-[var(--current-color)] border-b-[var(--currentColor)] h-full"
+                        className="max-w-md dark:border-b-blue-900 border-b-blue-900 h-full"
                         placeholder={`Search for ${ITEM}`}
                         value={search}
                         handleChange={(e: React.ChangeEvent<HTMLInputElement>) =>

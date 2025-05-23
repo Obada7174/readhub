@@ -1,63 +1,57 @@
 'use client';
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef, forwardRef } from 'react';
 
-interface InputProps {
-  name?: string;
-  type?: "text" | "password" | "email" | "number";
-  placeholder?: string;
-  value?: string | number;
-  handleChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  setForm?: React.Dispatch<React.SetStateAction<Record<string, any>>>;
-  className?: string;
-  style?: React.CSSProperties;
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  label?: string;
+  error?: string;
   isFirst?: boolean;
-  disabled?: boolean;
 }
 
-export default function Input({
-  name='',
-  type = "text",
-  placeholder,
-  value,
-  handleChange,
-  setForm,
-  className = "",
-  style,
-  isFirst = false,
-  disabled = false,
-}: InputProps) {
-  const focusRef = useRef<HTMLInputElement>(null);
+const Input = forwardRef<HTMLInputElement, InputProps>(
+  (
+    {
+      label,
+      type = 'text',
+      placeholder,
+      error,
+      className = '',
+      style,
+      isFirst = false,
+      ...rest
+    },
+    ref
+  ) => {
+    const internalRef = useRef<HTMLInputElement>(null);
 
-
-  const defaultHandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (setForm) {
-      setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-    }
-  };
-
-  useEffect(() => {
-    if (isFirst && focusRef.current) {
-      focusRef.current.focus();
-    }
-  }, [isFirst]);
-
-  return (
-    <input
-      name={name}
-      ref={focusRef}
-      type={type}
-      placeholder={placeholder}
-      value={value}
-      onChange={handleChange || defaultHandleChange}
-      minLength={
-        type === "password" ? 6 : type === "text" ? 1 : undefined
+    useEffect(() => {
+      if (isFirst && internalRef.current) {
+        internalRef.current.focus();
       }
-      required
-      disabled={disabled}
-      className={`w-full h-[35px] rounded-md outline-none border-2 border-b-4 dark:border-[#303030] bg-slate-100 dark:bg-[#2d2d2d] dark:text-white pl-2 pr-2 transition-all duration-300 ease-in-out placeholder-[#9a9a9a] dark:hover:bg-[#313131] dark:focus:bg-[#1e1f20] focus:border-border focus:drop-shadow-lg invalid:focus:border-b-red-600 valid:focus:border-b-blue-900 ${className}`}
-      style={{
-        ...style,
-      }}
-    />
-  );
-}
+    }, [isFirst]);
+
+    return (
+      <div className="flex flex-col w-full">
+        {label && (
+          <label htmlFor={label} className="mb-1 text-sm font-medium">
+            {label}
+          </label>
+        )}
+        <input
+          id={label}
+          type={type}
+          placeholder={placeholder || label}
+          ref={ref || internalRef}
+          className={`w-full h-[35px] rounded-md outline-none border-2 border-b-4 dark:border-[#303030] bg-slate-100 dark:bg-[#2d2d2d] dark:text-white pl-2 pr-2 transition-all duration-300 ease-in-out placeholder-[#9a9a9a] dark:hover:bg-[#313131] dark:focus:bg-[#1e1f20] focus:border-border focus:drop-shadow-lg invalid:focus:border-b-red-600 valid:focus:border-b-blue-900 ${error ? 'border-red-500' : ''
+            } ${className}`}
+          style={style}
+          {...rest}
+        />
+        {error && <p className="mt-1 text-xs text-red-600">{error}</p>}
+      </div>
+    );
+  }
+);
+
+Input.displayName = 'Input';
+
+export default Input;
