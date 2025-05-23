@@ -1,9 +1,9 @@
 'use client';
 
 import DashTable from '@/components/dashboard/DashTable';
-import { couponColumns } from '@/components/dashboard/dashcouponsculmn'; // أعمدة الجدول
-import { useCouponsQuery } from '@/hooks/react-query/coupons/usequerycoupons'; // جلب البيانات
-import { useDeleteCoupon, useUpdateCoupon } from '@/hooks/react-query/coupons/usequerycoupons'; // حذف وتعديل
+import { couponColumns } from '@/components/dashboard/dashcouponsculmn'; 
+import { useCouponsQuery } from '@/hooks/react-query/coupons/usequerycoupons'; 
+import { useDeleteCoupon, useUpdateCoupon } from '@/hooks/react-query/coupons/usequerycoupons';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 
