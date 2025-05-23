@@ -11,32 +11,32 @@ export const links = [
       {
         name: "users",
         icon: <FiUsers />,
-        url: "users",
+        url: "/dashboard/users",
         roleShow: ["admin", "editor"],
       },
       {
         name: "books",
         icon: <TbBooks />,
-        url: "books",
+        url: "/dashboard/books",
         roleShow: ["admin", "editor"],
       },
       {
         name: "categories",
         icon: <MdOutlineCategory />,
-        url: "categories",
+        url: "/dashboard/categories",
         roleShow: ["admin", "editor"],
       },
       {
         name: "authors",
         icon: <BsFillJournalBookmarkFill />,
-        url: "authors",
+        url: "/dashboard/authors",
         roleShow: ["admin", "editor"],
       },
       
       {
         name: "competitions",
         icon: <GiTrophy />,
-        url: "competitions",
+        url: "/dashboard/competitions",
         roleShow: ["admin", "editor"],
       },
     ]
