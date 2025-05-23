@@ -12,7 +12,7 @@ export const createCategory = async (category: Omit<Category, "id">): Promise<Ca
 };
 
 export const updateCategory = async (category: Category): Promise<Category> => {
-  const res = await axios.put(`/categories/${category.id}`, category);
+  const res = await axios.patch(`/categories/${category.id}`, category);
   return res.data;
 };
 

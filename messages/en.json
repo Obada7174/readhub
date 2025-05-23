@@ -189,6 +189,31 @@
     "We'd love to hear your review": "We'd love to hear your review",
     "Send": "Send"
   },
+  "Dashboard":{
+    "dashboard": "Dashboard",
+    "libraryManagement": "Library Management",
+    "mainDashboard": "Main Dashboard",
+    "users": "Users",
+    "addUser": "Add User",
+    "books": "Books",
+    "addBook": "Add Book",
+    "categories": "Categories",
+    "addCategory": "Add Category",
+    "authors": "Authors",
+    "addAuthor": "Add Author",
+    "publishers": "Publishers",
+    "addPublisher": "Add Publisher",
+    "competitions": "Competitions",
+    "addCompetition": "Add Competition",
+    "sidebar":{
+      "users":"Users Management",
+      "books":"Books Management",
+      "categories":"Categories Management",
+      "competitions":"Competitions Management",
+      "authors":"Authors Management"
+      
+    }
+  },
   "SideBar":{
       "Home": "Home",
       "Profile": "Profile",

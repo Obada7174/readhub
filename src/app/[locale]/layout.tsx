@@ -36,9 +36,7 @@ export default function LocaleLayout({
         <NextIntlClientProvider>
           <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
             <ReactQueryProvider >
-              <div className=''>
                 {children}
-              </div>
             </ReactQueryProvider>
           </ThemeProvider>
         </NextIntlClientProvider>
