@@ -17,7 +17,7 @@ export default function ThemeSwitcher() {
     return (
         <button
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="p-2 rounded bg-gray-200 dark:bg-gray-700 hover:scale-105 transition cursor-pointer"
+            className="p-2 rounded bg-gray-200 dark:bg-gray-700 hover:scale-105 transition cursor-pointer mx-5"
             aria-label="Toggle Theme"
         >
             {theme === "dark" ? <LuSun size={18} /> : <LuMoon size={18} />}

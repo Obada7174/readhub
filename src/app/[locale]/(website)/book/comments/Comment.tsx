@@ -45,7 +45,7 @@ const Comment = () => {
                 setAdd(false);
                 setComment("");
               }}
-              className="block ml-auto mt-3 px-5 py-2 bg-black rounded-full hover:bg-gray-800 transition-colors cursor-pointer"
+              className="bg-[#101828] dark:bg-white block ml-auto mt-3 px-5 py-2 rounded-full transition-colors cursor-pointer text-white dark:text-[#101828]"
             >
               Post
             </button>

@@ -2,7 +2,7 @@
 import { useTranslations } from "next-intl";
 import { useRef } from "react";
 import BookCard from "./BookCard";
-import { book } from "./books";
+import { book } from "../books";
 import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from "react-icons/md";
 
 interface Props {

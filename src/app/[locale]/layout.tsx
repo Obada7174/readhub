@@ -1,9 +1,7 @@
-import { NextIntlClientProvider } from "next-intl";
-import Header from "@/components/Header";
+import { NextIntlClientProvider } from 'next-intl';
 import type { Metadata } from "next";
 import { Funnel_Display } from "next/font/google";
-import { useLocale } from "next-intl";
-import Footer from "@/components/Footer";
+import { useLocale } from 'next-intl';
 import { ThemeProvider } from "next-themes";
 import ReactQueryProvider from "@/providers/ReactQueryProvider";
 
@@ -21,7 +19,7 @@ export default function LocaleLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // Ensure that the incoming `locale` is valid
+
   const locale = useLocale();
 
   return (
@@ -37,10 +35,10 @@ export default function LocaleLayout({
       >
         <NextIntlClientProvider>
           <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-            <ReactQueryProvider>
-              <Header />
-              <div className="pt-16 min-h-[50vh]">{children}</div>
-              <Footer />
+            <ReactQueryProvider >
+              <div className=''>
+                {children}
+              </div>
             </ReactQueryProvider>
           </ThemeProvider>
         </NextIntlClientProvider>

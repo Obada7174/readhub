@@ -69,7 +69,10 @@
       "category_filter": "Category Filter",
       "select_category": "Select Category",
       "select_language": "Select Language",
-      "select_rating": "Select Rating"
+      "select_rating": "Select Rating",
+      "price":"Price",
+      "categories":"Categories",
+      "search for books": "Search For Books"
     }
   },
   "SignUpPage": {
@@ -185,6 +188,18 @@
     "Review (optional)": "Review (optional)",
     "We'd love to hear your review": "We'd love to hear your review",
     "Send": "Send"
+  },
+  "SideBar":{
+      "Home": "Home",
+      "Profile": "Profile",
+      "Library": "Library",
+      "Favorites": "Favorites",
+      "My Books": "My Books",
+      "Pdf Reader": "Pdf Reader",
+      "Comments": "Comments",
+      "Competitions": "Competitions",
+      "Settings": "Settings",
+      "Notifications": "Notifications"
   },
   "Comments": {
     "likes": "likes",
