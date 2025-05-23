@@ -1,7 +1,6 @@
 import { FiUsers } from "react-icons/fi";
 import { TbBooks } from "react-icons/tb";
 import { MdOutlineCategory } from "react-icons/md";
-// import { FaRegListAlt } from "react-icons/fa";
 import { BsFillJournalBookmarkFill } from "react-icons/bs";
 import { GiTrophy } from "react-icons/gi";
 import { IoHome } from "react-icons/io5";
@@ -39,6 +38,12 @@ export const links = [
         url: "/dashboard/competitions",
         roleShow: ["admin", "editor"],
       },
+      {
+        name: "Copons",
+        icon: <GiTrophy />,
+        url: "/dashboard/copons",
+        roleShow: ["admin", "editor"],
+      },
     ]
   ;
 export const sidebarLinks = [
@@ -52,4 +57,5 @@ export const sidebarLinks = [
   { href: `/panel/competitions`, label: 'Competitions', icon: <LuTrophy size={20} /> },
   { href: `/panel/settings`, label: 'Settings', icon: <LuSettings size={20} /> },
   { href: `/panel/notifications`, label: 'Notifications', icon: <LuBell size={20} /> },
+
 ];
