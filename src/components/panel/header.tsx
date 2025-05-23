@@ -1,6 +1,5 @@
 "use client";
 
-import { useTranslations } from 'next-intl';
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 import ThemeSwitcher from '@/components/ThemeSwitcher';
@@ -18,7 +17,6 @@ interface HeaderProps {
 export default function Header({ isSidebarOpen, setIsSidebarOpen }: HeaderProps) {
   const [mounted, setMounted] = useState(false);
   const { theme } = useTheme();
-  const t = useTranslations();
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -41,7 +39,7 @@ export default function Header({ isSidebarOpen, setIsSidebarOpen }: HeaderProps)
           <button
             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
             className="md:hidden text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-200"
-            >
+            >{}
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
             </svg>

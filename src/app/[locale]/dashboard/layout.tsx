@@ -1,14 +1,20 @@
-import Sidebar from "@/components/dashboard/Sidebar"
-export default function Layout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+import Sidebar from '@/components/dashboard/Sidebar';
+export default function PanelLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="">
-      <div className="w-72 fixed sidebar bg-gray-50 dark:bg-gray-800">
-        <Sidebar />
+    <>
+      <div className="flex h-screen bg-gray-100 dark:bg-gray-800">
+        <Sidebar/>
+        <main className={`flex-1 p-6 overflow-auto transition-all duration-300`}>
+          {children}
+        </main>
+
+        {/* {isSidebarOpen && !isLargeScreen && (
+          <div
+            className="fixed inset-0 bg-gray-100 dark:bg-gray-800 bg-opacity-50 z-30 md:hidden"
+            onClick={() => setIsSidebarOpen(false)}
+          ></div>
+        )} */}
       </div>
-      {children}</div>
+    </>
   );
 }

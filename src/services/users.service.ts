@@ -12,7 +12,7 @@ export const createUser = async (user: Omit<User, "id">): Promise<User> => {
 };
 
 export const updateUser = async (user: User): Promise<User> => {
-  const res = await axios.put(`/users/${user.id}`, user);
+  const res = await axios.patch(`/users/${user.id}`, user);
   return res.data;
 };
 

@@ -68,11 +68,10 @@
     },
     "copyright": "© 2025 readhub. جميع الحقوق محفوظة."
   },
-
   "BooksPage": {
     "bookTitle": "عنوان الكتاب",
     "price": "السعر",
-    "language":"اللغة",
+    "language": "اللغة",
     "author": "المؤلف",
     "rating": "التقييم",
     "description": "الوصف",
@@ -186,7 +185,7 @@
     "We'd love to hear your review": "يسرنا أن نسمع رأيك",
     "Send": "ارسال"
   },
-  "SideBar":{
+  "SideBar": {
     "Home": "الرئيسية",
     "Profile": "الملف الشخصي",
     "Library": "المكتبة",
@@ -205,7 +204,7 @@
     "Like": "اعجاب",
     "Comment": "تعليق"
   },
-  "Dashboard":{
+  "Dashboard": {
     "dashboard": "لوحة التحكم",
     "libraryManagement": "إدارة المكتبة",
     "mainDashboard": "الرئيسية",
@@ -220,6 +219,13 @@
     "publishers": "دور النشر",
     "addPublisher": "إضافة دار نشر",
     "competitions": "المسابقات",
-    "addCompetition": "إضافة مسابقة"
+    "addCompetition": "إضافة مسابقة",
+    "sidebar": {
+      "users": "إدارة المستخدمين",
+      "books": "إدارة الكتب",
+      "categories": "إدارة التصنيفات",
+      "competitions": "إدارة المسابقات",
+      "authors": "إدارة المؤلفين"
+    }
   }
 }
