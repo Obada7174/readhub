@@ -31,7 +31,7 @@ export default function BooksGrid({
   return (
     <>
       {/* عرض الكتب أو skeleton */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6">
         {/* Loading Skeleton */}
         {loading &&
           Array.from({ length: 6 }).map((_, index) => (
