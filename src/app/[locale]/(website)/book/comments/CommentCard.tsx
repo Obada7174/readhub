@@ -7,18 +7,16 @@ import { useTranslations } from "next-intl";
 
 interface Props {
   comment: Comment;
-  first: boolean;
 }
 
-const CommentCard = ({ comment, first }: Props) => {
+const CommentCard = ({ comment }: Props) => {
   const t = useTranslations("Comments");
 
   return (
     <>
       <div
-        className={`my-5 ${
-          first ? "mt-0" : "max-lg:border-t max-lg:border-[#cfccc9]"
-        } flex max-lg:flex-col lg:gap-8 p-2`}
+        className={`my-5 max-lg:border-t max-lg:border-[#cfccc9]
+         flex max-lg:flex-col lg:gap-8 p-2`}
       >
         <div className="flex max-lg:gap-3 lg:flex-col shrink-0 mt-3">
           <Image
@@ -33,7 +31,7 @@ const CommentCard = ({ comment, first }: Props) => {
             <h4 className="text-xs sm:text-sm">25 {t("days ago")}</h4>
           </div>
         </div>
-        <div className={`${first ? "" : "lg:border-t border-[#cfccc9]"} pt-5`}>
+        <div className={`lg:border-t border-[#cfccc9] pt-5`}>
           <p>{comment.comment}</p>
           <div className="my-3 flex gap-5 ">
             <span>100 {t("likes")}</span>

@@ -2,13 +2,16 @@
 "use client";
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
-import Rate from "../Rate";
-import SuggestedBooks from "../SuggestedBooks";
+import Rate from "../components/Rate";
+import SuggestedBooks from "../components/SuggestedBooks";
 import books from "../books";
-import CommentsSection, { Comment } from "../CommentsSection";
-import { MdStar, MdStarBorder, MdStarHalf } from "react-icons/md";
+import CommentsSection, { Comment } from "../comments/CommentsSection";
+import StarIcon from "@mui/icons-material/Star";
 import { useBookQuery } from "@/hooks/react-query/books/useBooksQuery";
-import BookLoadingSkeleton from "../BookLoadingSkeleton";
+import BookLoadingSkeleton from "../components/BookLoadingSkeleton";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import axios from "axios";
+import { Rating, useTheme } from "@mui/material";
 
 interface Props {
   params: { id: string };
@@ -17,17 +20,39 @@ interface Props {
 const page = ({ params: { id } }: Props) => {
   const local = useLocale();
   const ar = local === "ar";
+  const theme = useTheme();
   const t = useTranslations("BookPage");
   const { data: book, isLoading, error } = useBookQuery(id);
+
+  const queryClient = useQueryClient();
+  const { mutateAsync: addRating } = useMutation({
+    mutationFn: async (rate: number) => {
+      const response = await axios.post(
+        `http://localhost:5000/books/${id}/add-rating`,
+        {},
+        {
+          params: {
+            rating: rate,
+          },
+        }
+      );
+      return response.data;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["book", id],
+      });
+    },
+    onError: (error) => {
+      console.error("Error adding rating:", error);
+    },
+  });
 
   if (isLoading) return <BookLoadingSkeleton />;
   if (error) return <div>Error loading book</div>;
   if (!book) return <div>Book not found</div>;
 
   const discount = +book.discount > 0;
-  const starsCount = Math.floor(+book.rating);
-  const stars = new Array(starsCount).fill(0);
-  const halfStar = +book.rating % 1 >= 0.5;
 
   return (
     <div className="container mx-auto flex justify-center my-10">
@@ -81,7 +106,7 @@ const page = ({ params: { id } }: Props) => {
                   </div>
                 </div>
               )}
-              <Rate />
+              <Rate fn={(val: number) => addRating(val)} />
             </div>
           </div>
         </div>
@@ -95,23 +120,17 @@ const page = ({ params: { id } }: Props) => {
                 {book.author}
               </h2>
               <div className="flex gap-1 items-center pr-2 text-2xl">
-                {stars.map((_, i) => {
-                  return (
-                    <MdStar
-                      key={i}
-                      className="text-yellow-500 max-sm:w-5 max-sm:h-5"
-                    />
-                  );
-                })}
-                {halfStar ? (
-                  <MdStarHalf
-                    className={`text-yellow-500 max-sm:w-5 max-sm:h-5 ${
-                      ar ? "scale-x-[-1]" : ""
-                    }`}
-                  />
-                ) : (
-                  <MdStarBorder className="max-sm:w-5 max-sm:h-5" />
-                )}
+                <Rating
+                  name="rating"
+                  value={+book.rating}
+                  precision={0.1}
+                  emptyIcon={<StarIcon />}
+                  readOnly
+                  sx={{
+                    color:
+                      theme.palette.mode === "dark" ? "#ffc107" : "#f59e0b",
+                  }}
+                />
                 <span className="font-medium text-lg sm:text-xl">
                   {book.rating}
                 </span>

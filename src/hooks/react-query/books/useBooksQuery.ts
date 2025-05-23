@@ -10,7 +10,7 @@ import { Book } from "@/types/book";
 
 export const useBookQuery = (id: string) => {
   return useQuery<Book>({
-    queryKey: ["books", { id }],
+    queryKey: ["book", id],
     queryFn: () => getBook(id),
   });
 };
