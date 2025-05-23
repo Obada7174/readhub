@@ -4,6 +4,7 @@ import { Funnel_Display } from "next/font/google";
 import { useLocale } from 'next-intl';
 import { ThemeProvider } from "next-themes";
 import ReactQueryProvider from "@/providers/ReactQueryProvider";
+import Toaster  from '@/components/ui/Toaster'; 
 
 const funnelDisplay = Funnel_Display({
   variable: "--font-funnel-display",
@@ -37,6 +38,8 @@ export default function LocaleLayout({
           <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
             <ReactQueryProvider >
                 {children}
+              <Toaster />
+
             </ReactQueryProvider>
           </ThemeProvider>
         </NextIntlClientProvider>

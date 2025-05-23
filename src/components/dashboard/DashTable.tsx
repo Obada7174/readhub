@@ -4,14 +4,13 @@ import { useState, useMemo } from 'react';
 import {
     DataGrid,
     GridColDef,
-    GridRowId,GridRowSelectionModel
+    GridRowId, GridRowSelectionModel
 } from '@mui/x-data-grid';
 import { Box } from '@mui/material';
 import Input from '@/components/dashboard/Input';
-import DashButton from '@/components/dashboard/Button';
+import DashButton from '@/components/ui/Button';
 import DashContainer from '@/components/dashboard/DashContainer';
 import DashHeader from '@/components/dashboard/Header';
-import { useRouter } from 'next/navigation';
 
 interface DashTableProps<T extends { id: number | string }> {
     ITEMS: string;
@@ -49,7 +48,6 @@ export default function DashTable<T extends { id: number | string }>({
     deleteMutation,
     updateMutation,
 }: DashTableProps<T>) {
-    const router = useRouter();
 
     const [search, setSearch] = useState('');
     const [searchResults, setSearchResults] = useState<T[]>([]);
@@ -74,12 +72,14 @@ export default function DashTable<T extends { id: number | string }>({
     };
 
     const handleDelete = async () => {
+        console.log("click delete");
+        console.log(selectedRows);
         if (deleteMutation && selectedRows.length > 0) {
             try {
                 await deleteMutation.mutateAsync(selectedRows);
                 
                 query.refetch();
-                setSelectedRows([]); // إعادة تعيين التحديد بعد الحذف
+                setSelectedRows([]); 
             } catch (err) {
                 console.error('Delete error:', err);
             }
@@ -90,7 +90,7 @@ export default function DashTable<T extends { id: number | string }>({
         if (updateMutation) {
             try {
                 const result = await updateMutation(updatedRow);
-                query.refetch(); // تحديث البيانات بعد التعديل
+                query.refetch(); 
                 return result;
             } catch (err) {
                 console.error('Update error:', err);
@@ -130,17 +130,16 @@ export default function DashTable<T extends { id: number | string }>({
                     />
                     <div className="gap-4 flex">
                         <DashButton
-                            text="Add"
-                            size="md"
+                            size="lg"
                             className="max-w-44"
-                            onClick={() => router.push(`/dashboard/${ADD}`)}
-                        />
+                            href={`/dashboard/${ADD}`}
+                        >Add</DashButton>
                         <DashButton
-                            text="Delete"
-                            size="md"
+                            size="lg"
+                            variant='destructive'
                             className="max-w-44"
                             onClick={handleDelete}
-                        />
+                        >Delete</DashButton>
                     </div>
                 </Box>
                 <Box
@@ -152,7 +151,11 @@ export default function DashTable<T extends { id: number | string }>({
                 >
                     <DataGrid
                         rows={displayedRows}
-                        columns={columns}
+                        columns={columns.map((col) => ({
+                            ...col,
+                            align: 'center',
+                            headerAlign: 'center',
+                        }))}
                         pagination
                         paginationMode="client"
                         rowCount={query.total ?? displayedRows.length}
@@ -163,35 +166,47 @@ export default function DashTable<T extends { id: number | string }>({
                         getRowHeight={() => 'auto'}
                         loading={query.isLoading}
                         editMode={isEditable ? 'row' : undefined}
-                        // processRowUpdate={isEditable ? handleRowUpdate : undefined}
-                        // editMode={isEditable && "row"}
-
-                        // experimentalFeatures={isEditable && { newEditingApi: true }}
                         processRowUpdate={(newRow) => isEditable && handleRowUpdate(newRow)}
                         onRowSelectionModelChange={(newSelectionModel: GridRowSelectionModel) => {
-                            setSelectedRows(Array.isArray(newSelectionModel) ? newSelectionModel : []);
+                            if (Array.isArray(newSelectionModel)) {
+                                setSelectedRows(newSelectionModel);
+                            } else if ('ids' in newSelectionModel) {
+                                setSelectedRows(Array.from(newSelectionModel.ids));
+                            }
                         }}
+                        
                         sx={{
                             maxWidth: '100%',
                             height: '100%',
 
-                            // Dark Mode Styles
                             '[class~="dark"] &': {
-                                color: '#e5e7eb', // text-gray-200
-                                backgroundColor: '#1f2937', // bg-gray-800
+                                color: '#e5e7eb',
+                                backgroundColor: '#1f2937',
 
                                 '& .MuiDataGrid-root': {
                                     backgroundColor: '#1f2937',
                                 },
                                 '& .MuiDataGrid-columnHeader': {
-                                    backgroundColor: '#374151', // bg-gray-700
-                                    color: '#f9fafb', // text-white
+                                    backgroundColor: '#374151',
+                                    color: '#f9fafb',
                                     fontSize: 16,
                                     fontWeight: 'bold',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
                                 },
                                 '& .MuiDataGrid-cell': {
                                     color: '#f9fafb',
                                     borderColor: '#374151',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    whiteSpace: 'normal',
+                                    lineHeight: 1.5,
+                                    maxHeight: 'none',
+                                    minHeight: 52,
+                                    paddingTop: '8px',
+                                    paddingBottom: '8px',
                                 },
                                 '& .MuiDataGrid-footerContainer': {
                                     backgroundColor: '#374151',
@@ -205,7 +220,7 @@ export default function DashTable<T extends { id: number | string }>({
                                     backgroundColor: '#1f2937',
                                     '&:hover': {
                                         backgroundColor: '#374151',
-                                    }
+                                    },
                                 },
                                 '& .MuiDataGrid-skeletonRow': {
                                     backgroundColor: '#374151',
@@ -215,19 +230,28 @@ export default function DashTable<T extends { id: number | string }>({
                                 },
                             },
 
-                            // Light Mode Styles (Default)
                             '& .MuiDataGrid-columnHeader': {
-                                backgroundColor: '#d1d5db', // gray-300
-                                color: '#111827', // text-gray-900
+                                backgroundColor: '#d1d5db',
+                                color: '#111827',
                                 fontSize: 16,
                                 fontWeight: 'bold',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
                             },
                             '& .MuiDataGrid-cell': {
                                 color: '#111827',
                                 whiteSpace: 'normal',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                maxHeight: 'none',
+                                minHeight: 52,
+                                paddingTop: '8px',
+                                paddingBottom: '8px',
                             },
                             '& .MuiDataGrid-footerContainer': {
-                                backgroundColor: '#f3f4f6', // gray-100
+                                backgroundColor: '#f3f4f6',
                                 color: '#111827',
                             },
                             '& .MuiTablePagination-root': {
@@ -237,7 +261,7 @@ export default function DashTable<T extends { id: number | string }>({
                                 backgroundColor: '#ffffff',
                                 '&:hover': {
                                     backgroundColor: '#f9fafb',
-                                }
+                                },
                             },
                         }}
                     />

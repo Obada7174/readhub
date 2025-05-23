@@ -18,4 +18,5 @@ export interface UpdateUserPayload {
     email: string;
     password?: string;
     role: string;
+    location: string;
 }

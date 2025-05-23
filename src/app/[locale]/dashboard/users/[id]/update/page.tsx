@@ -25,6 +25,7 @@ export default function EditUser() {
                 email: user.email,
                 password: '',
                 role: user.role,
+                location: user.location
             });
         }
     }, [user]);
@@ -36,6 +37,7 @@ export default function EditUser() {
             email: data.email,
             password: data.password || undefined,
             role: data.role,
+            location:data.location
         };
 
         await updateUserMutation.mutateAsync({ id: userId, data: updateData });

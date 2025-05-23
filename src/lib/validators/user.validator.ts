@@ -12,6 +12,10 @@ export const userSchema = z.object({
     .transform(val => val.trim()),
 
   email: z.string().email('البريد الإلكتروني غير صحيح'),
+  location: z
+  .string()
+  .min(2, 'الاسم الأخير يجب أن يحتوي على حرفين على الأقل')
+  .transform(val => val.trim()),
   password: z.string().min(6, 'كلمة المرور يجب أن تحتوي على 6 أحرف على الأقل'),
   role: z.string().nonempty('الدور مطلوب'),
 });
