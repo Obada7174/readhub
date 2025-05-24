@@ -68,11 +68,10 @@
     },
     "copyright": "© 2025 readhub. جميع الحقوق محفوظة."
   },
-
   "BooksPage": {
     "bookTitle": "عنوان الكتاب",
     "price": "السعر",
-    "language":"اللغة",
+    "language": "اللغة",
     "author": "المؤلف",
     "rating": "التقييم",
     "description": "الوصف",
@@ -186,7 +185,7 @@
     "We'd love to hear your review": "يسرنا أن نسمع رأيك",
     "Send": "ارسال"
   },
-  "SideBar":{
+  "SideBar": {
     "Home": "الرئيسية",
     "Profile": "الملف الشخصي",
     "Library": "المكتبة",
@@ -204,5 +203,49 @@
     "days ago": "يوم",
     "Like": "اعجاب",
     "Comment": "تعليق"
+  },
+  "Dashboard": {
+    "dashboard": "لوحة التحكم",
+    "libraryManagement": "إدارة المكتبة",
+    "mainDashboard": "الرئيسية",
+    "users": "المستخدمين",
+    "addUser": "إضافة مستخدم",
+    "books": "الكتب",
+    "addBook": "إضافة كتاب",
+    "categories": "التصنيفات",
+    "addCategory": "إضافة تصنيف",
+    "authors": "المؤلفين",
+    "addAuthor": "إضافة مؤلف",
+    "publishers": "دور النشر",
+    "addPublisher": "إضافة دار نشر",
+    "competitions": "المسابقات",
+    "addCompetition": "إضافة مسابقة",
+    "sidebar": {
+      "users": "المستخدمين",
+      "books": "الكتب",
+      "categories": "التصنيفات",
+      "competitions": "المسابقات",
+      "authors": "المؤلفين"
+    }
+  },
+  "toastMessages": {
+    "user_created_successfully": "تم إنشاء المستخدم بنجاح",
+    "user_updated_successfully": "تم تحديث المستخدم بنجاح",
+    "user_deleted_successfully": "تم حذف المستخدم بنجاح",
+    "failed_to_create_user": "فشل في إنشاء المستخدم",
+    "failed_to_update_user": "فشل في تحديث المستخدم",
+    "failed_to_delete_user": "فشل في حذف المستخدم",
+    "category_created_successfully": "تم إنشاء التصنيف بنجاح",
+    "category_updated_successfully": "تم تحديث التصنيف بنجاح",
+    "category_deleted_successfully": "تم حذف التصنيف بنجاح",
+    "failed_to_create_category": "فشل في إنشاء التصنيف",
+    "failed_to_update_category": "فشل في تحديث التصنيف",
+    "failed_to_delete_category": "فشل في حذف التصنيف",
+    "book_created_successfully": "تم إنشاء الكتاب بنجاح",
+    "book_updated_successfully": "تم تحديث الكتاب بنجاح",
+    "book_deleted_successfully": "تم حذف الكتاب بنجاح",
+    "failed_to_create_book": "فشل في إنشاء الكتاب",
+    "failed_to_update_book": "فشل في تحديث الكتاب",
+    "failed_to_delete_book": "فشل في حذف الكتاب"
   }
 }

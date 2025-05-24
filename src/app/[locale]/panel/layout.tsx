@@ -1,7 +1,7 @@
 'use client';
 
-import Sidebar from '@/app/[locale]/panel/components/sidebar';
-import Header from '@/app/[locale]/panel/components/header';
+import Sidebar from '@/components/panel/sidebar';
+import Header from '@/components/panel/header';
 import { useEffect, useState } from 'react';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import ThemeSwitcher from '@/components/ThemeSwitcher';

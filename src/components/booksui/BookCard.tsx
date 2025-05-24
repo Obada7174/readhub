@@ -1,9 +1,8 @@
-"use client";
-import Image from "next/image";
 import { FaStar } from "react-icons/fa";
 import { Tooltip, Box, Typography, Rating } from "@mui/material";
+import { Book } from "@/types/book";
 
-const BookCardSecond = ({ book }: any) => {
+const BookCardSecond = ({ book }: {book : Book}) => {
   return (
     <div className="relative w-[150px] cursor-pointer">
       <Tooltip
@@ -32,7 +31,7 @@ const BookCardSecond = ({ book }: any) => {
             </Typography>
             <Box display="flex" alignItems="center" mb={1}>
               <Rating
-                value={book.rating}
+                value={parseFloat(book.rating)}
                 precision={0.5}
                 size="small"
                 readOnly
@@ -54,17 +53,15 @@ const BookCardSecond = ({ book }: any) => {
               {book.description}
             </Typography>
             <Typography variant="caption" color="text.secondary">
-              Published: {book.publishedDate}
+              Published: {book.created_at}
             </Typography>
           </Box>
         }
       >
-        {/* خلي الـ Box بحجم الصورة فقط وبدون أي padding/margin */}
         <Box className="relative w-[150px] h-[200px]">
-          <Image
+          <img
             src={book.img}
             alt={book.title}
-            fill
             style={{ objectFit: "cover" }}
             sizes="150px"
           />

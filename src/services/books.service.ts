@@ -17,7 +17,7 @@ export const createBook = async (book: Omit<Book, "id">): Promise<Book> => {
 };
 
 export const updateBook = async (book: Book): Promise<Book> => {
-  const res = await axios.put(`/books/${book.id}`, book);
+  const res = await axios.patch(`/books/${book.id}`, book);
   return res.data;
 };
 

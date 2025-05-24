@@ -1,11 +1,11 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
-import Link from 'next/link';
-import { useState, Dispatch, SetStateAction } from 'react';
-import { LuUser, LuBookOpen, LuStar, LuBook, LuFileText, LuMessageSquare, LuTrophy, LuSettings, LuBell } from 'react-icons/lu';
-import { IoHome } from "react-icons/io5";
+import { Link } from '@/i18n/navigation';
+import {  Dispatch, SetStateAction } from 'react';
 import { useTranslations } from 'next-intl'; 
+import {sidebarLinks} from "@/assets/files/json"
+import { LuMenu, LuX } from 'react-icons/lu';
 
 interface SidebarProps {
   isSidebarOpen: boolean;
@@ -22,20 +22,6 @@ export default function Sidebar({
 }: SidebarProps) {
   const pathname = usePathname();
   const t = useTranslations('SideBar'); 
-  const locale = pathname.split('/')[1];
-
-  const sidebarLinks = [
-    { href: `/${locale}/panel`, label: t('Home'), icon: <IoHome size={20} /> },
-    { href: `/${locale}/panel/profile`, label: t('Profile'), icon: <LuUser size={20} /> },
-    { href: `/${locale}/panel/library`, label: t('Library'), icon: <LuBookOpen size={20} /> },
-    { href: `/${locale}/panel/favorites`, label: t('Favorites'), icon: <LuStar size={20} /> },
-    { href: `/${locale}/panel/my-book`, label: t('My Books'), icon: <LuBook size={20} /> },
-    { href: `/${locale}/panel/pdf-reader`, label: t('Pdf Reader'), icon: <LuFileText size={20} /> },
-    { href: `/${locale}/panel/comments`, label: t('Comments'), icon: <LuMessageSquare size={20} /> },
-    { href: `/${locale}/panel/competitions`, label: t('Competitions'), icon: <LuTrophy size={20} /> },
-    { href: `/${locale}/panel/settings`, label: t('Settings'), icon: <LuSettings size={20} /> },
-    { href: `/${locale}/panel/notifications`, label: t('Notifications'), icon: <LuBell size={20} /> },
-  ];
 
   return (
     <aside
@@ -53,7 +39,7 @@ export default function Sidebar({
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
           className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
         >
-          {isSidebarOpen ? '←' : '→'}
+          {isSidebarOpen ? <LuX/> : <LuMenu/>}
         </button>
       </div>
 
@@ -67,7 +53,7 @@ export default function Sidebar({
             } ${!isSidebarOpen ? 'justify-center' : ''}`}
           >
             {link.icon}
-            {isSidebarOpen && <span>{link.label}</span>}
+            {isSidebarOpen && <span>{t(link.label)}</span>}
           </Link>
         ))}
 

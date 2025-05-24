@@ -189,6 +189,31 @@
     "We'd love to hear your review": "We'd love to hear your review",
     "Send": "Send"
   },
+  "Dashboard":{
+    "dashboard": "Dashboard",
+    "libraryManagement": "Library Management",
+    "mainDashboard": "Main Dashboard",
+    "users": "Users",
+    "addUser": "Add User",
+    "books": "Books",
+    "addBook": "Add Book",
+    "categories": "Categories",
+    "addCategory": "Add Category",
+    "authors": "Authors",
+    "addAuthor": "Add Author",
+    "publishers": "Publishers",
+    "addPublisher": "Add Publisher",
+    "competitions": "Competitions",
+    "addCompetition": "Add Competition",
+    "sidebar":{
+      "users":"Users",
+      "books":"Books",
+      "categories":"Categories",
+      "competitions":"Competitions",
+      "authors":"Authors"
+      
+    }
+  },
   "SideBar":{
       "Home": "Home",
       "Profile": "Profile",
@@ -207,5 +232,25 @@
     "days ago": "days ago",
     "Like": "Like",
     "Comment": "Comment"
+  },
+  "toastMessages":{
+    "user_created_successfully": "User created successfully",
+    "user_updated_successfully": "User updated successfully",
+    "user_deleted_successfully": "User deleted successfully",
+    "failed_to_create_user": "Failed to create user",
+    "failed_to_update_user": "Failed to update user",
+    "failed_to_delete_user": "Failed to delete user",
+    "category_created_successfully": "Category created successfully",
+    "category_updated_successfully": "Category updated successfully",
+    "category_deleted_successfully": "Category deleted successfully",
+    "failed_to_create_category": "Failed to create category",
+    "failed_to_update_category": "Failed to update category",
+    "failed_to_delete_category": "Failed to delete category",
+    "book_created_successfully": "Book created successfully",
+    "book_updated_successfully": "Book updated successfully",
+    "book_deleted_successfully": "Book deleted successfully",
+    "failed_to_create_book": "Failed to create book",
+    "failed_to_update_book": "Failed to update book",
+    "failed_to_delete_book": "Failed to delete book"
   }
 }
