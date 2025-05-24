@@ -11,7 +11,7 @@ import { useBookQuery } from "@/hooks/react-query/books/useBooksQuery";
 import BookLoadingSkeleton from "../components/BookLoadingSkeleton";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
-import { Rating, useTheme } from "@mui/material";
+import { Rating } from "@mui/material";
 
 interface Props {
   params: { id: string };
@@ -20,7 +20,6 @@ interface Props {
 const page = ({ params: { id } }: Props) => {
   const local = useLocale();
   const ar = local === "ar";
-  const theme = useTheme();
   const t = useTranslations("BookPage");
   const { data: book, isLoading, error } = useBookQuery(id);
 
@@ -127,8 +126,9 @@ const page = ({ params: { id } }: Props) => {
                   emptyIcon={<StarIcon />}
                   readOnly
                   sx={{
-                    color:
-                      theme.palette.mode === "dark" ? "#ffc107" : "#f59e0b",
+                    "& .MuiRating-iconFilled": {
+                      color: "primary.main",
+                    },
                   }}
                 />
                 <span className="font-medium text-lg sm:text-xl">
@@ -142,15 +142,15 @@ const page = ({ params: { id } }: Props) => {
           </div>
           <div className="flex gap-3 items-center flex-wrap">
             <div className="text-base sm:text-lg font-medium">
-              {t("Genres")}
+              {t("Categories")}
             </div>
-            {book.categories.map((genre) => {
+            {book.categories.map((category) => {
               return (
                 <div
-                  key={genre.id}
+                  key={category.id}
                   className="cursor-pointer border-b-2 border-green-cool transition-colors text-sm sm:text-base font-medium"
                 >
-                  {genre.title}
+                  {category.title}
                 </div>
               );
             })}

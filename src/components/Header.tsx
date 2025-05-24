@@ -1,15 +1,12 @@
 "use client";
 
-import { useEffect, useState } from 'react';
+import {  useState } from 'react';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import Button  from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
-import Image from 'next/image';
 import LanguageSwitcher from './LanguageSwitcher';
-
-import readhub from '@/assets/images/readhub-logo.svg';
-import readhubdarkmode from "@/assets/images/readhub-darkmode.svg";
+import Logo from '@/components/ui/Logo'
 import {
     LuShoppingCart,
     LuUser,
@@ -20,16 +17,11 @@ import {
 } from 'react-icons/lu';
 
 import ThemeSwitcher from './ThemeSwitcher';
-import { useTheme } from 'next-themes';
 
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [mounted, setMounted] = useState(false);
-    const { theme } = useTheme();
     const t = useTranslations();
-    useEffect(() => {
-        setMounted(true);
-    }, []);
+    
 
 
 
@@ -37,20 +29,7 @@ export default function Header() {
         <header className="border-b border-gray-300 bg-gray-200 dark:bg-gray-900 dark:border-gray-700 shadow-lg fixed w-full top-0 left-0 z-50">
             <div className="container mx-auto px-4 py-1.5">
                 <div className="flex items-center justify-between">
-                    {/* Logo */}
-                    <Link href='/' className="flex gap-1.5 items-center min-h-20 min-w-56">
-                        {mounted && (
-                            <Image
-                                src={theme === 'dark' ? readhubdarkmode : readhub}
-                                alt="readhub logo"
-                                width={60}
-                                className='min-w-20'
-                            />
-                        )}
-                        <h1 className="font-funnel-display text-2xl text-gray-800 dark:text-white">
-                            <span className='font-light'>read</span><strong>hub</strong>
-                        </h1>
-                    </Link>
+                    <Logo/>
 
                     {/* Desktop Navigation */}
                     <nav className="hidden md:flex items-center space-x-8">
@@ -62,7 +41,6 @@ export default function Header() {
                     </nav>
 
                     <div className="hidden md:flex items-center space-x-4">
-                        {/* Search Box */}
 
                         <div className="relative">
                             <Input
@@ -74,11 +52,8 @@ export default function Header() {
                         </div>
 
 
-                        {/* Language Switcher - Desktop */}
                         <LanguageSwitcher />
-
                         <ThemeSwitcher />
-
                         <Link href="/dashboard">
                             <Button variant="ghost" size="icon">
                                 <LuLayoutDashboard className="h-5 w-5 text-gray-800 dark:text-white" />
@@ -131,7 +106,6 @@ export default function Header() {
                                 <LuSearch className="absolute left-2 top-2.5 h-4 w-4 text-gray-600 dark:text-gray-300" />
                             </div>
 
-                            {/* Language Switcher - Mobile */}
                             <LanguageSwitcher />
                         </nav>
                     </div>

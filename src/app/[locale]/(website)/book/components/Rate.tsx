@@ -1,5 +1,5 @@
 "use client";
-import { Rating, useTheme } from "@mui/material";
+import { Rating } from "@mui/material";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 import StarIcon from "@mui/icons-material/Star";
@@ -10,7 +10,6 @@ interface Props {
 
 const Rate = ({ fn }: Props) => {
   const t = useTranslations("BookPage");
-  const theme = useTheme();
   const [rating, setRating] = useState<number | null>(null);
 
   return (
@@ -27,7 +26,12 @@ const Rate = ({ fn }: Props) => {
         precision={0.5}
         emptyIcon={<StarIcon />}
         sx={{
-          color: theme.palette.mode === "dark" ? "#ffc107" : "#f59e0b",
+          "& .MuiRating-iconFilled": {
+            color: "primary.main", // Uses theme's primary color
+          },
+          "& .MuiRating-iconHover": {
+            color: "primary.dark", // Darker shade on hover (if not readOnly)
+          },
           scale: 1.4,
           gap: 0.25,
         }}
