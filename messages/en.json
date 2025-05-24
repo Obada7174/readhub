@@ -70,8 +70,8 @@
       "select_category": "Select Category",
       "select_language": "Select Language",
       "select_rating": "Select Rating",
-      "price":"Price",
-      "categories":"Categories",
+      "price": "Price",
+      "categories": "Categories",
       "search for books": "Search For Books"
     }
   },
@@ -175,7 +175,7 @@
     ]
   },
   "BookPage": {
-    "Genres": "Genres",
+    "Categories": "Categories",
     "Want to read": "Want to read",
     "Pages": "Pages",
     "First published": "First published",
@@ -189,7 +189,7 @@
     "We'd love to hear your review": "We'd love to hear your review",
     "Send": "Send"
   },
-  "Dashboard":{
+  "Dashboard": {
     "dashboard": "Dashboard",
     "libraryManagement": "Library Management",
     "mainDashboard": "Main Dashboard",
@@ -205,26 +205,25 @@
     "addPublisher": "Add Publisher",
     "competitions": "Competitions",
     "addCompetition": "Add Competition",
-    "sidebar":{
-      "users":"Users",
-      "books":"Books",
-      "categories":"Categories",
-      "competitions":"Competitions",
-      "authors":"Authors"
-      
+    "sidebar": {
+      "users": "Users",
+      "books": "Books",
+      "categories": "Categories",
+      "competitions": "Competitions",
+      "authors": "Authors"
     }
   },
-  "SideBar":{
-      "Home": "Home",
-      "Profile": "Profile",
-      "Library": "Library",
-      "Favorites": "Favorites",
-      "My Books": "My Books",
-      "Pdf Reader": "Pdf Reader",
-      "Comments": "Comments",
-      "Competitions": "Competitions",
-      "Settings": "Settings",
-      "Notifications": "Notifications"
+  "SideBar": {
+    "Home": "Home",
+    "Profile": "Profile",
+    "Library": "Library",
+    "Favorites": "Favorites",
+    "My Books": "My Books",
+    "Pdf Reader": "Pdf Reader",
+    "Comments": "Comments",
+    "Competitions": "Competitions",
+    "Settings": "Settings",
+    "Notifications": "Notifications"
   },
   "Comments": {
     "likes": "likes",
@@ -233,7 +232,7 @@
     "Like": "Like",
     "Comment": "Comment"
   },
-  "toastMessages":{
+  "toastMessages": {
     "user_created_successfully": "User created successfully",
     "user_updated_successfully": "User updated successfully",
     "user_deleted_successfully": "User deleted successfully",

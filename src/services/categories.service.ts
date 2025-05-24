@@ -2,8 +2,8 @@ import axios from "@/services/axios";
 import { Category } from "@/types/category";
 
 export const getCategories = async (): Promise<Category[]> => {
-  const res = await axios.get("/categories");
-  return res.data;
+  const res = await axios.get("http://localhost:5000/categories");
+  return res.data.data;
 };
 
 export const getCategory = async (id: number): Promise<Category> => {
@@ -11,8 +11,9 @@ export const getCategory = async (id: number): Promise<Category> => {
   return res.data;
 };
 
-
-export const createCategory = async (category: Omit<Category, "id">): Promise<Category> => {
+export const createCategory = async (
+  category: Omit<Category, "id">
+): Promise<Category> => {
   const res = await axios.post("/categories", category);
   return res.data;
 };
