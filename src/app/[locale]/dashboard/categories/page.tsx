@@ -61,8 +61,8 @@ export default function Users() {
   return (
     <DashTable<Category>
       ITEM="Category"
-      ITEMS="Categorys"
-      ADD="categorys/addcategory"
+      ITEMS="Categories"
+      ADD="categories/addcategory"
       columns={columns}
       isEditable={true}
       query={{
