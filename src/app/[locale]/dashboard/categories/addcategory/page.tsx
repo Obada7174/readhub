@@ -1,16 +1,16 @@
 "use client";
 
-import { useCreateUser } from "@/hooks/react-query/users/useUsersQuery";
-import UserForm from "@/components/dashboard/users/UserForm";
-import { UserFormValues } from "@/lib/validators/user.validator";
-import { User } from "@/types/user";
+import UseCategoryForm from "@/components/dashboard/categories/UseCategoryForm";
+import { useCreateCategory } from "@/hooks/react-query/categories/useCategoriesQuery";
+import { CategoryFormValues } from "@/lib/validators/category.validator";
+import { Category } from "@/types/category";
 
 export default function AddUser() {
-  const createUserMutation = useCreateUser();
+  const createBookMutation = useCreateCategory();
 
-  const handleAdd = async (data: UserFormValues) => {
-    await createUserMutation.mutateAsync(data as User);
+  const handleAdd = async (data: CategoryFormValues) => {
+    await createBookMutation.mutateAsync(data as Category);
   };
 
-  return <UserForm mode="add" onSubmit={handleAdd} />;
+  return <UseCategoryForm mode="add" onSubmit={handleAdd} />;
 }
