@@ -2,9 +2,9 @@ import { FiUsers } from "react-icons/fi";
 import { TbBooks } from "react-icons/tb";
 import { MdOutlineCategory } from "react-icons/md";
 import { BsFillJournalBookmarkFill } from "react-icons/bs";
-import { GiTrophy } from "react-icons/gi";
+import { GiShoppingCart, GiTrophy } from "react-icons/gi";
 import { IoHome } from "react-icons/io5";
-import { LuBell, LuBook, LuBookOpen, LuFileText, LuMessageSquare, LuSettings, LuStar, LuTrophy, LuUser } from "react-icons/lu";
+import { LuBell, LuBook, LuBookOpen, LuFileText, LuMessageSquare, LuSettings, LuStar, LuTag, LuTrophy, LuUser } from "react-icons/lu";
 
 export const links = [
       {
@@ -40,13 +40,13 @@ export const links = [
       },
       {
         name: "Copons",
-        icon: <GiTrophy />,
+        icon:<LuTag />,
         url: "/dashboard/copons",
         roleShow: ["admin", "editor"],
       },
       {
         name: "Carts",
-        icon: <GiTrophy />,
+        icon: <GiShoppingCart />,
         url: "/dashboard/carts",
         roleShow: ["admin", "editor"],
       },

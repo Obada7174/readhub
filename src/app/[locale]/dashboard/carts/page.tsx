@@ -12,9 +12,8 @@ export default function CartsPage() {
   const cartsQuery = useCartsQuery();
   const deleteMutation = useDeleteCart();
   const updateMutation = useUpdateCart();
-
   const cartColumns = useCartColumns(); 
-
+  
   return (
     <DashTable
       ITEMS="Carts"
