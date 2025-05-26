@@ -40,9 +40,7 @@ export default function Sidebar() {
         >
             <div className="p-4 flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                    
-                        <Logo/>
-                    
+                    <Logo />
                 </div>
                 <button
                     onClick={() => setIsSidebarOpen(!isSidebarOpen)}
@@ -68,8 +66,8 @@ export default function Sidebar() {
                 {!isSidebarOpen && !LanguageSwitcher && !ThemeSwitcher ? null : (
                     <div className="absolute bottom-4 left-0 right-0 px-4 flex flex-col space-y-3 z-50">
                         <div className="flex items-center justify-between">
-                            {LanguageSwitcher && <div>{<LanguageSwitcher/>}</div>}
-                            {ThemeSwitcher && <div>{<ThemeSwitcher/>}</div>}
+                            {LanguageSwitcher && <div>{<LanguageSwitcher />}</div>}
+                            {ThemeSwitcher && <div>{<ThemeSwitcher />}</div>}
                         </div>
                     </div>
                 )}

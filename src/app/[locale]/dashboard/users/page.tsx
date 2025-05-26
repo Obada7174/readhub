@@ -8,7 +8,7 @@ import {
   useUpdateUser,
 } from "@/hooks/react-query/users/useUsersQuery";
 import { GridRowId } from "@mui/x-data-grid";
-import { User } from "@/types/user";
+import { UpdateUserPayload, User } from "@/types/user";
 import { SelectChangeEvent } from '@mui/material/Select';
 interface DateObject {
   getFullYear: number;
@@ -42,10 +42,9 @@ export default function Users() {
         onChange={handleChange}
         sx={{ width: "100%" }}
       >
-        <MenuItem value="1995">admin</MenuItem>
-        <MenuItem value="2001">user</MenuItem>
-        <MenuItem value="1996">writer</MenuItem>
-        <MenuItem value="1999">Products Manager</MenuItem>
+        <MenuItem value="admin">admin</MenuItem>
+        <MenuItem value="user">user</MenuItem>
+        <MenuItem value="author">author</MenuItem>
       </Select>
     );
   };
@@ -84,26 +83,24 @@ export default function Users() {
       editable: true,
       type: "singleSelect",
       valueOptions: [
-        { value: "1995", label: "admin" },
-        { value: "1996", label: "writer" },
-        { value: "1999", label: "product manager" },
-        { value: "2001", label: "user" },
+        { value: "admin", label: "admin" },
+        { value: "author", label: "author" },
+        { value: "user", label: "user" },
       ],
       renderEditCell: RoleEditCell, 
       renderCell: (params: GridRenderCellParams) => {
         const value = params.value;
-        return value === "1995"
-          ? "admin"
-          : value === "1996"
-            ? "writer"
-            : value === "1999"
-              ? "product manager"
-              : value === "2001"
-                ? "user"
-                : "";
+        return value ;
       },
       maxWidth: 120,
       minWidth: 70,
+      flex: 1,
+    },
+    {
+      field: "location",
+      headerName: "Location",
+      editable: true,
+      minWidth: 90,
       flex: 1,
     },
     {
@@ -130,7 +127,7 @@ export default function Users() {
     <DashTable
       ITEM="User"
       ITEMS="Users"
-      ADD="adduser"
+      ADD="users/adduser"
       columns={columns}
       isEditable={true}
       query={{
@@ -148,7 +145,17 @@ export default function Users() {
         },
       }}
       updateMutation={async (row: User) => {
-        return await updateMutation.mutateAsync(row);
+        const { id, first_name, last_name, email, role , location } = row;
+
+        const updateData: UpdateUserPayload = {
+          first_name,
+          last_name,
+          email,
+          role,
+          location
+        };
+
+        return await updateMutation.mutateAsync({ id, data: updateData });
       }}
     />
   );

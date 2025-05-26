@@ -6,6 +6,12 @@ export const getCategories = async (): Promise<Category[]> => {
   return res.data;
 };
 
+export const getCategory = async (id: number): Promise<Category> => {
+  const res = await axios.get(`/categories/${id}`);
+  return res.data;
+};
+
+
 export const createCategory = async (category: Omit<Category, "id">): Promise<Category> => {
   const res = await axios.post("/categories", category);
   return res.data;
