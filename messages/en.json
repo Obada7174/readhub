@@ -210,9 +210,31 @@
       "books":"Books",
       "categories":"Categories",
       "competitions":"Competitions",
-      "authors":"Authors"
-      
-    }
+      "authors":"Authors",
+      "Copons":"Copons",
+      "Carts":"Carts"
+      },
+      "add_cart":{
+        "title": "Add New Cart",
+        "userId_label": "User ID",
+        "userId_placeholder": "User ID",
+        "submit_button": "Add Cart",
+        "success_message": "Cart added successfully!",
+        "error_required_userId": "User ID is required and must be a positive number"
+      },
+      "dashtable":{
+        "add": "Add",
+        "delete": "Delete",
+        "search_for": "Search for {item}"
+      },
+      "cart_columns": {
+        "id": "Cart ID",
+        "userId": "User ID",
+        "userEmail": "User Email",
+        "status": "Status",
+        "created_at": "Created At",
+        "updated_at": "Updated At"
+      }
   },
   "SideBar":{
       "Home": "Home",

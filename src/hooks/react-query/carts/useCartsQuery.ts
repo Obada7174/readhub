@@ -1,4 +1,3 @@
-
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import {
   getCarts,
@@ -44,13 +43,13 @@ export const useUpdateCart = () => {
   });
 };
 
-
 export const useDeleteCart = () => {
   const queryClient = useQueryClient();
+
   return useMutation({
-    mutationFn: deleteCart,
+    mutationFn: (ids: number[]) => deleteCart(ids),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["carts"] });
+      queryClient.invalidateQueries({ queryKey: ['carts'] }); 
     },
   });
 };

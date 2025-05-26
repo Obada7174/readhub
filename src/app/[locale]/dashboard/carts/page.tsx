@@ -1,7 +1,7 @@
 'use client';
 
 import DashTable from '@/components/dashboard/DashTable';
-import { cartColumns } from '@/components/dashboard/cartcolumn';
+import { useCartColumns } from '@/components/dashboard/cartcolumn'; 
 import { useCartsQuery } from '@/hooks/react-query/carts/useCartsQuery';
 import { useDeleteCart, useUpdateCart } from '@/hooks/react-query/carts/useCartsQuery';
 import { useRouter } from 'next/navigation';
@@ -12,6 +12,8 @@ export default function CartsPage() {
   const cartsQuery = useCartsQuery();
   const deleteMutation = useDeleteCart();
   const updateMutation = useUpdateCart();
+
+  const cartColumns = useCartColumns(); 
 
   return (
     <DashTable

@@ -11,6 +11,7 @@ import Input from '@/components/dashboard/Input';
 import DashButton from '@/components/ui/Button';
 import DashContainer from '@/components/dashboard/DashContainer';
 import DashHeader from '@/components/dashboard/Header';
+import { useTranslations } from 'next-intl';
 
 interface DashTableProps<T extends { id: number | string }> {
     ITEMS: string;
@@ -48,7 +49,7 @@ export default function DashTable<T extends { id: number | string }>({
     deleteMutation,
     updateMutation,
 }: DashTableProps<T>) {
-
+    const t = useTranslations("Dashboard.dashtable");
     const [search, setSearch] = useState('');
     const [searchResults, setSearchResults] = useState<T[]>([]);
     const [selectedRows, setSelectedRows] = useState<GridRowId[]>([]);
@@ -122,7 +123,7 @@ export default function DashTable<T extends { id: number | string }>({
                 >
                     <Input
                         className="max-w-md dark:border-b-blue-900 border-b-blue-900 h-full"
-                        placeholder={`Search for ${ITEM}`}
+                        placeholder={t(`search_for`, { item: ITEM.toLowerCase() })}
                         value={search}
                         handleChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                             handleSearch(e.target.value)
@@ -133,13 +134,13 @@ export default function DashTable<T extends { id: number | string }>({
                             size="lg"
                             className="max-w-44"
                             href={`/dashboard/${ADD}`}
-                        >Add</DashButton>
+                        > {t('add')}</DashButton>
                         <DashButton
                             size="lg"
                             variant='destructive'
                             className="max-w-44"
                             onClick={handleDelete}
-                        >Delete</DashButton>
+                        >  {t('delete')}</DashButton>
                     </div>
                 </Box>
                 <Box

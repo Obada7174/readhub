@@ -20,6 +20,8 @@ export const updateCart = async (id: number, userId: number) => {
   return res.data;
 };
 
-export const deleteCart = async (id: number): Promise<void> => {
-  await axios.delete(`/carts/${id}`);
+export const deleteCart = async (ids: number[]): Promise<void> => {
+  await axios.delete('/carts', {
+    data: { ids }, 
+  });
 };

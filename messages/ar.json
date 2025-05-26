@@ -225,7 +225,30 @@
       "books": "الكتب",
       "categories": "التصنيفات",
       "competitions": "المسابقات",
-      "authors": "المؤلفين"
+      "authors": "المؤلفين",
+      "Copons":"الجوائز",
+      "Carts":"السلات"
+    },
+    "add_cart":{
+      "title": "إضافة سلة جديدة",
+      "userId_label": "رقم المستخدم",
+      "userId_placeholder": "رقم المستخدم",
+      "submit_button": "إضافة السلة",
+      "success_message": "تمت إضافة السلة بنجاح!",
+      "error_required_userId": "رقم المستخدم مطلوب ويجب أن يكون رقمًا موجبًا"
+    },
+    "dashtable":{
+      "add": "إضافة",
+      "delete": "حذف",
+      "search_for": "البحث عن {item}"
+    },
+    "cart_columns": {
+      "id": "معرّف السلة",
+      "userId": "معرّف المستخدم",
+      "userEmail": "بريد المستخدم",
+      "status": "الحالة",
+      "created_at": "تاريخ الإنشاء",
+      "updated_at": "تاريخ التعديل"
     }
   },
   "toastMessages": {
