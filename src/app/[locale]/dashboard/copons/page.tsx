@@ -1,7 +1,7 @@
 'use client';
 
 import DashTable from '@/components/dashboard/DashTable';
-import { couponColumns } from '@/components/dashboard/dashcouponsculmn'; 
+import { useCouponColumns  } from '@/components/dashboard/dashcouponsculmn'; 
 import { useCouponsQuery } from '@/hooks/react-query/coupons/usequerycoupons'; 
 import { useDeleteCoupon, useUpdateCoupon } from '@/hooks/react-query/coupons/usequerycoupons';
 import { useRouter } from 'next/navigation';
@@ -16,13 +16,14 @@ export default function CouponsPage() {
   const deleteMutation = useDeleteCoupon();
 
   const updateMutation = useUpdateCoupon();
+  const columns = useCouponColumns();
 
   return (
     <DashTable
       ITEMS="Coupons"
       ITEM="Copon"
-      ADD="coupons/new" 
-      columns={couponColumns} 
+      ADD="copons/new" 
+      columns={columns} 
       isEditable={true} 
 
 
@@ -42,7 +43,6 @@ export default function CouponsPage() {
         },
       }}
 
-      
       deleteMutation={{
         mutateAsync: (ids: React.Key[]) =>
           deleteMutation.mutateAsync(ids as number[]),

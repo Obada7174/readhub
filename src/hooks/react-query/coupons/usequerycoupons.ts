@@ -37,10 +37,11 @@ export const useUpdateCoupon = () => {
 
 export const useDeleteCoupon = () => {
   const queryClient = useQueryClient();
+
   return useMutation({
-    mutationFn: deleteCoupon,
+    mutationFn: (ids: number[]) => deleteCoupon(ids), 
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["coupons"] });
+      queryClient.invalidateQueries({ queryKey: ['coupons'] }); 
     },
   });
 };

@@ -249,7 +249,26 @@
       "status": "الحالة",
       "created_at": "تاريخ الإنشاء",
       "updated_at": "تاريخ التعديل"
-    }
+    },
+    "coupon_columns": {
+      "code": "كود الكوبون",
+      "discount_value": "قيمة الخصم (%)"
+    },
+    "add_coupon": {
+      "title": "إضافة كوبون جديد",
+      "code_label": "كود الكوبون",
+      "code_placeholder": "كود الكوبون",
+      "discount_label": "قيمة الخصم (%)",
+      "discount_placeholder": "قيمةالخصم",
+      "submit_button": "إضافة الكوبون",
+      "success_message": "تمت إضافة الكوبون بنجاح!",
+      "error": {
+        "required": {
+          "code": "الكود مطلوب ويجب أن يكون بين 3 و20 رمزًا",
+          "discount_value": "قيمة الخصم يجب أن تكون بين 1 و100"
+        },
+        "general": "فشل في إضافة الكوبون، حاول مجددًا"
+      }
   },
   "toastMessages": {
     "user_created_successfully": "تم إنشاء المستخدم بنجاح",
@@ -270,5 +289,6 @@
     "failed_to_create_book": "فشل في إنشاء الكتاب",
     "failed_to_update_book": "فشل في تحديث الكتاب",
     "failed_to_delete_book": "فشل في حذف الكتاب"
+  }
   }
 }

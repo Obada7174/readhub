@@ -234,8 +234,28 @@
         "status": "Status",
         "created_at": "Created At",
         "updated_at": "Updated At"
+      },
+       "coupon_columns": {
+        "code": "code",
+        "discount_value": "discount value"
+      },
+      "add_coupon": {
+        "title": "Add New Coupon",
+        "code_label": "Coupon Code",
+        "code_placeholder": "coupon code",
+        "discount_label": "Discount Value (%)",
+        "discount_placeholder": "discount value",
+        "submit_button": "Add Coupon",
+        "success_message": "Coupon added successfully!",
+        "error": {
+          "required": {
+            "code": "Code is required and must be between 3 and 20 characters",
+            "discount_value": "Discount value must be between 1 and 100"
+          },
+          "general": "Failed to add coupon. Please try again."
+        }
       }
-  },
+    },
   "SideBar":{
       "Home": "Home",
       "Profile": "Profile",

@@ -18,6 +18,8 @@ export const updateCoupon = async (coupon: Coupon): Promise<Coupon> => {
 };
 
 
-export const deleteCoupon = async (id: number): Promise<void> => {
-  await axios.delete(`/coupons/${id}`);
+export const deleteCoupon = async (ids: number[]): Promise<void> => {
+  await axios.delete('/coupons', {
+    data: { ids }, 
+  });
 };

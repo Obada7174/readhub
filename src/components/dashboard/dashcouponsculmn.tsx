@@ -1,23 +1,27 @@
 import { GridColDef } from '@mui/x-data-grid';
+import { useTranslations } from 'next-intl';
 
-export const couponColumns: GridColDef[] = [
+export const useCouponColumns = () => {
+  const t = useTranslations('Dashboard.coupon_columns');
+
+  const couponColumns: GridColDef[] = [
     {
       field: 'code',
-      headerName: 'coupon code' ,
+      headerName: t('code'),
       width: 200,
       editable: false,
       align: 'center',
       headerAlign: 'center',
-      flex:1,
+      flex: 1,
       renderCell: (params) => (
         <span className="font-medium">{params.value}</span>
-      )
+      ),
     },
     {
       field: 'discount_value',
-      headerName:'discount value',
+      headerName: t('discount_value'),
       type: 'number',
-      flex:1,
+      flex: 1,
       width: 150,
       editable: true,
       align: 'center',
@@ -31,6 +35,9 @@ export const couponColumns: GridColDef[] = [
           defaultValue={params.value}
           className="w-full h-full text-center border-none outline-none"
         />
-      )
+      ),
     },
   ];
+
+  return couponColumns;
+};
