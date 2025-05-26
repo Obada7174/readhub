@@ -155,7 +155,7 @@ export default function DashTable<T extends { id: number | string }>({
                         columns={columns}
                         pagination
                         paginationMode="client"
-                        rowCount={query.total ?? displayedRows.length}
+                       // rowCount={query.total ?? displayedRows.length}
                         pageSizeOptions={[10, 20, 50, 100]}
                         checkboxSelection
                         disableRowSelectionOnClick
@@ -167,7 +167,8 @@ export default function DashTable<T extends { id: number | string }>({
                         // editMode={isEditable && "row"}
 
                         // experimentalFeatures={isEditable && { newEditingApi: true }}
-                        processRowUpdate={(newRow) => isEditable && handleRowUpdate(newRow)}
+                        // processRowUpdate={(newRow) => isEditable && handleRowUpdate(newRow)}
+                        processRowUpdate={isEditable ? handleRowUpdate : undefined}
                         onRowSelectionModelChange={(newSelectionModel: GridRowSelectionModel) => {
                             setSelectedRows(Array.isArray(newSelectionModel) ? newSelectionModel : []);
                         }}

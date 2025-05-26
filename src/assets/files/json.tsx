@@ -44,6 +44,12 @@ export const links = [
         url: "/dashboard/copons",
         roleShow: ["admin", "editor"],
       },
+      {
+        name: "Carts",
+        icon: <GiTrophy />,
+        url: "/dashboard/carts",
+        roleShow: ["admin", "editor"],
+      },
     ]
   ;
 export const sidebarLinks = [
