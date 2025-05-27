@@ -2,11 +2,11 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { useTranslation } from "next-i18next";
+import { useTranslations } from "next-intl";
 import { useLoginMutation } from "@/hooks/react-query/auth/usequeryloginmutation";
 
 const Page = () => {
-  const { t } = useTranslation("login");
+  const  t  = useTranslations("login");
 
   const [formData, setFormData] = useState({
     email: "",
@@ -83,7 +83,7 @@ const Page = () => {
               isPending ? "opacity-70 cursor-not-allowed" : ""
             }`}
           >
-            {isPending ? t("signingIn") : t("Sign In")}
+            {isPending ? t("signing In") : t("Sign In")}
           </button>
         </form>
 
