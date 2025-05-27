@@ -2,7 +2,7 @@ import {User} from "@/types/user"
 const API_URL = "http://127.0.0.1:5000";
 
 import axios from "@/services/axios"; 
-import { OTPVerifyPayload, OTPVerifyResponse, SignupData, SignupResponse } from "@/types/auth";
+import { LoginCredentials, LoginResponse, OTPVerifyPayload, OTPVerifyResponse, SignupData, SignupResponse } from "@/types/auth";
 
 export const signupUser = async (data: SignupData): Promise<SignupResponse> => {
   const res = await axios.post("/auth/signup", data);
@@ -31,6 +31,28 @@ export const verifyOTP = async ({
   if (!response.ok) {
     const errorData = await response.json();
     throw new Error(errorData.message || "Failed to verify OTP");
+  }
+
+  return response.json();
+};
+
+
+
+export const login = async (
+  credentials: LoginCredentials
+): Promise<LoginResponse> => {
+  const response = await fetch(`${API_URL}/auth/login`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify(credentials),
+  });
+
+  if (!response.ok) {
+    const errorData = await response.json();
+    throw new Error(errorData.message || "Login failed");
   }
 
   return response.json();

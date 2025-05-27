@@ -31,3 +31,16 @@ export type SignupData = {
     email: string;
     otp: string;
   };
+
+
+export type LoginCredentials = {
+  email: string;
+  password: string;
+};
+
+export type LoginResponse = {
+  access_token: string;
+  token_type: string;
+  expires_in: number;
+  user: User;
+};

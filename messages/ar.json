@@ -124,16 +124,14 @@
     "resendCode": "لم تستلم الرمز؟",
     "resendLink": "إعادة الإرسال"
   },
-  "LoginPage": {
-    "title": "مرحبًا بعودتك",
-    "email": "البريد الإلكتروني",
-    "password": "كلمة المرور",
-    "sign_in": "تسجيل الدخول",
-    "success_message": "تم تسجيل الدخول بنجاح!",
-    "error_message": "فشل تسجيل الدخول",
-    "something_went_wrong": "حدث خطأ ما. يرجى المحاولة مرة أخرى لاحقًا.",
-    "dont_have_account": "ليس لديك حساب؟",
-    "sign_up": "تسجيل حساب"
+  "login": {
+    "Welcome Back": "مرحبًا مرة أخرى",
+    "Email": "البريد الإلكتروني",
+    "Password": "كلمة المرور",
+    "Sign In": "تسجيل الدخول",
+    "Sign Up": "إنشاء حساب",
+    "Don't have an account?": "ليس لديك حساب؟",
+    "signingIn": "جارٍ تسجيل الدخول..."
   },
   "faqPage": {
     "sectionTitle": "الأسئلة الشائعة",
@@ -299,7 +297,9 @@
     "book_deleted_successfully": "تم حذف الكتاب بنجاح",
     "failed_to_create_book": "فشل في إنشاء الكتاب",
     "failed_to_update_book": "فشل في تحديث الكتاب",
-    "failed_to_delete_book": "فشل في حذف الكتاب"
+    "failed_to_delete_book": "فشل في حذف الكتاب",
+    "login_successful": "تم تسجيل الدخول بنجاح!",
+    "login_failed": "فشل تسجيل الدخول. يرجى التحقق من بياناتك."
   }
   }
 }

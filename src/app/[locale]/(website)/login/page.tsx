@@ -1,36 +1,21 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import Link from "next/link";
 import { useTranslation } from "next-i18next";
-
-type LoginResponse = {
-  access_token: string;
-  user: {
-    id: number;
-    email: string;
-    first_name: string;
-    last_name: string;
-  };
-};
+import { useLoginMutation } from "@/hooks/react-query/auth/usequeryloginmutation";
 
 const Page = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation("login");
+
   const [formData, setFormData] = useState({
     email: "",
     password: ""
   });
 
-  const [loginResult, setLoginResult] = useState<LoginResponse | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
-  useEffect(() => {
-    if (loginResult && typeof window !== "undefined") {
-      localStorage.setItem("access_token", loginResult.access_token);
-      localStorage.setItem("user", JSON.stringify(loginResult.user));
-      setSuccessMessage(t("Login Successful!"));
-    }
-  }, [loginResult, t]);
+  const { mutate: login, isPending } = useLoginMutation();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -40,33 +25,15 @@ const Page = () => {
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
     setErrorMessage(null);
-    setSuccessMessage(null);
 
-    try {
-      const response = await fetch("http://127.0.0.1:5000/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json"
-        },
-        body: JSON.stringify(formData)
-      });
-
-      const result = await response.json();
-
-      if (response.ok) {
-        setLoginResult(result);
-      } else {
-        setErrorMessage(result.message || t("Login Failed"));
+    login(formData, {
+      onError: (err: Error) => {
+        setErrorMessage(err.message);
       }
-    } catch (error) {
-      console.error("Error:", error);
-      setErrorMessage(t("Something went wrong. Please try again later."));
-    }
+    });
   };
 
   return (
@@ -76,14 +43,11 @@ const Page = () => {
           {t("Welcome Back")}
         </h2>
 
-        {successMessage && (
-          <p className="text-green-600 text-center mb-4">{successMessage}</p>
-        )}
         {errorMessage && (
           <p className="text-red-600 text-center mb-4">{errorMessage}</p>
         )}
 
-        <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
+        <form className="flex flex-col gap-5" onSubmit={(e) => handleSubmit(e)}>
           <div>
             <label className="block text-slate-600 text-sm mb-1">{t("Email")}</label>
             <input
@@ -114,22 +78,26 @@ const Page = () => {
 
           <button
             type="submit"
-            className="mt-4 bg-slate-600 hover:bg-slate-700 text-white font-semibold py-2 rounded-full shadow-md transition duration-300"
+            disabled={isPending}
+            className={`mt-4 bg-slate-600 hover:bg-slate-700 text-white font-semibold py-2 rounded-full shadow-md transition duration-300 ${
+              isPending ? "opacity-70 cursor-not-allowed" : ""
+            }`}
           >
-            {t("Sign In")}
+            {isPending ? t("signingIn") : t("Sign In")}
           </button>
         </form>
 
         <div className="mt-6 text-center text-sm text-slate-600">
           <p>
             {t("Don't have an account?")}{" "}
-            <a href="/en/signup" className="text-blue-600 hover:underline">
+            <Link href="/en/signup" className="text-blue-600 hover:underline">
               {t("Sign Up")}
-            </a>
+            </Link>
           </p>
         </div>
       </div>
     </div>
   );
 };
+
 export default Page;

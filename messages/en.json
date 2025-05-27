@@ -100,16 +100,14 @@
     "resendCode": "Didn't receive the code?",
     "resendLink": "Resend Code"
   },
-  "LoginPage": {
-    "title": "Welcome Back",
-    "email": "Email",
-    "password": "Password",
-    "sign_in": "Sign In",
-    "success_message": "Login Successful!",
-    "error_message": "Login Failed",
-    "something_went_wrong": "Something went wrong. Please try again later.",
-    "dont_have_account": "Don't have an account?",
-    "sign_up": "Sign Up"
+  "login": {
+    "Welcome Back": "Welcome Back",
+    "Email": "Email",
+    "Password": "Password",
+    "Sign In": "Sign In",
+    "Sign Up": "Sign Up",
+    "Don't have an account?": "Don't have an account?",
+    "signingIn": "Signing In..."
   },
   "footer": {
     "about": {
@@ -303,6 +301,7 @@
     "book_deleted_successfully": "Book deleted successfully",
     "failed_to_create_book": "Failed to create book",
     "failed_to_update_book": "Failed to update book",
-    "failed_to_delete_book": "Failed to delete book"
-  }
+    "failed_to_delete_book": "Failed to delete book",
+    "login_successful": "Login successful!",
+    "login_failed": "Login failed. Please check your credentials."  }
 }
