@@ -85,7 +85,12 @@
       "password": "Password",
       "signUpButton": "Sign Up",
       "signUpWithGoogle": "Sign Up with Google",
-      "pendingButton": "Signing Up..."
+      "pendingButton": "Signing Up...",
+      "termsAgree": "By creating an account, you agree to our Terms of Service and Privacy Policy",
+      "termsLink": "Terms of Service",
+      "privacyLink": "Privacy Policy",
+      "haveAccount": "Already have an account?",
+      "signInLink": "Sign in"
   },
   "otp": {
     "title": "Verify Your Email",

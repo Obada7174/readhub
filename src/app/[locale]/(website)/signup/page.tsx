@@ -6,6 +6,8 @@ import { handleGoogleCallback } from "@/services/auth.services";
 import { SignupResponse } from "@/types/auth";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
+import Link from "@mui/material/Link";
+import { FcGoogle } from "react-icons/fc";
 
 export default function Page() {
   const t = useTranslations("signup"); 
@@ -168,12 +170,33 @@ export default function Page() {
             onClick={signUpWithGoogle}
             className="mt-2 flex items-center justify-center gap-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600 font-semibold py-2 rounded-full shadow-md transition duration-300"
           >
-            <svg className="w-5 h-5" viewBox="0 0 533.5 544.3" xmlns="http://www.w3.org/2000/svg">
-              {/* SVG Path */}
-            </svg>
             {t("signUpWithGoogle")}
+            <FcGoogle />
           </button>
-        </form>
+          <p className="text-center text-sm text-gray-600 dark:text-gray-400 mt-6">
+  {t("haveAccount")}{" "}
+  <Link href="/login" className="text-blue-600 dark:text-blue-400 underline font-medium">
+    {t("signInLink")}
+  </Link>
+</p>
+          <p className="text-center text-sm text-gray-600 dark:text-gray-400 mt-6">
+    <span className="inline-flex items-center gap-1">
+      <svg className="w-5 h-5 text-red-500" viewBox="0 0 533.5 544.3" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#4285f4" d="M533.5 278.4c0-18.4-1.6-36.1-4.6-53.3H272v100.9h146.9c-6.3 34.1-25.1 62.9-53.5 82.2v68h86.4c50.6-46.6 81.7-115.4 81.7-198z"/>
+      </svg>
+      {t("termsAgree")}
+    </span>
+    <br />
+    <Link href="/terms" className="text-blue-600 dark:text-blue-400 underline mx-1">
+      {t("termsLink")}
+    </Link>
+    {" & "}
+    <Link href="/privacy-policy" className="text-blue-600 dark:text-blue-400 underline mx-1">
+      {t("privacyLink")}
+    </Link>
+  </p>
+</form>
+
       </div>
     </div>
   );

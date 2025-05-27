@@ -109,7 +109,12 @@
     "password": "كلمة المرور",
     "signUpButton": "إنشاء حساب",
     "signUpWithGoogle": "إنشاء حساب عبر Google",
-    "pendingButton": "جارٍ التسجيل..."
+    "pendingButton": "جارٍ التسجيل...",
+    "termsAgree": "بالتسجيل في حساب، فإنك توافق على شروط الخدمة وسياسة الخصوصية الخاصة بنا",
+    "termsLink": "شروط الاستخدام",
+    "privacyLink": "سياسة الخصوصية",
+    "haveAccount": "لديك حساب بالفعل؟",
+    "signInLink": "تسجيل الدخول"
   },
   "otp": {
     "title": "تحقق من بريدك الإلكتروني",
