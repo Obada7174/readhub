@@ -7,7 +7,7 @@ export const getBook = async (id: string): Promise<Book> => {
 };
 
 export const getBooks = async (): Promise<Book[]> => {
-  const res = await axios.get("/books");
+  const res = await axios.get("http://localhost:5000/books");
   return res.data.data;
 };
 
