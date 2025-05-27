@@ -75,20 +75,25 @@
       "search for books": "Search For Books"
     }
   },
-  "SignUpPage": {
-    "title": "Create a New Account",
-    "first_name": "First Name",
-    "last_name": "Last Name",
-    "email": "Email",
-    "password": "Password",
-    "sign_up": "Sign Up",
-    "terms_of_service": "Terms of Service",
-    "privacy_policy": "Privacy Policy",
-    "help": "Help",
-    "success_message": "Sign Up Successful!",
-    "error_message": "Sign Up Failed",
-    "already_have_account": "Already have an account?",
-    "sign in": " Sign in"
+  "signup": {
+      "title": "Create a New Account",
+      "successMessage": "Sign Up Successful!",
+      "errorMessage": "Google sign-in failed",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "password": "Password",
+      "signUpButton": "Sign Up",
+      "signUpWithGoogle": "Sign Up with Google",
+      "pendingButton": "Signing Up..."
+  },
+  "otp": {
+    "title": "Verify Your Email",
+    "description": "A verification code has been sent to your email. Please enter the code below.",
+    "error": "Please enter a 4-digit verification code",
+    "verifyButton": "Verify",
+    "resendCode": "Didn't receive the code?",
+    "resendLink": "Resend Code"
   },
   "LoginPage": {
     "title": "Welcome Back",

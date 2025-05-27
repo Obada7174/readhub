@@ -99,19 +99,25 @@
       "search for books": "ابحث عن كتب"
     }
   },
-  "SignUpPage": {
-    "title": "إنشاء حساب جديد",
-    "first_name": "الاسم الأول",
-    "last_name": "الاسم الأخير",
+  "signup": {
+    "title": "أنشئ حساب جديد",
+    "successMessage": "تم التسجيل بنجاح!",
+    "errorMessage": "فشل تسجيل الدخول عبر Google",
+    "firstName": "الاسم الأول",
+    "lastName": "الاسم الأخير",
     "email": "البريد الإلكتروني",
     "password": "كلمة المرور",
-    "sign_up": "تسجيل حساب",
-    "terms_of_service": "شروط الخدمة",
-    "privacy_policy": "سياسة الخصوصية",
-    "help": "مساعدة",
-    "success_message": "تم التسجيل بنجاح!",
-    "error_message": "فشل التسجيل",
-    "already_have_account": "هل لديك حساب؟ سجل دخولك"
+    "signUpButton": "إنشاء حساب",
+    "signUpWithGoogle": "إنشاء حساب عبر Google",
+    "pendingButton": "جارٍ التسجيل..."
+  },
+  "otp": {
+    "title": "تحقق من بريدك الإلكتروني",
+    "description": "تم إرسال رمز التحقق إلى بريدك الإلكتروني. يرجى إدخال الرمز أدناه.",
+    "error": "يرجى إدخال رمز مكون من 4 أرقام",
+    "verifyButton": "تحقق",
+    "resendCode": "لم تستلم الرمز؟",
+    "resendLink": "إعادة الإرسال"
   },
   "LoginPage": {
     "title": "مرحبًا بعودتك",
