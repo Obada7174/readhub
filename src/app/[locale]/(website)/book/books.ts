@@ -4,7 +4,7 @@ export interface book {
   author: string;
   publishedYear: number;
   description: string;
-  genres: string[];
+  categories: string[];
   rating: number;
   pages: number;
   publishTime: string;
@@ -19,7 +19,7 @@ export default <book[]>(<unknown>[
     publishedYear: 1997,
     description:
       'Rich Dad Poor Dad is Robert\'s story of growing up with two dads — his real father and the father of his best friend, his "rich dad" — and the ways in which both men shaped his thoughts about money and investing. The book explodes the myth that you need to earn a high income to be rich and explains the difference between working for money and having your money work for you.',
-    genres: [
+    categories: [
       "Personal Finance",
       "Self-Help",
       "Business",
@@ -38,7 +38,7 @@ export default <book[]>(<unknown>[
     publishedYear: 1997,
     description:
       'Rich Dad Poor Dad is Robert\'s story of growing up with two dads — his real father and the father of his best friend, his "rich dad" — and the ways in which both men shaped his thoughts about money and investing. The book explodes the myth that you need to earn a high income to be rich and explains the difference between working for money and having your money work for you.',
-    genres: [
+    categories: [
       "Personal Finance",
       "Self-Help",
       "Business",
@@ -57,7 +57,7 @@ export default <book[]>(<unknown>[
     publishedYear: 1997,
     description:
       'Rich Dad Poor Dad is Robert\'s story of growing up with two dads — his real father and the father of his best friend, his "rich dad" — and the ways in which both men shaped his thoughts about money and investing. The book explodes the myth that you need to earn a high income to be rich and explains the difference between working for money and having your money work for you.',
-    genres: [
+    categories: [
       "Personal Finance",
       "Self-Help",
       "Business",
@@ -76,7 +76,7 @@ export default <book[]>(<unknown>[
     publishedYear: 1997,
     description:
       'Rich Dad Poor Dad is Robert\'s story of growing up with two dads — his real father and the father of his best friend, his "rich dad" — and the ways in which both men shaped his thoughts about money and investing. The book explodes the myth that you need to earn a high income to be rich and explains the difference between working for money and having your money work for you.',
-    genres: [
+    categories: [
       "Personal Finance",
       "Self-Help",
       "Business",
@@ -95,7 +95,7 @@ export default <book[]>(<unknown>[
     publishedYear: 1997,
     description:
       'Rich Dad Poor Dad is Robert\'s story of growing up with two dads — his real father and the father of his best friend, his "rich dad" — and the ways in which both men shaped his thoughts about money and investing. The book explodes the myth that you need to earn a high income to be rich and explains the difference between working for money and having your money work for you.',
-    genres: [
+    categories: [
       "Personal Finance",
       "Self-Help",
       "Business",
@@ -114,7 +114,7 @@ export default <book[]>(<unknown>[
     publishedYear: 1997,
     description:
       'Rich Dad Poor Dad is Robert\'s story of growing up with two dads — his real father and the father of his best friend, his "rich dad" — and the ways in which both men shaped his thoughts about money and investing. The book explodes the myth that you need to earn a high income to be rich and explains the difference between working for money and having your money work for you.',
-    genres: [
+    categories: [
       "Personal Finance",
       "Self-Help",
       "Business",
@@ -133,7 +133,7 @@ export default <book[]>(<unknown>[
     publishedYear: 1997,
     description:
       'Rich Dad Poor Dad is Robert\'s story of growing up with two dads — his real father and the father of his best friend, his "rich dad" — and the ways in which both men shaped his thoughts about money and investing. The book explodes the myth that you need to earn a high income to be rich and explains the difference between working for money and having your money work for you.',
-    genres: [
+    categories: [
       "Personal Finance",
       "Self-Help",
       "Business",
@@ -152,7 +152,7 @@ export default <book[]>(<unknown>[
     publishedYear: 1997,
     description:
       'Rich Dad Poor Dad is Robert\'s story of growing up with two dads — his real father and the father of his best friend, his "rich dad" — and the ways in which both men shaped his thoughts about money and investing. The book explodes the myth that you need to earn a high income to be rich and explains the difference between working for money and having your money work for you.',
-    genres: [
+    categories: [
       "Personal Finance",
       "Self-Help",
       "Business",

@@ -13,7 +13,7 @@ import { showErrorToast, showSuccessToast } from "@/helpers/Toast";
 
 export const useBookQuery = (id: string) => {
   return useQuery<Book>({
-    queryKey: ["books", { id }],
+    queryKey: ["book", id],
     queryFn: () => getBook(id),
   });
 };

@@ -53,15 +53,23 @@ const FilterHorizontal: React.FC<FilterProps> = ({
   const borderColor = theme.palette.mode === "dark" ? "#555" : "#ccc";
 
   const handleCatChange = (e: SelectChangeEvent<string[]>) => {
-    const val = typeof e.target.value === "string"
-      ? e.target.value.split(",")
-      : e.target.value;
+    const val =
+      typeof e.target.value === "string"
+        ? e.target.value.split(",")
+        : e.target.value;
 
     setSelectedCategory(val);
   };
 
   return (
-    <Box display="flex" flexWrap="wrap" gap={2} alignItems="center" p={2} sx={{ color: textColor }}>
+    <Box
+      display="flex"
+      flexWrap="wrap"
+      gap={2}
+      alignItems="center"
+      p={2}
+      sx={{ color: textColor }}
+    >
       {/* لغة */}
       <FormControl
         size="small"
@@ -73,23 +81,29 @@ const FilterHorizontal: React.FC<FilterProps> = ({
           borderRadius: 1,
           "& .MuiInputBase-root": { color: textColor },
           "& .MuiOutlinedInput-notchedOutline": { borderColor: borderColor },
-          "&:hover .MuiOutlinedInput-notchedOutline": { borderColor: theme.palette.primary.main },
-          "& .Mui-focused .MuiOutlinedInput-notchedOutline": { borderColor: theme.palette.primary.main },
+          "&:hover .MuiOutlinedInput-notchedOutline": {
+            borderColor: theme.palette.primary.main,
+          },
+          "& .Mui-focused .MuiOutlinedInput-notchedOutline": {
+            borderColor: theme.palette.primary.main,
+          },
           "& .MuiSvgIcon-root": { color: textColor },
           "& .MuiSelect-icon": { color: textColor },
           "& .MuiInputLabel-root": { color: textColor },
-          "& .MuiInputLabel-root.Mui-focused": { color: theme.palette.primary.main },
+          "& .MuiInputLabel-root.Mui-focused": {
+            color: theme.palette.primary.main,
+          },
         }}
       >
         <InputLabel>{t("language")}</InputLabel>
-  <Select
-    value={selectedLanguage}
-    label={t("language")}
-    onChange={(e) => setSelectedLanguage(e.target.value)}
-  >
-    <MenuItem value="en">English</MenuItem>
-    <MenuItem value="ar">العربية</MenuItem>
-  </Select>
+        <Select
+          value={selectedLanguage}
+          label={t("language")}
+          onChange={(e) => setSelectedLanguage(e.target.value)}
+        >
+          <MenuItem value="en">English</MenuItem>
+          <MenuItem value="ar">العربية</MenuItem>
+        </Select>
       </FormControl>
 
       {/* سعر */}
@@ -103,21 +117,27 @@ const FilterHorizontal: React.FC<FilterProps> = ({
           borderRadius: 1,
           "& .MuiInputBase-root": { color: textColor },
           "& .MuiOutlinedInput-notchedOutline": { borderColor: borderColor },
-          "&:hover .MuiOutlinedInput-notchedOutline": { borderColor: theme.palette.primary.main },
-          "& .Mui-focused .MuiOutlinedInput-notchedOutline": { borderColor: theme.palette.primary.main },
+          "&:hover .MuiOutlinedInput-notchedOutline": {
+            borderColor: theme.palette.primary.main,
+          },
+          "& .Mui-focused .MuiOutlinedInput-notchedOutline": {
+            borderColor: theme.palette.primary.main,
+          },
           "& .MuiSvgIcon-root": { color: textColor },
           "& .MuiSelect-icon": { color: textColor },
           "& .MuiInputLabel-root": { color: textColor },
-          "& .MuiInputLabel-root.Mui-focused": { color: theme.palette.primary.main },
+          "& .MuiInputLabel-root.Mui-focused": {
+            color: theme.palette.primary.main,
+          },
         }}
       >
         <InputLabel>{t("price")}</InputLabel>
         <Select
           value={priceRange || ""}
           label={t("price")}
-          onChange={e => setPriceRange(e.target.value)}
+          onChange={(e) => setPriceRange(e.target.value)}
         >
-          {priceRanges.map(r => (
+          {priceRanges.map((r) => (
             <MenuItem key={r} value={r}>
               {r}
             </MenuItem>
@@ -135,12 +155,18 @@ const FilterHorizontal: React.FC<FilterProps> = ({
           borderRadius: 1,
           "& .MuiInputBase-root": { color: textColor },
           "& .MuiOutlinedInput-notchedOutline": { borderColor: borderColor },
-          "&:hover .MuiOutlinedInput-notchedOutline": { borderColor: theme.palette.primary.main },
-          "& .Mui-focused .MuiOutlinedInput-notchedOutline": { borderColor: theme.palette.primary.main },
+          "&:hover .MuiOutlinedInput-notchedOutline": {
+            borderColor: theme.palette.primary.main,
+          },
+          "& .Mui-focused .MuiOutlinedInput-notchedOutline": {
+            borderColor: theme.palette.primary.main,
+          },
           "& .MuiSvgIcon-root": { color: textColor },
           "& .MuiSelect-icon": { color: textColor },
           "& .MuiInputLabel-root": { color: textColor },
-          "& .MuiInputLabel-root.Mui-focused": { color: theme.palette.primary.main },
+          "& .MuiInputLabel-root.Mui-focused": {
+            color: theme.palette.primary.main,
+          },
           "& .MuiCheckbox-root": { color: textColor },
           "& .Mui-checked": { color: theme.palette.primary.main },
         }}
@@ -150,19 +176,21 @@ const FilterHorizontal: React.FC<FilterProps> = ({
           multiple
           value={selectedCategory}
           onChange={handleCatChange}
-          renderValue={sel => {
+          renderValue={(sel) => {
             return sel
-              .map(id => {
-                const cat = categories.find(c => c.id.toString() === id);
+              .map((id) => {
+                const cat = categories.find((c) => c.id.toString() === id);
                 return cat ? cat.title : "";
               })
               .filter(Boolean)
               .join(", ");
           }}
         >
-          {categories.map(cat => (
+          {categories.map((cat) => (
             <MenuItem key={cat.id} value={cat.id.toString()}>
-              <Checkbox checked={selectedCategory.includes(cat.id.toString())} />
+              <Checkbox
+                checked={selectedCategory.includes(cat.id.toString())}
+              />
               {cat.title}
             </MenuItem>
           ))}
@@ -179,7 +207,12 @@ const FilterHorizontal: React.FC<FilterProps> = ({
           precision={0.5}
           emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
           sx={{
-            color: theme.palette.mode === "dark" ? "#ffc107" : "#f59e0b",
+            "& .MuiRating-iconFilled": {
+              color: "primary.main",
+            },
+            "& .MuiRating-iconHover": {
+              color: "primary.dark",
+            },
           }}
         />
         <Typography fontSize={14}>({rating || 0})</Typography>
