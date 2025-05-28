@@ -1,9 +1,4 @@
 import { z } from "zod";
-import { categorySchema } from "./category.validator";
-
-export const categoryWithIdSchema = categorySchema.extend({
-  id: z.number().int().positive(),
-});
 
 export const bookSchema = z.object({
   title: z.string().min(2, "Title must be at least 2 characters").trim(),
@@ -43,13 +38,22 @@ export const bookSchema = z.object({
 
   rating_count: z.number().int().min(0, "Rating count cannot be negative"),
 
-  total_pages: z.number().int().min(1, "Total pages must be at least 1"),
-
-  total_ratings: z.number().int().min(0, "Total ratings cannot be negative"),
+  total_pages: z
+    .string()
+    .min(1, "Total pages is required")
+    .refine((val) => /^\d+$/.test(val) && parseInt(val) >= 1, {
+      message: "Must be a positive integer",
+    }),
 
   categories: z
-    .array(categoryWithIdSchema)
-    .min(1, "At least 1 category is required"),
+    .array(
+      z
+        .number()
+        .int()
+        .positive()
+        .or(z.string().transform((v) => +v))
+    )
+    .nonempty("Categories must contain at least one item"),
 });
 
 export type BookFormValues = z.infer<typeof bookSchema>;

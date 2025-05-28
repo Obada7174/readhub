@@ -14,24 +14,19 @@ import {
   GridRenderEditCellParams,
   GridRenderCellParams,
   GridColDef,
-  GridRowId,
   // GridValueFormatterParams,
 } from "@mui/x-data-grid";
 import { useCategoriesQuery } from "@/hooks/react-query/categories/useCategoriesQuery";
-import {
-  useBooksQuery,
-  useDeleteBook,
-} from "@/hooks/react-query/books/useBooksQuery";
+import { useBooksQuery } from "@/hooks/react-query/books/useBooksQuery";
 import { Book } from "@/types/book";
 import { Category } from "@/types/category";
 import { useLocale } from "next-intl";
 
-export default function Books() {
+export default function Users() {
   const local = useLocale();
   const ar = local === "ar";
   const { data, isLoading, refetch } = useBooksQuery();
   const { data: categories } = useCategoriesQuery();
-  const deleteMutation = useDeleteBook();
 
   const genresOption = categories
     ? categories.map((category) => {
@@ -176,9 +171,9 @@ export default function Books() {
 
   return (
     <DashTable<Book>
-      ITEM="Book"
-      ITEMS="Books"
-      ADD="books/addbook"
+      ITEM="author"
+      ITEMS="authors"
+      ADD="authors/addauthor"
       columns={columns}
       isEditable={true}
       query={{
@@ -186,10 +181,6 @@ export default function Books() {
         isLoading: isLoading,
         refetch: refetch,
         total: data?.length,
-      }}
-      deleteMutation={{
-        mutateAsync: async (ids: GridRowId[]) =>
-          await deleteMutation.mutateAsync(ids.map(Number)),
       }}
     />
   );

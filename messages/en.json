@@ -233,6 +233,8 @@
     "Comment": "Comment"
   },
   "toastMessages": {
+    "comment_created_successfully": "comment created successfully",
+    "failed_to_create_comment": "failed to create comment",
     "user_created_successfully": "User created successfully",
     "user_updated_successfully": "User updated successfully",
     "user_deleted_successfully": "User deleted successfully",

@@ -229,6 +229,8 @@
     }
   },
   "toastMessages": {
+    "comment_created_successfully": "تم إنشاء التعليق بنجاح",
+    "failed_to_create_comment": "فشل في إنشاء التعليق",
     "user_created_successfully": "تم إنشاء المستخدم بنجاح",
     "user_updated_successfully": "تم تحديث المستخدم بنجاح",
     "user_deleted_successfully": "تم حذف المستخدم بنجاح",

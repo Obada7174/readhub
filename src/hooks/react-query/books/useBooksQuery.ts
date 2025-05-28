@@ -4,7 +4,7 @@ import {
   getBooks,
   createBook,
   updateBook,
-  deleteBook,
+  deleteBooks,
 } from "@/services/books.service";
 import { Book } from "@/types/book";
 import { useTranslations } from "next-intl";
@@ -40,7 +40,7 @@ export const useCreateBook = () => {
   });
 };
 
-export const useUpdateBook = () => {
+export const useUpdateBook = (id: string) => {
   const queryClient = useQueryClient();
   const t = useTranslations("toastMessages");
 
@@ -49,6 +49,7 @@ export const useUpdateBook = () => {
     onSuccess: () => {
       showSuccessToast(t("book_updated_successfully"));
       queryClient.invalidateQueries({ queryKey: ["books"] });
+      queryClient.invalidateQueries({ queryKey: ["book", id] });
     },
     onError: () => {
       showErrorToast(t("failed_to_update_book"));
@@ -61,7 +62,7 @@ export const useDeleteBook = () => {
   const t = useTranslations("toastMessages");
 
   return useMutation({
-    mutationFn: deleteBook,
+    mutationFn: deleteBooks,
     onSuccess: () => {
       showSuccessToast(t("book_deleted_successfully"));
       queryClient.invalidateQueries({ queryKey: ["books"] });

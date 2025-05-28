@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import { Select, MenuItem } from "@mui/material";
 import DashTable from "@/components/dashboard/DashTable";
 import TransformDate from "@/helpers/TransformDate";
@@ -9,7 +9,7 @@ import {
 } from "@/hooks/react-query/users/useUsersQuery";
 import { GridRowId } from "@mui/x-data-grid";
 import { UpdateUserPayload, User } from "@/types/user";
-import { SelectChangeEvent } from '@mui/material/Select';
+import { SelectChangeEvent } from "@mui/material/Select";
 interface DateObject {
   getFullYear: number;
   getMonth: number;
@@ -20,9 +20,7 @@ import {
   GridRenderCellParams,
   GridColDef,
   // GridValueFormatterParams,
-} from '@mui/x-data-grid';
-
-
+} from "@mui/x-data-grid";
 
 export default function Users() {
   const { data, isLoading, refetch } = useUsersQuery();
@@ -34,7 +32,6 @@ export default function Users() {
       const value = event.target.value;
       params.api.setEditCellValue({ id: params.id, field: "role", value });
     };
-    
 
     return (
       <Select
@@ -48,7 +45,6 @@ export default function Users() {
       </Select>
     );
   };
-
 
   const columns: GridColDef[] = [
     {
@@ -87,10 +83,10 @@ export default function Users() {
         { value: "author", label: "author" },
         { value: "user", label: "user" },
       ],
-      renderEditCell: RoleEditCell, 
+      renderEditCell: RoleEditCell,
       renderCell: (params: GridRenderCellParams) => {
         const value = params.value;
-        return value ;
+        return value;
       },
       maxWidth: 120,
       minWidth: 70,
@@ -109,7 +105,7 @@ export default function Users() {
       minWidth: 130,
       renderCell: (params: GridRenderCellParams) => {
         const date: DateObject = TransformDate(params.value as string);
-        return `${date.getFullYear}/${date.getMonth }/${date.getDay}`;
+        return `${date.getFullYear}/${date.getMonth}/${date.getDay}`;
       },
     },
     {
@@ -141,18 +137,17 @@ export default function Users() {
           await Promise.all(
             ids.map((id) => deleteMutation.mutateAsync(Number(id)))
           );
-          
         },
       }}
       updateMutation={async (row: User) => {
-        const { id, first_name, last_name, email, role , location } = row;
+        const { id, first_name, last_name, email, role, location } = row;
 
         const updateData: UpdateUserPayload = {
           first_name,
           last_name,
           email,
           role,
-          location
+          location,
         };
 
         return await updateMutation.mutateAsync({ id, data: updateData });
