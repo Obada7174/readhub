@@ -4,7 +4,7 @@ import {
   createCategory,
   updateCategory,
   deleteCategory,
-  getCategory
+  getCategory,
 } from "@/services/categories.service";
 import { Category } from "@/types/category";
 import { useTranslations } from "next-intl";
@@ -17,16 +17,12 @@ export const useCategoriesQuery = () => {
   });
 };
 
-export const useCategoryQuery = (id: number) => {
-
+export const useCategoryQuery = (id: string) => {
   return useQuery({
-    queryKey: ['category', id],
+    queryKey: ["category", id],
     queryFn: () => getCategory(id),
-    enabled: !!id,
-    
   });
 };
-
 
 export const useCreateCategory = () => {
   const queryClient = useQueryClient();
@@ -44,7 +40,7 @@ export const useCreateCategory = () => {
   });
 };
 
-export const useUpdateCategory = () => {
+export const useUpdateCategory = (id: string) => {
   const queryClient = useQueryClient();
   const t = useTranslations("toastMessages");
 
@@ -53,6 +49,7 @@ export const useUpdateCategory = () => {
     onSuccess: () => {
       showSuccessToast(t("category_updated_successfully"));
       queryClient.invalidateQueries({ queryKey: ["categories"] });
+      queryClient.invalidateQueries({ queryKey: ["categories", id] });
     },
     onError: () => {
       showErrorToast(t("failed_to_update_category"));

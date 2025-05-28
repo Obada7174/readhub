@@ -6,11 +6,18 @@ import Like from "./Like";
 import UserImage from "@/assets/images/Rich_Dad_Poor_Dad.jpg";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
+import { useCreateReply } from "@/hooks/react-query/replies/useRepliesQuery";
 
-const Comment = () => {
+interface Props {
+  id: string;
+  commentId: number;
+}
+
+const Comment = ({ id, commentId }: Props) => {
   const t = useTranslations("Comments");
   const [add, setAdd] = useState<boolean>(false);
   const [comment, setComment] = useState<string>("");
+  const { mutateAsync: addReply } = useCreateReply(id);
 
   return (
     <>
@@ -42,6 +49,11 @@ const Comment = () => {
           {comment.trim().length ? (
             <button
               onClick={() => {
+                addReply({
+                  text: comment,
+                  userId: 1,
+                  comment: commentId,
+                });
                 setAdd(false);
                 setComment("");
               }}

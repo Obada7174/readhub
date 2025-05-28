@@ -10,13 +10,18 @@ interface DateObject {
 import {
   GridRenderCellParams,
   GridColDef,
+  GridRowId,
   // GridValueFormatterParams,
 } from "@mui/x-data-grid";
-import { useCategoriesQuery } from "@/hooks/react-query/categories/useCategoriesQuery";
+import {
+  useCategoriesQuery,
+  useDeleteCategory,
+} from "@/hooks/react-query/categories/useCategoriesQuery";
 import { Category } from "@/types/category";
 
-export default function Users() {
+export default function Categories() {
   const { data, isLoading, refetch } = useCategoriesQuery();
+  const deleteMutation = useDeleteCategory();
 
   const columns: GridColDef[] = [
     {
@@ -70,6 +75,10 @@ export default function Users() {
         isLoading: isLoading,
         refetch: refetch,
         total: data?.length,
+      }}
+      deleteMutation={{
+        mutateAsync: async (ids: GridRowId[]) =>
+          await deleteMutation.mutateAsync(ids.map(Number)),
       }}
     />
   );

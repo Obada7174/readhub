@@ -2,22 +2,28 @@ import { useState } from "react";
 import CommentCard from "./CommentCard";
 import Image from "next/image";
 import UserImage from "@/assets/images/Rich_Dad_Poor_Dad.jpg";
-
-export interface Comment {
-  id: number;
-  userName: string;
-  userImage: string;
-  comment: string;
-  likes: { userName: string }[];
-  replies: Comment[];
-}
+import {
+  useCommentsQuery,
+  useCreateComment,
+} from "@/hooks/react-query/comments/useCommentsQuery";
 
 interface Props {
-  comments: Comment[];
+  id: string;
 }
 
-const CommentsSection = ({ comments }: Props) => {
+const CommentsSection = ({ id }: Props) => {
   const [comment, setComment] = useState("");
+  const { data: comments } = useCommentsQuery(id);
+  const { mutateAsync: addComment } = useCreateComment();
+
+  if (!comments || !comments.length) {
+    return (
+      <h3 className="py-1.5 font-medium text-sm sm:text-base">
+        Be the first one to share your comment
+      </h3>
+    );
+  }
+
   return (
     <div className="border-t border-[#cfccc9] pt-2 pb-5">
       <div className="my-6">
@@ -37,7 +43,11 @@ const CommentsSection = ({ comments }: Props) => {
         {comment.trim().length ? (
           <button
             onClick={() => {
-              // setAdd(false);
+              addComment({
+                text: comment,
+                bookId: parseInt(id),
+                userId: 4,
+              });
               setComment("");
             }}
             className="bg-[#101828] dark:bg-white block ml-auto mt-3 px-5 py-2 rounded-full transition-colors cursor-pointer text-white dark:text-[#101828]"
@@ -46,17 +56,9 @@ const CommentsSection = ({ comments }: Props) => {
           </button>
         ) : null}
       </div>
-      {comments.length ? (
-        comments.map((comment) => {
-          return (
-            <CommentCard key={comment.id + Math.random()} comment={comment} />
-          );
-        })
-      ) : (
-        <h3 className="py-1.5 font-medium text-sm sm:text-base">
-          Be the first one to share your comment
-        </h3>
-      )}
+      {comments.reverse().map((comment) => {
+        return <CommentCard key={comment.id} BookId={id} comment={comment} />;
+      })}
     </div>
   );
 };
