@@ -16,7 +16,13 @@ export interface UpdateUserPayload {
     first_name: string;
     last_name: string;
     email: string;
-    password?: string;
     role: string;
     location: string;
 }
+
+export type UsersResponse= {
+    data: User[];
+    total:number;
+    totalPages:number;
+    currentPage:string;
+  }

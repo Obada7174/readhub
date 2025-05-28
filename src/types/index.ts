@@ -9,3 +9,17 @@ export type SidebarLinkType = {
       roleShow: string[];
     }[];
   };
+
+  export type DateObject ={
+    getFullYear: number;
+    getMonth: number;
+    getDay: number;
+  }
+  
+  export type Meta ={
+      total: number,
+      page: string,
+      limit: string,
+      total_pages: number
+  }
+  
