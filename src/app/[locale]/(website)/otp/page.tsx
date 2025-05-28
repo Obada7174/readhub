@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useVerifyOTPMutation } from "@/hooks/react-query/auth/useOtpVerifyMutation";
+import { useResendOTPMutation } from "@/hooks/react-query/auth/useresendotpmutation";
 import { useTranslations } from "next-intl";
 
 export default function OTPPage() {
@@ -11,10 +12,30 @@ export default function OTPPage() {
 
   const [otp, setOtp] = useState(["", "", "", ""]);
   const [error, setError] = useState("");
-  const { mutate: verify, isPending } = useVerifyOTPMutation();
+  const [successMessage, setSuccessMessage] = useState("");
+  const [canResend, setCanResend] = useState(true);
+  const [timeLeft, setTimeLeft] = useState(0);
+
+  const { mutate: verify, isPending: verifying } = useVerifyOTPMutation();
+  const { mutate: resendOTP, isPending: sending } = useResendOTPMutation();
 
   const searchParams = useSearchParams();
   const email = searchParams.get("email") || "";
+
+  useEffect(() => {
+    if (!canResend && timeLeft > 0) {
+      const timer = setInterval(() => {
+        setTimeLeft((prev) => prev - 1);
+      }, 1000);
+
+      if (timeLeft <= 1) {
+        setCanResend(true);
+        clearInterval(timer);
+      }
+
+      return () => clearInterval(timer);
+    }
+  }, [canResend, timeLeft]);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement>,
@@ -56,6 +77,28 @@ export default function OTPPage() {
     verify({ email, otp: otpCode });
   };
 
+  const handleResendClick = () => {
+    if (!canResend) return;
+
+    setSuccessMessage("");
+    setError("");
+
+    resendOTP(
+      { email },
+      {
+        onSuccess: () => {
+          setSuccessMessage(t("resendSuccess"));
+          setCanResend(false);
+          setTimeLeft(60); 
+        },
+        onError: (err) => {
+          setError(t("resendError"));
+          console.error(err);
+        },
+      }
+    );
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 dark:bg-gray-900 overflow-y-auto px-4">
       <div className="bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-xl w-full max-w-md flex flex-col mx-4">
@@ -68,6 +111,12 @@ export default function OTPPage() {
 
         {error && (
           <p className="text-red-600 dark:text-red-400 text-center mb-4">{error}</p>
+        )}
+
+        {successMessage && (
+          <p className="text-green-600 dark:text-green-400 text-center mb-4">
+            {successMessage}
+          </p>
         )}
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-6">
@@ -89,19 +138,32 @@ export default function OTPPage() {
 
           <button
             type="submit"
-            disabled={isPending}
+            disabled={verifying}
             className={`mt-2 bg-slate-600 hover:bg-slate-700 dark:bg-slate-700 dark:hover:bg-slate-600 text-white font-semibold py-2 rounded-full shadow-md transition duration-300 ${
-              isPending ? "opacity-70 cursor-not-allowed" : ""
+              verifying ? "opacity-70 cursor-not-allowed" : ""
             }`}
           >
-            {isPending ? t("verifying") : t("verifyButton")}
+            {verifying ? t("verifying") : t("verifyButton")}
           </button>
 
           <p className="text-center text-sm text-gray-600 dark:text-gray-400 mt-4">
             {t("resendCode")}{" "}
-            <Link href="#" className="text-blue-600 dark:text-blue-400 underline">
-              {t("resendLink")}
-            </Link>
+            <button
+              onClick={handleResendClick}
+              type="button"
+              disabled={!canResend || sending}
+              className={`${
+                canResend
+                  ? "text-blue-600 dark:text-blue-400 underline"
+                  : "text-gray-400 dark:text-gray-600"
+              }`}
+            >
+              {sending
+                ? t("resending")
+                : canResend
+                ? t("resendLink")
+                : `${t("wait")} (${timeLeft}s)`}
+            </button>
           </p>
         </form>
       </div>

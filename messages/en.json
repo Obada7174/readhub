@@ -98,7 +98,12 @@
     "error": "Please enter a 4-digit verification code",
     "verifyButton": "Verify",
     "resendCode": "Didn't receive the code?",
-    "resendLink": "Resend Code"
+    "resendLink": "Resend Code",
+    "resending": "Resending...",
+   "resendSuccess": "Code has been sent successfully",
+   "resendError": "Failed to resend code, please try again",
+   "wait": "Wait"
+    
   },
   "login": {
     "Welcome Back": "Welcome Back",
