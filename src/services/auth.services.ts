@@ -57,3 +57,8 @@ export const login = async (
 
   return response.json();
 };
+
+export const forgotPassword = async (email: string): Promise<{ message: string }> => {
+  const response = await axios.post(`${API_URL}/auth/forgot-password`, { email });
+  return response.data;
+};

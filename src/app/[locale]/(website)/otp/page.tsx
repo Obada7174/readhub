@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useSearchParams } from "next/navigation";
 import { useVerifyOTPMutation } from "@/hooks/react-query/auth/useOtpVerifyMutation";
 import { useResendOTPMutation } from "@/hooks/react-query/auth/useresendotpmutation";
@@ -9,6 +10,11 @@ import { useTranslations } from "next-intl";
 
 export default function OTPPage() {
   const t = useTranslations("otp");
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const email = searchParams.get("email") || "";
+  const mode = searchParams.get("mode") || "signup"; 
 
   const [otp, setOtp] = useState(["", "", "", ""]);
   const [error, setError] = useState("");
@@ -18,9 +24,6 @@ export default function OTPPage() {
 
   const { mutate: verify, isPending: verifying } = useVerifyOTPMutation();
   const { mutate: resendOTP, isPending: sending } = useResendOTPMutation();
-
-  const searchParams = useSearchParams();
-  const email = searchParams.get("email") || "";
 
   useEffect(() => {
     if (!canResend && timeLeft > 0) {
@@ -67,21 +70,42 @@ export default function OTPPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const otpCode = otp.join("");
-
+  
     if (otpCode.length !== 4) {
-      setError(t("error"));
+      setError(t("invalidCode"));
       return;
     }
-
+  
     setError("");
-    verify({ email, otp: otpCode });
+    console.log("Verifying OTP...", { mode, email, otp: otpCode }); // 👈 تسجيل للتحقق
+  
+    verify(
+      { email, otp: otpCode },
+      {
+        onSuccess: () => {
+          console.log("OTP Verified Successfully"); // 👈 تأكيد النجاح
+  
+          if (mode === "signup") {
+            router.push("/");
+          } else if (mode === "forgot-password") {
+            router.push(`/reset-password?email=${encodeURIComponent(email)}&otp=${otpCode}`); 
+          } else {
+            setError(t("invalidMode"));
+          }
+        },
+        onError: (err: any) => {
+          console.error("OTP Verification Failed", err); // 👈 تسجيل الخطأ
+          setError(err.message || t("resendError"));
+        },
+      }
+    );
   };
 
   const handleResendClick = () => {
     if (!canResend) return;
 
-    setSuccessMessage("");
     setError("");
+    setSuccessMessage("");
 
     resendOTP(
       { email },
@@ -89,11 +113,10 @@ export default function OTPPage() {
         onSuccess: () => {
           setSuccessMessage(t("resendSuccess"));
           setCanResend(false);
-          setTimeLeft(60); 
+          setTimeLeft(60);
         },
-        onError: (err) => {
-          setError(t("resendError"));
-          console.error(err);
+        onError: (err: any) => {
+          setError(err.message || t("resendError"));
         },
       }
     );
@@ -103,7 +126,9 @@ export default function OTPPage() {
     <div className="min-h-screen flex items-center justify-center bg-gray-100 dark:bg-gray-900 overflow-y-auto px-4">
       <div className="bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-xl w-full max-w-md flex flex-col mx-4">
         <h2 className="text-3xl font-bold text-center mb-4 text-gray-800 dark:text-white">
-          {t("title")}
+          {mode === "signup"
+            ? t("signupVerification")
+            : t("passwordReset")}
         </h2>
         <p className="text-center text-gray-600 dark:text-gray-300 mb-6">
           {t("description")}

@@ -75,6 +75,11 @@ const Page = () => {
               required
             />
           </div>
+          <div className="text-center text-sm mt-1">
+            <Link href="/forgot-password" className="text-blue-600 hover:underline">
+              {t("Forgot Password?")}
+            </Link>
+          </div>
 
           <button
             type="submit"

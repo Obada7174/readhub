@@ -45,7 +45,7 @@ export default function Page() {
     signup(data, {
       onSuccess: () => {
         setSuccessMessage(t("successMessage"));
-        router.push(`/otp?email=${encodeURIComponent(formData.email)}`);
+        router.push(`/otp?email=${encodeURIComponent(formData.email)}&mode=signup`);
       },
       onError: (err: Error) => {
         setErrorMessage(err.message || t("errorMessage"));

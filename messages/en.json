@@ -112,7 +112,33 @@
     "Sign In": "Sign In",
     "Sign Up": "Sign Up",
     "Don't have an account?": "Don't have an account?",
-    "signingIn": "Signing In..."
+    "signingIn": "Signing In...",
+    "Forgot Password?":"Forgot Password?"
+  },
+  "forgot_password":{
+    "title": "Forgot Password",
+    "description": "Enter your email to receive a verification code.",
+    "emailLabel": "Email",
+    "emailPlaceholder": "Enter your email",
+    "sendCodeButton": "Send Verification Code",
+    "sending": "Sending...",
+    "codeSent": "Verification code sent successfully!",
+    "rememberedPassword": "Remembered your password?",
+    "signInLink": "Sign In",
+    "somethingWentWrong": "Something went wrong. Please try again."
+  },
+  "reset_password":{
+    "title": "Reset Password",
+    "description": "Please enter your new password.",
+    "newPasswordLabel": "New Password",
+    "newPasswordPlaceholder": "Enter your new password",
+    "confirmPasswordLabel": "Confirm Password",
+    "confirmPasswordPlaceholder": "Re-enter your password",
+    "updatePasswordButton": "Update Password",
+    "updating": "Updating...",
+    "passwordsDoNotMatch": "Passwords do not match",
+    "missingData": "Missing data",
+    "somethingWentWrong": "Something went wrong. Please try again."
   },
   "footer": {
     "about": {
