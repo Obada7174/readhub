@@ -7,20 +7,19 @@ import { useTranslations } from 'next-intl';
 
 import Input from '@/components/dashboard/Input';
 import Select from '@/components/dashboard/Select';
-// import DashButton from '@/components/dashboard/Button';
 import DashContainer from '@/components/dashboard/DashContainer';
 import DashHeader from '@/components/dashboard/Header';
-
-import { addUserSchema, editUserSchema, UserFormValues } from '@/lib/validators/user.validator';
+import DashButton from '@/components/ui/Button'
+import { addUserSchema, editUserSchema, AddUserFormValues ,EditUserFormValues } from '@/lib/validators/user.validator';
 
 interface UserFormProps {
     mode: 'add' | 'edit';
-    defaultValues?: Partial<UserFormValues>;
-    onSubmit: (data: UserFormValues) => Promise<void>;
+    defaultValues?: Partial<AddUserFormValues | EditUserFormValues>;
+    onSubmit: (data: AddUserFormValues | EditUserFormValues) => Promise<void>;
 }
 
 export default function UserForm({ mode, defaultValues, onSubmit }: UserFormProps) {
-    const t = useTranslations('user_form');
+    const t = useTranslations('Dashboard.users');
     const router = useRouter();
     const schema = mode === 'add' ? addUserSchema : editUserSchema;
 
@@ -28,27 +27,21 @@ export default function UserForm({ mode, defaultValues, onSubmit }: UserFormProp
         register,
         handleSubmit,
         formState: { errors, isSubmitting },
-    } = useForm<UserFormValues>({
+    } = useForm<AddUserFormValues | EditUserFormValues>({
         resolver: zodResolver(schema),
-        defaultValues: defaultValues || {
-            first_name: '',
-            last_name: '',
-            email: '',
-            password: '',
-            role: '',
-            location: ''
-        },
+        defaultValues: defaultValues,
     });
+    
 
-    const submitHandler: SubmitHandler<UserFormValues> = async (data) => {
+    const submitHandler: SubmitHandler<AddUserFormValues | EditUserFormValues> = async (data) => {
         try {
-            if (!data.password) delete data.password;
             await onSubmit(data);
             router.push('/dashboard/users');
         } catch (err) {
             console.error('Error submitting form', err);
         }
     };
+      
 
     return (
         <DashContainer>
@@ -106,9 +99,9 @@ export default function UserForm({ mode, defaultValues, onSubmit }: UserFormProp
                     error={errors.role?.message}
                 />
 
-                <button type="submit" disabled={isSubmitting} className="w-full bg-blue-600 text-white py-2 px-4 rounded-md">
+                <DashButton type="submit" disabled={isSubmitting} className="w-full bg-blue-600 text-white py-2 px-4 rounded-md">
                     {isSubmitting ? 'جاري الإرسال...' : mode === 'add' ? t('add_user') : t('save_changes')}
-                </button>
+                </DashButton>
 
             </form>
         </DashContainer>

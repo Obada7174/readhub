@@ -16,11 +16,11 @@ export default function EditUser() {
 
     const handleUpdate = async (data: UpdateUserPayload) => {
         const updateData = {
-            first_name: data.first_name,
-            last_name: data.last_name,
-            email: data.email,
-            role: data.role,
-            location: data.location
+            first_name: data?.first_name,
+            last_name: data?.last_name,
+            email: data?.email,
+            role: data?.role,
+            location: data?.location
         };
 
         await updateUserMutation.mutateAsync({ id: userId, data: updateData });
@@ -33,7 +33,7 @@ export default function EditUser() {
                 first_name: user.first_name,
                 last_name: user.last_name,
                 email: user.email,
-                password: '',
+                // password: '',
                 role: user.role,
                 location: user.location
             }}

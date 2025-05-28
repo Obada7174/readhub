@@ -31,4 +31,6 @@ export const addUserSchema = baseUserSchema.extend({
 
 export const editUserSchema = baseUserSchema;
 
-export type UserFormValues = z.infer<typeof editUserSchema>;
+// export type UserFormValues = z.infer<typeof editUserSchema>;
+export type AddUserFormValues = z.infer<typeof addUserSchema>;
+export type EditUserFormValues = z.infer<typeof editUserSchema>;

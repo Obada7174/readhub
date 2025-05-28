@@ -17,16 +17,6 @@ export const useUsersQuery = (page = 1, limit = 10, search = '') => {
     queryFn: () => getUsers(page, limit, search),
   });
 };
-
-// export const useUsersQuery =  => {
-//   return useQuery(
-//     ,
-//     () => getUsers(page, limit, search),
-//     {
-//       keepPreviousData: true,
-//     }
-//   );
-// };
 export const useUserQuery = (id: number) => {
 
   return useQuery({

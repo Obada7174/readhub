@@ -17,11 +17,6 @@ export const createUser = async (user: Omit<User, "id">): Promise<User> => {
   return res.data;
 };
 
-// export const updateUser = async (user: User): Promise<User> => {
-//   const res = await axios.patch(`/users/${user.id}`, user);
-//   return res.data;
-// };
-
 export const updateUser = async (
   id: number,
   payload: UpdateUserPayload
@@ -29,6 +24,7 @@ export const updateUser = async (
   const res = await axios.patch(`http://localhost:5000/users/${id}`, payload);
   return res.data;
 };
+
 export const deleteUsers = async (ids: number[]): Promise<void> => {
   await axios.delete(`http://localhost:5000/users`, {
     data: { ids },

@@ -226,6 +226,7 @@
       "password": "Password",
       "password_placeholder": "Enter password",
       "role": "Role",
+      "location":"Location",
       "roles": {
         "admin": "Admin",
         "user": "Normal User",
