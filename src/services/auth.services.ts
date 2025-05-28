@@ -1,8 +1,7 @@
-import {User} from "@/types/user"
-const API_URL = "http://127.0.0.1:5000";
-
 import axios from "@/services/axios"; 
 import { LoginCredentials, LoginResponse, OTPVerifyPayload, OTPVerifyResponse, SignupData, SignupResponse } from "@/types/auth";
+
+const API_URL = "http://127.0.0.1:5000";
 
 export const signupUser = async (data: SignupData): Promise<SignupResponse> => {
   const res = await axios.post("/auth/signup", data);
