@@ -5,10 +5,12 @@ interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
     label?: string;
     options: Array<{ value: string | number; label: string }>;
     error?: string;
+    placeholder?: string; 
+
 }
 
 const Select = forwardRef<HTMLSelectElement, SelectProps>(
-    ({ label, options, error, className = '', ...rest }, ref) => {
+    ({ label, options, error, placeholder, className = '', ...rest }, ref) => {
         return (
             <div className="flex flex-col w-full">
                 {label && (
@@ -22,9 +24,11 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
                     className={`w-full h-[35px] rounded-md outline-none border-2 border-b-4 dark:border-[#303030] bg-slate-100 dark:bg-[#2d2d2d] dark:text-white pl-2 pr-2 transition-all duration-300 ease-in-out placeholder-[#9a9a9a] dark:hover:bg-[#313131] dark:focus:bg-[#1e1f20] focus:border-border focus:drop-shadow-lg invalid:focus:border-b-red-600 valid:focus:border-b-blue-900 ${error ? 'border-red-500' : ''
                         } ${className}`}
                     {...rest}
+                    defaultValue=""
+
                 >
                     <option value="" disabled hidden>
-                        اختر {label?.toLowerCase() || 'القيمة'}
+                        {placeholder || `اختر ${label?.toLowerCase() || 'القيمة'}`}
                     </option>
                     {options.map((opt) => (
                         <option key={opt.value} value={opt.value}>

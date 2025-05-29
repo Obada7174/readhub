@@ -5,6 +5,7 @@
     "topRatedSection": {
       "topRatedBooks": "Top Rated Books"
     },
+    
     "faqSection": {
       "sectionTitle": "Frequently Asked Questions",
       "sectionDescription": "If you have any questions, the answer might be here!",
@@ -41,7 +42,6 @@
     "contact": "Contact",
     "search": "Search"
   },
-
   "BooksPage": {
     "categories": "Categories",
     "price": "Price",
@@ -76,21 +76,21 @@
     }
   },
   "signup": {
-      "title": "Create a New Account",
-      "successMessage": "Sign Up Successful!",
-      "errorMessage": "Google sign-in failed",
-      "firstName": "First Name",
-      "lastName": "Last Name",
-      "email": "Email",
-      "password": "Password",
-      "signUpButton": "Sign Up",
-      "signUpWithGoogle": "Sign Up with Google",
-      "pendingButton": "Signing Up...",
-      "termsAgree": "By creating an account, you agree to our Terms of Service and Privacy Policy",
-      "termsLink": "Terms of Service",
-      "privacyLink": "Privacy Policy",
-      "haveAccount": "Already have an account?",
-      "signInLink": "Sign in"
+    "title": "Create a New Account",
+    "successMessage": "Sign Up Successful!",
+    "errorMessage": "Google sign-in failed",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "email": "Email",
+    "password": "Password",
+    "signUpButton": "Sign Up",
+    "signUpWithGoogle": "Sign Up with Google",
+    "pendingButton": "Signing Up...",
+    "termsAgree": "By creating an account, you agree to our Terms of Service and Privacy Policy",
+    "termsLink": "Terms of Service",
+    "privacyLink": "Privacy Policy",
+    "haveAccount": "Already have an account?",
+    "signInLink": "Sign in"
   },
   "otp": {
     "title": "Verify Your Email",
@@ -211,7 +211,7 @@
     "addPublisher": "Add Publisher",
     "competitions": "Competitions",
     "addCompetition": "Add Competition",
-    "users":{
+    "users": {
       "users": "Users",
       "addUser": "Add User",
       "add_user": "Add User",
@@ -226,77 +226,85 @@
       "password": "Password",
       "password_placeholder": "Enter password",
       "role": "Role",
-      "location":"Location",
+      "location": "Location",
+      "select_role_placeholder":"Select a Role",
+      "location_placeholder": "Enter Location",
       "roles": {
         "admin": "Admin",
-        "user": "Normal User",
-        "writer": "Writer",
-        "product_manager": "Product Manager"
-      }
-      
-    },
-    "sidebar":{
-      "users":"Users",
-      "books":"Books",
-      "categories":"Categories",
-      "competitions":"Competitions",
-      "authors":"Authors",
-      "Copons":"Copons",
-      "Carts":"Carts"
+        "user": "User",
+        "author": "Author"
       },
-      "add_cart":{
-        "title": "Add New Cart",
-        "userId_label": "User ID",
-        "userId_placeholder": "User ID",
-        "submit_button": "Add Cart",
-        "success_message": "Cart added successfully!",
-        "error_required_userId": "User ID is required and must be a positive number"
-      },
-      "dashtable":{
-        "add": "Add",
-        "delete": "Delete",
-        "search_for": "Search for {item}"
-      },
-      "cart_columns": {
-        "id": "Cart ID",
-        "userId": "User ID",
-        "userEmail": "User Email",
-        "status": "Status",
-        "created_at": "Created At",
-        "updated_at": "Updated At"
-      },
-       "coupon_columns": {
-        "code": "code",
-        "discount_value": "discount value"
-      },
-      "add_coupon": {
-        "title": "Add New Coupon",
-        "code_label": "Coupon Code",
-        "code_placeholder": "coupon code",
-        "discount_label": "Discount Value (%)",
-        "discount_placeholder": "discount value",
-        "submit_button": "Add Coupon",
-        "success_message": "Coupon added successfully!",
-        "error": {
-          "required": {
-            "code": "Code is required and must be between 3 and 20 characters",
-            "discount_value": "Discount value must be between 1 and 100"
-          },
-          "general": "Failed to add coupon. Please try again."
-        }
+      "errors": {
+        "first_name_required": "First name is required and must be at least 2 characters.",
+        "last_name_required": "Last name is required and must be at least 2 characters.",
+        "invalid_email": "Please enter a valid email.",
+        "location_required": "Location is required.",
+        "password_required": "Password must be at least 6 characters.",
+        "role_required": "Role is required."
       }
     },
-  "SideBar":{
-      "Home": "Home",
-      "Profile": "Profile",
-      "Library": "Library",
-      "Favorites": "Favorites",
-      "My Books": "My Books",
-      "Pdf Reader": "Pdf Reader",
-      "Comments": "Comments",
-      "Competitions": "Competitions",
-      "Settings": "Settings",
-      "Notifications": "Notifications"
+    "sidebar": {
+      "users": "Users",
+      "books": "Books",
+      "categories": "Categories",
+      "competitions": "Competitions",
+      "authors": "Authors",
+      "Copons": "Copons",
+      "Carts": "Carts"
+    },
+    "add_cart": {
+      "title": "Add New Cart",
+      "userId_label": "User ID",
+      "userId_placeholder": "User ID",
+      "submit_button": "Add Cart",
+      "success_message": "Cart added successfully!",
+      "error_required_userId": "User ID is required and must be a positive number"
+    },
+    "dashtable": {
+      "add": "Add",
+      "delete": "Delete",
+      "search_for": "Search for {item}"
+    },
+    "cart_columns": {
+      "id": "Cart ID",
+      "userId": "User ID",
+      "userEmail": "User Email",
+      "status": "Status",
+      "created_at": "Created At",
+      "updated_at": "Updated At"
+    },
+    "coupon_columns": {
+      "code": "code",
+      "discount_value": "discount value"
+    },
+    "add_coupon": {
+      "title": "Add New Coupon",
+      "code_label": "Coupon Code",
+      "code_placeholder": "coupon code",
+      "discount_label": "Discount Value (%)",
+      "discount_placeholder": "discount value",
+      "submit_button": "Add Coupon",
+      "success_message": "Coupon added successfully!",
+      "error": {
+        "required": {
+          "code": "Code is required and must be between 3 and 20 characters",
+          "discount_value": "Discount value must be between 1 and 100"
+        },
+        "general": "Failed to add coupon. Please try again."
+      }
+    }
+  },
+  "SideBar": {
+    "Home": "Home",
+    "Profile": "Profile",
+    "Library": "Library",
+    "Favorites": "Favorites",
+    "My Books": "My Books",
+    "Pdf Reader": "Pdf Reader",
+    "Comments": "Comments",
+    "Competitions": "Competitions",
+    "Settings": "Settings",
+    "Notifications": "Notifications"
   },
   "Comments": {
     "likes": "likes",
@@ -325,5 +333,6 @@
     "failed_to_update_book": "Failed to update book",
     "failed_to_delete_book": "Failed to delete book",
     "login_successful": "Login successful!",
-    "login_failed": "Login failed. Please check your credentials."  }
+    "login_failed": "Login failed. Please check your credentials."
+  }
 }

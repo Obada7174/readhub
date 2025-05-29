@@ -26,3 +26,22 @@ export type UsersResponse= {
     totalPages:number;
     currentPage:string;
   }
+
+export type AddUserFormValues = {
+    first_name: string;
+    last_name: string;
+    email: string;
+    location: string;
+    password: string;
+    role: string;
+  };
+  
+  export type EditUserFormValues = {
+    first_name: string;
+    last_name: string;
+    email: string;
+    location: string;
+    password: string;
+    role: string;
+  };
+  

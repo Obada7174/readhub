@@ -5,6 +5,11 @@
     "topRatedSection": {
       "topRatedBooks": "الكتب الإعلى تقييماً"
     },
+    "validations": {
+      "min": "يجب أن يكون على الأقل {min} أحرف",
+      "email": "عنوان البريد الإلكتروني غير صحيح",
+      "required": "هذا الحقل مطلوب"
+    },
     "faqSection": {
       "sectionTitle": "الأسئلة الشائعة",
       "sectionDescription": "إذا كانت لديك أي استفسارات، فقد تكون الإجابة هنا!",
@@ -217,7 +222,6 @@
     "dashboard": "لوحة التحكم",
     "libraryManagement": "إدارة المكتبة",
     "mainDashboard": "الرئيسية",
-    "users": "المستخدمين",
     "addUser": "إضافة مستخدم",
     "books": "الكتب",
     "addBook": "إضافة كتاب",
@@ -236,10 +240,42 @@
       "categories": "التصنيفات",
       "competitions": "المسابقات",
       "authors": "المؤلفين",
-      "Copons":"الجوائز",
-      "Carts":"السلات"
+      "Copons": "الجوائز",
+      "Carts": "السلات"
     },
-    "add_cart":{
+    "users": {
+      "users": "المستخدمون",
+      "addUser": "إضافة مستخدم",
+      "add_user": "إضافة مستخدم",
+      "edit_user": "تعديل المستخدم",
+      "save_changes": "حفظ التغييرات",
+      "first_name": "الاسم الأول",
+      "first_name_placeholder": "أدخل الاسم الأول",
+      "last_name": "الاسم الأخير",
+      "last_name_placeholder": "أدخل الاسم الأخير",
+      "email": "البريد الإلكتروني",
+      "email_placeholder": "أدخل عنوان البريد الإلكتروني",
+      "password": "كلمة المرور",
+      "password_placeholder": "أدخل كلمة المرور",
+      "role": "الدور",
+      "location": "الموقع",
+      "select_role_placeholder": "اختر الدور",
+      "location_placeholder": "أدخل الموقع",
+      "roles": {
+        "admin": "مدير",
+        "user": "مستخدم",
+        "author": "مؤلف"
+      },
+      "errors": {
+        "first_name_required": "الاسم الأول مطلوب ويجب أن لا يقل عن حرفين.",
+        "last_name_required": "اسم العائلة مطلوب ويجب أن لا يقل عن حرفين.",
+        "invalid_email": "يرجى إدخال بريد إلكتروني صالح.",
+        "location_required": "الموقع مطلوب.",
+        "password_required": "كلمة المرور يجب أن تكون 6 أحرف على الأقل.",
+        "role_required": "الدور مطلوب."
+      }
+    },
+    "add_cart": {
       "title": "إضافة سلة جديدة",
       "userId_label": "رقم المستخدم",
       "userId_placeholder": "رقم المستخدم",
@@ -247,7 +283,7 @@
       "success_message": "تمت إضافة السلة بنجاح!",
       "error_required_userId": "رقم المستخدم مطلوب ويجب أن يكون رقمًا موجبًا"
     },
-    "dashtable":{
+    "dashtable": {
       "add": "إضافة",
       "delete": "حذف",
       "search_for": "البحث عن {item}"
@@ -279,28 +315,28 @@
         },
         "general": "فشل في إضافة الكوبون، حاول مجددًا"
       }
-  },
-  "toastMessages": {
-    "user_created_successfully": "تم إنشاء المستخدم بنجاح",
-    "user_updated_successfully": "تم تحديث المستخدم بنجاح",
-    "user_deleted_successfully": "تم حذف المستخدم بنجاح",
-    "failed_to_create_user": "فشل في إنشاء المستخدم",
-    "failed_to_update_user": "فشل في تحديث المستخدم",
-    "failed_to_delete_user": "فشل في حذف المستخدم",
-    "category_created_successfully": "تم إنشاء التصنيف بنجاح",
-    "category_updated_successfully": "تم تحديث التصنيف بنجاح",
-    "category_deleted_successfully": "تم حذف التصنيف بنجاح",
-    "failed_to_create_category": "فشل في إنشاء التصنيف",
-    "failed_to_update_category": "فشل في تحديث التصنيف",
-    "failed_to_delete_category": "فشل في حذف التصنيف",
-    "book_created_successfully": "تم إنشاء الكتاب بنجاح",
-    "book_updated_successfully": "تم تحديث الكتاب بنجاح",
-    "book_deleted_successfully": "تم حذف الكتاب بنجاح",
-    "failed_to_create_book": "فشل في إنشاء الكتاب",
-    "failed_to_update_book": "فشل في تحديث الكتاب",
-    "failed_to_delete_book": "فشل في حذف الكتاب",
-    "login_successful": "تم تسجيل الدخول بنجاح!",
-    "login_failed": "فشل تسجيل الدخول. يرجى التحقق من بياناتك."
-  }
+    },
+    "toastMessages": {
+      "user_created_successfully": "تم إنشاء المستخدم بنجاح",
+      "user_updated_successfully": "تم تحديث المستخدم بنجاح",
+      "user_deleted_successfully": "تم حذف المستخدم بنجاح",
+      "failed_to_create_user": "فشل في إنشاء المستخدم",
+      "failed_to_update_user": "فشل في تحديث المستخدم",
+      "failed_to_delete_user": "فشل في حذف المستخدم",
+      "category_created_successfully": "تم إنشاء التصنيف بنجاح",
+      "category_updated_successfully": "تم تحديث التصنيف بنجاح",
+      "category_deleted_successfully": "تم حذف التصنيف بنجاح",
+      "failed_to_create_category": "فشل في إنشاء التصنيف",
+      "failed_to_update_category": "فشل في تحديث التصنيف",
+      "failed_to_delete_category": "فشل في حذف التصنيف",
+      "book_created_successfully": "تم إنشاء الكتاب بنجاح",
+      "book_updated_successfully": "تم تحديث الكتاب بنجاح",
+      "book_deleted_successfully": "تم حذف الكتاب بنجاح",
+      "failed_to_create_book": "فشل في إنشاء الكتاب",
+      "failed_to_update_book": "فشل في تحديث الكتاب",
+      "failed_to_delete_book": "فشل في حذف الكتاب",
+      "login_successful": "تم تسجيل الدخول بنجاح!",
+      "login_failed": "فشل تسجيل الدخول. يرجى التحقق من بياناتك."
+    }
   }
 }
