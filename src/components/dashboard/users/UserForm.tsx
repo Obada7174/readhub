@@ -1,7 +1,6 @@
 'use client';
 
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 
@@ -10,7 +9,7 @@ import Select from '@/components/dashboard/Select';
 import DashContainer from '@/components/dashboard/DashContainer';
 import DashHeader from '@/components/dashboard/Header';
 import DashButton from '@/components/ui/Button'
-import { addUserSchema, editUserSchema, AddUserFormValues ,EditUserFormValues } from '@/lib/validators/user.validator';
+import { AddUserFormValues ,EditUserFormValues } from '@/types/user';
 
 interface UserFormProps {
     mode: 'add' | 'edit';
@@ -21,19 +20,55 @@ interface UserFormProps {
 export default function UserForm({ mode, defaultValues, onSubmit }: UserFormProps) {
     const t = useTranslations('Dashboard.users');
     const router = useRouter();
-    const schema = mode === 'add' ? addUserSchema : editUserSchema;
 
     const {
         register,
         handleSubmit,
+        setError, 
         formState: { errors, isSubmitting },
     } = useForm<AddUserFormValues | EditUserFormValues>({
-        resolver: zodResolver(schema),
         defaultValues: defaultValues,
     });
+    console.log(errors);
     
 
     const submitHandler: SubmitHandler<AddUserFormValues | EditUserFormValues> = async (data) => {
+        const validationErrors: Partial<Record<keyof AddUserFormValues, string>> = {};
+
+        if (!data.first_name || data.first_name.trim().length < 2) {
+            validationErrors.first_name = t('errors.first_name_required');
+        }
+
+        if (!data.last_name || data.last_name.trim().length < 2) {
+            validationErrors.last_name = t('errors.last_name_required');
+        }
+
+        if (!data.email || !/\S+@\S+\.\S+/.test(data.email)) {
+            validationErrors.email = t('errors.invalid_email');
+        }
+
+        if (!data.location || data.location.trim().length < 2) {
+            validationErrors.location = t('errors.location_required');
+        }
+
+        if (mode === 'add' && (!data.password || data.password.length < 6)) {
+            validationErrors.password = t('errors.password_required');
+        }
+
+        if (!data.role) {
+            validationErrors.role = t('errors.role_required');
+        }
+
+        if (Object.keys(validationErrors).length > 0) {
+            Object.entries(validationErrors).forEach(([field, message]) => {
+                setError(field as keyof AddUserFormValues, {
+                    type: 'manual',
+                    message,
+                });
+            });
+            return;
+        }
+
         try {
             await onSubmit(data);
             router.push('/dashboard/users');
@@ -41,6 +76,7 @@ export default function UserForm({ mode, defaultValues, onSubmit }: UserFormProp
             console.error('Error submitting form', err);
         }
     };
+    
       
 
     return (
@@ -92,10 +128,10 @@ export default function UserForm({ mode, defaultValues, onSubmit }: UserFormProp
                     options={[
                         { value: 'admin', label: t('roles.admin') },
                         { value: 'user', label: t('roles.user') },
-                        { value: 'writer', label: t('roles.writer') },
-                        { value: 'product_manager', label: t('roles.product_manager') },
+                        { value: 'author', label: t('roles.author') },
                     ]}
                     {...register('role')}
+                    placeholder={t('select_role_placeholder')} 
                     error={errors.role?.message}
                 />
 

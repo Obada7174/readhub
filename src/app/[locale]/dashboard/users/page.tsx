@@ -111,7 +111,6 @@ export default function Users() {
               href={`/dashboard/users/${id}`}
               className="text-green-600 hover:text-green-800 rounded-full shadow p-3"
               size="icon"
-
             >
               <LuEye />
             </DashButton>
