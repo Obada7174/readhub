@@ -367,6 +367,19 @@
       "failed_to_delete_book": "فشل في حذف الكتاب",
       "login_successful": "تم تسجيل الدخول بنجاح!",
       "login_failed": "فشل تسجيل الدخول. يرجى التحقق من بياناتك."
+    },
+    "coupons":{
+      "edit_coupon": "تعديل الكوبون",
+      "code_label": "كود الكوبون",
+      "code_placeholder": "أدخل كود الكوبون",
+      "discount_label": "قيمة الخصم (%)",
+      "discount_placeholder": "مثال: 25",
+      "submitting": "جارٍ الإرسال...",
+      "save_changes": "حفظ التغييرات",
+      "errors": {
+        "code_required": "كود الكوبون مطلوب",
+        "invalid_discount": "الخصم يجب أن يكون رقمًا بين 0 و 100"
+      }
     }
   }
 }
