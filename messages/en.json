@@ -232,8 +232,6 @@
     "dashboard": "Dashboard",
     "libraryManagement": "Library Management",
     "mainDashboard": "Main Dashboard",
-    "users": "Users",
-    "addUser": "Add User",
     "books": "Books",
     "addBook": "Add Book",
     "categories": "Categories",
@@ -244,6 +242,30 @@
     "addPublisher": "Add Publisher",
     "competitions": "Competitions",
     "addCompetition": "Add Competition",
+    "users":{
+      "users": "Users",
+      "addUser": "Add User",
+      "add_user": "Add User",
+      "edit_user": "Edit User",
+      "save_changes": "Save Changes",
+      "first_name": "First Name",
+      "first_name_placeholder": "Enter first name",
+      "last_name": "Last Name",
+      "last_name_placeholder": "Enter last name",
+      "email": "Email",
+      "email_placeholder": "Enter email address",
+      "password": "Password",
+      "password_placeholder": "Enter password",
+      "role": "Role",
+      "location":"Location",
+      "roles": {
+        "admin": "Admin",
+        "user": "Normal User",
+        "writer": "Writer",
+        "product_manager": "Product Manager"
+      }
+      
+    },
     "sidebar":{
       "users":"Users",
       "books":"Books",

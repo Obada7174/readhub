@@ -11,6 +11,13 @@ import { Book } from "@/types/book";
 import { useTranslations } from "next-intl";
 import { showErrorToast, showSuccessToast } from "@/helpers/Toast";
 
+
+export const useBooksQuery = () => {
+  return useQuery<Book[]>({
+    queryKey: ["users"],
+    queryFn: getBooks,
+  });
+};
 export const useBookQuery = (id: string) => {
   return useQuery<Book>({
     queryKey: ["book", id],

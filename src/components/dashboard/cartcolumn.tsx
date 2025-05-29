@@ -1,6 +1,8 @@
-import { GridColDef } from '@mui/x-data-grid';
+import { GridColDef, GridRenderCellParams } from '@mui/x-data-grid';
 import { Cart } from '@/types/carts';
 import { useTranslations } from 'next-intl';
+import { DateObject } from "@/types";
+import TransformDate from "@/helpers/TransformDate";
 
 export const useCartColumns = () => {
   const t = useTranslations('Dashboard.cart_columns');
@@ -27,6 +29,7 @@ export const useCartColumns = () => {
       width: 200,
       align: 'center',
       headerAlign: 'center',
+      flex: 1,
       valueGetter: (_, row: Cart) => row.user.email,
     },
     {
@@ -34,21 +37,32 @@ export const useCartColumns = () => {
       headerName: t('status'),
       width: 100,
       align: 'center',
+      flex: 0.5,
       headerAlign: 'center',
     },
     {
       field: 'created_at',
       headerName: t('created_at'),
       width: 200,
+      flex: 1,
       align: 'center',
       headerAlign: 'center',
+      renderCell: (params: GridRenderCellParams) => {
+        const date: DateObject = TransformDate(params.value as string);
+        return `${date.getFullYear}/${date.getMonth}/${date.getDay}`;
+      },
     },
     {
       field: 'updated_at',
       headerName: t('updated_at'),
       width: 200,
       align: 'center',
+      flex: 1,
       headerAlign: 'center',
+      renderCell: (params: GridRenderCellParams) => {
+        const date: DateObject = TransformDate(params.value as string);
+        return `${date.getFullYear}/${date.getMonth}/${date.getDay}`;
+      },
     },
   ];
 

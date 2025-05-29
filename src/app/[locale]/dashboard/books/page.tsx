@@ -182,6 +182,27 @@ export default function Users() {
         refetch: refetch,
         total: data?.length,
       }}
+      // deleteMutation={{
+      //         mutateAsync: async (ids: GridRowId[]) => {
+      //           await Promise.all(
+      //             ids.map((id) => deleteMutation.mutateAsync(Number(id)))
+      //           );
+                
+      //         },
+      //       }}
+      //       updateMutation={async (row: User) => {
+      //         const { id, first_name, last_name, email, role , location } = row;
+      
+      //         const updateData: UpdateUserPayload = {
+      //           first_name,
+      //           last_name,
+      //           email,
+      //           role,
+      //           location
+      //         };
+      
+      //         return await updateMutation.mutateAsync({ id, data: updateData });
+      //       }}
     />
   );
 }

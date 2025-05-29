@@ -4,11 +4,10 @@ import DashTable from '@/components/dashboard/DashTable';
 import { useCartColumns } from '@/components/dashboard/cartcolumn'; 
 import { useCartsQuery } from '@/hooks/react-query/carts/useCartsQuery';
 import { useDeleteCart, useUpdateCart } from '@/hooks/react-query/carts/useCartsQuery';
-import { useRouter } from 'next/navigation';
+import { Cart } from '@/types/carts';
 import React from 'react';
 
 export default function CartsPage() {
-  const router = useRouter();
   const cartsQuery = useCartsQuery();
   const deleteMutation = useDeleteCart();
   const updateMutation = useUpdateCart();
@@ -38,7 +37,7 @@ export default function CartsPage() {
       deleteMutation={{
         mutateAsync: (ids: React.Key[]) => deleteMutation.mutateAsync(ids as number[]),
       }}
-      updateMutation={(row: any) => updateMutation.mutateAsync({ id: row.id, userId: row.user.id })}
+      updateMutation={(row: Cart) => updateMutation.mutateAsync({ id: row.id, userId: row.user.id })}
     />
   );
 }
