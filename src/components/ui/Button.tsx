@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 type ButtonVariant = "default" | "outline" | "link" | "ghost" | "destructive";
 type ButtonSize = "default" | "sm" | "lg" | "icon";
 
+type Type = "button" | "submit" | "reset" | undefined;
 interface ButtonProps {
   href?: string;
   onClick?: () => void;
@@ -16,6 +17,7 @@ interface ButtonProps {
   fullWidth?: boolean;
   className?: string;
   disabled?: boolean;
+  type?: Type;
 }
 
 export default function Button({
@@ -27,6 +29,7 @@ export default function Button({
   fullWidth = false,
   className = "",
   disabled = false,
+  type,
 }: ButtonProps) {
   const { theme, systemTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
@@ -42,7 +45,7 @@ export default function Button({
       case "lg":
         return "h-11 rounded-md px-8";
       case "icon":
-        return "h-10 w-10 p-2 flex items-center justify-center text-bold";
+        return "h-10 w-12 p-2 flex items-center justify-center text-bold";
       case "default":
       default:
         return "h-10 px-4 py-2";
@@ -103,7 +106,7 @@ export default function Button({
 
   return (
     <button
-      type="button"
+      type={type || "button"}
       disabled={disabled}
       onClick={onClick}
       className={finalClasses}

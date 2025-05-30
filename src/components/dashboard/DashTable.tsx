@@ -12,6 +12,7 @@ import Input from "@/components/dashboard/Input";
 import DashButton from "@/components/ui/Button";
 import DashContainer from "@/components/dashboard/DashContainer";
 import DashHeader from "@/components/dashboard/Header";
+import { useTranslations } from "next-intl";
 
 interface DashTableProps<T extends { id: number | string }> {
   ITEMS: string;
@@ -25,10 +26,11 @@ interface DashTableProps<T extends { id: number | string }> {
     isLoading: boolean;
     refetch: () => void;
     total?: number;
-  };
-
-  searchQuery?: {
-    searchFn: (query: string) => Promise<T[]>;
+    page: number;
+    setPage: (page: number) => void;
+    limit: number;
+    setLimit: (limit: number) => void;
+    setSearch: (value: string) => void;
   };
 
   deleteMutation?: {
@@ -45,39 +47,25 @@ export default function DashTable<T extends { id: number | string }>({
   columns,
   isEditable = false,
   query,
-  searchQuery,
   deleteMutation,
   updateMutation,
 }: DashTableProps<T>) {
-  const [search, setSearch] = useState("");
-  const [searchResults, setSearchResults] = useState<T[]>([]);
+  const t = useTranslations("Dashboard.dashtable");
   const [selectedRows, setSelectedRows] = useState<GridRowId[]>([]);
 
   const displayedRows = useMemo(() => {
-    return search.length === 0 ? query.data ?? [] : searchResults;
-  }, [query.data, searchResults, search]);
+    return query.data ?? [];
+  }, [query.data]);
 
-  const handleSearch = async (value: string) => {
-    setSearch(value);
-    if (searchQuery && value.trim() !== "") {
-      try {
-        const result = await searchQuery.searchFn(value);
-        setSearchResults(result);
-      } catch (err) {
-        console.error("Search error:", err);
-      }
-    } else {
-      setSearchResults([]);
-    }
+  const handleSearch = (value: string) => {
+    query.setSearch(value);
+    query.setPage(1);
   };
 
   const handleDelete = async () => {
-    console.log("click delete");
-    console.log(selectedRows);
     if (deleteMutation && selectedRows.length > 0) {
       try {
         await deleteMutation.mutateAsync(selectedRows);
-
         query.refetch();
         setSelectedRows([]);
       } catch (err) {
@@ -122,11 +110,10 @@ export default function DashTable<T extends { id: number | string }>({
         >
           <Input
             className="max-w-md dark:border-b-blue-900 border-b-blue-900 h-full"
-            placeholder={`Search for ${ITEM}`}
-            value={search}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-              handleSearch(e.target.value);
-            }}
+            placeholder={t(`search_for`, { item: ITEM.toLowerCase() })}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              handleSearch(e.target.value)
+            }
           />
           <div className="gap-4 flex">
             <DashButton
@@ -134,22 +121,7 @@ export default function DashTable<T extends { id: number | string }>({
               className="max-w-44"
               href={`/dashboard/${ADD}`}
             >
-              Add
-            </DashButton>
-            <DashButton
-              size="lg"
-              className={`max-w-44 ${
-                selectedRows.length !== 1 ? "!cursor-not-allowed" : ""
-              }`}
-              href={
-                selectedRows.length !== 1
-                  ? undefined
-                  : `${ITEMS.toLowerCase()}/${selectedRows[0]}/update`
-              }
-              disabled={selectedRows.length !== 1}
-              variant="outline"
-            >
-              Update
+              {t("add")}
             </DashButton>
             <DashButton
               size="lg"
@@ -157,17 +129,12 @@ export default function DashTable<T extends { id: number | string }>({
               className="max-w-44"
               onClick={handleDelete}
             >
-              Delete
+              {t("delete")}
             </DashButton>
           </div>
         </Box>
-        <Box
-          sx={{
-            flexGrow: 1,
-            overflowX: "auto",
-            maxWidth: "100%",
-          }}
-        >
+
+        <Box sx={{ flexGrow: 1, overflowX: "auto", maxWidth: "100%" }}>
           <DataGrid
             rows={displayedRows}
             columns={columns.map((col) => ({
@@ -175,10 +142,18 @@ export default function DashTable<T extends { id: number | string }>({
               align: "center",
               headerAlign: "center",
             }))}
-            pagination
-            paginationMode="client"
-            rowCount={query.total ?? displayedRows.length}
+            rowCount={query.total}
             pageSizeOptions={[10, 20, 50, 100]}
+            pagination
+            paginationMode="server"
+            paginationModel={{
+              page: query.page - 1,
+              pageSize: query.limit,
+            }}
+            onPaginationModelChange={(model) => {
+              query.setPage(model.page + 1);
+              query.setLimit(model.pageSize);
+            }}
             checkboxSelection
             disableRowSelectionOnClick
             sortingOrder={["asc", "desc"]}

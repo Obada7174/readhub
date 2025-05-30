@@ -11,7 +11,7 @@ const Logo = () => {
     useEffect(() => {
         setMounted(true);
     }, []);
-    return (mounted &&
+    return (mounted ?
         <Link href='/' className="flex gap-1.5 items-center min-h-16 min-w-40">
 
             <Image
@@ -24,7 +24,7 @@ const Logo = () => {
             <h1 className="font-funnel-display text-2xl text-gray-800 dark:text-white">
                 <span className='font-light'>read</span><strong>hub</strong>
             </h1>
-        </Link>
+        </Link> : <div className="min-h-16 min-w-40"/>
   )
 }
 

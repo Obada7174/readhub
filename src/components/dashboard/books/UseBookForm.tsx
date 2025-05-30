@@ -12,6 +12,7 @@ import DashHeader from "@/components/dashboard/Header";
 
 import { bookSchema, BookFormValues } from "@/lib/validators/book.validator";
 import { Category } from "@/types/category";
+import { useEffect } from "react";
 
 interface BookFormProps {
   mode: "add" | "edit";
@@ -51,6 +52,10 @@ export default function UseBookForm({
       categories: [],
     },
   });
+
+  useEffect(() => {
+    console.log(errors);
+  }, [errors]);
 
   const submitHandler: SubmitHandler<BookFormValues> = async (data) => {
     try {
@@ -187,7 +192,7 @@ export default function UseBookForm({
         <DashButton
           type="submit"
           size="md"
-          className="font-bold w-full mt-4"
+          className="font-bold w-full mt-4 cursor-pointer"
           text={mode === "add" ? "إضافة كتاب" : "حفظ التغييرات"}
         />
       </form>
