@@ -233,6 +233,10 @@ export default function Books() {
         mutateAsync: async (ids: GridRowId[]) =>
           await deleteMutation.mutateAsync(ids.map(Number)),
       }}
+      deleteMutation={{
+        mutateAsync: async (ids: GridRowId[]) =>
+          await deleteMutation.mutateAsync(ids.map(Number)),
+      }}
     />
   );
 }
