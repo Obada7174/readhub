@@ -14,27 +14,27 @@ type ButtonSize = "default" | "sm" | "lg" | "icon";
 
 type Type = "button" | "submit" | "reset" | undefined;
 interface ButtonProps {
-    href?: string;
-    onClick?: () => void;
-    children: React.ReactNode;
-    variant?: ButtonVariant;
-    size?: ButtonSize;
-    fullWidth?: boolean;
-    className?: string;
-    type?: Type;
-    disabled?:boolean
+  href?: string;
+  onClick?: () => void;
+  children: React.ReactNode;
+  variant?: ButtonVariant;
+  size?: ButtonSize;
+  fullWidth?: boolean;
+  className?: string;
+  disabled?: boolean;
+  type?: 'button' | 'submit' | 'reset';
 }
 
 export default function Button({
-    href,
-    onClick,
-    children,
-    variant = "default",
-    size = "default",
-    fullWidth = false,
-    className = "",
-    type = 'button',
-    disabled=false
+  href,
+  onClick,
+  children,
+  variant = "default",
+  size = "default",
+  fullWidth = false,
+  className = "",
+  disabled = false,
+  type
 }: ButtonProps) {
     const { theme, systemTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
@@ -106,14 +106,14 @@ export default function Button({
         );
     }
 
-    return (
-        <button
-            type={type}
-            onClick={onClick}
-            className={finalClasses}
-            disabled={disabled}
-        >
-            {children}
-        </button>
-    );
+  return (
+    <button
+      type={type ||"button"}
+      disabled={disabled}
+      onClick={onClick}
+      className={finalClasses}
+    >
+      {children}
+    </button>
+  );
 }

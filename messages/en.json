@@ -362,6 +362,17 @@
     "book_deleted_successfully": "Book deleted successfully",
     "failed_to_create_book": "Failed to create book",
     "failed_to_update_book": "Failed to update book",
+    "failed_to_delete_book": "Failed to delete book"
+  },
+  "contact":{
+    "title": "Contact Us",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send Message",
+    "success": "Your message has been sent successfully!",
+    "error": "An error occurred, please try again.",
+    "sending": "sending...",
     "failed_to_delete_book": "Failed to delete book",
     "login_successful": "Login successful!",
     "login_failed": "Login failed. Please check your credentials."
