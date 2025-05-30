@@ -14,27 +14,27 @@ type ButtonSize = "default" | "sm" | "lg" | "icon";
 
 type Type = "button" | "submit" | "reset" | undefined;
 interface ButtonProps {
-  href?: string;
-  onClick?: () => void;
-  children: React.ReactNode;
-  variant?: ButtonVariant;
-  size?: ButtonSize;
-  fullWidth?: boolean;
-  className?: string;
-  disabled?: boolean;
-  type?: 'button' | 'submit' | 'reset';
+    href?: string;
+    onClick?: () => void;
+    children: React.ReactNode;
+    variant?: ButtonVariant;
+    size?: ButtonSize;
+    fullWidth?: boolean;
+    className?: string;
+    disabled?: boolean;
+    type?: Type;
 }
 
 export default function Button({
-  href,
-  onClick,
-  children,
-  variant = "default",
-  size = "default",
-  fullWidth = false,
-  className = "",
-  disabled = false,
-  type
+    href,
+    onClick,
+    children,
+    variant = "default",
+    size = "default",
+    fullWidth = false,
+    className = "",
+    disabled = false,
+    type
 }: ButtonProps) {
     const { theme, systemTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
@@ -95,7 +95,7 @@ export default function Button({
         } ${className}`;
 
     if (!mounted) {
-        return <div className={`${getSizeStyles()} animate-pulse bg-gray-400 rounded`} />; 
+        return <div className={`${getSizeStyles()} animate-pulse bg-gray-400 rounded`} />;
     }
 
     if (href) {
@@ -106,14 +106,14 @@ export default function Button({
         );
     }
 
-  return (
-    <button
-      type={type ||"button"}
-      disabled={disabled}
-      onClick={onClick}
-      className={finalClasses}
-    >
-      {children}
-    </button>
-  );
+    return (
+        <button
+            type={type || "button"}
+            disabled={disabled}
+            onClick={onClick}
+            className={finalClasses}
+        >
+            {children}
+        </button>
+    );
 }
