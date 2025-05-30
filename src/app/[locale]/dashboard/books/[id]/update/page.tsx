@@ -29,7 +29,7 @@ export default function UpdateBook({ params: { id } }: Props) {
     <UseBookForm
       mode="edit"
       onSubmit={handleUpdate}
-      availableCategories={data || []}
+      availableCategories={data?.data || []}
       defaultValues={
         {
           ...book,

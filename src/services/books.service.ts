@@ -1,14 +1,20 @@
 import axios from "@/services/axios";
-import { Book } from "@/types/book";
+import { Book, BooksResponse } from "@/types/book";
 
 export const getBook = async (id: string): Promise<Book> => {
   const res = await axios.get("http://localhost:5000/books/" + id);
   return res.data;
 };
 
-export const getBooks = async (): Promise<Book[]> => {
-  const res = await axios.get("http://127.0.0.1:5000/books?limit=1000");
-  return res.data.data;
+export const getBooks = async (
+  page: number,
+  limit: number,
+  search: string
+): Promise<BooksResponse> => {
+  const res = await axios.get("http://127.0.0.1:5000/books", {
+    params: { page, limit, search },
+  });
+  return res.data;
 };
 
 export const createBook = async (book: Omit<Book, "id">): Promise<Book> => {

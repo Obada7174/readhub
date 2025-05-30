@@ -19,7 +19,7 @@ export interface Book {
   categories: Category[];
 }
 
-export interface ApiResponse {
+export interface BooksResponse {
   data: Book[];
   meta: { total: number; page: number; limit: number; total_pages: number };
 }

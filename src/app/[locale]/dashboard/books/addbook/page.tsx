@@ -18,7 +18,7 @@ export default function AddBook() {
     <UseBookForm
       mode="add"
       onSubmit={handleAdd}
-      availableCategories={data || []}
+      availableCategories={data?.data || []}
     />
   );
 }

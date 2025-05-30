@@ -10,7 +10,7 @@ import { Book, BooksResponse } from "@/types/book";
 import { useTranslations } from "next-intl";
 import { showErrorToast, showSuccessToast } from "@/helpers/Toast";
 
-export const useBooksQuery = (page: number, limit: number, search: string) => {
+export const useBooksQuery = (page = 1, limit = 10, search = "") => {
   return useQuery<BooksResponse>({
     queryKey: ["users", page, limit, search],
     queryFn: () => getBooks(page, limit, search),
