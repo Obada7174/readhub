@@ -21,8 +21,8 @@ interface ButtonProps {
     size?: ButtonSize;
     fullWidth?: boolean;
     className?: string;
+    disabled?: boolean;
     type?: Type;
-    disabled?:boolean
 }
 
 export default function Button({
@@ -33,8 +33,8 @@ export default function Button({
     size = "default",
     fullWidth = false,
     className = "",
-    type = 'button',
-    disabled=false
+    disabled = false,
+    type
 }: ButtonProps) {
     const { theme, systemTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
@@ -95,7 +95,7 @@ export default function Button({
         } ${className}`;
 
     if (!mounted) {
-        return <div className={`${getSizeStyles()} animate-pulse bg-gray-400 rounded`} />; 
+        return <div className={`${getSizeStyles()} animate-pulse bg-gray-400 rounded`} />;
     }
 
     if (href) {
@@ -108,10 +108,10 @@ export default function Button({
 
     return (
         <button
-            type={type}
+            type={type || "button"}
+            disabled={disabled}
             onClick={onClick}
             className={finalClasses}
-            disabled={disabled}
         >
             {children}
         </button>

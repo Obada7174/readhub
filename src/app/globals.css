@@ -21,19 +21,6 @@
   --color-green-cool: var(--green-cool);
 }
 
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #fdfdfd;
-    --foreground: #0a0a0a;
-    --beige-100: #f8e7d0;
-    --beige-200: #e1af7e;
-    --brown-100: #895029;
-    --gray-one: #707070;
-    --gray-two: #4f4f4d;
-  }
-} */
-
-
 ::-webkit-scrollbar {
   display: none;
 }
@@ -52,4 +39,8 @@ input[type="number"] {
   .animate-progress {
     animation: progress 5s linear forwards;
   }
+}
+
+.sticky-right-column {
+  @apply !sticky right-0 bg-white z-50 shadow border-l border-gray-100 dark:border-gray-800 dark:bg-[#1f2937]
 }
