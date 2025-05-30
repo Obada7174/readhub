@@ -1,4 +1,6 @@
 "use client";
+
+import { useState } from "react";
 import { Select, MenuItem } from "@mui/material";
 import DashTable from "@/components/dashboard/DashTable";
 import TransformDate from "@/helpers/TransformDate";
@@ -7,35 +9,44 @@ import {
   useDeleteUser,
   useUpdateUser,
 } from "@/hooks/react-query/users/useUsersQuery";
+
 import { GridRowId } from "@mui/x-data-grid";
 import { UpdateUserPayload, User } from "@/types/user";
 import { SelectChangeEvent } from "@mui/material/Select";
-interface DateObject {
-  getFullYear: number;
-  getMonth: number;
-  getDay: number;
-}
+import DashButton from "@/components/ui/Button";
 import {
   GridRenderEditCellParams,
   GridRenderCellParams,
   GridColDef,
-  // GridValueFormatterParams,
 } from "@mui/x-data-grid";
 
+import { DateObject } from "@/types";
+import { LuEye } from "react-icons/lu";
+import { FaEdit } from "react-icons/fa";
+
 export default function Users() {
-  const { data, isLoading, refetch } = useUsersQuery();
   const deleteMutation = useDeleteUser();
   const updateMutation = useUpdateUser();
 
+  const [searchText, setSearchText] = useState("");
+  const [page, setPage] = useState(1);
+  const [limit, setLimit] = useState(10);
+  const { data, isLoading, refetch } = useUsersQuery(page, limit, searchText);
+
   const RoleEditCell = (params: GridRenderEditCellParams) => {
-    const handleChange = (event: SelectChangeEvent) => {
+    const handleChange = async (event: SelectChangeEvent) => {
       const value = event.target.value;
-      params.api.setEditCellValue({ id: params.id, field: "role", value });
+      await params.api.setEditCellValue({
+        id: params.id,
+        field: "role",
+        value,
+      });
+      params.api.stopCellEditMode({ id: params.id, field: "role" });
     };
 
     return (
       <Select
-        value={params.value}
+        value={params.value || ""}
         onChange={handleChange}
         sx={{ width: "100%" }}
       >
@@ -47,11 +58,7 @@ export default function Users() {
   };
 
   const columns: GridColDef[] = [
-    {
-      field: "id",
-      headerName: "ID",
-      width: 30,
-    },
+    { field: "id", headerName: "ID", width: 30 },
     {
       field: "first_name",
       headerName: "First Name",
@@ -70,24 +77,15 @@ export default function Users() {
       field: "email",
       headerName: "Email",
       editable: true,
-      flex: 1,
       minWidth: 180,
+      flex: 1,
     },
     {
       field: "role",
       headerName: "Role",
       editable: true,
-      type: "singleSelect",
-      valueOptions: [
-        { value: "admin", label: "admin" },
-        { value: "author", label: "author" },
-        { value: "user", label: "user" },
-      ],
       renderEditCell: RoleEditCell,
-      renderCell: (params: GridRenderCellParams) => {
-        const value = params.value;
-        return value;
-      },
+      renderCell: (params: GridRenderCellParams) => params.value ?? "",
       maxWidth: 120,
       minWidth: 70,
       flex: 1,
@@ -117,41 +115,76 @@ export default function Users() {
         return `${date.getFullYear}/${date.getMonth}/${date.getDay}`;
       },
     },
+    {
+      field: "actions",
+      headerName: "Actions",
+      sortable: false,
+      filterable: false,
+      minWidth: 140,
+
+      renderCell: (params: GridRenderCellParams) => {
+        const id = params.row.id;
+
+        return (
+          <div className="flex gap-2 items-center text-lg">
+            <DashButton
+              href={`/dashboard/users/${id}/update`}
+              className="text-blue-600 hover:text-blue-800 rounded-full shadow p-3"
+              size="icon"
+            >
+              <FaEdit className="translate-x-0.5" />
+            </DashButton>
+            <DashButton
+              href={`/dashboard/users/${id}`}
+              className="text-green-600 hover:text-green-800 rounded-full shadow p-3"
+              size="icon"
+            >
+              <LuEye />
+            </DashButton>
+          </div>
+        );
+      },
+    },
   ];
 
   return (
-    <DashTable
-      ITEM="User"
-      ITEMS="Users"
-      ADD="users/adduser"
-      columns={columns}
-      isEditable={true}
-      query={{
-        data: data,
-        isLoading: isLoading,
-        refetch: refetch,
-        total: data?.length,
-      }}
-      deleteMutation={{
-        mutateAsync: async (ids: GridRowId[]) => {
-          await Promise.all(
-            ids.map((id) => deleteMutation.mutateAsync(Number(id)))
-          );
-        },
-      }}
-      updateMutation={async (row: User) => {
-        const { id, first_name, last_name, email, role, location } = row;
+    <div className="space-y-4">
+      <DashTable
+        ITEM="User"
+        ITEMS="Users"
+        ADD="users/adduser"
+        columns={columns}
+        isEditable={true}
+        query={{
+          data: data?.data,
+          isLoading,
+          refetch,
+          total: data?.total,
+          page,
+          setPage,
+          limit,
+          setLimit,
+          setSearch: setSearchText,
+        }}
+        deleteMutation={{
+          mutateAsync: async (ids: GridRowId[]) => {
+            await deleteMutation.mutateAsync(ids.map(Number));
+          },
+        }}
+        updateMutation={async (row: User) => {
+          const { id, first_name, last_name, email, role, location } = row;
 
-        const updateData: UpdateUserPayload = {
-          first_name,
-          last_name,
-          email,
-          role,
-          location,
-        };
+          const updateData: UpdateUserPayload = {
+            first_name,
+            last_name,
+            email,
+            role,
+            location,
+          };
 
-        return await updateMutation.mutateAsync({ id, data: updateData });
-      }}
-    />
+          return await updateMutation.mutateAsync({ id, data: updateData });
+        }}
+      />
+    </div>
   );
 }

@@ -6,21 +6,20 @@ import {
   updateBook,
   deleteBooks,
 } from "@/services/books.service";
-import { Book } from "@/types/book";
+import { Book, BooksResponse } from "@/types/book";
 import { useTranslations } from "next-intl";
 import { showErrorToast, showSuccessToast } from "@/helpers/Toast";
 
+export const useBooksQuery = (page = 1, limit = 10, search = "") => {
+  return useQuery<BooksResponse>({
+    queryKey: ["users", page, limit, search],
+    queryFn: () => getBooks(page, limit, search),
+  });
+};
 export const useBookQuery = (id: string) => {
   return useQuery<Book>({
     queryKey: ["book", id],
     queryFn: () => getBook(id),
-  });
-};
-
-export const useBooksQuery = () => {
-  return useQuery<Book[]>({
-    queryKey: ["books"],
-    queryFn: getBooks,
   });
 };
 

@@ -18,9 +18,19 @@ import {
   useDeleteCategory,
 } from "@/hooks/react-query/categories/useCategoriesQuery";
 import { Category } from "@/types/category";
+import { useState } from "react";
+import DashButton from "@/components/ui/Button";
+import { FaEdit } from "react-icons/fa";
 
 export default function Categories() {
-  const { data, isLoading, refetch } = useCategoriesQuery();
+  const [searchText, setSearchText] = useState("");
+  const [page, setPage] = useState(1);
+  const [limit, setLimit] = useState(10);
+  const { data, isLoading, refetch } = useCategoriesQuery(
+    page,
+    limit,
+    searchText
+  );
   const deleteMutation = useDeleteCategory();
 
   const columns: GridColDef[] = [
@@ -61,6 +71,29 @@ export default function Categories() {
         return `${date.getFullYear}/${date.getMonth}/${date.getDay}`;
       },
     },
+    {
+      field: "actions",
+      headerName: "Actions",
+      sortable: false,
+      filterable: false,
+      minWidth: 140,
+
+      renderCell: (params: GridRenderCellParams) => {
+        const id = params.row.id;
+
+        return (
+          <div className="flex gap-2 items-center text-lg">
+            <DashButton
+              href={`/dashboard/categories/${id}/update`}
+              className="text-blue-600 hover:text-blue-800 rounded-full shadow p-3"
+              size="icon"
+            >
+              <FaEdit className="translate-x-0.5" />
+            </DashButton>
+          </div>
+        );
+      },
+    },
   ];
 
   return (
@@ -71,10 +104,19 @@ export default function Categories() {
       columns={columns}
       isEditable={true}
       query={{
-        data: data,
-        isLoading: isLoading,
-        refetch: refetch,
-        total: data?.length,
+        data: data?.data,
+        isLoading,
+        refetch,
+        total: data?.meta.total,
+        page,
+        setPage,
+        limit,
+        setLimit,
+        setSearch: setSearchText,
+      }}
+      deleteMutation={{
+        mutateAsync: async (ids: GridRowId[]) =>
+          await deleteMutation.mutateAsync(ids.map(Number)),
       }}
       deleteMutation={{
         mutateAsync: async (ids: GridRowId[]) =>

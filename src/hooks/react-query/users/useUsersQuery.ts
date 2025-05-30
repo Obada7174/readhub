@@ -3,21 +3,20 @@ import {
   getUsers,
   createUser,
   updateUser,
-  deleteUser,
+  deleteUsers,
   getUser,
 } from "@/services/users.service";
-import { UpdateUserPayload, User } from "@/types/user";
+import { UpdateUserPayload, UsersResponse } from "@/types/user";
 import { useTranslations } from "next-intl";
 import { showErrorToast,showSuccessToast } from "@/helpers/Toast";
 
 
-export const useUsersQuery = () => {
-  return useQuery<User[]>({
-    queryKey: ["users"],
-    queryFn: getUsers,
+export const useUsersQuery = (page = 1, limit = 10, search = '') => {
+  return useQuery<UsersResponse>({
+    queryKey: ['users', page, limit, search],
+    queryFn: () => getUsers(page, limit, search),
   });
 };
-
 export const useUserQuery = (id: number) => {
 
   return useQuery({
@@ -66,7 +65,7 @@ export const useDeleteUser = () => {
   const t = useTranslations("toastMessages");
 
   return useMutation({
-    mutationFn: deleteUser,
+    mutationFn: deleteUsers,
     onSuccess: () => {
       showSuccessToast(t("user_deleted_successfully"));
       queryClient.invalidateQueries({ queryKey: ["users"] });

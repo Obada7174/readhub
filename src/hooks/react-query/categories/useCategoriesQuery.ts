@@ -6,14 +6,14 @@ import {
   deleteCategory,
   getCategory,
 } from "@/services/categories.service";
-import { Category } from "@/types/category";
+import { CategoriesResponse } from "@/types/category";
 import { useTranslations } from "next-intl";
 import { showErrorToast, showSuccessToast } from "@/helpers/Toast";
 
-export const useCategoriesQuery = () => {
-  return useQuery<Category[]>({
-    queryKey: ["categories"],
-    queryFn: getCategories,
+export const useCategoriesQuery = (page = 1, limit = 10, search = "") => {
+  return useQuery<CategoriesResponse>({
+    queryKey: ["categories", page, limit, search],
+    queryFn: () => getCategories(page, limit, search),
   });
 };
 

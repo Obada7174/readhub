@@ -25,16 +25,23 @@ import {
 import { Book } from "@/types/book";
 import { Category } from "@/types/category";
 import { useLocale } from "next-intl";
+import { useState } from "react";
+import DashButton from "@/components/ui/Button";
+import { FaEdit } from "react-icons/fa";
+import { LuEye } from "react-icons/lu";
 
 export default function Books() {
   const local = useLocale();
   const ar = local === "ar";
-  const { data, isLoading, refetch } = useBooksQuery();
+  const [searchText, setSearchText] = useState("");
+  const [page, setPage] = useState(1);
+  const [limit, setLimit] = useState(10);
+  const { data, isLoading, refetch } = useBooksQuery(page, limit, searchText);
   const { data: categories } = useCategoriesQuery();
   const deleteMutation = useDeleteBook();
 
   const genresOption = categories
-    ? categories.map((category) => {
+    ? categories.data.map((category) => {
         const title = ar
           ? category.ar_title
             ? category.ar_title
@@ -61,7 +68,7 @@ export default function Books() {
         sx={{ width: "100%" }}
         autoFocus
       >
-        {categories?.map((category) => {
+        {categories?.data.map((category) => {
           const title = ar
             ? category.ar_title
               ? category.ar_title
@@ -172,6 +179,36 @@ export default function Books() {
         return `${date.getFullYear}/${date.getMonth}/${date.getDay}`;
       },
     },
+    {
+      field: "actions",
+      headerName: "Actions",
+      sortable: false,
+      filterable: false,
+      minWidth: 140,
+
+      renderCell: (params: GridRenderCellParams) => {
+        const id = params.row.id;
+
+        return (
+          <div className="flex gap-2 items-center text-lg">
+            <DashButton
+              href={`/dashboard/books/${id}/update`}
+              className="text-blue-600 hover:text-blue-800 rounded-full shadow p-3"
+              size="icon"
+            >
+              <FaEdit className="translate-x-0.5" />
+            </DashButton>
+            <DashButton
+              href={`/book/${id}`}
+              className="text-green-600 hover:text-green-800 rounded-full shadow p-3"
+              size="icon"
+            >
+              <LuEye />
+            </DashButton>
+          </div>
+        );
+      },
+    },
   ];
 
   return (
@@ -182,10 +219,19 @@ export default function Books() {
       columns={columns}
       isEditable={true}
       query={{
-        data: data,
-        isLoading: isLoading,
-        refetch: refetch,
-        total: data?.length,
+        data: data?.data,
+        isLoading,
+        refetch,
+        total: data?.meta.total,
+        page,
+        setPage,
+        limit,
+        setLimit,
+        setSearch: setSearchText,
+      }}
+      deleteMutation={{
+        mutateAsync: async (ids: GridRowId[]) =>
+          await deleteMutation.mutateAsync(ids.map(Number)),
       }}
       deleteMutation={{
         mutateAsync: async (ids: GridRowId[]) =>

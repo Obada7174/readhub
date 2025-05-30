@@ -5,6 +5,11 @@
     "topRatedSection": {
       "topRatedBooks": "الكتب الإعلى تقييماً"
     },
+    "validations": {
+      "min": "يجب أن يكون على الأقل {min} أحرف",
+      "email": "عنوان البريد الإلكتروني غير صحيح",
+      "required": "هذا الحقل مطلوب"
+    },
     "faqSection": {
       "sectionTitle": "الأسئلة الشائعة",
       "sectionDescription": "إذا كانت لديك أي استفسارات، فقد تكون الإجابة هنا!",
@@ -99,31 +104,70 @@
       "search for books": "ابحث عن كتب"
     }
   },
-  "SignUpPage": {
-    "title": "إنشاء حساب جديد",
-    "first_name": "الاسم الأول",
-    "last_name": "الاسم الأخير",
+  "signup": {
+    "title": "أنشئ حساب جديد",
+    "successMessage": "تم التسجيل بنجاح!",
+    "errorMessage": "فشل تسجيل الدخول عبر Google",
+    "firstName": "الاسم الأول",
+    "lastName": "الاسم الأخير",
     "email": "البريد الإلكتروني",
     "password": "كلمة المرور",
-    "sign_up": "تسجيل حساب",
-    "terms_of_service": "شروط الخدمة",
-    "privacy_policy": "سياسة الخصوصية",
-    "help": "مساعدة",
-    "success_message": "تم التسجيل بنجاح!",
-    "error_message": "فشل التسجيل",
-    "already_have_account": "هل لديك حساب؟ سجل دخولك"
+    "signUpButton": "إنشاء حساب",
+    "signUpWithGoogle": "إنشاء حساب عبر Google",
+    "pendingButton": "جارٍ التسجيل...",
+    "termsAgree": "بالتسجيل في حساب، فإنك توافق على شروط الخدمة وسياسة الخصوصية الخاصة بنا",
+    "termsLink": "شروط الاستخدام",
+    "privacyLink": "سياسة الخصوصية",
+    "haveAccount": "لديك حساب بالفعل؟",
+    "signInLink": "تسجيل الدخول"
   },
-  "LoginPage": {
-    "title": "مرحبًا بعودتك",
-    "email": "البريد الإلكتروني",
-    "password": "كلمة المرور",
-    "sign_in": "تسجيل الدخول",
-    "success_message": "تم تسجيل الدخول بنجاح!",
-    "error_message": "فشل تسجيل الدخول",
-    "something_went_wrong": "حدث خطأ ما. يرجى المحاولة مرة أخرى لاحقًا.",
-    "dont_have_account": "ليس لديك حساب؟",
-    "sign_up": "تسجيل حساب"
+  "otp": {
+    "title": "تحقق من بريدك الإلكتروني",
+    "description": "تم إرسال رمز التحقق إلى بريدك الإلكتروني. يرجى إدخال الرمز أدناه.",
+    "error": "يرجى إدخال رمز مكون من 4 أرقام",
+    "verifyButton": "تحقق",
+    "resendCode": "لم تستلم الرمز؟",
+    "resendLink": "إعادة الإرسال",
+    "resending": "جاري إعادة الإرسال...",
+    "resendSuccess": "تم إرسال الكود بنجاح",
+    "resendError": "فشل في إعادة إرسال الكود، حاول مجدداً",
+    "wait": "انتظر"
   },
+  "login": {
+    "Welcome Back": "مرحبًا مرة أخرى",
+    "Email": "البريد الإلكتروني",
+    "Password": "كلمة المرور",
+    "Sign In": "تسجيل الدخول",
+    "Sign Up": "إنشاء حساب",
+    "Don't have an account?": "ليس لديك حساب؟",
+    "signingIn": "جارٍ تسجيل الدخول...",
+    "Forgot Password?":"هل نسيت كلمة السر؟"
+  },
+  "forgot_password":{
+    "title": "نسيت كلمة المرور",
+    "description": "أدخل بريدك الإلكتروني لتلقي رمز التحقق.",
+    "emailLabel": "البريد الإلكتروني",
+    "emailPlaceholder": "أدخل بريدك الإلكتروني",
+    "sendCodeButton": "إرسال رمز التحقق",
+    "sending": "جارٍ الإرسال...",
+    "codeSent": "تم إرسال رمز التحقق بنجاح!",
+    "rememberedPassword": "تذكرت كلمة المرور؟",
+    "signInLink": "تسجيل الدخول",
+    "somethingWentWrong": "حدث خطأ ما. يرجى المحاولة مجددًا."
+  },
+  "reset_password":{ 
+  "title": "إعادة تعيين كلمة المرور",
+  "description": "يرجى إدخال كلمة المرور الجديدة.",
+  "newPasswordLabel": "كلمة المرور الجديدة",
+  "newPasswordPlaceholder": "أدخل كلمة المرور الجديدة",
+  "confirmPasswordLabel": "تأكيد كلمة المرور",
+  "confirmPasswordPlaceholder": "أعد إدخال كلمة المرور",
+  "updatePasswordButton": "تحديث كلمة المرور",
+  "updating": "جارٍ التحديث...",
+  "passwordsDoNotMatch": "كلمات المرور غير متطابقة",
+  "missingData": "بيانات غير مكتملة",
+  "somethingWentWrong": "حدث خطأ ما. يرجى المحاولة مجددًا."
+},
   "faqPage": {
     "sectionTitle": "الأسئلة الشائعة",
     "sectionDescription": "إذا كانت لديك أي استفسارات، فقد تكون الإجابة هنا!",
@@ -208,7 +252,6 @@
     "dashboard": "لوحة التحكم",
     "libraryManagement": "إدارة المكتبة",
     "mainDashboard": "الرئيسية",
-    "users": "المستخدمين",
     "addUser": "إضافة مستخدم",
     "books": "الكتب",
     "addBook": "إضافة كتاب",
@@ -220,13 +263,111 @@
     "addPublisher": "إضافة دار نشر",
     "competitions": "المسابقات",
     "addCompetition": "إضافة مسابقة",
+    "location": "الموقع الجغرافي",
     "sidebar": {
       "users": "المستخدمين",
       "books": "الكتب",
       "categories": "التصنيفات",
       "competitions": "المسابقات",
-      "authors": "المؤلفين"
+      "Copons": "الجوائز",
+      "Carts": "السلات"
+    },
+    "users": {
+      "users": "المستخدمون",
+      "addUser": "إضافة مستخدم",
+      "add_user": "إضافة مستخدم",
+      "edit_user": "تعديل المستخدم",
+      "save_changes": "حفظ التغييرات",
+      "first_name": "الاسم الأول",
+      "first_name_placeholder": "أدخل الاسم الأول",
+      "last_name": "الاسم الأخير",
+      "last_name_placeholder": "أدخل الاسم الأخير",
+      "email": "البريد الإلكتروني",
+      "email_placeholder": "أدخل عنوان البريد الإلكتروني",
+      "password": "كلمة المرور",
+      "password_placeholder": "أدخل كلمة المرور",
+      "role": "الدور",
+      "location": "الموقع",
+      "select_role_placeholder": "اختر الدور",
+      "location_placeholder": "أدخل الموقع",
+      "roles": {
+        "admin": "مدير",
+        "user": "مستخدم",
+        "author": "مؤلف"
+      },
+      "errors": {
+        "first_name_required": "الاسم الأول مطلوب ويجب أن لا يقل عن حرفين.",
+        "last_name_required": "اسم العائلة مطلوب ويجب أن لا يقل عن حرفين.",
+        "invalid_email": "يرجى إدخال بريد إلكتروني صالح.",
+        "location_required": "الموقع مطلوب.",
+        "password_required": "كلمة المرور يجب أن تكون 6 أحرف على الأقل.",
+        "role_required": "الدور مطلوب."
+      }
+    },
+    "add_cart": {
+      "title": "إضافة سلة جديدة",
+      "userId_label": "رقم المستخدم",
+      "userId_placeholder": "رقم المستخدم",
+      "submit_button": "إضافة السلة",
+      "success_message": "تمت إضافة السلة بنجاح!",
+      "error_required_userId": "رقم المستخدم مطلوب ويجب أن يكون رقمًا موجبًا"
+    },
+    "dashtable": {
+      "add": "إضافة",
+      "delete": "حذف",
+      "search_for": "البحث عن {item}"
+    },
+    "cart_columns": {
+      "id": "معرّف السلة",
+      "userId": "معرّف المستخدم",
+      "userEmail": "بريد المستخدم",
+      "status": "الحالة",
+      "created_at": "تاريخ الإنشاء",
+      "updated_at": "تاريخ التعديل"
+    },
+    "coupon_columns": {
+      "code": "كود الكوبون",
+      "discount_value": "قيمة الخصم (%)"
+    },
+    "add_coupon": {
+      "title": "إضافة كوبون جديد",
+      "code_label": "كود الكوبون",
+      "code_placeholder": "كود الكوبون",
+      "discount_label": "قيمة الخصم (%)",
+      "discount_placeholder": "قيمةالخصم",
+      "submit_button": "إضافة الكوبون",
+      "success_message": "تمت إضافة الكوبون بنجاح!",
+      "error": {
+        "required": {
+          "code": "الكود مطلوب ويجب أن يكون بين 3 و20 رمزًا",
+          "discount_value": "قيمة الخصم يجب أن تكون بين 1 و100"
+        },
+        "general": "فشل في إضافة الكوبون، حاول مجددًا"
+      }
+    },
+    "toastMessages": {
+      "user_created_successfully": "تم إنشاء المستخدم بنجاح",
+      "user_updated_successfully": "تم تحديث المستخدم بنجاح",
+      "user_deleted_successfully": "تم حذف المستخدم بنجاح",
+      "failed_to_create_user": "فشل في إنشاء المستخدم",
+      "failed_to_update_user": "فشل في تحديث المستخدم",
+      "failed_to_delete_user": "فشل في حذف المستخدم",
+      "category_created_successfully": "تم إنشاء التصنيف بنجاح",
+      "category_updated_successfully": "تم تحديث التصنيف بنجاح",
+      "category_deleted_successfully": "تم حذف التصنيف بنجاح",
+      "failed_to_create_category": "فشل في إنشاء التصنيف",
+      "failed_to_update_category": "فشل في تحديث التصنيف",
+      "failed_to_delete_category": "فشل في حذف التصنيف",
+      "book_created_successfully": "تم إنشاء الكتاب بنجاح",
+      "book_updated_successfully": "تم تحديث الكتاب بنجاح",
+      "book_deleted_successfully": "تم حذف الكتاب بنجاح",
+      "failed_to_create_book": "فشل في إنشاء الكتاب",
+      "failed_to_update_book": "فشل في تحديث الكتاب",
+      "failed_to_delete_book": "فشل في حذف الكتاب",
+      "login_successful": "تم تسجيل الدخول بنجاح!",
+      "login_failed": "فشل تسجيل الدخول. يرجى التحقق من بياناتك."
     }
+    
   },
   "toastMessages": {
     "comment_created_successfully": "تم إنشاء التعليق بنجاح",
@@ -249,5 +390,15 @@
     "failed_to_create_book": "فشل في إنشاء الكتاب",
     "failed_to_update_book": "فشل في تحديث الكتاب",
     "failed_to_delete_book": "فشل في حذف الكتاب"
+  },
+  "contact":{
+      "title": "اتصل بنا",
+      "name": "الاسم",
+      "email": "البريد الإلكتروني",
+      "message": "الرسالة",
+      "send": "إرسال الرسالة",
+      "success": "تم إرسال رسالتك بنجاح!",
+      "error": "حدث خطأ، يرجى المحاولة مرة أخرى.",
+      "sending": "جارٍ الإرسال..."
   }
 }

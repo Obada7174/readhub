@@ -1,9 +1,15 @@
 import axios from "@/services/axios";
-import { Category } from "@/types/category";
+import { Category, CategoriesResponse } from "@/types/category";
 
-export const getCategories = async (): Promise<Category[]> => {
-  const res = await axios.get("http://127.0.0.1:5000/categories?limit=1000");
-  return res.data.data;
+export const getCategories = async (
+  page: number,
+  limit: number,
+  search: string
+): Promise<CategoriesResponse> => {
+  const res = await axios.get("http://127.0.0.1:5000/categories", {
+    params: { page, limit, search },
+  });
+  return res.data;
 };
 
 export const getCategory = async (id: string): Promise<Category> => {
