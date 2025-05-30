@@ -379,5 +379,35 @@
     "failed_to_delete_book": "Failed to delete book",
     "login_successful": "Login successful!",
     "login_failed": "Login failed. Please check your credentials."
+  },
+  "subscription":{
+    "title": "Choose Your Subscription Plan",
+    "description": "Pick the best plan for your reading needs. All plans include free reading access.",
+    "basic": {
+      "title": "Basic Plan",
+      "price": "$0/month",
+      "feature1": "Free Reading",
+      "feature2": "Access to 50 books per month",
+      "feature3": "No downloads allowed",
+      "feature4": "No additional features"
+    },
+    "standard": {
+      "title": "Standard Plan",
+      "price": "$19.99/month",
+      "feature1": "Free Reading",
+      "feature2": "Unlimited access to the library",
+      "feature3": "Download up to 10 books per month",
+      "feature4": "Priority support"
+    },
+    "premium": {
+      "title": "Premium Plan",
+      "price": "$29.99/month",
+      "feature1": "Free Reading",
+      "feature2": "Unlimited access to the library",
+      "feature3": "Download unlimited books",
+      "feature4": "Access to translations",
+      "feature5": "Exclusive book recommendations",
+      "feature6": "VIP support"
+    }
   }
 }

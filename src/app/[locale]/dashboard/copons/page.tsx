@@ -25,7 +25,7 @@ export default function CouponsPage() {
     <DashTable<Coupon>
       ITEMS="Coupons"
       ITEM="Coupon"
-      ADD="coupons/new"
+      ADD="copons/new"
       columns={columns}
       isEditable={true}
       query={{
