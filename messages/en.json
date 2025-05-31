@@ -323,6 +323,20 @@
         },
         "general": "Failed to add coupon. Please try again."
       }
+    },
+    "coupons":{
+      "edit_coupon": "Edit Coupon",
+      "add_coupon": "Add Coupon",
+      "code_label": "Coupon Code",
+      "code_placeholder": "e.g. SUMMER25",
+      "discount_label": "Discount Value (%)",
+      "discount_placeholder": "Example: 25",
+      "submitting": "Submitting...",
+      "save_changes": "Save Changes",
+      "errors": {
+        "code_required": "Coupon code is required",
+        "invalid_discount": "Discount must be a number between 0 and 100"
+      }
     }
   },
   "SideBar": {
@@ -406,5 +420,35 @@
     "failed_to_delete_book": "Failed to delete book",
     "login_successful": "Login successful!",
     "login_failed": "Login failed. Please check your credentials."
+  },
+  "subscription":{
+    "title": "Choose Your Subscription Plan",
+    "description": "Pick the best plan for your reading needs. All plans include free reading access.",
+    "basic": {
+      "title": "Basic Plan",
+      "price": "$0/month",
+      "feature1": "Free Reading",
+      "feature2": "Access to 50 books per month",
+      "feature3": "No downloads allowed",
+      "feature4": "No additional features"
+    },
+    "standard": {
+      "title": "Standard Plan",
+      "price": "$19.99/month",
+      "feature1": "Free Reading",
+      "feature2": "Unlimited access to the library",
+      "feature3": "Download up to 10 books per month",
+      "feature4": "Priority support"
+    },
+    "premium": {
+      "title": "Premium Plan",
+      "price": "$29.99/month",
+      "feature1": "Free Reading",
+      "feature2": "Unlimited access to the library",
+      "feature3": "Download unlimited books",
+      "feature4": "Access to translations",
+      "feature5": "Exclusive book recommendations",
+      "feature6": "VIP support"
+    }
   }
 }

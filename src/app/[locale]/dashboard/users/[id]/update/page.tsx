@@ -1,42 +1,49 @@
 'use client';
 
-import { useUserQuery } from '@/hooks/react-query/users/useUsersQuery';
-import { useUpdateUser } from '@/hooks/react-query/users/useUsersQuery';
-import UserForm from '@/components/dashboard/users/UserForm';
+import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
-import { UpdateUserPayload } from '@/types/user';
+import { useCouponQuery, useUpdateCoupon } from '@/hooks/react-query/coupons/usequerycoupons';
+import CouponForm from '@/components/dashboard/coupons/couponForm';
+import { UpdateCouponPayload } from '@/types/coupons';
+import { useTranslations } from 'next-intl';
+import { showErrorToast, showSuccessToast } from '@/helpers/Toast';
 
-export default function EditUser() {
-    const params = useParams<{ id: string }>();
-    const userId = parseInt(params.id);
-    const { data: user, isLoading } = useUserQuery(userId);
-    const updateUserMutation = useUpdateUser();
+export default function EditCoupon() {
+  const t = useTranslations("toastMessages");
+  const params = useParams<{ id: string }>();
+  const [isClient, setIsClient] = useState(false);
 
-    if (isLoading || !user) return <div>جارٍ التحميل...</div>;
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
-    const handleUpdate = async (data: UpdateUserPayload) => {
-        const updateData = {
-            first_name: data?.first_name,
-            last_name: data?.last_name,
-            email: data?.email,
-            role: data?.role,
-            location: data?.location
-        };
+  if (!isClient) return null;
 
-        await updateUserMutation.mutateAsync({ id: userId, data: updateData });
-    };
+  const couponId = parseInt(params.id);
+  if (isNaN(couponId)) return <div>{t("invalid_coupon_id")}</div>;
 
-    return (
-        <UserForm
-            mode="edit"
-            defaultValues={{
-                first_name: user.first_name,
-                last_name: user.last_name,
-                email: user.email,
-                role: user.role,
-                location: user.location
-            }}
-            onSubmit={handleUpdate}
-        />
-    );
+  const { data: coupon, isLoading } = useCouponQuery(couponId);
+  const updateCouponMutation = useUpdateCoupon();
+
+  if (isLoading || !coupon) return <div>{t("loading")}</div>;
+
+  const handleUpdate = async (data: UpdateCouponPayload) => {
+    try {
+      await updateCouponMutation.mutateAsync({ id: couponId, coupon: data });
+      showSuccessToast(t("coupon_updated_successfully"));
+    } catch (error) {
+      showErrorToast(t("failed_to_update_coupon"));
+    }
+  };
+
+  return (
+    <CouponForm
+      mode="edit"
+      defaultValues={{
+        code: coupon.code,
+        discount_value: coupon.discount_value,
+      }}
+      onSubmit={handleUpdate}
+    />
+  );
 }

@@ -141,9 +141,9 @@
     "Sign Up": "إنشاء حساب",
     "Don't have an account?": "ليس لديك حساب؟",
     "signingIn": "جارٍ تسجيل الدخول...",
-    "Forgot Password?":"هل نسيت كلمة السر؟"
+    "Forgot Password?": "هل نسيت كلمة السر؟"
   },
-  "forgot_password":{
+  "forgot_password": {
     "title": "نسيت كلمة المرور",
     "description": "أدخل بريدك الإلكتروني لتلقي رمز التحقق.",
     "emailLabel": "البريد الإلكتروني",
@@ -155,19 +155,19 @@
     "signInLink": "تسجيل الدخول",
     "somethingWentWrong": "حدث خطأ ما. يرجى المحاولة مجددًا."
   },
-  "reset_password":{ 
-  "title": "إعادة تعيين كلمة المرور",
-  "description": "يرجى إدخال كلمة المرور الجديدة.",
-  "newPasswordLabel": "كلمة المرور الجديدة",
-  "newPasswordPlaceholder": "أدخل كلمة المرور الجديدة",
-  "confirmPasswordLabel": "تأكيد كلمة المرور",
-  "confirmPasswordPlaceholder": "أعد إدخال كلمة المرور",
-  "updatePasswordButton": "تحديث كلمة المرور",
-  "updating": "جارٍ التحديث...",
-  "passwordsDoNotMatch": "كلمات المرور غير متطابقة",
-  "missingData": "بيانات غير مكتملة",
-  "somethingWentWrong": "حدث خطأ ما. يرجى المحاولة مجددًا."
-},
+  "reset_password": {
+    "title": "إعادة تعيين كلمة المرور",
+    "description": "يرجى إدخال كلمة المرور الجديدة.",
+    "newPasswordLabel": "كلمة المرور الجديدة",
+    "newPasswordPlaceholder": "أدخل كلمة المرور الجديدة",
+    "confirmPasswordLabel": "تأكيد كلمة المرور",
+    "confirmPasswordPlaceholder": "أعد إدخال كلمة المرور",
+    "updatePasswordButton": "تحديث كلمة المرور",
+    "updating": "جارٍ التحديث...",
+    "passwordsDoNotMatch": "كلمات المرور غير متطابقة",
+    "missingData": "بيانات غير مكتملة",
+    "somethingWentWrong": "حدث خطأ ما. يرجى المحاولة مجددًا."
+  },
   "faqPage": {
     "sectionTitle": "الأسئلة الشائعة",
     "sectionDescription": "إذا كانت لديك أي استفسارات، فقد تكون الإجابة هنا!",
@@ -373,7 +373,6 @@
       "question_deleted_successfully": "تم حذف السؤال بنجاح",
       "failed_to_delete_question": "فشل في حذف السؤال"
     }
-    
   },
   "columns": {
     "id": "المعرف",
@@ -390,8 +389,51 @@
     "description": "الوصف",
     "status": "الحالة",
     "quizzes": "الاختبارات",
-    "book-title":"عنوان الكتاب"
-    
+    "book-title": "عنوان الكتاب",
+    "login_failed": "فشل تسجيل الدخول. يرجى التحقق من بياناتك."
+  },
+  "coupons": {
+    "edit_coupon": "تعديل الكوبون",
+    "code_label": "كود الكوبون",
+    "code_placeholder": "أدخل كود الكوبون",
+    "discount_label": "قيمة الخصم (%)",
+    "discount_placeholder": "مثال: 25",
+    "submitting": "جارٍ الإرسال...",
+    "save_changes": "حفظ التغييرات",
+    "errors": {
+      "code_required": "كود الكوبون مطلوب",
+      "invalid_discount": "الخصم يجب أن يكون رقمًا بين 0 و 100"
+    }
+  },
+  "subscription": {
+    "title": "اختر خطة الاشتراك الخاصة بك",
+    "description": "اختر أفضل خطة تناسب احتياجاتك في القراءة. جميع الخطط تتضمن الوصول المجاني للكتب.",
+    "basic": {
+      "title": "الخطة الأساسية",
+      "price": "0$ / شهريًا",
+      "feature1": "قراءة مجانية",
+      "feature2": "الوصول إلى 50 كتابًا شهريًا",
+      "feature3": "غير مسموح بالتحميل",
+      "feature4": "لا توجد ميزات إضافية"
+    },
+    "standard": {
+      "title": "الخطة القياسية",
+      "price": "١٩٫٩٩$/شهريًا",
+      "feature1": "قراءة مجانية",
+      "feature2": "وصول غير محدود إلى المكتبة",
+      "feature3": "تحميل حتى 10 كتب شهريًا",
+      "feature4": "دعم أولوي"
+    },
+    "premium": {
+      "title": "الخطة المميزة",
+      "price": "٢٩٫٩٩$/شهريًا",
+      "feature1": "قراءة مجانية",
+      "feature2": "وصول غير محدود إلى المكتبة",
+      "feature3": "تحميل غير محدود للكتب",
+      "feature4": "الوصول إلى الترجمات",
+      "feature5": "توصيات حصرية للكتب",
+      "feature6": "دعم VIP"
+    }
   },
   "toastMessages": {
     "comment_created_successfully": "تم إنشاء التعليق بنجاح",
@@ -421,14 +463,14 @@
     "quiz_deleted_successfully": "تم حذف الاختبار بنجاح",
     "failed_to_delete_quiz": "فشل في حذف الاختبار"
   },
-  "contact":{
-      "title": "اتصل بنا",
-      "name": "الاسم",
-      "email": "البريد الإلكتروني",
-      "message": "الرسالة",
-      "send": "إرسال الرسالة",
-      "success": "تم إرسال رسالتك بنجاح!",
-      "error": "حدث خطأ، يرجى المحاولة مرة أخرى.",
-      "sending": "جارٍ الإرسال..."
+  "contact": {
+    "title": "اتصل بنا",
+    "name": "الاسم",
+    "email": "البريد الإلكتروني",
+    "message": "الرسالة",
+    "send": "إرسال الرسالة",
+    "success": "تم إرسال رسالتك بنجاح!",
+    "error": "حدث خطأ، يرجى المحاولة مرة أخرى.",
+    "sending": "جارٍ الإرسال..."
   }
 }
