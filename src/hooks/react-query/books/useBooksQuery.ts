@@ -1,21 +1,19 @@
-
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import {
   getBook,
   getBooks,
   createBook,
   updateBook,
-  deleteBook,
+  deleteBooks,
 } from "@/services/books.service";
-import { Book } from "@/types/book";
+import { Book, BooksResponse } from "@/types/book";
 import { useTranslations } from "next-intl";
 import { showErrorToast, showSuccessToast } from "@/helpers/Toast";
 
-
-export const useBooksQuery = () => {
-  return useQuery<Book[]>({
-    queryKey: ["users"],
-    queryFn: getBooks,
+export const useBooksQuery = (page = 1, limit = 10, search = "") => {
+  return useQuery<BooksResponse>({
+    queryKey: ["users", page, limit, search],
+    queryFn: () => getBooks(page, limit, search),
   });
 };
 export const useBookQuery = (id: string) => {
@@ -24,7 +22,6 @@ export const useBookQuery = (id: string) => {
     queryFn: () => getBook(id),
   });
 };
-
 
 export const useCreateBook = () => {
   const queryClient = useQueryClient();
@@ -42,7 +39,7 @@ export const useCreateBook = () => {
   });
 };
 
-export const useUpdateBook = () => {
+export const useUpdateBook = (id: string) => {
   const queryClient = useQueryClient();
   const t = useTranslations("toastMessages");
 
@@ -51,6 +48,7 @@ export const useUpdateBook = () => {
     onSuccess: () => {
       showSuccessToast(t("book_updated_successfully"));
       queryClient.invalidateQueries({ queryKey: ["books"] });
+      queryClient.invalidateQueries({ queryKey: ["book", id] });
     },
     onError: () => {
       showErrorToast(t("failed_to_update_book"));
@@ -58,13 +56,12 @@ export const useUpdateBook = () => {
   });
 };
 
-
 export const useDeleteBook = () => {
   const queryClient = useQueryClient();
   const t = useTranslations("toastMessages");
 
   return useMutation({
-    mutationFn: deleteBook,
+    mutationFn: deleteBooks,
     onSuccess: () => {
       showSuccessToast(t("book_deleted_successfully"));
       queryClient.invalidateQueries({ queryKey: ["books"] });

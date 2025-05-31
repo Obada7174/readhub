@@ -14,34 +14,22 @@ import {
   GridRenderEditCellParams,
   GridRenderCellParams,
   GridColDef,
-  GridRowId,
   // GridValueFormatterParams,
 } from "@mui/x-data-grid";
 import { useCategoriesQuery } from "@/hooks/react-query/categories/useCategoriesQuery";
-import {
-  useBooksQuery,
-  useDeleteBook,
-} from "@/hooks/react-query/books/useBooksQuery";
+import { useBooksQuery } from "@/hooks/react-query/books/useBooksQuery";
 import { Book } from "@/types/book";
 import { Category } from "@/types/category";
 import { useLocale } from "next-intl";
-import { useState } from "react";
-import DashButton from "@/components/ui/Button";
-import { FaEdit } from "react-icons/fa";
-import { LuEye } from "react-icons/lu";
 
-export default function Books() {
+export default function Users() {
   const local = useLocale();
   const ar = local === "ar";
-  const [searchText, setSearchText] = useState("");
-  const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(10);
-  const { data, isLoading, refetch } = useBooksQuery(page, limit, searchText);
+  const { data, isLoading, refetch } = useBooksQuery();
   const { data: categories } = useCategoriesQuery();
-  const deleteMutation = useDeleteBook();
 
   const genresOption = categories
-    ? categories.data.map((category) => {
+    ? categories.map((category) => {
         const title = ar
           ? category.ar_title
             ? category.ar_title
@@ -68,7 +56,7 @@ export default function Books() {
         sx={{ width: "100%" }}
         autoFocus
       >
-        {categories?.data.map((category) => {
+        {categories?.map((category) => {
           const title = ar
             ? category.ar_title
               ? category.ar_title
@@ -179,63 +167,20 @@ export default function Books() {
         return `${date.getFullYear}/${date.getMonth}/${date.getDay}`;
       },
     },
-    {
-      field: "actions",
-      headerName: "Actions",
-      sortable: false,
-      filterable: false,
-      minWidth: 140,
-
-      renderCell: (params: GridRenderCellParams) => {
-        const id = params.row.id;
-
-        return (
-          <div className="flex gap-2 items-center text-lg">
-            <DashButton
-              href={`/dashboard/books/${id}/update`}
-              className="text-blue-600 hover:text-blue-800 rounded-full shadow p-3"
-              size="icon"
-            >
-              <FaEdit className="translate-x-0.5" />
-            </DashButton>
-            <DashButton
-              href={`/book/${id}`}
-              className="text-green-600 hover:text-green-800 rounded-full shadow p-3"
-              size="icon"
-            >
-              <LuEye />
-            </DashButton>
-          </div>
-        );
-      },
-    },
   ];
 
   return (
     <DashTable<Book>
-      ITEM="Book"
-      ITEMS="Books"
-      ADD="books/addbook"
+      ITEM="author"
+      ITEMS="authors"
+      ADD="authors/addauthor"
       columns={columns}
       isEditable={true}
       query={{
-        data: data?.data,
-        isLoading,
-        refetch,
-        total: data?.meta.total,
-        page,
-        setPage,
-        limit,
-        setLimit,
-        setSearch: setSearchText,
-      }}
-      deleteMutation={{
-        mutateAsync: async (ids: GridRowId[]) =>
-          await deleteMutation.mutateAsync(ids.map(Number)),
-      }}
-      deleteMutation={{
-        mutateAsync: async (ids: GridRowId[]) =>
-          await deleteMutation.mutateAsync(ids.map(Number)),
+        data: data,
+        isLoading: isLoading,
+        refetch: refetch,
+        total: data?.length,
       }}
     />
   );

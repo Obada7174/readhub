@@ -5,7 +5,7 @@ import Image from "next/image";
 import Rate from "../components/Rate";
 import SuggestedBooks from "../components/SuggestedBooks";
 import books from "../books";
-import CommentsSection, { Comment } from "../comments/CommentsSection";
+import CommentsSection from "../comments/CommentsSection";
 import StarIcon from "@mui/icons-material/Star";
 import { useBookQuery } from "@/hooks/react-query/books/useBooksQuery";
 import BookLoadingSkeleton from "../components/BookLoadingSkeleton";
@@ -164,70 +164,10 @@ const page = ({ params: { id } }: Props) => {
             </span>
           </div>
           <SuggestedBooks books={books} ar={ar} />
-          <CommentsSection comments={comments} />
+          <CommentsSection id={id} />
         </div>
       </div>
     </div>
   );
 };
 export default page;
-
-const comments: Comment[] = [
-  {
-    id: 1,
-    comment:
-      "Rich Dad Poor Dad by Robert Kiyosaki offers a compelling perspective on financial education, contrasting the mindsets of those focused on earning versus those focused on building wealth. It challenges conventional beliefs about money, emphasizing the importance of financial literacy, investing, and entrepreneurial thinking. The book encourages readers to rethink their approach to money and wealth-building, inspiring many to pursue financial independence. It's a thought-provoking read that has motivated countless people to improve their financial literacy and mindset.",
-    likes: [],
-    replies: [
-      {
-        id: 101,
-        comment:
-          "The book really does inspire a shift in how we think about money.",
-        likes: [],
-        userImage: "",
-        userName: "User",
-        replies: [
-          {
-            id: 1,
-            comment:
-              "I agree! It’s eye-opening and really makes you rethink your financial habits.",
-            likes: [],
-            replies: [
-              {
-                id: 101,
-                comment:
-                  "Love how it emphasizes financial education—so important for building wealth.",
-                likes: [],
-                userImage: "",
-                userName: "User",
-                replies: [],
-              },
-            ],
-            userImage: "",
-            userName: "User",
-          },
-        ],
-      },
-      {
-        id: 101,
-        comment:
-          "Very insightful! It challenges many traditional beliefs about money and success.",
-        likes: [],
-        userImage: "",
-        userName: "User",
-        replies: [],
-      },
-    ],
-    userImage: "",
-    userName: "User",
-  },
-  {
-    id: 101,
-    comment:
-      "Rich Dad Poor Dad by Robert Kiyosaki offers a compelling perspective on financial education, contrasting the mindsets of those focused on earning versus those focused on building wealth. It challenges conventional beliefs about money.",
-    likes: [],
-    userImage: "",
-    userName: "User",
-    replies: [],
-  },
-];

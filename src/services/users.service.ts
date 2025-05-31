@@ -1,9 +1,13 @@
 import axios from "@/services/axios";
-import { UpdateUserPayload, User,UsersResponse } from "@/types/user";
+import { UpdateUserPayload, User, UsersResponse } from "@/types/user";
 
-export const getUsers = async (page = 1, limit = 10, search = ''): Promise<UsersResponse> => {
+export const getUsers = async (
+  page = 1,
+  limit = 10,
+  search = ""
+): Promise<UsersResponse> => {
   const res = await axios.get("http://localhost:5000/users", {
-    params: { page, limit, search }
+    params: { page, limit, search },
   });
   return res.data;
 };
@@ -30,4 +34,3 @@ export const deleteUsers = async (ids: number[]): Promise<void> => {
     data: { ids },
   });
 };
-
