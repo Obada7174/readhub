@@ -13,7 +13,7 @@ import DashButton from "@/components/ui/Button";
 import DashContainer from "@/components/dashboard/DashContainer";
 import DashHeader from "@/components/dashboard/Header";
 import { useTranslations } from "next-intl";
-
+import { cairo } from "@/assets/fonts/cairo";
 interface DashTableProps<T extends { id: number | string }> {
     ITEMS: string;
     ITEM: string;
@@ -91,7 +91,7 @@ export default function DashTable<T extends { id: number | string }>({
 
     return (
         <DashContainer>
-            <DashHeader category="Page" title={ITEMS} />
+            <DashHeader title={ITEMS} />
             <Box
                 sx={{
                     width: "100%",
@@ -111,6 +111,7 @@ export default function DashTable<T extends { id: number | string }>({
                 >
                     <Input
                         className="max-w-md dark:border-b-blue-900 border-b-blue-900 h-full"
+                        type="search"
                         placeholder={t(`search_for`, { item: ITEM.toLowerCase() })}
                         onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                             handleSearch(e.target.value)
@@ -176,7 +177,7 @@ export default function DashTable<T extends { id: number | string }>({
                         sx={{
                             maxWidth: '100%',
                             height: '100%',
-
+                            fontFamily: cairo.style,
                             '[class~="dark"] &': {
                                 color: "#e5e7eb",
                                 backgroundColor: "#1f2937",

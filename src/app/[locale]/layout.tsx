@@ -1,15 +1,11 @@
 import { NextIntlClientProvider } from 'next-intl';
 import type { Metadata } from "next";
-import { Funnel_Display } from "next/font/google";
 import { useLocale } from 'next-intl';
 import { ThemeProvider } from "next-themes";
 import ReactQueryProvider from "@/providers/ReactQueryProvider";
 import Toaster  from '@/components/ui/Toaster'; 
-
-const funnelDisplay = Funnel_Display({
-  variable: "--font-funnel-display",
-  subsets: ["latin"],
-});
+import { funnelDisplay } from "@/assets/fonts/funnelDisplay";
+import { cairo } from "@/assets/fonts/cairo";
 
 export const metadata: Metadata = {
   title: "readhub",
@@ -32,7 +28,7 @@ export default function LocaleLayout({
     >
       <body
         suppressHydrationWarning
-        className={`${funnelDisplay.variable} antialiased bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-50`}
+        className={`${funnelDisplay.variable} ${cairo.variable} ${cairo.className} antialiased bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-50`}
       >
         <NextIntlClientProvider>
           <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>

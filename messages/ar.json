@@ -365,8 +365,32 @@
       "failed_to_update_book": "فشل في تحديث الكتاب",
       "failed_to_delete_book": "فشل في حذف الكتاب",
       "login_successful": "تم تسجيل الدخول بنجاح!",
-      "login_failed": "فشل تسجيل الدخول. يرجى التحقق من بياناتك."
+      "login_failed": "فشل تسجيل الدخول. يرجى التحقق من بياناتك.",
+      "question_created_successfully": "تم إنشاء السؤال بنجاح",
+      "failed_to_create_question": "فشل في إنشاء السؤال",
+      "question_updated_successfully": "تم تحديث السؤال بنجاح",
+      "failed_to_update_question": "فشل في تحديث السؤال",
+      "question_deleted_successfully": "تم حذف السؤال بنجاح",
+      "failed_to_delete_question": "فشل في حذف السؤال"
     }
+    
+  },
+  "columns": {
+    "id": "المعرف",
+    "question_text": "نص السؤال",
+    "option_a": "الخيار a",
+    "option_b": "الخيار b",
+    "option_c": "الخيار c",
+    "option_d": "الخيار d",
+    "correct_option": "الإجابة الصحيحة",
+    "quiz_title": "عنوان الاختبار",
+    "created_at": "تاريخ الإنشاء",
+    "updated_at": "تاريخ التعديل",
+    "actions": "الإجراءات",
+    "description": "الوصف",
+    "status": "الحالة",
+    "quizzes": "الاختبارات",
+    "book-title":"عنوان الكتاب"
     
   },
   "toastMessages": {
@@ -389,7 +413,13 @@
     "book_deleted_successfully": "تم حذف الكتاب بنجاح",
     "failed_to_create_book": "فشل في إنشاء الكتاب",
     "failed_to_update_book": "فشل في تحديث الكتاب",
-    "failed_to_delete_book": "فشل في حذف الكتاب"
+    "failed_to_delete_book": "فشل في حذف الكتاب",
+    "quiz_created_successfully": "تم إنشاء الاختبار بنجاح",
+    "failed_to_create_quiz": "فشل في إنشاء الاختبار",
+    "quiz_updated_successfully": "تم تحديث الاختبار بنجاح",
+    "failed_to_update_quiz": "فشل في تحديث الاختبار",
+    "quiz_deleted_successfully": "تم حذف الاختبار بنجاح",
+    "failed_to_delete_quiz": "فشل في حذف الاختبار"
   },
   "contact":{
       "title": "اتصل بنا",
