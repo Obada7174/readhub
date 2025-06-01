@@ -13,14 +13,13 @@ export interface Book {
   pdf: string;
   rating: string;
   rating_count: number;
-  total_pages: number;
+  total_pages: string;
   total_ratings: number;
   created_at: string;
   categories: Category[];
-  }
+}
 
-  
-export interface ApiResponse {
+export interface BooksResponse {
   data: Book[];
   meta: { total: number; page: number; limit: number; total_pages: number };
 }

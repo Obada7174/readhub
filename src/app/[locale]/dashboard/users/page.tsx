@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { useState } from "react";
 import { Select, MenuItem } from "@mui/material";
@@ -12,13 +12,13 @@ import {
 
 import { GridRowId } from "@mui/x-data-grid";
 import { UpdateUserPayload, User } from "@/types/user";
-import { SelectChangeEvent } from '@mui/material/Select';
-import DashButton from '@/components/ui/Button'
+import { SelectChangeEvent } from "@mui/material/Select";
+import DashButton from "@/components/ui/Button";
 import {
   GridRenderEditCellParams,
   GridRenderCellParams,
   GridColDef,
-} from '@mui/x-data-grid';
+} from "@mui/x-data-grid";
 
 import { DateObject } from "@/types";
 import { LuEye } from "react-icons/lu";
@@ -28,22 +28,25 @@ export default function Users() {
   const deleteMutation = useDeleteUser();
   const updateMutation = useUpdateUser();
 
-  const [searchText, setSearchText] = useState('');
+  const [searchText, setSearchText] = useState("");
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
   const { data, isLoading, refetch } = useUsersQuery(page, limit, searchText);
 
-
   const RoleEditCell = (params: GridRenderEditCellParams) => {
     const handleChange = async (event: SelectChangeEvent) => {
       const value = event.target.value;
-      await params.api.setEditCellValue({ id: params.id, field: "role", value });
+      await params.api.setEditCellValue({
+        id: params.id,
+        field: "role",
+        value,
+      });
       params.api.stopCellEditMode({ id: params.id, field: "role" });
     };
 
     return (
       <Select
-        value={params.value || ''}
+        value={params.value || ""}
         onChange={handleChange}
         sx={{ width: "100%" }}
       >
@@ -56,20 +59,44 @@ export default function Users() {
 
   const columns: GridColDef[] = [
     { field: "id", headerName: "ID", width: 30 },
-    { field: "first_name", headerName: "First Name", editable: true, minWidth: 90, flex: 1 },
-    { field: "last_name", headerName: "Last Name", editable: true, minWidth: 90, flex: 1 },
-    { field: "email", headerName: "Email", editable: true, minWidth: 180, flex: 1 },
+    {
+      field: "first_name",
+      headerName: "First Name",
+      editable: true,
+      minWidth: 90,
+      flex: 1,
+    },
+    {
+      field: "last_name",
+      headerName: "Last Name",
+      editable: true,
+      minWidth: 90,
+      flex: 1,
+    },
+    {
+      field: "email",
+      headerName: "Email",
+      editable: true,
+      minWidth: 180,
+      flex: 1,
+    },
     {
       field: "role",
       headerName: "Role",
       editable: true,
       renderEditCell: RoleEditCell,
-      renderCell: (params: GridRenderCellParams) => params.value ?? '',
+      renderCell: (params: GridRenderCellParams) => params.value ?? "",
       maxWidth: 120,
       minWidth: 70,
       flex: 1,
     },
-    { field: "location", headerName: "Location", editable: true, minWidth: 90, flex: 1 },
+    {
+      field: "location",
+      headerName: "Location",
+      editable: true,
+      minWidth: 90,
+      flex: 1,
+    },
     {
       field: "created_at",
       headerName: "Created Date",
@@ -124,7 +151,6 @@ export default function Users() {
 
   return (
     <div className="space-y-4">
-
       <DashTable
         ITEM="User"
         ITEMS="Users"
@@ -147,7 +173,6 @@ export default function Users() {
             await deleteMutation.mutateAsync(ids.map(Number));
           },
         }}
-
         updateMutation={async (row: User) => {
           const { id, first_name, last_name, email, role, location } = row;
 

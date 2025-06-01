@@ -3,7 +3,7 @@ import createNextIntlPlugin from "next-intl/plugin";
 
 const nextConfig: NextConfig = {
   images: {
-    domains: ["images-na.ssl-images-amazon.com"],
+    domains: ["images-na.ssl-images-amazon.com", "randomuser.me"],
   },
 };
 

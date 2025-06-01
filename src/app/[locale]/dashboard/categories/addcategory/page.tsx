@@ -5,7 +5,7 @@ import { useCreateCategory } from "@/hooks/react-query/categories/useCategoriesQ
 import { CategoryFormValues } from "@/lib/validators/category.validator";
 import { Category } from "@/types/category";
 
-export default function AddUser() {
+export default function AddCategory() {
   const createBookMutation = useCreateCategory();
 
   const handleAdd = async (data: CategoryFormValues) => {

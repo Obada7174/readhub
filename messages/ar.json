@@ -141,9 +141,9 @@
     "Sign Up": "إنشاء حساب",
     "Don't have an account?": "ليس لديك حساب؟",
     "signingIn": "جارٍ تسجيل الدخول...",
-    "Forgot Password?":"هل نسيت كلمة السر؟"
+    "Forgot Password?": "هل نسيت كلمة السر؟"
   },
-  "forgot_password":{
+  "forgot_password": {
     "title": "نسيت كلمة المرور",
     "description": "أدخل بريدك الإلكتروني لتلقي رمز التحقق.",
     "emailLabel": "البريد الإلكتروني",
@@ -155,19 +155,19 @@
     "signInLink": "تسجيل الدخول",
     "somethingWentWrong": "حدث خطأ ما. يرجى المحاولة مجددًا."
   },
-  "reset_password":{ 
-  "title": "إعادة تعيين كلمة المرور",
-  "description": "يرجى إدخال كلمة المرور الجديدة.",
-  "newPasswordLabel": "كلمة المرور الجديدة",
-  "newPasswordPlaceholder": "أدخل كلمة المرور الجديدة",
-  "confirmPasswordLabel": "تأكيد كلمة المرور",
-  "confirmPasswordPlaceholder": "أعد إدخال كلمة المرور",
-  "updatePasswordButton": "تحديث كلمة المرور",
-  "updating": "جارٍ التحديث...",
-  "passwordsDoNotMatch": "كلمات المرور غير متطابقة",
-  "missingData": "بيانات غير مكتملة",
-  "somethingWentWrong": "حدث خطأ ما. يرجى المحاولة مجددًا."
-},
+  "reset_password": {
+    "title": "إعادة تعيين كلمة المرور",
+    "description": "يرجى إدخال كلمة المرور الجديدة.",
+    "newPasswordLabel": "كلمة المرور الجديدة",
+    "newPasswordPlaceholder": "أدخل كلمة المرور الجديدة",
+    "confirmPasswordLabel": "تأكيد كلمة المرور",
+    "confirmPasswordPlaceholder": "أعد إدخال كلمة المرور",
+    "updatePasswordButton": "تحديث كلمة المرور",
+    "updating": "جارٍ التحديث...",
+    "passwordsDoNotMatch": "كلمات المرور غير متطابقة",
+    "missingData": "بيانات غير مكتملة",
+    "somethingWentWrong": "حدث خطأ ما. يرجى المحاولة مجددًا."
+  },
   "faqPage": {
     "sectionTitle": "الأسئلة الشائعة",
     "sectionDescription": "إذا كانت لديك أي استفسارات، فقد تكون الإجابة هنا!",
@@ -367,68 +367,47 @@
       "failed_to_update_book": "فشل في تحديث الكتاب",
       "failed_to_delete_book": "فشل في حذف الكتاب",
       "login_successful": "تم تسجيل الدخول بنجاح!",
-      "login_failed": "فشل تسجيل الدخول. يرجى التحقق من بياناتك."
-    },
-    "coupons":{
-      "edit_coupon": "تعديل الكوبون",
-      "code_label": "كود الكوبون",
-      "code_placeholder": "أدخل كود الكوبون",
-      "discount_label": "قيمة الخصم (%)",
-      "discount_placeholder": "مثال: 25",
-      "submitting": "جارٍ الإرسال...",
-      "save_changes": "حفظ التغييرات",
-      "errors": {
-        "code_required": "كود الكوبون مطلوب",
-        "invalid_discount": "الخصم يجب أن يكون رقمًا بين 0 و 100"
-      }
-    },
-    "faq_columns": {
-      "id": "الرقم",
-      "question": "السؤال",
-      "answer": "الإجابة",
-      "status": "الحالة",
-      "actions": "الإجراءات",
-      "arabic":"العربية",
-      "english":"الإنجليزية",
-      "choose_lang": "اختر اللغة",
-      "all": "الكل",
-      "active": "نشط",
-      "inactive": "غير نشط",
-      "switch_to_arabic": "تبديل للعربية",
-      "switch_to_english": "تبديل للإنجليزية",
-      "filter_by_status": "فلترة حسب الحالة",
-      "edit": "تعديل",
-      "view": "عرض",
-      "faqs": "الأسئلة المتكررة",
-      "faq": "سؤال متكرر"
-    },
-    "add_faq":{
-      "title": "إضافة سؤال شائع",
-      "en_question_label": "السؤال بالإنجليزية",
-      "en_question_placeholder": "ادخل السؤال بالإنجليزية",
-      "ar_question_label": "السؤال بالعربية",
-      "ar_question_placeholder": "ادخل السؤال بالعربية",
-      "en_answer_label": "الإجابة بالإنجليزية",
-      "en_answer_placeholder": "ادخل الإجابة بالإنجليزية",
-      "ar_answer_label": "الإجابة بالعربية",
-      "ar_answer_placeholder": "ادخل الإجابة بالعربية",
-      "status_label": "الحالة",
-      "status_active": "مفعل",
-      "status_inactive": "غير مفعل",
-      "submit_button": "إضافة",
-    
-      "success_message": "تم إضافة السؤال بنجاح",
-    
-      "error": {
-        "en_question_required": "السؤال بالإنجليزية مطلوب على الأقل 2 حروف",
-        "ar_question_required": "السؤال بالعربية مطلوب على الأقل 2 حروف",
-        "en_answer_required": "الإجابة بالإنجليزية مطلوبة على الأقل 2 حروف",
-        "ar_answer_required": "الإجابة بالعربية مطلوبة على الأقل 2 حروف",
-        "something_went_wrong": "حدث خطأ ما، حاول مجددًا"
-      }
+      "login_failed": "فشل تسجيل الدخول. يرجى التحقق من بياناتك.",
+      "question_created_successfully": "تم إنشاء السؤال بنجاح",
+      "failed_to_create_question": "فشل في إنشاء السؤال",
+      "question_updated_successfully": "تم تحديث السؤال بنجاح",
+      "failed_to_update_question": "فشل في تحديث السؤال",
+      "question_deleted_successfully": "تم حذف السؤال بنجاح",
+      "failed_to_delete_question": "فشل في حذف السؤال"
     }
   },
-  "subscription":{
+  "columns": {
+    "id": "المعرف",
+    "question_text": "نص السؤال",
+    "option_a": "الخيار a",
+    "option_b": "الخيار b",
+    "option_c": "الخيار c",
+    "option_d": "الخيار d",
+    "correct_option": "الإجابة الصحيحة",
+    "quiz_title": "عنوان الاختبار",
+    "created_at": "تاريخ الإنشاء",
+    "updated_at": "تاريخ التعديل",
+    "actions": "الإجراءات",
+    "description": "الوصف",
+    "status": "الحالة",
+    "quizzes": "الاختبارات",
+    "book-title": "عنوان الكتاب",
+    "login_failed": "فشل تسجيل الدخول. يرجى التحقق من بياناتك."
+  },
+  "coupons": {
+    "edit_coupon": "تعديل الكوبون",
+    "code_label": "كود الكوبون",
+    "code_placeholder": "أدخل كود الكوبون",
+    "discount_label": "قيمة الخصم (%)",
+    "discount_placeholder": "مثال: 25",
+    "submitting": "جارٍ الإرسال...",
+    "save_changes": "حفظ التغييرات",
+    "errors": {
+      "code_required": "كود الكوبون مطلوب",
+      "invalid_discount": "الخصم يجب أن يكون رقمًا بين 0 و 100"
+    }
+  },
+  "subscription": {
     "title": "اختر خطة الاشتراك الخاصة بك",
     "description": "اختر أفضل خطة تناسب احتياجاتك في القراءة. جميع الخطط تتضمن الوصول المجاني للكتب.",
     "basic": {
@@ -457,7 +436,6 @@
       "feature5": "توصيات حصرية للكتب",
       "feature6": "دعم VIP"
     }
-    
   },
   "toastMessages": {
     "comment_created_successfully": "تم إنشاء التعليق بنجاح",
@@ -479,16 +457,22 @@
     "book_deleted_successfully": "تم حذف الكتاب بنجاح",
     "failed_to_create_book": "فشل في إنشاء الكتاب",
     "failed_to_update_book": "فشل في تحديث الكتاب",
-    "failed_to_delete_book": "فشل في حذف الكتاب"
+    "failed_to_delete_book": "فشل في حذف الكتاب",
+    "quiz_created_successfully": "تم إنشاء الاختبار بنجاح",
+    "failed_to_create_quiz": "فشل في إنشاء الاختبار",
+    "quiz_updated_successfully": "تم تحديث الاختبار بنجاح",
+    "failed_to_update_quiz": "فشل في تحديث الاختبار",
+    "quiz_deleted_successfully": "تم حذف الاختبار بنجاح",
+    "failed_to_delete_quiz": "فشل في حذف الاختبار"
   },
-  "contact":{
-      "title": "اتصل بنا",
-      "name": "الاسم",
-      "email": "البريد الإلكتروني",
-      "message": "الرسالة",
-      "send": "إرسال الرسالة",
-      "success": "تم إرسال رسالتك بنجاح!",
-      "error": "حدث خطأ، يرجى المحاولة مرة أخرى.",
-      "sending": "جارٍ الإرسال..."
+  "contact": {
+    "title": "اتصل بنا",
+    "name": "الاسم",
+    "email": "البريد الإلكتروني",
+    "message": "الرسالة",
+    "send": "إرسال الرسالة",
+    "success": "تم إرسال رسالتك بنجاح!",
+    "error": "حدث خطأ، يرجى المحاولة مرة أخرى.",
+    "sending": "جارٍ الإرسال..."
   }
 }

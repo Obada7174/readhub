@@ -12,6 +12,7 @@ import DashHeader from "@/components/dashboard/Header";
 
 import { bookSchema, BookFormValues } from "@/lib/validators/book.validator";
 import { Category } from "@/types/category";
+import { useEffect } from "react";
 
 interface BookFormProps {
   mode: "add" | "edit";
@@ -33,7 +34,8 @@ export default function UseBookForm({
     handleSubmit,
     formState: { errors },
   } = useForm<BookFormValues>({
-    resolver: zodResolver(bookSchema),
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    resolver: zodResolver(bookSchema) as any,
     defaultValues: defaultValues || {
       title: "",
       ar_title: "",
@@ -46,11 +48,14 @@ export default function UseBookForm({
       pdf: "",
       rating: "0.00",
       rating_count: 0,
-      total_pages: 0,
-      total_ratings: 0,
+      total_pages: "0",
       categories: [],
     },
   });
+
+  useEffect(() => {
+    console.log(errors);
+  }, [errors]);
 
   const submitHandler: SubmitHandler<BookFormValues> = async (data) => {
     try {
@@ -150,6 +155,16 @@ export default function UseBookForm({
           error={errors.pdf?.message}
         />
 
+        {/* Price */}
+        <Input
+          label="Pages"
+          type="number"
+          step="1"
+          placeholder="0"
+          {...register("total_pages")}
+          error={errors.total_pages?.message}
+        />
+
         {/* Categories */}
         <div className="space-y-2">
           <label className="block text-sm font-medium">Categories</label>
@@ -157,8 +172,11 @@ export default function UseBookForm({
             {availableCategories.map((category) => (
               <label key={category.id} className="flex items-center space-x-2">
                 <input
+                  defaultChecked={defaultValues?.categories?.includes(
+                    category.id
+                  )}
                   type="checkbox"
-                  value={category.id}
+                  value={+category.id}
                   {...register("categories")}
                   className="h-4 w-4"
                 />
@@ -174,7 +192,7 @@ export default function UseBookForm({
         <DashButton
           type="submit"
           size="md"
-          className="font-bold w-full mt-4"
+          className="font-bold w-full mt-4 cursor-pointer"
           text={mode === "add" ? "إضافة كتاب" : "حفظ التغييرات"}
         />
       </form>
