@@ -384,6 +384,31 @@
           "ar_answer_required": "Arabic answer is required (min 2 characters)",
           "something_went_wrong": "Something went wrong, please try again"
         }
+      },
+      "edit_faq":{
+        "title": "Edit FAQ",
+        "en_question_label": "English Question",
+        "en_question_placeholder": "Enter question in English",
+        "ar_question_label": "Arabic Question",
+        "ar_question_placeholder": "Enter question in Arabic",
+        "en_answer_label": "English Answer",
+        "en_answer_placeholder": "Enter answer in English",
+        "ar_answer_label": "Arabic Answer",
+        "ar_answer_placeholder": "Enter answer in Arabic",
+        "status_label": "Status",
+        "status_active": "Active",
+        "status_inactive": "Inactive",
+        "submit_button": "Save Changes",
+        "submitting": "Saving...",
+        "success_message": "FAQ updated successfully",
+      
+        "errors": {
+          "en_question_required": "English question is required and must be at least 2 characters",
+          "ar_question_required": "Arabic question is required and must be at least 2 characters",
+          "en_answer_required": "English answer is required and must be at least 2 characters",
+          "ar_answer_required": "Arabic answer is required and must be at least 2 characters",
+          "general": "Please fix the errors before submitting"
+        }
       }
   },
   "SideBar": {

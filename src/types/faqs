@@ -1,8 +1,13 @@
-export type Faq = {
-  id: number;
+// types/faqs.ts
+
+export type UpdateFaqPayload = {
   enQuestion: string;
   arQuestion: string;
   enAnswer: string;
   arAnswer: string;
-  isPublished: boolean;
+  isPublished: "active" | "inactive";
 };
+
+export type Faq = {
+  id: number;
+} & UpdateFaqPayload;

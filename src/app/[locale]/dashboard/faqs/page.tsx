@@ -75,7 +75,7 @@ export default function FaqsPage() {
       <DashTable<any>
         ITEMS={t('faqs')}
         ITEM={t('faq')}
-        ADD="/dashboard/faqs/new"
+        ADD="/faqs/new"
         columns={columns}
         isEditable={true}
         query={{

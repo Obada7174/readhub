@@ -374,6 +374,56 @@
       "failed_to_update_question": "فشل في تحديث السؤال",
       "question_deleted_successfully": "تم حذف السؤال بنجاح",
       "failed_to_delete_question": "فشل في حذف السؤال"
+    },
+    "edit_faq":{
+      "title": "تعديل السؤال الشائع",
+      "en_question_label": "السؤال بالإنجليزية",
+      "en_question_placeholder": "ادخل السؤال بالإنجليزية",
+      "ar_question_label": "السؤال بالعربية",
+      "ar_question_placeholder": "ادخل السؤال بالعربية",
+      "en_answer_label": "الإجابة بالإنجليزية",
+      "en_answer_placeholder": "ادخل الإجابة بالإنجليزية",
+      "ar_answer_label": "الإجابة بالعربية",
+      "ar_answer_placeholder": "ادخل الإجابة بالعربية",
+      "status_label": "الحالة",
+      "status_active": "مفعل",
+      "status_inactive": "غير مفعل",
+      "submit_button": "حفظ التغييرات",
+      "submitting": "جارٍ الحفظ...",
+      "success_message": "تم تحديث السؤال بنجاح",
+    
+      "errors": {
+        "en_question_required": "السؤال بالإنجليزية مطلوب ويجب أن يتكون من حروف لا تقل عن 2",
+        "ar_question_required": "السؤال بالعربية مطلوب ويجب أن يتكون من حروف لا تقل عن 2",
+        "en_answer_required": "الإجابة بالإنجليزية مطلوبة ويجب أن تتكون من حروف لا تقل عن 2",
+        "ar_answer_required": "الإجابة بالعربية مطلوبة ويجب أن تتكون من حروف لا تقل عن 2",
+        "general": "من فضلك أصلح الأخطاء قبل الإرسال"
+      }
+    },
+    "add_faq":{
+      "title": "إضافة سؤال شائع",
+      "en_question_label": "السؤال بالإنجليزية",
+      "en_question_placeholder": "أدخل السؤال بالإنجليزية",
+      "ar_question_label": "السؤال بالعربية",
+      "ar_question_placeholder": "أدخل السؤال بالعربية",
+      "en_answer_label": "الإجابة بالإنجليزية",
+      "en_answer_placeholder": "أدخل الإجابة بالإنجليزية",
+      "ar_answer_label": "الإجابة بالعربية",
+      "ar_answer_placeholder": "أدخل الإجابة بالعربية",
+      "status_label": "الحالة",
+      "status_active": "مفعل",
+      "status_inactive": "غير مفعل",
+      "submit_button": "إضافة",
+    
+      "success_message": "تم إضافة السؤال الشائع بنجاح",
+    
+      "error": {
+        "en_question_required": "السؤال بالإنجليزية مطلوب (على الأقل حرفين)",
+        "ar_question_required": "السؤال بالعربية مطلوب (على الأقل حرفين)",
+        "en_answer_required": "الإجابة بالإنجليزية مطلوبة (على الأقل حرفين)",
+        "ar_answer_required": "الإجابة بالعربية مطلوبة (على الأقل حرفين)",
+        "something_went_wrong": "حدث خطأ ما، من فضلك حاول مجددًا"
+      }
     }
   },
   "columns": {

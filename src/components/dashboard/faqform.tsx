@@ -1,17 +1,18 @@
 "use client";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import axios from "@/services/axios"; 
+import axios from "@/services/axios";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 
 import Input from "@/components/dashboard/Input";
-import DashButton from "@/components/dashboard/Button";
 import DashContainer from "@/components/dashboard/DashContainer";
 import DashHeader from "@/components/dashboard/Header";
 
+
 import { z } from "zod";
 import { useState } from "react";
+import Button from "./Button";
 
 const createFaqSchema = (t: (key: string) => string) =>
   z.object({
@@ -80,6 +81,7 @@ export default function AddFaqForm() {
       )}
 
       <form onSubmit={handleSubmit(submitHandler)} className="space-y-6 max-w-3xl mx-auto">
+        {/* السؤال بالإنجليزية والعربي */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <Input
             label={t("en_question_label")}
@@ -118,11 +120,11 @@ export default function AddFaqForm() {
             <option value="inactive">{t("status_inactive")}</option>
           </select>
         </div>
-        <DashButton
-          type="submit"
-          size="md"
-          className="font-bold w-full mt-4"
+        <Button
           text={t("submit_button")}
+          type="submit"
+          className="w-full mt-4"
+          borderRadius="8px"
         />
       </form>
     </DashContainer>

@@ -65,7 +65,6 @@ export default function CouponForm({ mode, defaultValues, onSubmit }: CouponForm
   return (
     <DashContainer>
       <DashHeader
-        category="Page"
         title={mode === 'add' ? t('add_coupon') : t('edit_coupon')}
       />
 
