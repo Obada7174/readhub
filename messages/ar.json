@@ -270,7 +270,9 @@
       "categories": "التصنيفات",
       "competitions": "المسابقات",
       "Copons": "الجوائز",
-      "Carts": "السلات"
+      "Carts": "السلات",
+      "Faqs":"الأسئلة الشائعة",
+      "authors":"المؤلفين"
     },
     "users": {
       "users": "المستخدمون",
@@ -378,6 +380,51 @@
       "errors": {
         "code_required": "كود الكوبون مطلوب",
         "invalid_discount": "الخصم يجب أن يكون رقمًا بين 0 و 100"
+      }
+    },
+    "faq_columns": {
+      "id": "الرقم",
+      "question": "السؤال",
+      "answer": "الإجابة",
+      "status": "الحالة",
+      "actions": "الإجراءات",
+      "arabic":"العربية",
+      "english":"الإنجليزية",
+      "choose_lang": "اختر اللغة",
+      "all": "الكل",
+      "active": "نشط",
+      "inactive": "غير نشط",
+      "switch_to_arabic": "تبديل للعربية",
+      "switch_to_english": "تبديل للإنجليزية",
+      "filter_by_status": "فلترة حسب الحالة",
+      "edit": "تعديل",
+      "view": "عرض",
+      "faqs": "الأسئلة المتكررة",
+      "faq": "سؤال متكرر"
+    },
+    "add_faq":{
+      "title": "إضافة سؤال شائع",
+      "en_question_label": "السؤال بالإنجليزية",
+      "en_question_placeholder": "ادخل السؤال بالإنجليزية",
+      "ar_question_label": "السؤال بالعربية",
+      "ar_question_placeholder": "ادخل السؤال بالعربية",
+      "en_answer_label": "الإجابة بالإنجليزية",
+      "en_answer_placeholder": "ادخل الإجابة بالإنجليزية",
+      "ar_answer_label": "الإجابة بالعربية",
+      "ar_answer_placeholder": "ادخل الإجابة بالعربية",
+      "status_label": "الحالة",
+      "status_active": "مفعل",
+      "status_inactive": "غير مفعل",
+      "submit_button": "إضافة",
+    
+      "success_message": "تم إضافة السؤال بنجاح",
+    
+      "error": {
+        "en_question_required": "السؤال بالإنجليزية مطلوب على الأقل 2 حروف",
+        "ar_question_required": "السؤال بالعربية مطلوب على الأقل 2 حروف",
+        "en_answer_required": "الإجابة بالإنجليزية مطلوبة على الأقل 2 حروف",
+        "ar_answer_required": "الإجابة بالعربية مطلوبة على الأقل 2 حروف",
+        "something_went_wrong": "حدث خطأ ما، حاول مجددًا"
       }
     }
   },

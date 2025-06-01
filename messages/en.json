@@ -281,7 +281,8 @@
       "competitions": "Competitions",
       "authors": "Authors",
       "Copons": "Copons",
-      "Carts": "Carts"
+      "Carts": "Carts",
+      "Faqs":"Faqs"
     },
     "add_cart": {
       "title": "Add New Cart",
@@ -337,7 +338,53 @@
         "code_required": "Coupon code is required",
         "invalid_discount": "Discount must be a number between 0 and 100"
       }
-    }
+    },
+    
+      "faq_columns": {
+        "id": "ID",
+        "question": "Question",
+        "answer": "Answer",
+        "status": "Status",
+        "actions": "Actions",
+        "arabic":"Arabic",
+        "english":"English",
+        "choose_lang": "Choose Language",
+        "all": "All",
+        "active": "Active",
+        "inactive": "Inactive",
+        "switch_to_arabic": "Switch to Arabic",
+        "switch_to_english": "Switch to English",
+        "filter_by_status": "Filter by Status",
+        "edit": "Edit",
+        "view": "View",
+        "faqs": "FAQs",
+        "faq": "FAQ"
+      },
+      "add_faq":{
+        "title": "Add New FAQ",
+        "en_question_label": "English Question",
+        "en_question_placeholder": "Enter question in English",
+        "ar_question_label": "Arabic Question",
+        "ar_question_placeholder": "Enter question in Arabic",
+        "en_answer_label": "English Answer",
+        "en_answer_placeholder": "Enter answer in English",
+        "ar_answer_label": "Arabic Answer",
+        "ar_answer_placeholder": "Enter answer in Arabic",
+        "status_label": "Status",
+        "status_active": "Active",
+        "status_inactive": "Inactive",
+        "submit_button": "Add",
+      
+        "success_message": "FAQ added successfully",
+      
+        "error": {
+          "en_question_required": "English question is required (min 2 characters)",
+          "ar_question_required": "Arabic question is required (min 2 characters)",
+          "en_answer_required": "English answer is required (min 2 characters)",
+          "ar_answer_required": "Arabic answer is required (min 2 characters)",
+          "something_went_wrong": "Something went wrong, please try again"
+        }
+      }
   },
   "SideBar": {
     "Home": "Home",

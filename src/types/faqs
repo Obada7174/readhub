@@ -1,0 +1,8 @@
+export type Faq = {
+  id: number;
+  enQuestion: string;
+  arQuestion: string;
+  enAnswer: string;
+  arAnswer: string;
+  isPublished: boolean;
+};
