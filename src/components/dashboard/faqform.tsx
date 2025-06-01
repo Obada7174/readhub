@@ -67,7 +67,7 @@ export default function AddFaqForm() {
 
   return (
     <DashContainer>
-      <DashHeader category="FAQ" title={t("title")} />
+      <DashHeader title={t("title")} />
 
       {error && (
         <div className="text-red-500 text-center mb-4">{error}</div>
