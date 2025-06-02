@@ -125,6 +125,21 @@ export default function DashTable<T extends { id: number | string }>({
             </DashButton>
             <DashButton
               size="lg"
+              className={`max-w-44 ${
+                selectedRows.length !== 1 ? "!cursor-not-allowed" : ""
+              }`}
+              href={
+                selectedRows.length !== 1
+                  ? undefined
+                  : `${ITEMS.toLowerCase()}/${selectedRows[0]}/update`
+              }
+              disabled={selectedRows.length !== 1}
+              variant="outline"
+            >
+              Update
+            </DashButton>
+            <DashButton
+              size="lg"
               variant="destructive"
               className="max-w-44"
               onClick={handleDelete}

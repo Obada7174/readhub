@@ -118,6 +118,10 @@ export default function Categories() {
         mutateAsync: async (ids: GridRowId[]) =>
           await deleteMutation.mutateAsync(ids.map(Number)),
       }}
+      deleteMutation={{
+        mutateAsync: async (ids: GridRowId[]) =>
+          await deleteMutation.mutateAsync(ids.map(Number)),
+      }}
     />
   );
 }
