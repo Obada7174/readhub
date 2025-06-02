@@ -7,7 +7,7 @@ import UseBookForm from "@/components/dashboard/books/UseBookForm";
 import { useCategoriesQuery } from "@/hooks/react-query/categories/useCategoriesQuery";
 
 export default function AddBook() {
-  const { data } = useCategoriesQuery();
+  const { data } = useCategoriesQuery({ limit: 1000 });
   const createBookMutation = useCreateBook();
 
   const handleAdd = async (data: BookFormValues) => {

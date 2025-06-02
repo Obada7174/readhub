@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 import DashTable from "@/components/dashboard/DashTable";
 import TransformDate from "@/helpers/TransformDate";
@@ -13,25 +14,26 @@ import {
   GridRowId,
   // GridValueFormatterParams,
 } from "@mui/x-data-grid";
-import {
-  useCategoriesQuery,
-  useDeleteCategory,
-} from "@/hooks/react-query/categories/useCategoriesQuery";
-import { Category } from "@/types/category";
-import { useState } from "react";
 import DashButton from "@/components/ui/Button";
 import { FaEdit } from "react-icons/fa";
+import {
+  useCartsQuery,
+  useDeleteCart,
+  useUpdateCart,
+} from "@/hooks/react-query/carts/useCartsQuery";
+import { useState } from "react";
+import { Cart } from "@/types/carts";
+import { LuEye } from "react-icons/lu";
+import router from "next/router";
+import { useTranslations } from "next-intl";
 
-export default function Categories() {
+export default function Carts() {
   const [searchText, setSearchText] = useState("");
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
-  const { data, isLoading, refetch } = useCategoriesQuery(
-    page,
-    limit,
-    searchText
-  );
-  const deleteMutation = useDeleteCategory();
+  const { data, isLoading, refetch } = useCartsQuery();
+  const deleteMutation = useDeleteCart();
+  const updateMutation = useUpdateCart();
 
   const columns: GridColDef[] = [
     {
@@ -40,18 +42,24 @@ export default function Categories() {
       width: 30,
     },
     {
-      field: "title",
-      headerName: "Title",
+      field: "status",
+      headerName: "Status",
       editable: true,
-      minWidth: 100,
-      flex: 2,
+      minWidth: 50,
+      flex: 1,
     },
     {
-      field: "ar_title",
-      headerName: "AR Title",
-      editable: true,
-      minWidth: 100,
-      flex: 1,
+      field: "userId",
+      headerName: "User ID",
+      minWidth: 70,
+      renderCell: (params) => params.row.user?.id || "N/A",
+    },
+    {
+      field: "userEmail",
+      headerName: "User Email",
+      minWidth: 180,
+      flex: 2,
+      renderCell: (params) => params.row.user?.email || "N/A",
     },
     {
       field: "created_at",
@@ -80,15 +88,38 @@ export default function Categories() {
 
       renderCell: (params: GridRenderCellParams) => {
         const id = params.row.id;
+        const userId = params.row.user.id;
+        const status = params.row.status;
+        const newStatus = status === "paid" ? "unpaid" : "paid";
+
+        const handleUpdate = async () => {
+          await updateMutation.mutateAsync({ id, userId, status: newStatus });
+        };
+
+        const updateHandler = async () => {
+          try {
+            await handleUpdate();
+            router.push("/dashboard/books");
+          } catch (err) {
+            console.error("Error submitting form", err);
+          }
+        };
 
         return (
           <div className="flex gap-2 items-center text-lg">
             <DashButton
-              href={`/dashboard/categories/${id}/update`}
+              onClick={updateHandler}
               className="text-blue-600 hover:text-blue-800 rounded-full shadow p-3"
               size="icon"
             >
               <FaEdit className="translate-x-0.5" />
+            </DashButton>
+            <DashButton
+              href={`/dashboard/carts/${id}`}
+              className="text-green-600 hover:text-green-800 rounded-full shadow p-3"
+              size="icon"
+            >
+              <LuEye />
             </DashButton>
           </div>
         );
@@ -97,17 +128,17 @@ export default function Categories() {
   ];
 
   return (
-    <DashTable<Category>
-      ITEM="Category"
-      ITEMS="Categories"
-      ADD="categories/addcategory"
+    <DashTable<Cart>
+      ITEM="Cart"
+      ITEMS="Carts"
+      ADD="carts/addcart"
       columns={columns}
       isEditable={true}
       query={{
-        data: data?.data,
+        data: data,
         isLoading,
         refetch,
-        total: data?.meta.total,
+        total: data?.length,
         page,
         setPage,
         limit,
