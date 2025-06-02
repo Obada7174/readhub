@@ -14,7 +14,7 @@ interface Props {
 }
 
 export default function UpdateBook({ params: { id } }: Props) {
-  const { data } = useCategoriesQuery();
+  const { data } = useCategoriesQuery({ limit: 1000 });
   const { data: book, isLoading } = useBookQuery(id);
   const updateBookMutation = useUpdateBook(id);
 

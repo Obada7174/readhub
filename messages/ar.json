@@ -141,9 +141,9 @@
     "Sign Up": "إنشاء حساب",
     "Don't have an account?": "ليس لديك حساب؟",
     "signingIn": "جارٍ تسجيل الدخول...",
-    "Forgot Password?":"هل نسيت كلمة السر؟"
+    "Forgot Password?": "هل نسيت كلمة السر؟"
   },
-  "forgot_password":{
+  "forgot_password": {
     "title": "نسيت كلمة المرور",
     "description": "أدخل بريدك الإلكتروني لتلقي رمز التحقق.",
     "emailLabel": "البريد الإلكتروني",
@@ -155,19 +155,19 @@
     "signInLink": "تسجيل الدخول",
     "somethingWentWrong": "حدث خطأ ما. يرجى المحاولة مجددًا."
   },
-  "reset_password":{ 
-  "title": "إعادة تعيين كلمة المرور",
-  "description": "يرجى إدخال كلمة المرور الجديدة.",
-  "newPasswordLabel": "كلمة المرور الجديدة",
-  "newPasswordPlaceholder": "أدخل كلمة المرور الجديدة",
-  "confirmPasswordLabel": "تأكيد كلمة المرور",
-  "confirmPasswordPlaceholder": "أعد إدخال كلمة المرور",
-  "updatePasswordButton": "تحديث كلمة المرور",
-  "updating": "جارٍ التحديث...",
-  "passwordsDoNotMatch": "كلمات المرور غير متطابقة",
-  "missingData": "بيانات غير مكتملة",
-  "somethingWentWrong": "حدث خطأ ما. يرجى المحاولة مجددًا."
-},
+  "reset_password": {
+    "title": "إعادة تعيين كلمة المرور",
+    "description": "يرجى إدخال كلمة المرور الجديدة.",
+    "newPasswordLabel": "كلمة المرور الجديدة",
+    "newPasswordPlaceholder": "أدخل كلمة المرور الجديدة",
+    "confirmPasswordLabel": "تأكيد كلمة المرور",
+    "confirmPasswordPlaceholder": "أعد إدخال كلمة المرور",
+    "updatePasswordButton": "تحديث كلمة المرور",
+    "updating": "جارٍ التحديث...",
+    "passwordsDoNotMatch": "كلمات المرور غير متطابقة",
+    "missingData": "بيانات غير مكتملة",
+    "somethingWentWrong": "حدث خطأ ما. يرجى المحاولة مجددًا."
+  },
   "faqPage": {
     "sectionTitle": "الأسئلة الشائعة",
     "sectionDescription": "إذا كانت لديك أي استفسارات، فقد تكون الإجابة هنا!",
@@ -346,6 +346,18 @@
       }
     },
     "toastMessages": {
+      "cartitem_created_successfully": "تم إنشاء عنصر جديد بنجاح",
+      "failed_to_create_cartitem": "فشل في إنشاء عنصر جديد",
+      "cartitem_deleted_successfully": "تم حذف العنصر بنجاح",
+      "failed_to_delete_cartitem": "فشل في حذف العنصر",
+      "cart_created_successfully": "تم إنشاء سلة المشتريات بنجاح",
+      "failed_to_create_cart": "فشل في إنشاء سلة المشتريات",
+      "cart_deleted_successfully": "تم حذف سلة المشتريات بنجاح",
+      "failed_to_delete_cart": "فشل في حذف سلة المشتريات",
+      "cart_updated_successfully": "تم تحديث سلة المشتريات بنجاح",
+      "failed_to_updated_cart": "فشل في تحديث سلة المشتريات",
+      "comment_created_successfully": "تم إنشاء التعليق بنجاح",
+      "failed_to_create_comment": "فشل في إنشاء التعليق",
       "user_created_successfully": "تم إنشاء المستخدم بنجاح",
       "user_updated_successfully": "تم تحديث المستخدم بنجاح",
       "user_deleted_successfully": "تم حذف المستخدم بنجاح",
@@ -367,9 +379,18 @@
       "login_successful": "تم تسجيل الدخول بنجاح!",
       "login_failed": "فشل تسجيل الدخول. يرجى التحقق من بياناتك."
     }
-    
   },
   "toastMessages": {
+    "cartitem_created_successfully": "تم إنشاء عنصر جديد بنجاح",
+    "failed_to_create_cartitem": "فشل في إنشاء عنصر جديد",
+    "cartitem_deleted_successfully": "تم حذف العنصر بنجاح",
+    "failed_to_delete_cartitem": "فشل في حذف العنصر",
+    "cart_created_successfully": "تم إنشاء سلة المشتريات بنجاح",
+    "failed_to_create_cart": "فشل في إنشاء سلة المشتريات",
+    "cart_deleted_successfully": "تم حذف سلة المشتريات بنجاح",
+    "failed_to_delete_cart": "فشل في حذف سلة المشتريات",
+    "cart_updated_successfully": "تم تحديث سلة المشتريات بنجاح",
+    "failed_to_updated_cart": "فشل في تحديث سلة المشتريات",
     "comment_created_successfully": "تم إنشاء التعليق بنجاح",
     "failed_to_create_comment": "فشل في إنشاء التعليق",
     "user_created_successfully": "تم إنشاء المستخدم بنجاح",
@@ -391,14 +412,14 @@
     "failed_to_update_book": "فشل في تحديث الكتاب",
     "failed_to_delete_book": "فشل في حذف الكتاب"
   },
-  "contact":{
-      "title": "اتصل بنا",
-      "name": "الاسم",
-      "email": "البريد الإلكتروني",
-      "message": "الرسالة",
-      "send": "إرسال الرسالة",
-      "success": "تم إرسال رسالتك بنجاح!",
-      "error": "حدث خطأ، يرجى المحاولة مرة أخرى.",
-      "sending": "جارٍ الإرسال..."
+  "contact": {
+    "title": "اتصل بنا",
+    "name": "الاسم",
+    "email": "البريد الإلكتروني",
+    "message": "الرسالة",
+    "send": "إرسال الرسالة",
+    "success": "تم إرسال رسالتك بنجاح!",
+    "error": "حدث خطأ، يرجى المحاولة مرة أخرى.",
+    "sending": "جارٍ الإرسال..."
   }
 }

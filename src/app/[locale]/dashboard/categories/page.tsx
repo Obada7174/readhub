@@ -26,11 +26,11 @@ export default function Categories() {
   const [searchText, setSearchText] = useState("");
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
-  const { data, isLoading, refetch } = useCategoriesQuery(
+  const { data, isLoading, refetch } = useCategoriesQuery({
     page,
     limit,
-    searchText
-  );
+    search: searchText,
+  });
   const deleteMutation = useDeleteCategory();
 
   const columns: GridColDef[] = [
