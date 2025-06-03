@@ -5,7 +5,7 @@
     "topRatedSection": {
       "topRatedBooks": "Top Rated Books"
     },
-    
+
     "faqSection": {
       "sectionTitle": "Frequently Asked Questions",
       "sectionDescription": "If you have any questions, the answer might be here!",
@@ -100,10 +100,9 @@
     "resendCode": "Didn't receive the code?",
     "resendLink": "Resend Code",
     "resending": "Resending...",
-   "resendSuccess": "Code has been sent successfully",
-   "resendError": "Failed to resend code, please try again",
-   "wait": "Wait"
-    
+    "resendSuccess": "Code has been sent successfully",
+    "resendError": "Failed to resend code, please try again",
+    "wait": "Wait"
   },
   "login": {
     "Welcome Back": "Welcome Back",
@@ -113,9 +112,9 @@
     "Sign Up": "Sign Up",
     "Don't have an account?": "Don't have an account?",
     "signingIn": "Signing In...",
-    "Forgot Password?":"Forgot Password?"
+    "Forgot Password?": "Forgot Password?"
   },
-  "forgot_password":{
+  "forgot_password": {
     "title": "Forgot Password",
     "description": "Enter your email to receive a verification code.",
     "emailLabel": "Email",
@@ -127,7 +126,7 @@
     "signInLink": "Sign In",
     "somethingWentWrong": "Something went wrong. Please try again."
   },
-  "reset_password":{
+  "reset_password": {
     "title": "Reset Password",
     "description": "Please enter your new password.",
     "newPasswordLabel": "New Password",
@@ -258,7 +257,7 @@
       "password_placeholder": "Enter password",
       "role": "Role",
       "location": "Location",
-      "select_role_placeholder":"Select a Role",
+      "select_role_placeholder": "Select a Role",
       "location_placeholder": "Enter Location",
       "roles": {
         "admin": "Admin",
@@ -291,6 +290,17 @@
       "submit_button": "Add Cart",
       "success_message": "Cart added successfully!",
       "error_required_userId": "User ID is required and must be a positive number"
+    },
+    "add_cart_item": {
+      "title": "Add New Cart Item",
+      "userId_label": "User ID",
+      "userId_placeholder": "User ID",
+      "bookId_label": "Book ID",
+      "bookId_placeholder": "Book ID",
+      "submit_button": "Add Cart Item",
+      "success_message": "Cart Item added successfully!",
+      "error_required_userId": "User ID is required and must be a positive number",
+      "error_required_bookId": "Book ID is required and must be a positive number"
     },
     "dashtable": {
       "add": "Add",
@@ -431,8 +441,18 @@
     "Comment": "Comment"
   },
   "toastMessages": {
-    "comment_created_successfully": "comment created successfully",
-    "failed_to_create_comment": "failed to create comment",
+    "cartitem_created_successfully": "Cart item created successfully",
+    "failed_to_create_cartitem": "Failed to create cart item",
+    "cartitem_deleted_successfully": "Cart item deleted successfully",
+    "failed_to_delete_cartitem": "Failed to delete cart item",
+    "cart_created_successfully": "Cart created successfully",
+    "failed_to_create_cart": "Failed to create cart",
+    "cart_deleted_successfully": "Cart deleted successfully",
+    "failed_to_delete_cart": "Failed to delete cart",
+    "cart_updated_successfully": "Cart updated successfully",
+    "failed_to_updated_cart": "Failed to updated cart",
+    "comment_created_successfully": "Comment created successfully",
+    "failed_to_create_comment": "Failed to create comment",
     "user_created_successfully": "User created successfully",
     "user_updated_successfully": "User updated successfully",
     "user_deleted_successfully": "User deleted successfully",
@@ -482,7 +502,7 @@
     "quizzes":"Quizzes",
     "book-title":"Book Title"
   },
-  "contact":{
+  "contact": {
     "title": "Contact Us",
     "name": "Name",
     "email": "Email",

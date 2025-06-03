@@ -17,54 +17,61 @@ import {
 import DashButton from "@/components/ui/Button";
 import { FaEdit } from "react-icons/fa";
 import {
+  useCartQuery,
   useCartsQuery,
   useDeleteCart,
-  useUpdateCart,
+  useDeleteCartItem,
 } from "@/hooks/react-query/carts/useCartsQuery";
 import { useState } from "react";
 import { Cart } from "@/types/carts";
 import { LuEye } from "react-icons/lu";
-import router from "next/router";
-import { useTranslations } from "next-intl";
 
-export default function Carts() {
+interface Props {
+  params: { id: string };
+}
+
+export default function CartItems({ params: { id } }: Props) {
   const [searchText, setSearchText] = useState("");
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
-  const { data, isLoading, refetch } = useCartsQuery();
-  const deleteMutation = useDeleteCart();
-  const updateMutation = useUpdateCart();
+  const { data, isLoading, refetch } = useCartQuery(id);
+  const deleteMutation = useDeleteCartItem();
+
+  console.log(data);
 
   const columns: GridColDef[] = [
     {
       field: "id",
-      headerName: "ID",
-      width: 30,
-    },
-    {
-      field: "status",
-      headerName: "Status",
-      editable: true,
-      minWidth: 50,
+      headerName: "Item ID",
+      width: 70,
       flex: 1,
     },
     {
-      field: "userId",
-      headerName: "User ID",
+      field: "BookId",
+      headerName: "Book ID",
       minWidth: 70,
-      renderCell: (params) => params.row.user?.id || "N/A",
+      flex: 1,
+      renderCell: (params) => params.row.book?.id || "N/A",
     },
     {
-      field: "userEmail",
-      headerName: "User Email",
+      field: "BookTitle",
+      headerName: "Book Title",
       minWidth: 180,
       flex: 2,
-      renderCell: (params) => params.row.user?.email || "N/A",
+      renderCell: (params) => params.row.book?.title || "N/A",
+    },
+    {
+      field: "BookPrice",
+      headerName: "Book Price",
+      minWidth: 70,
+      flex: 1,
+      renderCell: (params) => "$" + params.row.book?.price || "N/A",
     },
     {
       field: "created_at",
       headerName: "Added Date",
       minWidth: 130,
+      flex: 1,
       renderCell: (params: GridRenderCellParams) => {
         const date: DateObject = TransformDate(params.value as string);
         return `${date.getFullYear}/${date.getMonth}/${date.getDay}`;
@@ -74,6 +81,7 @@ export default function Carts() {
       field: "updated_at",
       headerName: "Updated Date",
       minWidth: 130,
+      flex: 1,
       renderCell: (params: GridRenderCellParams) => {
         const date: DateObject = TransformDate(params.value as string);
         return `${date.getFullYear}/${date.getMonth}/${date.getDay}`;
@@ -84,38 +92,15 @@ export default function Carts() {
       headerName: "Actions",
       sortable: false,
       filterable: false,
-      minWidth: 140,
+      minWidth: 70,
 
       renderCell: (params: GridRenderCellParams) => {
-        const id = params.row.id;
-        const userId = params.row.user.id;
-        const status = params.row.status;
-        const newStatus = status === "paid" ? "unpaid" : "paid";
-
-        const handleUpdate = async () => {
-          await updateMutation.mutateAsync({ id, userId, status: newStatus });
-        };
-
-        const updateHandler = async () => {
-          try {
-            await handleUpdate();
-            router.push("/dashboard/books");
-          } catch (err) {
-            console.error("Error submitting form", err);
-          }
-        };
+        const id = params.row.book.id;
 
         return (
           <div className="flex gap-2 items-center text-lg">
             <DashButton
-              onClick={updateHandler}
-              className="text-blue-600 hover:text-blue-800 rounded-full shadow p-3"
-              size="icon"
-            >
-              <FaEdit className="translate-x-0.5" />
-            </DashButton>
-            <DashButton
-              href={`/dashboard/carts/${id}`}
+              href={`/book/${id}`}
               className="text-green-600 hover:text-green-800 rounded-full shadow p-3"
               size="icon"
             >
@@ -130,8 +115,8 @@ export default function Carts() {
   return (
     <DashTable<Cart>
       ITEM="Cart"
-      ITEMS="Carts"
-      ADD="carts/addcart"
+      ITEMS={`Cart ${id}`}
+      ADD={`carts/${id}/additem`}
       columns={columns}
       isEditable={true}
       query={{
