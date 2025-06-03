@@ -55,7 +55,7 @@ export default function Categories() {
     },
     {
       field: "created_at",
-      headerName: "Added Date",
+      headerName: "Created Date",
       minWidth: 130,
       renderCell: (params: GridRenderCellParams) => {
         const date: DateObject = TransformDate(params.value as string);
@@ -118,10 +118,10 @@ export default function Categories() {
         mutateAsync: async (ids: GridRowId[]) =>
           await deleteMutation.mutateAsync(ids.map(Number)),
       }}
-      deleteMutation={{
-        mutateAsync: async (ids: GridRowId[]) =>
-          await deleteMutation.mutateAsync(ids.map(Number)),
-      }}
+      // deleteMutation={{
+      //   mutateAsync: async (ids: GridRowId[]) =>
+      //     await deleteMutation.mutateAsync(ids.map(Number)),
+      // }}
     />
   );
 }
