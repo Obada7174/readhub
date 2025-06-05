@@ -5,19 +5,18 @@ import readhub from '@/assets/images/readhub-logo.svg';
 import readhubdarkmode from "@/assets/images/readhub-darkmode.svg";
 import { useEffect, useState } from "react";
 
-const Logo = () => {
+const Logo = ({className}:{className?:string}) => {
     const {theme} = useTheme();
     const [mounted, setMounted] = useState(false);
     useEffect(() => {
         setMounted(true);
     }, []);
     return (mounted ?
-        <Link href='/' className="flex gap-1.5 items-center min-h-16 min-w-40">
-
+        <Link href='/' className={`flex gap-1.5 items-center ${className}`} >
             <Image
                 src={theme === 'dark' ? readhubdarkmode : readhub}
                 alt="readhub logo"
-                width={40}
+                width={10}
                 className='min-w-16'
             />
 

@@ -5,10 +5,10 @@ import BookCard from "@/components/booksui/BookCard";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
-import { Book } from "@/types/book";
+import { BooksResponse } from "@/types/book";
 
 interface Props {
-    books: Book[];
+    books: BooksResponse;
 }
 
 export default function BookCarousel({ books }: Props) {

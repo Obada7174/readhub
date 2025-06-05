@@ -1,10 +1,13 @@
 import { FiHelpCircle, FiUsers } from "react-icons/fi";
 import { TbBooks } from "react-icons/tb";
 import { MdOutlineCategory } from "react-icons/md";
-import { BsFillJournalBookmarkFill } from "react-icons/bs";
 import { GiShoppingCart, GiTrophy } from "react-icons/gi";
 import { IoHome } from "react-icons/io5";
-import { LuBell, LuBook, LuBookOpen, LuFileText, LuMessageSquare, LuSettings, LuStar, LuTag, LuTrophy, LuUser } from "react-icons/lu";
+import { LuBell, LuBook, LuBookOpen, LuFileQuestion, LuFileText, LuMessageSquare, LuSettings, LuStar, LuTag, LuTrophy, LuUser } from "react-icons/lu";
+import { GiPodiumWinner } from "react-icons/gi";
+import { MdOutlineAssignmentTurnedIn, MdOutlineQuiz } from "react-icons/md";
+import { IoDocumentTextOutline } from "react-icons/io5";
+import { CgWebsite } from "react-icons/cg";
 
 export const links = [
       {
@@ -26,16 +29,16 @@ export const links = [
         roleShow: ["admin", "editor"],
       },
       {
-        name: "authors",
-        icon: <BsFillJournalBookmarkFill />,
-        url: "/dashboard/authors",
-        roleShow: ["admin", "editor"],
-      },
-      
-      {
         name: "competitions",
         icon: <GiTrophy />,
         url: "/dashboard/competitions",
+        children: [
+          { name: "quizzes", url: "/dashboard/competitions/quizzes", icon: <LuFileQuestion />},
+          { name: "winners", url: "/dashboard/competitions/winners", icon: <GiPodiumWinner />},
+          { name: "questions", url: "/dashboard/competitions/book-questions", icon: <MdOutlineQuiz />},
+          { name: "results", url: "/dashboard/competitions/results", icon: <MdOutlineAssignmentTurnedIn /> },
+          { name: "answers", url: "/dashboard/competitions/answers", icon: <IoDocumentTextOutline /> }
+        ],
         roleShow: ["admin", "editor"],
       },
       {
@@ -54,6 +57,12 @@ export const links = [
         name: "Faqs",
         icon:  <FiHelpCircle />,
         url: "/dashboard/faqs",
+        roleShow: ["admin", "editor"],
+      },
+      {
+        name: "StaticPages",
+        icon: <CgWebsite />,
+        url: "/dashboard/static-pages",
         roleShow: ["admin", "editor"],
       },
     ]
