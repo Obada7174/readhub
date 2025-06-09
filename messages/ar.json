@@ -270,7 +270,9 @@
       "categories": "التصنيفات",
       "competitions": "المسابقات",
       "Copons": "الجوائز",
-      "Carts": "السلات"
+      "Carts": "السلات",
+      "Faqs": "الأسئلة الشائعة",
+      "authors": "المؤلفين"
     },
     "users": {
       "users": "المستخدمون",
@@ -345,6 +347,46 @@
         "general": "فشل في إضافة الكوبون، حاول مجددًا"
       }
     },
+    "quiz": {
+      "add_winner": "إضافة فائز",
+      "edit_winner": "تعديل الفائز",
+      "add_result": "إضافة النتيجة",
+      "edit_result": "تعديل النتيجة",
+      "quiz_id": "رقم المسابقة",
+      "quiz_id_placeholder": "أدخل رقم المسابقة",
+      "user_id": "رقم المستخدم",
+      "user_id_placeholder": "أدخل رقم المستخدم",
+      "coupon": "كوبون",
+      "coupon_placeholder": "أدخل رقم الكوبون",
+      "total_questions": "عدد الاسئلة",
+      "total_questions_placeholder": "أدخل رقم عدد الاسئلة",
+      "total_correct": "الاسئلة الصحيحة",
+      "total_correct_placeholder": "أدخل رقم الاسئلة الصحيحة",
+      "submit_add_winner": "إضافة الفائز",
+      "submit_edit_winner": "حفظ التغييرات",
+      "submit_add_result": "إضافة النتيجة",
+      "submit_edit_result": "حفظ التغييرات"
+    },
+    "question": {
+      "add_question_answer": "إضافة إجابة سؤال",
+      "edit_question_answer": "تعديل إجابة سؤال",
+      "question_id": "معرف السؤال",
+      "enter_question_id": "أدخل معرف السؤال",
+      "user_id": "معرف المستخدم",
+      "enter_user_id": "أدخل معرف المستخدم",
+      "selected_option": "الخيار المحدد",
+      "option_a": "الخيار أ",
+      "option_b": "الخيار ب",
+      "option_c": "الخيار ج",
+      "option_d": "الخيار د",
+      "select_option": "اختر خيارًا",
+      "is_correct": "هل الإجابة صحيحة؟",
+      "correct": "صحيح",
+      "incorrect": "غير صحيح",
+      "select_correctness": "اختر صحة الإجابة",
+      "add_answer": "إضافة إجابة",
+      "update_answer": "تحديث الإجابة"
+    },
     "toastMessages": {
       "cartitem_created_successfully": "تم إنشاء عنصر جديد بنجاح",
       "failed_to_create_cartitem": "فشل في إنشاء عنصر جديد",
@@ -377,7 +419,145 @@
       "failed_to_update_book": "فشل في تحديث الكتاب",
       "failed_to_delete_book": "فشل في حذف الكتاب",
       "login_successful": "تم تسجيل الدخول بنجاح!",
-      "login_failed": "فشل تسجيل الدخول. يرجى التحقق من بياناتك."
+      "login_failed": "فشل تسجيل الدخول. يرجى التحقق من بياناتك.",
+      "question_created_successfully": "تم إنشاء السؤال بنجاح",
+      "failed_to_create_question": "فشل في إنشاء السؤال",
+      "question_updated_successfully": "تم تحديث السؤال بنجاح",
+      "failed_to_update_question": "فشل في تحديث السؤال",
+      "question_deleted_successfully": "تم حذف السؤال بنجاح",
+      "failed_to_delete_question": "فشل في حذف السؤال",
+      "question_answer_created_successfully": "تم إنشاء إجابة السؤال بنجاح",
+      "failed_to_create_question_answer": "فشل في إنشاء إجابة السؤال",
+      "question_answer_updated_successfully": "تم تحديث إجابة السؤال بنجاح",
+      "failed_to_update_question_answer": "فشل في تحديث إجابة السؤال",
+      "question_answer_deleted_successfully": "تم حذف إجابة السؤال بنجاح",
+      "failed_to_delete_question_answer": "فشل في حذف إجابة السؤال"
+    },
+    "edit_faq": {
+      "title": "تعديل السؤال الشائع",
+      "en_question_label": "السؤال بالإنجليزية",
+      "en_question_placeholder": "ادخل السؤال بالإنجليزية",
+      "ar_question_label": "السؤال بالعربية",
+      "ar_question_placeholder": "ادخل السؤال بالعربية",
+      "en_answer_label": "الإجابة بالإنجليزية",
+      "en_answer_placeholder": "ادخل الإجابة بالإنجليزية",
+      "ar_answer_label": "الإجابة بالعربية",
+      "ar_answer_placeholder": "ادخل الإجابة بالعربية",
+      "status_label": "الحالة",
+      "status_active": "مفعل",
+      "status_inactive": "غير مفعل",
+      "submit_button": "حفظ التغييرات",
+      "submitting": "جارٍ الحفظ...",
+      "success_message": "تم تحديث السؤال بنجاح",
+
+      "errors": {
+        "en_question_required": "السؤال بالإنجليزية مطلوب ويجب أن يتكون من حروف لا تقل عن 2",
+        "ar_question_required": "السؤال بالعربية مطلوب ويجب أن يتكون من حروف لا تقل عن 2",
+        "en_answer_required": "الإجابة بالإنجليزية مطلوبة ويجب أن تتكون من حروف لا تقل عن 2",
+        "ar_answer_required": "الإجابة بالعربية مطلوبة ويجب أن تتكون من حروف لا تقل عن 2",
+        "general": "من فضلك أصلح الأخطاء قبل الإرسال"
+      }
+    },
+    "add_faq": {
+      "title": "إضافة سؤال شائع",
+      "en_question_label": "السؤال بالإنجليزية",
+      "en_question_placeholder": "أدخل السؤال بالإنجليزية",
+      "ar_question_label": "السؤال بالعربية",
+      "ar_question_placeholder": "أدخل السؤال بالعربية",
+      "en_answer_label": "الإجابة بالإنجليزية",
+      "en_answer_placeholder": "أدخل الإجابة بالإنجليزية",
+      "ar_answer_label": "الإجابة بالعربية",
+      "ar_answer_placeholder": "أدخل الإجابة بالعربية",
+      "status_label": "الحالة",
+      "status_active": "مفعل",
+      "status_inactive": "غير مفعل",
+      "submit_button": "إضافة",
+
+      "success_message": "تم إضافة السؤال الشائع بنجاح",
+
+      "error": {
+        "en_question_required": "السؤال بالإنجليزية مطلوب (على الأقل حرفين)",
+        "ar_question_required": "السؤال بالعربية مطلوب (على الأقل حرفين)",
+        "en_answer_required": "الإجابة بالإنجليزية مطلوبة (على الأقل حرفين)",
+        "ar_answer_required": "الإجابة بالعربية مطلوبة (على الأقل حرفين)",
+        "something_went_wrong": "حدث خطأ ما، من فضلك حاول مجددًا"
+      }
+    }
+  },
+  "columns": {
+    "id": "المعرف",
+    "question_text": "نص السؤال",
+    "option_a": "الخيار أ",
+    "option_b": "الخيار ب",
+    "option_c": "الخيار ج",
+    "option_d": "الخيار د",
+    "correct_option": "الإجابة الصحيحة",
+    "quiz_title": "عنوان الاختبار",
+    "quiz_id": "معرف الاختبار",
+    "user_id": "معرف المستخدم",
+    "coupon_id": "معرف الكوبون",
+    "question_id": "معرف السؤال",
+    "is_correct": "صحيح",
+    "user_name": "اسم المستخدم",
+    "quiz_ar_title": "عنوان الاختبار (عربي)",
+    "description": "الوصف",
+    "status": "الحالة",
+    "created_at": "تاريخ الإنشاء",
+    "updated_at": "تاريخ التعديل",
+    "actions": "الإجراءات",
+    "quizzes": "الاختبارات",
+    "quiz_winner": "فائز بمسابقة",
+    "quizzes-winners": "الفائزون في الاختبارات",
+    "quiz_result": "نتيجة مسابقة",
+    "book-title": "عنوان الكتاب",
+    "quizzes-results": "نتائج الاختبارات",
+    "total_correct": "إجابات صحيحة",
+    "total_questions": "إجمالي الأسئلة",
+    "question-answer": "إجابة سؤال",
+    "questions-answers": "إجابات الأسئلة",
+    "login_failed": "فشل تسجيل الدخول. يرجى التحقق من بياناتك."
+  },
+  "coupons": {
+    "edit_coupon": "تعديل الكوبون",
+    "code_label": "كود الكوبون",
+    "code_placeholder": "أدخل كود الكوبون",
+    "discount_label": "قيمة الخصم (%)",
+    "discount_placeholder": "مثال: 25",
+    "submitting": "جارٍ الإرسال...",
+    "save_changes": "حفظ التغييرات",
+    "errors": {
+      "code_required": "كود الكوبون مطلوب",
+      "invalid_discount": "الخصم يجب أن يكون رقمًا بين 0 و 100"
+    }
+  },
+  "subscription": {
+    "title": "اختر خطة الاشتراك الخاصة بك",
+    "description": "اختر أفضل خطة تناسب احتياجاتك في القراءة. جميع الخطط تتضمن الوصول المجاني للكتب.",
+    "basic": {
+      "title": "الخطة الأساسية",
+      "price": "0$ / شهريًا",
+      "feature1": "قراءة مجانية",
+      "feature2": "الوصول إلى 50 كتابًا شهريًا",
+      "feature3": "غير مسموح بالتحميل",
+      "feature4": "لا توجد ميزات إضافية"
+    },
+    "standard": {
+      "title": "الخطة القياسية",
+      "price": "١٩٫٩٩$/شهريًا",
+      "feature1": "قراءة مجانية",
+      "feature2": "وصول غير محدود إلى المكتبة",
+      "feature3": "تحميل حتى 10 كتب شهريًا",
+      "feature4": "دعم أولوي"
+    },
+    "premium": {
+      "title": "الخطة المميزة",
+      "price": "٢٩٫٩٩$/شهريًا",
+      "feature1": "قراءة مجانية",
+      "feature2": "وصول غير محدود إلى المكتبة",
+      "feature3": "تحميل غير محدود للكتب",
+      "feature4": "الوصول إلى الترجمات",
+      "feature5": "توصيات حصرية للكتب",
+      "feature6": "دعم VIP"
     }
   },
   "toastMessages": {
@@ -410,7 +590,27 @@
     "book_deleted_successfully": "تم حذف الكتاب بنجاح",
     "failed_to_create_book": "فشل في إنشاء الكتاب",
     "failed_to_update_book": "فشل في تحديث الكتاب",
-    "failed_to_delete_book": "فشل في حذف الكتاب"
+    "failed_to_delete_book": "فشل في حذف الكتاب",
+    "quiz_created_successfully": "تم إنشاء الاختبار بنجاح",
+    "failed_to_create_quiz": "فشل في إنشاء الاختبار",
+    "quiz_updated_successfully": "تم تحديث الاختبار بنجاح",
+    "failed_to_update_quiz": "فشل في تحديث الاختبار",
+    "quiz_deleted_successfully": "تم حذف الاختبار بنجاح",
+    "failed_to_delete_quiz": "فشل في حذف الاختبار",
+    "quiz_winner_deleted_successfully": "تم حذف الفائز بالاختبار بنجاح",
+    "failed_to_delete_quiz_winner": "فشل في حذف الفائز بالاختبار",
+    "quiz_result_created_successfully": "تم إنشاء نتيجة الاختبار بنجاح",
+    "failed_to_created_quiz_result": "فشل في إنشاء نتيجة الاختبار",
+    "quiz_result_deleted_successfully": "تم حذف نتيجة الاختبار بنجاح",
+    "failed_to_delete_quiz_result": "فشل في حذف نتيجة الاختبار",
+    "quiz_result_updated_successfully": "تم تحديث نتيجة الاختبار بنجاح",
+    "failed_to_updated_quiz_result": "فشل في تحديث نتيجة الاختبار",
+    "question_answer_created_successfully": "تم إنشاء إجابة السؤال بنجاح",
+    "failed_to_create_question_answer": "فشل في إنشاء إجابة السؤال",
+    "question_answer_updated_successfully": "تم تحديث إجابة السؤال بنجاح",
+    "failed_to_update_question_answer": "فشل في تحديث إجابة السؤال",
+    "question_answer_deleted_successfully": "تم حذف إجابة السؤال بنجاح",
+    "failed_to_delete_question_answer": "فشل في حذف إجابة السؤال"
   },
   "contact": {
     "title": "اتصل بنا",

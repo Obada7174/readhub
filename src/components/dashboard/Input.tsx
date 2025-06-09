@@ -39,7 +39,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         <input
           id={label}
           type={type}
-          minLength={type=='password'?6:3}
+          // minLength={type=='password'?6: type==='search'?0:3}
           placeholder={placeholder || label}
           ref={ref || internalRef}
           className={`w-full h-[35px] rounded-md outline-none border-2 border-b-4 dark:border-[#303030] bg-slate-100 dark:bg-[#2d2d2d] dark:text-white pl-2 pr-2 transition-all duration-300 ease-in-out placeholder-[#9a9a9a] dark:hover:bg-[#313131] dark:focus:bg-[#1e1f20] focus:border-border focus:drop-shadow-lg invalid:focus:border-b-red-600 valid:focus:border-b-blue-900 ${

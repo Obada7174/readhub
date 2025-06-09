@@ -121,6 +121,8 @@ export default function Users() {
       sortable: false,
       filterable: false,
       minWidth: 140,
+      headerClassName:"sticky-right-column",
+      cellClassName: "sticky-right-column",
 
       renderCell: (params: GridRenderCellParams) => {
         const id = params.row.id;

@@ -280,7 +280,8 @@
       "competitions": "Competitions",
       "authors": "Authors",
       "Copons": "Copons",
-      "Carts": "Carts"
+      "Carts": "Carts",
+      "Faqs": "Faqs"
     },
     "add_cart": {
       "title": "Add New Cart",
@@ -333,6 +334,130 @@
         },
         "general": "Failed to add coupon. Please try again."
       }
+    },
+    "coupons": {
+      "edit_coupon": "Edit Coupon",
+      "add_coupon": "Add Coupon",
+      "code_label": "Coupon Code",
+      "code_placeholder": "e.g. SUMMER25",
+      "discount_label": "Discount Value (%)",
+      "discount_placeholder": "Example: 25",
+      "submitting": "Submitting...",
+      "save_changes": "Save Changes",
+      "errors": {
+        "code_required": "Coupon code is required",
+        "invalid_discount": "Discount must be a number between 0 and 100"
+      }
+    },
+    "quiz": {
+      "add_winner": "Add Winner",
+      "edit_winner": "Edit Winner",
+      "add_result": "Add Result",
+      "edit_result": "Edit Result",
+      "quiz_id": "Quiz ID",
+      "quiz_id_placeholder": "Enter quiz ID",
+      "user_id": "User ID",
+      "user_id_placeholder": "Enter user ID",
+      "coupon": "Coupon",
+      "coupon_placeholder": "Enter coupon number",
+      "total_questions": "Total questions",
+      "total_questions_placeholder": "Enter total questions number",
+      "total_correct": "Correct answers",
+      "total_correct_placeholder": "Enter correct answers number",
+      "submit_add_winner": "Add Winner",
+      "submit_edit_winner": "Save Changes",
+      "submit_add_result": "Add Result",
+      "submit_edit_result": "Save Changes"
+    },
+    "question": {
+      "add_question_answer": "Add Question Answer",
+      "edit_question_answer": "Edit Question Answer",
+      "question_id": "Question ID",
+      "enter_question_id": "Enter question ID",
+      "user_id": "User ID",
+      "enter_user_id": "Enter user ID",
+      "selected_option": "Selected Option",
+      "option_a": "Option A",
+      "option_b": "Option B",
+      "option_c": "Option C",
+      "option_d": "Option D",
+      "select_option": "Select an option",
+      "is_correct": "Is Correct?",
+      "correct": "Correct",
+      "incorrect": "Incorrect",
+      "select_correctness": "Select correctness",
+      "add_answer": "Add Answer",
+      "update_answer": "Update Answer"
+    },
+    "faq_columns": {
+      "id": "ID",
+      "question": "Question",
+      "answer": "Answer",
+      "status": "Status",
+      "actions": "Actions",
+      "arabic": "Arabic",
+      "english": "English",
+      "choose_lang": "Choose Language",
+      "all": "All",
+      "active": "Active",
+      "inactive": "Inactive",
+      "switch_to_arabic": "Switch to Arabic",
+      "switch_to_english": "Switch to English",
+      "filter_by_status": "Filter by Status",
+      "edit": "Edit",
+      "view": "View",
+      "faqs": "FAQs",
+      "faq": "FAQ"
+    },
+    "add_faq": {
+      "title": "Add New FAQ",
+      "en_question_label": "English Question",
+      "en_question_placeholder": "Enter question in English",
+      "ar_question_label": "Arabic Question",
+      "ar_question_placeholder": "Enter question in Arabic",
+      "en_answer_label": "English Answer",
+      "en_answer_placeholder": "Enter answer in English",
+      "ar_answer_label": "Arabic Answer",
+      "ar_answer_placeholder": "Enter answer in Arabic",
+      "status_label": "Status",
+      "status_active": "Active",
+      "status_inactive": "Inactive",
+      "submit_button": "Add",
+
+      "success_message": "FAQ added successfully",
+
+      "error": {
+        "en_question_required": "English question is required (min 2 characters)",
+        "ar_question_required": "Arabic question is required (min 2 characters)",
+        "en_answer_required": "English answer is required (min 2 characters)",
+        "ar_answer_required": "Arabic answer is required (min 2 characters)",
+        "something_went_wrong": "Something went wrong, please try again"
+      }
+    },
+    "edit_faq": {
+      "title": "Edit FAQ",
+      "en_question_label": "English Question",
+      "en_question_placeholder": "Enter question in English",
+      "ar_question_label": "Arabic Question",
+      "ar_question_placeholder": "Enter question in Arabic",
+      "en_answer_label": "English Answer",
+      "en_answer_placeholder": "Enter answer in English",
+      "ar_answer_label": "Arabic Answer",
+      "ar_answer_placeholder": "Enter answer in Arabic",
+      "status_label": "Status",
+      "status_active": "Active",
+      "status_inactive": "Inactive",
+      "submit_button": "Save Changes",
+      "submitting": "Saving...",
+      "success_message": "FAQ updated successfully",
+
+      "errors": {
+        "en_question_required": "English question is required and must be at least 2 characters",
+        "ar_question_required": "Arabic question is required and must be at least 2 characters",
+        "en_answer_required": "English answer is required and must be at least 2 characters",
+        "ar_answer_required": "Arabic answer is required and must be at least 2 characters",
+        "general": "Please fix the errors before submitting"
+      }
     }
   },
   "SideBar": {
@@ -384,7 +509,65 @@
     "book_deleted_successfully": "Book deleted successfully",
     "failed_to_create_book": "Failed to create book",
     "failed_to_update_book": "Failed to update book",
-    "failed_to_delete_book": "Failed to delete book"
+    "failed_to_delete_book": "Failed to delete book",
+    "question_created_successfully": "Question created successfully",
+    "failed_to_create_question": "Failed to create question",
+    "question_updated_successfully": "Question updated successfully",
+    "failed_to_update_question": "Failed to update question",
+    "question_deleted_successfully": "Question deleted successfully",
+    "failed_to_delete_question": "Failed to delete question",
+    "question_answer_created_successfully": "Question answer created successfully",
+    "failed_to_create_question_answer": "Failed to create question answer",
+    "question_answer_updated_successfully": "Question answer updated successfully",
+    "failed_to_update_question_answer": "Failed to update question answer",
+    "question_answer_deleted_successfully": "Question answer deleted successfully",
+    "failed_to_delete_question_answer": "Failed to delete question answer",
+    "quiz_created_successfully": "Quiz created successfully",
+    "failed_to_create_quiz": "Failed to create quiz",
+    "quiz_updated_successfully": "Quiz updated successfully",
+    "failed_to_update_quiz": "Failed to update quiz",
+    "quiz_deleted_successfully": "Quiz deleted successfully",
+    "failed_to_delete_quiz": "Failed to delete quiz",
+    "quiz_winner_deleted_successfully": "Quiz winner deleted successfully",
+    "failed_to_delete_quiz_winner": "Failed to delete quiz winner",
+    "quiz_result_created_successfully": "Quiz result created successfully",
+    "failed_to_created_quiz_result": "Failed to created quiz result",
+    "quiz_result_deleted_successfully": "Quiz result deleted successfully",
+    "failed_to_delete_quiz_result": "Failed to delete quiz result",
+    "quiz_result_updated_successfully": "Quiz result updated successfully",
+    "failed_to_updated_quiz_result": "Failed to updated quiz result"
+  },
+  "columns": {
+    "id": "ID",
+    "question_text": "Question Text",
+    "option_a": "Option A",
+    "option_b": "Option B",
+    "option_c": "Option C",
+    "option_d": "Option D",
+    "correct_option": "Correct Option",
+    "quiz_title": "Quiz Title",
+    "quiz_id": "Quiz ID",
+    "user_id": "User ID",
+    "coupon_id": "Coupon ID",
+    "question_id": "Question ID",
+    "is_correct": "Is Correct",
+    "user_name": "User Name",
+    "quiz_ar_title": "Arabic Quiz Title",
+    "description": "Description",
+    "status": "Status",
+    "created_at": "Created At",
+    "updated_at": "Updated At",
+    "actions": "Actions",
+    "quizzes": "Quizzes",
+    "quiz_winner": "Quiz Winner",
+    "quizzes-winners": "Quizzes Winners",
+    "quiz_result": "Quiz Result",
+    "book-title": "Book Title",
+    "quizzes-results": "Quizzes Results",
+    "total_correct": "Total Correct",
+    "total_questions": "Total Questions",
+    "question-answer": "Question Answer",
+    "questions-answers": "Questions Answers"
   },
   "contact": {
     "title": "Contact Us",
@@ -398,5 +581,35 @@
     "failed_to_delete_book": "Failed to delete book",
     "login_successful": "Login successful!",
     "login_failed": "Login failed. Please check your credentials."
+  },
+  "subscription": {
+    "title": "Choose Your Subscription Plan",
+    "description": "Pick the best plan for your reading needs. All plans include free reading access.",
+    "basic": {
+      "title": "Basic Plan",
+      "price": "$0/month",
+      "feature1": "Free Reading",
+      "feature2": "Access to 50 books per month",
+      "feature3": "No downloads allowed",
+      "feature4": "No additional features"
+    },
+    "standard": {
+      "title": "Standard Plan",
+      "price": "$19.99/month",
+      "feature1": "Free Reading",
+      "feature2": "Unlimited access to the library",
+      "feature3": "Download up to 10 books per month",
+      "feature4": "Priority support"
+    },
+    "premium": {
+      "title": "Premium Plan",
+      "price": "$29.99/month",
+      "feature1": "Free Reading",
+      "feature2": "Unlimited access to the library",
+      "feature3": "Download unlimited books",
+      "feature4": "Access to translations",
+      "feature5": "Exclusive book recommendations",
+      "feature6": "VIP support"
+    }
   }
 }

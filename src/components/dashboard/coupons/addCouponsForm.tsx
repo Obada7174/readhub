@@ -67,7 +67,7 @@ export default function NewCouponForm() {
 
   return (
     <DashContainer>
-      <DashHeader category="Coupon" title={t('title')} />
+      <DashHeader title={t('title')} />
 
       {error && (
         <div className="text-red-500 text-center mb-4">

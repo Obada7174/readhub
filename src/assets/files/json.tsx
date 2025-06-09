@@ -1,4 +1,4 @@
-import { FiUsers } from "react-icons/fi";
+import { FiHelpCircle, FiUsers } from "react-icons/fi";
 import { TbBooks } from "react-icons/tb";
 import { MdOutlineCategory } from "react-icons/md";
 import { BsFillJournalBookmarkFill } from "react-icons/bs";
@@ -48,6 +48,12 @@ export const links = [
         name: "Carts",
         icon: <GiShoppingCart />,
         url: "/dashboard/carts",
+        roleShow: ["admin", "editor"],
+      },
+      {
+        name: "Faqs",
+        icon:  <FiHelpCircle />,
+        url: "/dashboard/faqs",
         roleShow: ["admin", "editor"],
       },
     ]

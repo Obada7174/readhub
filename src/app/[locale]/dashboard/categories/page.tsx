@@ -44,7 +44,7 @@ export default function Categories() {
       headerName: "Title",
       editable: true,
       minWidth: 100,
-      flex: 2,
+      flex: 1,
     },
     {
       field: "ar_title",
@@ -55,7 +55,7 @@ export default function Categories() {
     },
     {
       field: "created_at",
-      headerName: "Added Date",
+      headerName: "Created Date",
       minWidth: 130,
       renderCell: (params: GridRenderCellParams) => {
         const date: DateObject = TransformDate(params.value as string);
@@ -77,7 +77,8 @@ export default function Categories() {
       sortable: false,
       filterable: false,
       minWidth: 140,
-
+      headerClassName: "sticky-right-column",
+      cellClassName: "sticky-right-column",
       renderCell: (params: GridRenderCellParams) => {
         const id = params.row.id;
 
@@ -118,10 +119,10 @@ export default function Categories() {
         mutateAsync: async (ids: GridRowId[]) =>
           await deleteMutation.mutateAsync(ids.map(Number)),
       }}
-      deleteMutation={{
-        mutateAsync: async (ids: GridRowId[]) =>
-          await deleteMutation.mutateAsync(ids.map(Number)),
-      }}
+      // deleteMutation={{
+      //   mutateAsync: async (ids: GridRowId[]) =>
+      //     await deleteMutation.mutateAsync(ids.map(Number)),
+      // }}
     />
   );
 }

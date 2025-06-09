@@ -13,7 +13,7 @@ import DashButton from "@/components/ui/Button";
 import DashContainer from "@/components/dashboard/DashContainer";
 import DashHeader from "@/components/dashboard/Header";
 import { useTranslations } from "next-intl";
-
+import { cairo } from "@/assets/fonts/cairo";
 interface DashTableProps<T extends { id: number | string }> {
   ITEMS: string;
   ITEM: string;
@@ -88,110 +88,98 @@ export default function DashTable<T extends { id: number | string }>({
     return updatedRow;
   };
 
-  return (
-    <DashContainer>
-      <DashHeader category="Page" title={ITEMS} />
-      <Box
-        sx={{
-          width: "100%",
-          mb: "30px",
-          height: "90vh",
-          display: "flex",
-          flexDirection: "column",
-        }}
-      >
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            mb: "10px",
-            gap: "20px",
-          }}
-        >
-          <Input
-            className="max-w-md dark:border-b-blue-900 border-b-blue-900 h-full"
-            placeholder={t(`search_for`, { item: ITEM.toLowerCase() })}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              handleSearch(e.target.value)
-            }
-          />
-          <div className="gap-4 flex">
-            <DashButton
-              size="lg"
-              className="max-w-44"
-              href={`/dashboard/${ADD}`}
+    return (
+        <DashContainer>
+            <DashHeader title={ITEMS} />
+            <Box
+                sx={{
+                    width: "100%",
+                    mb: "30px",
+                    height: "90vh",
+                    display: "flex",
+                    flexDirection: "column",
+                }}
             >
-              {t("add")}
-            </DashButton>
-            <DashButton
-              size="lg"
-              className={`max-w-44 ${
-                selectedRows.length !== 1 ? "!cursor-not-allowed" : ""
-              }`}
-              href={
-                selectedRows.length !== 1
-                  ? undefined
-                  : `${ITEMS.toLowerCase()}/${selectedRows[0]}/update`
-              }
-              disabled={selectedRows.length !== 1}
-              variant="outline"
-            >
-              Update
-            </DashButton>
-            <DashButton
-              size="lg"
-              variant="destructive"
-              className="max-w-44"
-              onClick={handleDelete}
-            >
-              {t("delete")}
-            </DashButton>
-          </div>
-        </Box>
+                <Box
+                    sx={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        mb: "10px",
+                        gap: "20px",
+                    }}
+                >
+                    <Input
+                        className="max-w-md dark:border-b-blue-900 border-b-blue-900 h-full"
+                        type="search"
+                        placeholder={t(`search_for`, { item: ITEM.toLowerCase() })}
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                            handleSearch(e.target.value)
+                        }
+                    />
+                    <div className="gap-4 flex">
+                        <DashButton
+                            size="lg"
+                            className="max-w-44"
+                            href={`/dashboard/${ADD}`}
+                        >
+                            {t("add")}
+                        </DashButton>
+                        <DashButton
+                            size="lg"
+                            variant="destructive"
+                            className="max-w-44"
+                            onClick={handleDelete}
+                        >
+                            {t("delete")}
+                        </DashButton>
+                    </div>
+                </Box>
 
-        <Box sx={{ flexGrow: 1, overflowX: "auto", maxWidth: "100%" }}>
-          <DataGrid
-            rows={displayedRows}
-            columns={columns.map((col) => ({
-              ...col,
-              align: "center",
-              headerAlign: "center",
-            }))}
-            rowCount={query.total}
-            pageSizeOptions={[10, 20, 50, 100]}
-            pagination
-            paginationMode="server"
-            paginationModel={{
-              page: query.page - 1,
-              pageSize: query.limit,
-            }}
-            onPaginationModelChange={(model) => {
-              query.setPage(model.page + 1);
-              query.setLimit(model.pageSize);
-            }}
-            checkboxSelection
-            disableRowSelectionOnClick
-            sortingOrder={["asc", "desc"]}
-            getRowHeight={() => "auto"}
-            loading={query.isLoading}
-            editMode={isEditable ? "row" : undefined}
-            processRowUpdate={(newRow) => isEditable && handleRowUpdate(newRow)}
-            onRowSelectionModelChange={(
-              newSelectionModel: GridRowSelectionModel
-            ) => {
-              if (Array.isArray(newSelectionModel)) {
-                setSelectedRows(newSelectionModel);
-              } else if ("ids" in newSelectionModel) {
-                setSelectedRows(Array.from(newSelectionModel.ids));
-              }
-            }}
-            sx={{
-              maxWidth: "100%",
-              height: "100%",
-
-              '[class~="dark"] &': {
-                color: "#e5e7eb",
-                backgroundColor: "#1f2937",
+                <Box sx={{ flexGrow: 1, overflowX: "auto", maxWidth: "100%" }}>
+                    <DataGrid
+                        rows={displayedRows}
+                        columns={columns.map((col) => ({
+                            ...col,
+                            align: "center",
+                            headerAlign: "center",
+                        }))}
+                        rowCount={query.total}
+                        pageSizeOptions={[10, 20, 50, 100]}
+                        pagination
+                        paginationMode="server"
+                        paginationModel={
+                            {
+                                page: query.page -1,
+                                pageSize: query.limit
+                            }
+                        }
+                        onPaginationModelChange={(model) => {
+                            query.setPage(model.page +1);
+                            query.setLimit(model.pageSize);
+                        }}
+                        checkboxSelection
+                        disableRowSelectionOnClick
+                        sortingOrder={["asc", "desc"]}
+                        getRowHeight={() => "auto"}
+                        loading={query.isLoading}
+                        editMode={isEditable ? "row" : undefined}
+                        processRowUpdate={(newRow) =>
+                            isEditable && handleRowUpdate(newRow)
+                        }
+                        onRowSelectionModelChange={(newSelectionModel: GridRowSelectionModel) => {
+                            if (Array.isArray(newSelectionModel)) {
+                                setSelectedRows(newSelectionModel);
+                            } else if ('ids' in newSelectionModel) {
+                                setSelectedRows(Array.from(newSelectionModel.ids));
+                            }
+                        }}
+                        sx={{
+                            maxWidth: '100%',
+                            height: '100%',
+                            fontFamily: cairo.style,
+                            '[class~="dark"] &': {
+                                color: "#e5e7eb",
+                                backgroundColor: "#1f2937",
 
                 "& .MuiDataGrid-root": {
                   backgroundColor: "#1f2937",
