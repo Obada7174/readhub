@@ -24,7 +24,7 @@ export default function UpdateCategory({ params: { id } }: Props) {
   };
 
   if (isLoading) return;
-  if (!category) return <h1>Can&apos;t find book {id}</h1>;
+  if (!category) return <h1>Can&apos;t find category {id}</h1>;
 
   return (
     <UseCategoryForm

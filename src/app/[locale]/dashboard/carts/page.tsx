@@ -85,7 +85,8 @@ export default function Carts() {
       sortable: false,
       filterable: false,
       minWidth: 140,
-
+      headerClassName: "sticky-right-column",
+      cellClassName: "sticky-right-column",
       renderCell: (params: GridRenderCellParams) => {
         const id = params.row.id;
         const userId = params.row.user.id;

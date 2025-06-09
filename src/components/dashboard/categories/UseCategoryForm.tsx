@@ -50,10 +50,7 @@ export default function UseCategoryForm({
 
   return (
     <DashContainer>
-      <DashHeader
-        category="Page"
-        title={mode === "add" ? "إضافة تصنيف" : "تعديل تصنيف"}
-      />
+      <DashHeader title={mode === "add" ? "إضافة تصنيف" : "تعديل تصنيف"} />
 
       <form
         onSubmit={handleSubmit(submitHandler)}
