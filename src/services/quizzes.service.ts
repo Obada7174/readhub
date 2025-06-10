@@ -1,5 +1,5 @@
 import axios from "@/services/axios";
-import {Quiz ,QuizIndexResponse} from "@/types/competitions";
+import {Quiz ,QuizIndexResponse,CreateQuiz} from "@/types/competitions";
 
 export const getQuizzes = async (page = 1, limit = 10, lang = 'en'): Promise<QuizIndexResponse> => {
   const res = await axios.get("/quizzes", {
@@ -12,7 +12,7 @@ export const getQuiz = async (id: number): Promise<Quiz> => {
   return res.data;
 };
 
-export const createQuiz = async (quiz: Omit<Quiz, "id">): Promise<Quiz> => {
+export const createQuiz = async (quiz: Omit<CreateQuiz, "id">): Promise<CreateQuiz> => {
   const res = await axios.post("/quizzes", quiz);
   return res.data;
 };

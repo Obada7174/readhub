@@ -5,7 +5,6 @@
     "topRatedSection": {
       "topRatedBooks": "Top Rated Books"
     },
-
     "faqSection": {
       "sectionTitle": "Frequently Asked Questions",
       "sectionDescription": "If you have any questions, the answer might be here!",
@@ -241,6 +240,23 @@
     "addPublisher": "Add Publisher",
     "competitions": "Competitions",
     "addCompetition": "Add Competition",
+    "quizzes": {
+      "add_quiz": "Add Quiz",
+      "edit_quiz": "Edit Quiz",
+      "ar_title":"Quiz Title (Arabic)",
+      "ar_title_placeholder": "Enter quiz title in Arabic",
+      
+      "title": "Quiz Title (English)",
+      "title_placeholder": "Enter quiz title",
+      "book_id": "Related Book",
+      "select_book_placeholder": "Select a related book",
+      "submitting": "Submitting...",
+      "save_changes": "Save Changes",
+      "errors": {
+        "title_required": "Quiz title is required.",
+        "bookId_required": "Please select a valid book."
+      }
+    },
     "users": {
       "users": "Users",
       "addUser": "Add User",
@@ -280,7 +296,7 @@
       "competitions": "Competitions",
       "authors": "Authors",
       "Carts": "Carts",
-      "Faqs":"Faqs",
+      "Faqs": "Faqs",
       "competitions_answers": "Answers",
       "competitions_questions": "Questions",
       "competitions_quizzes": "Quizzes",
@@ -288,7 +304,7 @@
       "competitions_winners": "Winners",
       "Copons": "Coupons",
       "return_to_site": "Return to Site",
-      "StaticPages":"Static Pages"
+      "StaticPages": "Static Pages"
     },
     "add_cart": {
       "title": "Add New Cart",
@@ -342,7 +358,7 @@
         "general": "Failed to add coupon. Please try again."
       }
     },
-    "coupons":{
+    "coupons": {
       "edit_coupon": "Edit Coupon",
       "add_coupon": "Add Coupon",
       "code_label": "Coupon Code",
@@ -356,77 +372,73 @@
         "invalid_discount": "Discount must be a number between 0 and 100"
       }
     },
-    
-      "faq_columns": {
-        "id": "ID",
-        "question": "Question",
-        "answer": "Answer",
-        "status": "Status",
-        "actions": "Actions",
-        "arabic":"Arabic",
-        "english":"English",
-        "choose_lang": "Choose Language",
-        "all": "All",
-        "active": "Active",
-        "inactive": "Inactive",
-        "switch_to_arabic": "Switch to Arabic",
-        "switch_to_english": "Switch to English",
-        "filter_by_status": "Filter by Status",
-        "edit": "Edit",
-        "view": "View",
-        "faqs": "FAQs",
-        "faq": "FAQ"
-      },
-      "add_faq":{
-        "title": "Add New FAQ",
-        "en_question_label": "English Question",
-        "en_question_placeholder": "Enter question in English",
-        "ar_question_label": "Arabic Question",
-        "ar_question_placeholder": "Enter question in Arabic",
-        "en_answer_label": "English Answer",
-        "en_answer_placeholder": "Enter answer in English",
-        "ar_answer_label": "Arabic Answer",
-        "ar_answer_placeholder": "Enter answer in Arabic",
-        "status_label": "Status",
-        "status_active": "Active",
-        "status_inactive": "Inactive",
-        "submit_button": "Add",
-      
-        "success_message": "FAQ added successfully",
-      
-        "error": {
-          "en_question_required": "English question is required (min 2 characters)",
-          "ar_question_required": "Arabic question is required (min 2 characters)",
-          "en_answer_required": "English answer is required (min 2 characters)",
-          "ar_answer_required": "Arabic answer is required (min 2 characters)",
-          "something_went_wrong": "Something went wrong, please try again"
-        }
-      },
-      "edit_faq":{
-        "title": "Edit FAQ",
-        "en_question_label": "English Question",
-        "en_question_placeholder": "Enter question in English",
-        "ar_question_label": "Arabic Question",
-        "ar_question_placeholder": "Enter question in Arabic",
-        "en_answer_label": "English Answer",
-        "en_answer_placeholder": "Enter answer in English",
-        "ar_answer_label": "Arabic Answer",
-        "ar_answer_placeholder": "Enter answer in Arabic",
-        "status_label": "Status",
-        "status_active": "Active",
-        "status_inactive": "Inactive",
-        "submit_button": "Save Changes",
-        "submitting": "Saving...",
-        "success_message": "FAQ updated successfully",
-      
-        "errors": {
-          "en_question_required": "English question is required and must be at least 2 characters",
-          "ar_question_required": "Arabic question is required and must be at least 2 characters",
-          "en_answer_required": "English answer is required and must be at least 2 characters",
-          "ar_answer_required": "Arabic answer is required and must be at least 2 characters",
-          "general": "Please fix the errors before submitting"
-        }
+    "faq_columns": {
+      "id": "ID",
+      "question": "Question",
+      "answer": "Answer",
+      "status": "Status",
+      "actions": "Actions",
+      "arabic": "Arabic",
+      "english": "English",
+      "choose_lang": "Choose Language",
+      "all": "All",
+      "active": "Active",
+      "inactive": "Inactive",
+      "switch_to_arabic": "Switch to Arabic",
+      "switch_to_english": "Switch to English",
+      "filter_by_status": "Filter by Status",
+      "edit": "Edit",
+      "view": "View",
+      "faqs": "FAQs",
+      "faq": "FAQ"
+    },
+    "add_faq": {
+      "title": "Add New FAQ",
+      "en_question_label": "English Question",
+      "en_question_placeholder": "Enter question in English",
+      "ar_question_label": "Arabic Question",
+      "ar_question_placeholder": "Enter question in Arabic",
+      "en_answer_label": "English Answer",
+      "en_answer_placeholder": "Enter answer in English",
+      "ar_answer_label": "Arabic Answer",
+      "ar_answer_placeholder": "Enter answer in Arabic",
+      "status_label": "Status",
+      "status_active": "Active",
+      "status_inactive": "Inactive",
+      "submit_button": "Add",
+      "success_message": "FAQ added successfully",
+      "error": {
+        "en_question_required": "English question is required (min 2 characters)",
+        "ar_question_required": "Arabic question is required (min 2 characters)",
+        "en_answer_required": "English answer is required (min 2 characters)",
+        "ar_answer_required": "Arabic answer is required (min 2 characters)",
+        "something_went_wrong": "Something went wrong, please try again"
       }
+    },
+    "edit_faq": {
+      "title": "Edit FAQ",
+      "en_question_label": "English Question",
+      "en_question_placeholder": "Enter question in English",
+      "ar_question_label": "Arabic Question",
+      "ar_question_placeholder": "Enter question in Arabic",
+      "en_answer_label": "English Answer",
+      "en_answer_placeholder": "Enter answer in English",
+      "ar_answer_label": "Arabic Answer",
+      "ar_answer_placeholder": "Enter answer in Arabic",
+      "status_label": "Status",
+      "status_active": "Active",
+      "status_inactive": "Inactive",
+      "submit_button": "Save Changes",
+      "submitting": "Saving...",
+      "success_message": "FAQ updated successfully",
+      "errors": {
+        "en_question_required": "English question is required and must be at least 2 characters",
+        "ar_question_required": "Arabic question is required and must be at least 2 characters",
+        "en_answer_required": "English answer is required and must be at least 2 characters",
+        "ar_answer_required": "Arabic answer is required and must be at least 2 characters",
+        "general": "Please fix the errors before submitting"
+      }
+    }
   },
   "SideBar": {
     "Home": "Home",
@@ -506,8 +518,8 @@
     "created_at": "Created At",
     "updated_at": "Updated At",
     "actions": "Actions",
-    "quizzes":"Quizzes",
-    "book-title":"Book Title"
+    "quizzes": "Quizzes",
+    "book-title": "Book Title"
   },
   "contact": {
     "title": "Contact Us",
@@ -522,7 +534,7 @@
     "login_successful": "Login successful!",
     "login_failed": "Login failed. Please check your credentials."
   },
-  "subscription":{
+  "subscription": {
     "title": "Choose Your Subscription Plan",
     "description": "Pick the best plan for your reading needs. All plans include free reading access.",
     "basic": {

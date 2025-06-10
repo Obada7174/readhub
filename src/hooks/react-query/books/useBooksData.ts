@@ -1,9 +1,8 @@
-// hooks/useBookData.ts
+"use client";
 import { useState, useEffect } from "react";
 import { ApiResponse, Book, CategoryOption } from "@/types/book";
 
 export function useBookData() {
-  // States
   const [books, setBooks] = useState<Book[]>([]);
   const [categories, setCategories] = useState<CategoryOption[]>([]);
   const [loading, setLoading] = useState(true);
@@ -61,7 +60,7 @@ export function useBookData() {
         if (highestRated) params.append("highestRated", "true");
         if (lang) params.append("lang", lang); 
         params.append("page", currentPage.toString());
-        params.append("limit", "12");
+        params.append("limit", "15");
         window.history.replaceState(null, "", `?${params.toString()}`);
         const res = await fetch(`http://127.0.0.1:5000/books?${params.toString()}`, {
           headers: { Accept: "application/json", "Content-Type": "application/json" },

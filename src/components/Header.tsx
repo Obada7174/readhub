@@ -36,7 +36,7 @@ export default function Header() {
                         <Link href="/" className="text-gray-800 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white duration-150">{t('navigation.home')}</Link>
                         <Link href="/books" className="text-gray-800 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white duration-150">{t('navigation.books')}</Link>
                         <Link href="/about" className="text-gray-800 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white duration-150">{t('navigation.about')}</Link>
-                        <Link href="/categories" className="text-gray-800 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white duration-150">{t('navigation.categories')}</Link>
+                        <Link href="/contact" className="text-gray-800 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white duration-150">{t('navigation.contact')}</Link>
                         <Link href="/competitions" className="text-gray-800 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white duration-150">{t('navigation.competitions')}</Link>
                     </nav>
 

@@ -1,4 +1,3 @@
-// Page.tsx
 "use client";
 import React from "react";
 import { useTranslation } from "react-i18next";
@@ -19,7 +18,6 @@ export default function Page() {
     totalPages,
     currentPage,
     setCurrentPage,
-
     searchQuery,
     setSearchQuery,
     priceRange,
@@ -34,7 +32,6 @@ export default function Page() {
 
   return (
     <div dir={isRTL ? "rtl" : "ltr"} className="min-h-screen py-6 px-4 space-y-6 container mx-auto">
-      {/* فلاتر + مربع بحث */}
       <BooksFilters
         categories={categories}
         selectedCategory={selectedCategory}
@@ -49,7 +46,6 @@ export default function Page() {
         setSearchQuery={setSearchQuery}
       />
 
-      {/* Grid + Pagination */}
       <BooksGrid
         books={books}
         loading={loading}

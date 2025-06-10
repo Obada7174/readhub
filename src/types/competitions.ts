@@ -7,6 +7,12 @@ export type Quiz = {
     book: Book;          
     questions: Question[];
 };
+export type CreateQuiz = {
+    title: string;
+    ar_title: string;
+    bookId:number;
+};
+
 
 export interface Question {
   id: number;

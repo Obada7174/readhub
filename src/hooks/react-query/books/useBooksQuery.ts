@@ -1,3 +1,4 @@
+import { BookOption } from './../../../types/book';
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import {
   getBook,
@@ -5,6 +6,7 @@ import {
   createBook,
   updateBook,
   deleteBooks,
+  getBooksOptions,
 } from "@/services/books.service";
 import { Book, BooksResponse } from "@/types/book";
 import { useTranslations } from "next-intl";
@@ -14,6 +16,12 @@ export const useBooksQuery = (page = 1, limit = 10, search = "") => {
   return useQuery<BooksResponse>({
     queryKey: ["users", page, limit, search],
     queryFn: () => getBooks(page, limit, search),
+  });
+};
+export const useBooksOptions = () => {
+  return useQuery<BookOption[]>({
+    queryKey: ["books-options"],
+    queryFn: async() => getBooksOptions(),
   });
 };
 export const useBookQuery = (id: string) => {

@@ -14,19 +14,19 @@ export const links = [
         name: "users",
         icon: <FiUsers />,
         url: "/dashboard/users",
-        roleShow: ["admin", "editor"],
+        roleShow: ["admin"],
       },
       {
         name: "books",
         icon: <TbBooks />,
         url: "/dashboard/books",
-        roleShow: ["admin", "editor"],
+        roleShow: ["admin"],
       },
       {
         name: "categories",
         icon: <MdOutlineCategory />,
         url: "/dashboard/categories",
-        roleShow: ["admin", "editor"],
+        roleShow: ["admin"],
       },
       {
         name: "competitions",
@@ -39,31 +39,31 @@ export const links = [
           { name: "results", url: "/dashboard/competitions/results", icon: <MdOutlineAssignmentTurnedIn /> },
           { name: "answers", url: "/dashboard/competitions/answers", icon: <IoDocumentTextOutline /> }
         ],
-        roleShow: ["admin", "editor"],
+        roleShow: ["admin"],
       },
       {
         name: "Copons",
         icon:<LuTag />,
         url: "/dashboard/copons",
-        roleShow: ["admin", "editor"],
+        roleShow: ["admin"],
       },
       {
         name: "Carts",
         icon: <GiShoppingCart />,
         url: "/dashboard/carts",
-        roleShow: ["admin", "editor"],
+        roleShow: ["admin"],
       },
       {
         name: "Faqs",
         icon:  <FiHelpCircle />,
         url: "/dashboard/faqs",
-        roleShow: ["admin", "editor"],
+        roleShow: ["admin"],
       },
       {
         name: "StaticPages",
         icon: <CgWebsite />,
         url: "/dashboard/static-pages",
-        roleShow: ["admin", "editor"],
+        roleShow: ["admin"],
       },
     ]
   ;
