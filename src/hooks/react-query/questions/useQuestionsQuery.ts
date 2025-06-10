@@ -5,25 +5,33 @@ import {
   updateQuestion,
   deleteQuestions,
   getQuestion,
+  createQuestionAnswer,
+  deleteQuestionsAnswers,
+  getQuestionAnswer,
+  getQuestionsAnswers,
+  updateQuestionAnswer,
 } from "@/services/questions.service";
-import {Question ,QuestionIndexResponse} from "@/types/competitions";
+import {
+  Question,
+  QuestionAnswer,
+  QuestionAnswerResponse,
+  QuestionIndexResponse,
+} from "@/types/competitions";
 import { useTranslations } from "next-intl";
-import { showErrorToast,showSuccessToast } from "@/helpers/Toast";
+import { showErrorToast, showSuccessToast } from "@/helpers/Toast";
+import { QuestionAnswerFormValues } from "@/lib/validators/question-answer.validator";
 
-
-export const useQuestionsQuery = (page = 1, limit = 10, lang = 'en') => {
+export const useQuestionsQuery = (page = 1, limit = 10, lang = "en") => {
   return useQuery<QuestionIndexResponse>({
-    queryKey: ['book-questions', page, limit, lang],
+    queryKey: ["book-questions", page, limit, lang],
     queryFn: () => getQuestions(page, limit, lang),
   });
 };
 export const useQuestionQuery = (id: number) => {
-
   return useQuery({
-    queryKey: ['book-question', id],
+    queryKey: ["book-question", id],
     queryFn: () => getQuestion(id),
     enabled: !!id,
-    
   });
 };
 
@@ -72,6 +80,69 @@ export const useDeleteQuestion = () => {
     },
     onError: () => {
       showErrorToast(t("failed_to_delete_question"));
+    },
+  });
+};
+
+export const useQuestionsAnswersQuery = (page = 1, limit = 10, search = "") => {
+  return useQuery<QuestionAnswerResponse>({
+    queryKey: ["questions-answers", page, limit, search],
+    queryFn: () => getQuestionsAnswers(page, limit, search),
+  });
+};
+export const useQuestionAnswerQuery = (id: string) => {
+  return useQuery<QuestionAnswer>({
+    queryKey: ["question-answer", id],
+    queryFn: () => getQuestionAnswer(id),
+    enabled: !!id,
+  });
+};
+
+export const useCreateQuestionAnswer = () => {
+  const queryClient = useQueryClient();
+  const t = useTranslations("toastMessages");
+
+  return useMutation({
+    mutationFn: createQuestionAnswer,
+    onSuccess: () => {
+      showSuccessToast(t("question_answer_created_successfully"));
+      queryClient.invalidateQueries({ queryKey: ["questions-answers"] });
+    },
+    onError: () => {
+      showErrorToast(t("failed_to_create_question_answer"));
+    },
+  });
+};
+
+export const useUpdateQuestionAnswer = (id: string) => {
+  const queryClient = useQueryClient();
+  const t = useTranslations("toastMessages");
+
+  return useMutation({
+    mutationFn: (data: QuestionAnswerFormValues) =>
+      updateQuestionAnswer({ id, ...data }),
+    onSuccess: () => {
+      showSuccessToast(t("question_answer_updated_successfully"));
+      queryClient.invalidateQueries({ queryKey: ["questions-answers"] });
+    },
+    onError: () => {
+      showErrorToast(t("failed_to_update_question_answer"));
+    },
+  });
+};
+
+export const useDeleteQuestionAnswer = () => {
+  const queryClient = useQueryClient();
+  const t = useTranslations("toastMessages");
+
+  return useMutation({
+    mutationFn: deleteQuestionsAnswers,
+    onSuccess: () => {
+      showSuccessToast(t("question_answer_deleted_successfully"));
+      queryClient.invalidateQueries({ queryKey: ["questions-answers"] });
+    },
+    onError: () => {
+      showErrorToast(t("failed_to_delete_question_answer"));
     },
   });
 };

@@ -68,10 +68,7 @@ export default function UseBookForm({
 
   return (
     <DashContainer>
-      <DashHeader
-        category="Page"
-        title={mode === "add" ? "إضافة كتاب" : "تعديل كتاب"}
-      />
+      <DashHeader title={mode === "add" ? "إضافة كتاب" : "تعديل كتاب"} />
 
       <form
         onSubmit={handleSubmit(submitHandler)}

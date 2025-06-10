@@ -93,7 +93,8 @@ export default function CartItems({ params: { id } }: Props) {
       sortable: false,
       filterable: false,
       minWidth: 70,
-
+      headerClassName: "sticky-right-column",
+      cellClassName: "sticky-right-column",
       renderCell: (params: GridRenderCellParams) => {
         const id = params.row.book.id;
 

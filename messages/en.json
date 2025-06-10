@@ -372,6 +372,46 @@
         "invalid_discount": "Discount must be a number between 0 and 100"
       }
     },
+    "quiz": {
+      "add_winner": "Add Winner",
+      "edit_winner": "Edit Winner",
+      "add_result": "Add Result",
+      "edit_result": "Edit Result",
+      "quiz_id": "Quiz ID",
+      "quiz_id_placeholder": "Enter quiz ID",
+      "user_id": "User ID",
+      "user_id_placeholder": "Enter user ID",
+      "coupon": "Coupon",
+      "coupon_placeholder": "Enter coupon number",
+      "total_questions": "Total questions",
+      "total_questions_placeholder": "Enter total questions number",
+      "total_correct": "Correct answers",
+      "total_correct_placeholder": "Enter correct answers number",
+      "submit_add_winner": "Add Winner",
+      "submit_edit_winner": "Save Changes",
+      "submit_add_result": "Add Result",
+      "submit_edit_result": "Save Changes"
+    },
+    "question": {
+      "add_question_answer": "Add Question Answer",
+      "edit_question_answer": "Edit Question Answer",
+      "question_id": "Question ID",
+      "enter_question_id": "Enter question ID",
+      "user_id": "User ID",
+      "enter_user_id": "Enter user ID",
+      "selected_option": "Selected Option",
+      "option_a": "Option A",
+      "option_b": "Option B",
+      "option_c": "Option C",
+      "option_d": "Option D",
+      "select_option": "Select an option",
+      "is_correct": "Is Correct?",
+      "correct": "Correct",
+      "incorrect": "Incorrect",
+      "select_correctness": "Select correctness",
+      "add_answer": "Add Answer",
+      "update_answer": "Update Answer"
+    },
     "faq_columns": {
       "id": "ID",
       "question": "Question",
@@ -406,7 +446,9 @@
       "status_active": "Active",
       "status_inactive": "Inactive",
       "submit_button": "Add",
+
       "success_message": "FAQ added successfully",
+
       "error": {
         "en_question_required": "English question is required (min 2 characters)",
         "ar_question_required": "Arabic question is required (min 2 characters)",
@@ -431,6 +473,7 @@
       "submit_button": "Save Changes",
       "submitting": "Saving...",
       "success_message": "FAQ updated successfully",
+
       "errors": {
         "en_question_required": "English question is required and must be at least 2 characters",
         "ar_question_required": "Arabic question is required and must be at least 2 characters",
@@ -496,12 +539,26 @@
     "failed_to_update_question": "Failed to update question",
     "question_deleted_successfully": "Question deleted successfully",
     "failed_to_delete_question": "Failed to delete question",
+    "question_answer_created_successfully": "Question answer created successfully",
+    "failed_to_create_question_answer": "Failed to create question answer",
+    "question_answer_updated_successfully": "Question answer updated successfully",
+    "failed_to_update_question_answer": "Failed to update question answer",
+    "question_answer_deleted_successfully": "Question answer deleted successfully",
+    "failed_to_delete_question_answer": "Failed to delete question answer",
     "quiz_created_successfully": "Quiz created successfully",
     "failed_to_create_quiz": "Failed to create quiz",
     "quiz_updated_successfully": "Quiz updated successfully",
     "failed_to_update_quiz": "Failed to update quiz",
     "quiz_deleted_successfully": "Quiz deleted successfully",
-    "failed_to_delete_quiz": "Failed to delete quiz"
+    "failed_to_delete_quiz": "Failed to delete quiz",
+    "quiz_winner_deleted_successfully": "Quiz winner deleted successfully",
+    "failed_to_delete_quiz_winner": "Failed to delete quiz winner",
+    "quiz_result_created_successfully": "Quiz result created successfully",
+    "failed_to_created_quiz_result": "Failed to created quiz result",
+    "quiz_result_deleted_successfully": "Quiz result deleted successfully",
+    "failed_to_delete_quiz_result": "Failed to delete quiz result",
+    "quiz_result_updated_successfully": "Quiz result updated successfully",
+    "failed_to_updated_quiz_result": "Failed to updated quiz result"
   },
   "columns": {
     "id": "ID",
@@ -512,6 +569,12 @@
     "option_d": "Option D",
     "correct_option": "Correct Option",
     "quiz_title": "Quiz Title",
+    "quiz_id": "Quiz ID",
+    "user_id": "User ID",
+    "coupon_id": "Coupon ID",
+    "question_id": "Question ID",
+    "is_correct": "Is Correct",
+    "user_name": "User Name",
     "quiz_ar_title": "Arabic Quiz Title",
     "description": "Description",
     "status": "Status",
@@ -519,7 +582,15 @@
     "updated_at": "Updated At",
     "actions": "Actions",
     "quizzes": "Quizzes",
-    "book-title": "Book Title"
+    "quiz_winner": "Quiz Winner",
+    "quizzes-winners": "Quizzes Winners",
+    "quiz_result": "Quiz Result",
+    "book-title": "Book Title",
+    "quizzes-results": "Quizzes Results",
+    "total_correct": "Total Correct",
+    "total_questions": "Total Questions",
+    "question-answer": "Question Answer",
+    "questions-answers": "Questions Answers"
   },
   "contact": {
     "title": "Contact Us",

@@ -44,7 +44,7 @@ export default function Categories() {
       headerName: "Title",
       editable: true,
       minWidth: 100,
-      flex: 2,
+      flex: 1,
     },
     {
       field: "ar_title",
@@ -77,7 +77,8 @@ export default function Categories() {
       sortable: false,
       filterable: false,
       minWidth: 140,
-
+      headerClassName: "sticky-right-column",
+      cellClassName: "sticky-right-column",
       renderCell: (params: GridRenderCellParams) => {
         const id = params.row.id;
 

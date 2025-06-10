@@ -6,10 +6,10 @@ import { CategoryFormValues } from "@/lib/validators/category.validator";
 import { Category } from "@/types/category";
 
 export default function AddCategory() {
-  const createBookMutation = useCreateCategory();
+  const createCategoryMutation = useCreateCategory();
 
   const handleAdd = async (data: CategoryFormValues) => {
-    await createBookMutation.mutateAsync(data as Category);
+    await createCategoryMutation.mutateAsync(data as Category);
   };
 
   return <UseCategoryForm mode="add" onSubmit={handleAdd} />;
