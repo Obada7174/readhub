@@ -37,7 +37,7 @@ export default function Books() {
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
   const { data, isLoading, refetch } = useBooksQuery(page, limit, searchText);
-  const { data: categories } = useCategoriesQuery();
+  const { data: categories } = useCategoriesQuery({ limit: 1000 });
   const deleteMutation = useDeleteBook();
 
   const genresOption = categories

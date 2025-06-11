@@ -240,6 +240,7 @@
     "Competitions": "المسابقات",
     "Settings": "الإعدادات",
     "Notifications": "الإشعارات"
+    
   },
   "Comments": {
     "likes": "اعجاب",
@@ -269,10 +270,17 @@
       "books": "الكتب",
       "categories": "التصنيفات",
       "competitions": "المسابقات",
-      "Copons": "الجوائز",
       "Carts": "السلات",
       "Faqs":"الأسئلة الشائعة",
-      "authors":"المؤلفين"
+      "authors":"المؤلفين",
+      "StaticPages":"الواجهات الثابتة",
+      "competitions_answers": "أنواع",
+      "competitions_questions": "مستويات",
+      "competitions_quizzes": "المشاركون",
+      "competitions_results": "النتائج",
+      "competitions_winners": "الإعدادات",
+      "Copons": "الكوبونات",
+      "return_to_site": "العودة للموقع"
     },
     "users": {
       "users": "المستخدمون",
@@ -348,6 +356,18 @@
       }
     },
     "toastMessages": {
+      "cartitem_created_successfully": "تم إنشاء عنصر جديد بنجاح",
+      "failed_to_create_cartitem": "فشل في إنشاء عنصر جديد",
+      "cartitem_deleted_successfully": "تم حذف العنصر بنجاح",
+      "failed_to_delete_cartitem": "فشل في حذف العنصر",
+      "cart_created_successfully": "تم إنشاء سلة المشتريات بنجاح",
+      "failed_to_create_cart": "فشل في إنشاء سلة المشتريات",
+      "cart_deleted_successfully": "تم حذف سلة المشتريات بنجاح",
+      "failed_to_delete_cart": "فشل في حذف سلة المشتريات",
+      "cart_updated_successfully": "تم تحديث سلة المشتريات بنجاح",
+      "failed_to_updated_cart": "فشل في تحديث سلة المشتريات",
+      "comment_created_successfully": "تم إنشاء التعليق بنجاح",
+      "failed_to_create_comment": "فشل في إنشاء التعليق",
       "user_created_successfully": "تم إنشاء المستخدم بنجاح",
       "user_updated_successfully": "تم تحديث المستخدم بنجاح",
       "user_deleted_successfully": "تم حذف المستخدم بنجاح",
@@ -488,6 +508,16 @@
     }
   },
   "toastMessages": {
+    "cartitem_created_successfully": "تم إنشاء عنصر جديد بنجاح",
+    "failed_to_create_cartitem": "فشل في إنشاء عنصر جديد",
+    "cartitem_deleted_successfully": "تم حذف العنصر بنجاح",
+    "failed_to_delete_cartitem": "فشل في حذف العنصر",
+    "cart_created_successfully": "تم إنشاء سلة المشتريات بنجاح",
+    "failed_to_create_cart": "فشل في إنشاء سلة المشتريات",
+    "cart_deleted_successfully": "تم حذف سلة المشتريات بنجاح",
+    "failed_to_delete_cart": "فشل في حذف سلة المشتريات",
+    "cart_updated_successfully": "تم تحديث سلة المشتريات بنجاح",
+    "failed_to_updated_cart": "فشل في تحديث سلة المشتريات",
     "comment_created_successfully": "تم إنشاء التعليق بنجاح",
     "failed_to_create_comment": "فشل في إنشاء التعليق",
     "user_created_successfully": "تم إنشاء المستخدم بنجاح",

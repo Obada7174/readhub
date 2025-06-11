@@ -26,11 +26,11 @@ export default function Categories() {
   const [searchText, setSearchText] = useState("");
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
-  const { data, isLoading, refetch } = useCategoriesQuery(
+  const { data, isLoading, refetch } = useCategoriesQuery({
     page,
     limit,
-    searchText
-  );
+    search: searchText,
+  });
   const deleteMutation = useDeleteCategory();
 
   const columns: GridColDef[] = [
@@ -55,7 +55,7 @@ export default function Categories() {
     },
     {
       field: "created_at",
-      headerName: "Added Date",
+      headerName: "Created Date",
       minWidth: 130,
       renderCell: (params: GridRenderCellParams) => {
         const date: DateObject = TransformDate(params.value as string);
@@ -118,10 +118,10 @@ export default function Categories() {
         mutateAsync: async (ids: GridRowId[]) =>
           await deleteMutation.mutateAsync(ids.map(Number)),
       }}
-      deleteMutation={{
-        mutateAsync: async (ids: GridRowId[]) =>
-          await deleteMutation.mutateAsync(ids.map(Number)),
-      }}
+      // deleteMutation={{
+      //   mutateAsync: async (ids: GridRowId[]) =>
+      //     await deleteMutation.mutateAsync(ids.map(Number)),
+      // }}
     />
   );
 }
