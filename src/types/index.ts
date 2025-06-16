@@ -23,3 +23,19 @@ export type SidebarLinkType = {
       total_pages: number
   }
   
+  
+  export interface BaseLink {
+    name: string;
+    icon: JSX.Element; 
+    url?: string;
+    roleShow?: string[];
+    children?: ChildLink[]; 
+  }
+  
+ export interface ChildLink {
+    name: string;
+    url: string;
+    icon?: JSX.Element; 
+  }
+  
+  export type SidebarLink = BaseLink;

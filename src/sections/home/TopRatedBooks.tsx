@@ -1,11 +1,11 @@
 import { useTranslations } from "next-intl";
 import BookCarousel from "@/components/Carousel";
 import { getBooks } from "@/services/books.service";
-import type { Book } from "@/types/book";
+import type { BooksResponse } from "@/types/book";
 
 const TopRatedBooks = async () => {
 
-    const books:Book[] = await getBooks();
+    const books:BooksResponse = await getBooks(1,12,'');
 
     return (
         <section className="px-6 md:px-16 py-16 transition-colors duration-300">

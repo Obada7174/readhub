@@ -269,10 +269,17 @@
       "books": "الكتب",
       "categories": "التصنيفات",
       "competitions": "المسابقات",
-      "Copons": "الجوائز",
       "Carts": "السلات",
       "Faqs": "الأسئلة الشائعة",
-      "authors": "المؤلفين"
+      "authors": "المؤلفين",
+      "StaticPages": "الواجهات الثابتة",
+      "competitions_answers": "أنواع",
+      "competitions_questions": "مستويات",
+      "competitions_quizzes": "المشاركون",
+      "competitions_results": "النتائج",
+      "competitions_winners": "الإعدادات",
+      "Copons": "الكوبونات",
+      "return_to_site": "العودة للموقع"
     },
     "users": {
       "users": "المستخدمون",
