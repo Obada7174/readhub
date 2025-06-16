@@ -1,5 +1,3 @@
-// types/faqs.ts
-
 export type UpdateFaqPayload = {
   enQuestion: string;
   arQuestion: string;

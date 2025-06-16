@@ -279,9 +279,16 @@
       "categories": "Categories",
       "competitions": "Competitions",
       "authors": "Authors",
-      "Copons": "Copons",
       "Carts": "Carts",
-      "Faqs": "Faqs"
+      "Faqs": "Faqs",
+      "competitions_answers": "Answers",
+      "competitions_questions": "Questions",
+      "competitions_quizzes": "Quizzes",
+      "competitions_results": "Results",
+      "competitions_winners": "Winners",
+      "Copons": "Coupons",
+      "return_to_site": "Return to Site",
+      "StaticPages": "Static Pages"
     },
     "add_cart": {
       "title": "Add New Cart",

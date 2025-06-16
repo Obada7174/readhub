@@ -54,7 +54,6 @@ const HomeContactSection = () => {
     return (
         <section className="py-16 px-4 md:px-8">
             <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10">
-                {/* Animation Section (Smaller) */}
                 <div className="w-full md:w-1/3 flex justify-center">
                     {isLoading ? (
                         <p className="text-gray-500 dark:text-gray-400">{t('loading')}</p>
