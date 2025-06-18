@@ -603,7 +603,7 @@
     },
     "standard": {
       "title": "Standard Plan",
-      "price": "$19.99/month",
+      "price": "$9.99/month",
       "feature1": "Free Reading",
       "feature2": "Unlimited access to the library",
       "feature3": "Download up to 10 books per month",
@@ -611,13 +611,15 @@
     },
     "premium": {
       "title": "Premium Plan",
-      "price": "$29.99/month",
+      "price": "$99.9/yearly",
       "feature1": "Free Reading",
       "feature2": "Unlimited access to the library",
       "feature3": "Download unlimited books",
       "feature4": "Access to translations",
       "feature5": "Exclusive book recommendations",
       "feature6": "VIP support"
-    }
+    },
+    "select": "Select",
+    "alreadySelected": "Already Selected"
   }
 }
