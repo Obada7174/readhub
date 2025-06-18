@@ -272,6 +272,7 @@
       "competitions": "المسابقات",
       "Carts": "السلات",
       "Faqs":"الأسئلة الشائعة",
+      "Comments":"التعليقات",      
       "authors":"المؤلفين",
       "StaticPages":"الواجهات الثابتة",
       "competitions_answers": "أنواع",
@@ -297,6 +298,7 @@
       "password": "كلمة المرور",
       "password_placeholder": "أدخل كلمة المرور",
       "role": "الدور",
+    
       "location": "الموقع",
       "select_role_placeholder": "اختر الدور",
       "location_placeholder": "أدخل الموقع",

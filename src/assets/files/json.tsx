@@ -8,6 +8,7 @@ import { GiPodiumWinner } from "react-icons/gi";
 import { MdOutlineAssignmentTurnedIn, MdOutlineQuiz } from "react-icons/md";
 import { IoDocumentTextOutline } from "react-icons/io5";
 import { CgWebsite } from "react-icons/cg";
+import { FaRegCommentDots } from "react-icons/fa";
 
 export const links = [
       {
@@ -57,6 +58,12 @@ export const links = [
         name: "Faqs",
         icon:  <FiHelpCircle />,
         url: "/dashboard/faqs",
+        roleShow: ["admin", "editor"],
+      },
+      {
+        name: "Comments",
+        icon: <FaRegCommentDots />,
+        url: "/dashboard/comments",
         roleShow: ["admin", "editor"],
       },
       {
