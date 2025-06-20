@@ -5,7 +5,6 @@
     "topRatedSection": {
       "topRatedBooks": "Top Rated Books"
     },
-
     "faqSection": {
       "sectionTitle": "Frequently Asked Questions",
       "sectionDescription": "If you have any questions, the answer might be here!",
@@ -241,7 +240,40 @@
     "addPublisher": "Add Publisher",
     "competitions": "Competitions",
     "addCompetition": "Add Competition",
-    
+    "Categories": {
+      "id": "ID",
+      "title": "Title",
+      "arTitle": "Arabic Title",
+      "createdAt": "Created Date",
+      "updatedAt": "Updated Date",
+      "actions": "Actions",
+      "category": "Category",
+      "categories": "Categories"},
+    "carts": {
+      "id": "ID",
+      "status": "Status",
+      "userId": "User ID",
+      "userEmail": "User Email",
+      "notAvailable": "N/A",
+      "addedDate": "Added Date",
+      "updatedDate": "Updated Date",
+      "actions": "Actions",
+      "cart": "Cart",
+      "carts": "Carts"
+    },
+    "Books": {
+      "Books": "Books",
+      "title": "Title",
+      "author": "Author",
+      "price": "Price",
+      "discount": "Discount",
+      "category": "Category",
+      "rating": "Rating",
+      "pages": "Pages",
+      "createdAt": "Added Date",
+      "updatedAt": "Updated Date",
+      "actions": "Actions"
+    },
     "users": {
       "Users": "Users",
       "addUser": "Add User",
@@ -286,8 +318,8 @@
       "competitions": "Competitions",
       "authors": "Authors",
       "Carts": "Carts",
-      "Faqs":"Faqs",
-      "Comments":"Comments",
+      "Faqs": "Faqs",
+      "Comments": "Comments",
       "competitions_answers": "Answers",
       "competitions_questions": "Questions",
       "competitions_quizzes": "Quizzes",
@@ -437,9 +469,7 @@
       "status_active": "Active",
       "status_inactive": "Inactive",
       "submit_button": "Add",
-
       "success_message": "FAQ added successfully",
-
       "error": {
         "en_question_required": "English question is required (min 2 characters)",
         "ar_question_required": "Arabic question is required (min 2 characters)",
@@ -464,7 +494,6 @@
       "submit_button": "Save Changes",
       "submitting": "Saving...",
       "success_message": "FAQ updated successfully",
-
       "errors": {
         "en_question_required": "English question is required and must be at least 2 characters",
         "ar_question_required": "Arabic question is required and must be at least 2 characters",
@@ -473,8 +502,8 @@
         "general": "Please fix the errors before submitting"
       }
     },
-    "comments":{
-      "viewComments":"Comments",
+    "comments": {
+      "viewComments": "Comments",
       "id": "ID",
       "userName": "User Name",
       "userEmail": "User Email",
@@ -490,9 +519,7 @@
       "likes": "Likes",
       "replies": "Replies",
       "viewComment": "View Comment"
-      
     }
-    
   },
   "SideBar": {
     "Home": "Home",

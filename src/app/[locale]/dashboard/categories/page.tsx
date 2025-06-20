@@ -1,17 +1,13 @@
 "use client";
+
 import DashTable from "@/components/dashboard/DashTable";
 import TransformDate from "@/helpers/TransformDate";
 
-interface DateObject {
-  getFullYear: number;
-  getMonth: number;
-  getDay: number;
-}
+import { useTranslations } from "next-intl";  // إضافة
 import {
   GridRenderCellParams,
   GridColDef,
   GridRowId,
-  // GridValueFormatterParams,
 } from "@mui/x-data-grid";
 import {
   useCategoriesQuery,
@@ -23,6 +19,8 @@ import DashButton from "@/components/ui/Button";
 import { FaEdit } from "react-icons/fa";
 
 export default function Categories() {
+  const t = useTranslations("Dashboard.Categories"); // تهيئة الترجمة
+
   const [searchText, setSearchText] = useState("");
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
@@ -36,44 +34,44 @@ export default function Categories() {
   const columns: GridColDef[] = [
     {
       field: "id",
-      headerName: "ID",
+      headerName: t("id"),
       width: 30,
     },
     {
       field: "title",
-      headerName: "Title",
+      headerName: t("title"),
       editable: true,
       minWidth: 100,
       flex: 1,
     },
     {
       field: "ar_title",
-      headerName: "AR Title",
+      headerName: t("arTitle"),
       editable: true,
       minWidth: 100,
       flex: 1,
     },
     {
       field: "created_at",
-      headerName: "Created Date",
+      headerName: t("createdAt"),
       minWidth: 130,
       renderCell: (params: GridRenderCellParams) => {
-        const date: DateObject = TransformDate(params.value as string);
+        const date = TransformDate(params.value as string);
         return `${date.getFullYear}/${date.getMonth}/${date.getDay}`;
       },
     },
     {
       field: "updated_at",
-      headerName: "Updated Date",
+      headerName: t("updatedAt"),
       minWidth: 130,
       renderCell: (params: GridRenderCellParams) => {
-        const date: DateObject = TransformDate(params.value as string);
+        const date = TransformDate(params.value as string);
         return `${date.getFullYear}/${date.getMonth}/${date.getDay}`;
       },
     },
     {
       field: "actions",
-      headerName: "Actions",
+      headerName: t("actions"),
       sortable: false,
       filterable: false,
       minWidth: 140,
@@ -81,7 +79,6 @@ export default function Categories() {
       cellClassName: "sticky-right-column",
       renderCell: (params: GridRenderCellParams) => {
         const id = params.row.id;
-
         return (
           <div className="flex gap-2 items-center text-lg">
             <DashButton
@@ -99,8 +96,8 @@ export default function Categories() {
 
   return (
     <DashTable<Category>
-      ITEM="Category"
-      ITEMS="Categories"
+      ITEM={t("category")}
+      ITEMS={t("categories")}
       ADD="categories/addcategory"
       columns={columns}
       isEditable={true}
@@ -119,10 +116,6 @@ export default function Categories() {
         mutateAsync: async (ids: GridRowId[]) =>
           await deleteMutation.mutateAsync(ids.map(Number)),
       }}
-      // deleteMutation={{
-      //   mutateAsync: async (ids: GridRowId[]) =>
-      //     await deleteMutation.mutateAsync(ids.map(Number)),
-      // }}
     />
   );
 }
