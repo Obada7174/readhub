@@ -1,43 +1,42 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import {
-  getBookComments,
+  getAllComments,
+  getComment,
   createComment,
   updateComment,
-  deleteComment,
-  getAllComments,
-  deleteMultipleComments,
+  deleteComments,
 } from "@/services/comments.service";
-import { Comment } from "@/types/comment";
+import { CommentBody, CommentsResponse, Comment } from "@/types/comment";
 import { useTranslations } from "next-intl";
 import { showErrorToast, showSuccessToast } from "@/helpers/Toast";
 
-// جلب كل التعليقات (مثل صفحة admin)
-export const useAllCommentsQuery = () => {
-  return useQuery<Comment[]>({
-    queryKey: ["all-comments"],
-    queryFn: getAllComments,
+export const useCommentsQuery = (
+  page = 1,
+  limit = 10,
+  search = ""
+) => {
+  return useQuery<CommentsResponse>({
+    queryKey: ["comments", page, limit, search],
+    queryFn: () => getAllComments(page, limit, search),
+  });
+};
+export const useCommentQuery = (id: string | number) => {
+  return useQuery<Comment>({
+    queryKey: ["comment", id],
+    queryFn: () => getComment(Number(id)), // مهم
+    enabled: !!id,
   });
 };
 
-// جلب تعليقات كتاب معين
-export const useCommentsQuery = (bookId: string) => {
-  return useQuery<Comment[]>({
-    queryKey: ["comments", bookId],
-    queryFn: () => getBookComments(bookId),
-  });
-};
-
-// إنشاء تعليق جديد
 export const useCreateComment = () => {
   const queryClient = useQueryClient();
   const t = useTranslations("toastMessages");
 
   return useMutation({
-    mutationFn: createComment,
+    mutationFn: (comment: CommentBody) => createComment(comment),
     onSuccess: () => {
       showSuccessToast(t("comment_created_successfully"));
-      queryClient.invalidateQueries({ queryKey: ["all-comments"] });
-      queryClient.invalidateQueries({ queryKey: ["comments"] }); // لجلب تعليقات كتاب معين
+      queryClient.invalidateQueries({ queryKey: ["comments"] });
     },
     onError: () => {
       showErrorToast(t("failed_to_create_comment"));
@@ -45,16 +44,21 @@ export const useCreateComment = () => {
   });
 };
 
-// تعديل تعليق
 export const useUpdateComment = () => {
   const queryClient = useQueryClient();
   const t = useTranslations("toastMessages");
 
   return useMutation({
-    mutationFn: updateComment,
+    mutationFn: ({
+      id,
+      data,
+    }: {
+      id: number;
+      data: Partial<CommentBody>;
+    }) => updateComment(id, data),
     onSuccess: () => {
       showSuccessToast(t("comment_updated_successfully"));
-      queryClient.invalidateQueries({ queryKey: ["all-comments"] });
+      queryClient.invalidateQueries({ queryKey: ["comments"] });
     },
     onError: () => {
       showErrorToast(t("failed_to_update_comment"));
@@ -62,37 +66,18 @@ export const useUpdateComment = () => {
   });
 };
 
-// حذف تعليق
-export const useDeleteComment = () => {
+export const useDeleteComments = () => {
   const queryClient = useQueryClient();
   const t = useTranslations("toastMessages");
 
   return useMutation({
-    mutationFn: deleteComment,
+    mutationFn: (ids: number[]) => deleteComments(ids),
     onSuccess: () => {
       showSuccessToast(t("comment_deleted_successfully"));
-      queryClient.invalidateQueries({ queryKey: ["all-comments"] });
+      queryClient.invalidateQueries({ queryKey: ["comments"] });
     },
     onError: () => {
       showErrorToast(t("failed_to_delete_comment"));
-    },
-  });
-};
-
-// حذف تعليقات متعددة
-export const useDeleteMultipleComments = () => {
-  const queryClient = useQueryClient();
-  const t = useTranslations("toastMessages");
-
-  return useMutation({
-    mutationFn: deleteMultipleComments,
-    onSuccess: (data) => {
-      showSuccessToast(data.message);
-      if (data.warning) showErrorToast(data.warning);
-      queryClient.invalidateQueries({ queryKey: ["all-comments"] });
-    },
-    onError: () => {
-      showErrorToast(t("failed_to_delete_comments"));
     },
   });
 };

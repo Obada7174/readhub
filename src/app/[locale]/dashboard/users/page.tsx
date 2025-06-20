@@ -23,8 +23,11 @@ import {
 import { DateObject } from "@/types";
 import { LuEye } from "react-icons/lu";
 import { FaEdit } from "react-icons/fa";
+import { useTranslations } from "next-intl";
 
 export default function Users() {
+  const t = useTranslations("Dashboard.users");
+
   const deleteMutation = useDeleteUser();
   const updateMutation = useUpdateUser();
 
@@ -61,28 +64,28 @@ export default function Users() {
     { field: "id", headerName: "ID", width: 30 },
     {
       field: "first_name",
-      headerName: "First Name",
+      headerName: t("firstName"),
       editable: true,
       minWidth: 90,
       flex: 1,
     },
     {
       field: "last_name",
-      headerName: "Last Name",
+      headerName: t("lastName"),
       editable: true,
       minWidth: 90,
       flex: 1,
     },
     {
       field: "email",
-      headerName: "Email",
+      headerName: t("email"),
       editable: true,
       minWidth: 180,
       flex: 1,
     },
     {
       field: "role",
-      headerName: "Role",
+      headerName: t("role"),
       editable: true,
       renderEditCell: RoleEditCell,
       renderCell: (params: GridRenderCellParams) => params.value ?? "",
@@ -92,14 +95,14 @@ export default function Users() {
     },
     {
       field: "location",
-      headerName: "Location",
+      headerName: t("location"),
       editable: true,
       minWidth: 90,
       flex: 1,
     },
     {
       field: "created_at",
-      headerName: "Created Date",
+      headerName: t("createdAt"),
       minWidth: 130,
       renderCell: (params: GridRenderCellParams) => {
         const date: DateObject = TransformDate(params.value as string);
@@ -108,16 +111,16 @@ export default function Users() {
     },
     {
       field: "updated_at",
-      headerName: "Updated Date",
+      headerName: t("updatedAt"),
       minWidth: 130,
       renderCell: (params: GridRenderCellParams) => {
         const date: DateObject = TransformDate(params.value as string);
         return `${date.getFullYear}/${date.getMonth}/${date.getDay}`;
       },
     },
-    {
+      {
       field: "actions",
-      headerName: "Actions",
+      headerName: t("actions"),
       sortable: false,
       filterable: false,
       minWidth: 140,
@@ -153,7 +156,7 @@ export default function Users() {
     <div className="space-y-4">
       <DashTable
         ITEM="User"
-        ITEMS="Users"
+        ITEMS={t("Users")}
         ADD="users/adduser"
         columns={columns}
         isEditable={true}

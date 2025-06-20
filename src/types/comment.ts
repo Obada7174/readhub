@@ -1,35 +1,47 @@
-import { User } from "./user";
-
-export interface Like {
+export interface CommentUser {
   id: number;
-  user: User;
+  first_name: string;
+  last_name: string;
+  email?: string;
+  role?: string;
 }
 
-export interface ReplyBody {
-  text: string;
-  userId: number;
-  comment: number;
-}
-
-export interface Reply {
-  id: number;
-  user: User;
-  text: string;
-  created_at: string;
-}
-
-export interface CommentBody {
+export interface CommentBook {
+  id?: number;
   title: string;
-  text: string;
-  userId: number;
-  bookId: number;
+  ar_title?: string;
 }
 
 export interface Comment {
   id: number;
-  user: User;
   text: string;
+  title?: string;
   created_at: string;
-  replies: Reply[];
-  likes: Like[];
+  updated_at: string;
+  likesCount?: number;
+  repliesCount?: number;
+  user: CommentUser;
+  book: CommentBook;
+}
+
+export interface CommentsResponse {
+  data: Comment[];
+  meta: {
+    total: number;
+    page: number;
+    limit: number;
+    total_pages: number;
+  };
+  links?: {
+    first: string;
+    last: string;
+    next?: string;
+  };
+}
+
+export interface CommentBody {
+  title?: string;
+  text: string;
+  userId: number;
+  bookId: number;
 }

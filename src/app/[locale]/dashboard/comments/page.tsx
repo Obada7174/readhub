@@ -1,99 +1,165 @@
 "use client";
 
 import { useState } from "react";
-import { GridColDef, GridRowId } from "@mui/x-data-grid";
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import DashTable from "@/components/dashboard/DashTable";
-import { getAllComments } from "@/services/comments.service";
+import TransformDate from "@/helpers/TransformDate";
+import {
+  useCommentsQuery,
+  useDeleteComments,
+  useUpdateComment,
+} from "@/hooks/react-query/comments/useCommentsQuery";
 
-type CommentUser = {
-  email: string;
-};
+import {
+  GridColDef,
+  GridRenderCellParams,
+  GridRenderEditCellParams,
+  GridRowId,
+} from "@mui/x-data-grid";
 
-type CommentBook = {
-  title: string;
-};
+import DashButton from "@/components/ui/Button";
+import { LuEye } from "react-icons/lu";
+import { FaEdit } from "react-icons/fa";
 
-type CommentReply = {
-  id: number;
-};
-
-type CommentLike = {
-  id: number;
-};
-
-type Comment = {
-  id: number;
-  title: string;
-  user: CommentUser;
-  book: CommentBook;
-  replies: CommentReply[];
-  likes: CommentLike[];
-};
-
+import { Comment, CommentBody } from "@/types/comment";
+import { DateObject } from "@/types";
+import { useTranslations } from "next-intl";
 
 export default function CommentsPage() {
+  const t = useTranslations("Dashboard.comments");
+
+  const deleteMutation = useDeleteComments();
+  const updateMutation = useUpdateComment();
+
+  const [searchText, setSearchText] = useState("");
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
-  const [searchText, setSearchText] = useState("");
 
-  const { data, isLoading, refetch } = useQuery({
-    queryKey: ["comments", page, limit, searchText],
-    queryFn: () => getAllComments(page, limit, searchText),
-  });
+  const { data, isLoading, refetch } = useCommentsQuery(page, limit, searchText);
 
-  const columns: GridColDef[] = [
-    { field: "id", headerName: "ID", width: 70 },
+  const TextEditCell = (params: GridRenderEditCellParams) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      params.api.setEditCellValue({
+        id: params.id,
+        field: "text",
+        value: e.target.value,
+      });
+    };
+
+    return (
+      <input
+        type="text"
+        defaultValue={params.value as string}
+        onChange={handleChange}
+        className="w-full p-1 border rounded"
+      />
+    );
+  };
+
+  const columns: GridColDef<Comment>[] = [
+    { field: "id", headerName: t("id"), width: 30 },
     {
-      field: "email",
-      headerName: "User Email",
-      minWidth: 200,
+      field: "userName",
+      headerName: t("userName"),
+      minWidth: 160,
       flex: 1,
-      valueGetter: (params) => params.row.user?.email || "-",
+      renderCell: (params: GridRenderCellParams<Comment>) =>
+        `${params.row.user?.first_name ?? ""} ${params.row.user?.last_name ?? ""}`.trim() || "-",
+    },
+    {
+      field: "userEmail",
+      headerName: t("userEmail"),
+      minWidth: 180,
+      flex: 1,
+      renderCell: (params: GridRenderCellParams<Comment>) =>
+        params.row.user?.email ?? "-",
     },
     {
       field: "bookTitle",
-      headerName: "Book Title",
-      minWidth: 200,
+      headerName: t("bookTitle"),
+      minWidth: 180,
       flex: 1,
-      valueGetter: (params) => params.row.book?.title || "-",
+      renderCell: (params: GridRenderCellParams<Comment>) =>
+        params.row.book?.title ?? "-",
     },
     {
-      field: "title",
-      headerName: "Comment Title",
+      field: "text",
+      headerName: t("text"),
+      editable: true,
       minWidth: 250,
-      flex: 1,
-    },
-    {
-      field: "repliesCount",
-      headerName: "Replies",
-      width: 100,
-      valueGetter: (params) => params.row.replies?.length || 0,
+      flex: 2,
+      renderEditCell: TextEditCell,
     },
     {
       field: "likesCount",
-      headerName: "Likes",
+      headerName: t("likesCount"),
       width: 100,
-      valueGetter: (params) => params.row.likes?.length || 0,
+      renderCell: (params: GridRenderCellParams<Comment>) =>
+        typeof params.row.likesCount === "number" ? params.row.likesCount : 0,
+    },
+    {
+      field: "repliesCount",
+      headerName: t("repliesCount"),
+      width: 100,
+      renderCell: (params: GridRenderCellParams<Comment>) =>
+        typeof params.row.repliesCount === "number" ? params.row.repliesCount : 0,
+    },
+    {
+      field: "created_at",
+      headerName: t("created_at"),
+      minWidth: 130,
+      renderCell: (params: GridRenderCellParams<Comment>) => {
+        const date = new Date(params.row.created_at);
+        return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
+      },
+    },
+    {
+      field: "updated_at",
+      headerName: t("updated_at"),
+      minWidth: 130,
+      renderCell: (params: GridRenderCellParams<Comment>) => {
+        const date = new Date(params.row.updated_at);
+        return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
+      },
+    },
+    {
+      field: "actions",
+      headerName: t("actions"),
+      sortable: false,
+      filterable: false,
+      minWidth: 140,
+      headerClassName: "sticky-right-column",
+      cellClassName: "sticky-right-column",
+      renderCell: (params: GridRenderCellParams<Comment>) => {
+        const id = params.row.id;
+
+        return (
+          <div className="flex gap-2 items-center text-lg">
+            <DashButton
+              href={`/dashboard/comments/${id}`}
+              className="text-green-600 hover:text-green-800 rounded-full shadow p-3"
+              size="icon"
+            >
+              <LuEye />
+            </DashButton>
+          </div>
+        );
+      },
     },
   ];
 
   return (
-    <div className="p-4">
-      <h2 className="text-xl font-bold mb-4">Comments</h2>
+    <div className="space-y-4">
       <DashTable
         ITEM="Comment"
-        ITEMS="Comments"
+        ITEMS={t("viewComments")}
         ADD=""
         columns={columns}
-        isEditable={false}
-        rowHeight={60}
+        isEditable={true}
         query={{
-          data: data?.data,
+          data: data?.data || [],
           isLoading,
           refetch,
-          total: data?.total,
+          total: data?.meta.total || 0,
           page,
           setPage,
           limit,
@@ -102,11 +168,16 @@ export default function CommentsPage() {
         }}
         deleteMutation={{
           mutateAsync: async (ids: GridRowId[]) => {
-            // مثال على حذف مجموعة تعليقات:
-            // await axios.post("http://localhost:8000/api/comments/delete", { ids });
+            await deleteMutation.mutateAsync(ids.map(Number));
           },
         }}
-        updateMutation={undefined}
+        updateMutation={async (row: Comment) => {
+          const { id, text } = row;
+          return await updateMutation.mutateAsync({
+            id,
+            data: { text },
+          });
+        }}
       />
     </div>
   );
