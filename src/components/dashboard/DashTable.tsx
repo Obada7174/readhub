@@ -117,22 +117,25 @@ export default function DashTable<T extends { id: number | string }>({
                         }
                     />
                     <div className="gap-4 flex">
-                        <DashButton
-                            size="lg"
-                            className="max-w-44"
-                            href={`/dashboard/${ADD}`}
-                        >
-                            {t("add")}
-                        </DashButton>
-                        <DashButton
-                            size="lg"
-                            variant="destructive"
-                            className="max-w-44"
-                            onClick={handleDelete}
-                        >
-                            {t("delete")}
-                        </DashButton>
-                    </div>
+  {ADD && (
+    <DashButton
+      size="lg"
+      className="max-w-44"
+      href={`/dashboard/${ADD}`}
+    >
+      {t("add")}
+    </DashButton>
+  )}
+  <DashButton
+    size="lg"
+    variant="destructive"
+    className="max-w-44"
+    onClick={handleDelete}
+  >
+    {t("delete")}
+  </DashButton>
+</div>
+
                 </Box>
 
                 <Box sx={{ flexGrow: 1, overflowX: "auto", maxWidth: "100%" }}>

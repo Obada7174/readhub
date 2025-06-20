@@ -1,3 +1,5 @@
+'use client'
+
 import { useTranslations } from 'next-intl';
 import PlanCard from "@/components/supscription/planCard";
 import { Plan } from "@/types/subscription";
@@ -18,7 +20,7 @@ const SubscriptionPage = () => {
       ],
     },
     {
-      id: "standard",
+      id: "standard", // monthly
       title: t("standard.title"),
       price: t("standard.price"),
       features: [
@@ -29,7 +31,7 @@ const SubscriptionPage = () => {
       ],
     },
     {
-      id: "premium",
+      id: "premium", // yearly
       title: t("premium.title"),
       price: t("premium.price"),
       features: [
@@ -43,6 +45,40 @@ const SubscriptionPage = () => {
     },
   ];
 
+  const handlePlanSelect = async (planId: string) => {
+    let planType = "";
+
+    if (planId === "standard") {
+      planType = "monthly";
+    } else if (planId === "premium") {
+      planType = "yearly";
+    } else {
+      alert("This plan is free or not supported yet.");
+      return;
+    }
+
+    try {
+      const response = await fetch("http://localhost:5000/payment/subscribe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ plan: planType }),
+      });
+
+      const data = await response.json();
+
+      if (data?.url) {
+        window.location.href = data.url;
+      } else {
+        alert("Failed to get redirect URL");
+      }
+    } catch (error) {
+      console.error("Subscription error:", error);
+      alert("Something went wrong");
+    }
+  };
+
   return (
     <div className="min-h-screen p-6 flex flex-col items-center justify-center bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
       <header className="text-center mb-12">
@@ -54,7 +90,7 @@ const SubscriptionPage = () => {
 
       <div className="flex flex-col md:flex-row gap-6 justify-center w-full max-w-6xl px-4">
         {plans.map((plan) => (
-          <PlanCard key={plan.id} plan={plan} />
+          <PlanCard key={plan.id} plan={plan} onSelect={handlePlanSelect} />
         ))}
       </div>
     </div>

@@ -1,19 +1,30 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import {
-  //   getComment,
-  getBookComments,
+  getAllComments,
+  getComment,
   createComment,
-  //   updateComment,
-  //   deleteComment,
+  updateComment,
+  deleteComments,
 } from "@/services/comments.service";
-import { Comment } from "@/types/comment";
+import { CommentBody, CommentsResponse, Comment } from "@/types/comment";
 import { useTranslations } from "next-intl";
 import { showErrorToast, showSuccessToast } from "@/helpers/Toast";
 
-export const useCommentsQuery = (id: string) => {
-  return useQuery<Comment[]>({
-    queryKey: ["comments", id],
-    queryFn: () => getBookComments(id),
+export const useCommentsQuery = (
+  page = 1,
+  limit = 10,
+  search = ""
+) => {
+  return useQuery<CommentsResponse>({
+    queryKey: ["comments", page, limit, search],
+    queryFn: () => getAllComments(page, limit, search),
+  });
+};
+export const useCommentQuery = (id: string | number) => {
+  return useQuery<Comment>({
+    queryKey: ["comment", id],
+    queryFn: () => getComment(Number(id)), // مهم
+    enabled: !!id,
   });
 };
 
@@ -22,18 +33,7 @@ export const useCreateComment = () => {
   const t = useTranslations("toastMessages");
 
   return useMutation({
-    mutationFn: (commentData: {
-      text: string;
-      bookId: number;
-      userId: number;
-      title?: string;
-    }) =>
-      createComment({
-        title: commentData.title || "",
-        text: commentData.text,
-        bookId: commentData.bookId,
-        userId: commentData.userId,
-      }),
+    mutationFn: (comment: CommentBody) => createComment(comment),
     onSuccess: () => {
       showSuccessToast(t("comment_created_successfully"));
       queryClient.invalidateQueries({ queryKey: ["comments"] });
@@ -44,34 +44,40 @@ export const useCreateComment = () => {
   });
 };
 
-// export const useUpdateComment = () => {
-//   const queryClient = useQueryClient();
-//   const t = useTranslations("toastMessages");
+export const useUpdateComment = () => {
+  const queryClient = useQueryClient();
+  const t = useTranslations("toastMessages");
 
-//   return useMutation({
-//     mutationFn: updateComment,
-//     onSuccess: () => {
-//       showSuccessToast(t("comment_updated_successfully"));
-//       queryClient.invalidateQueries({ queryKey: ["comments"] });
-//     },
-//     onError: () => {
-//       showErrorToast(t("failed_to_update_comment"));
-//     },
-//   });
-// };
+  return useMutation({
+    mutationFn: ({
+      id,
+      data,
+    }: {
+      id: number;
+      data: Partial<CommentBody>;
+    }) => updateComment(id, data),
+    onSuccess: () => {
+      showSuccessToast(t("comment_updated_successfully"));
+      queryClient.invalidateQueries({ queryKey: ["comments"] });
+    },
+    onError: () => {
+      showErrorToast(t("failed_to_update_comment"));
+    },
+  });
+};
 
-// export const useDeleteComment = () => {
-//   const queryClient = useQueryClient();
-//   const t = useTranslations("toastMessages");
+export const useDeleteComments = () => {
+  const queryClient = useQueryClient();
+  const t = useTranslations("toastMessages");
 
-//   return useMutation({
-//     mutationFn: deleteComment,
-//     onSuccess: () => {
-//       showSuccessToast(t("comment_deleted_successfully"));
-//       queryClient.invalidateQueries({ queryKey: ["comments"] });
-//     },
-//     onError: () => {
-//       showErrorToast(t("failed_to_delete_comment"));
-//     },
-//   });
-// };
+  return useMutation({
+    mutationFn: (ids: number[]) => deleteComments(ids),
+    onSuccess: () => {
+      showSuccessToast(t("comment_deleted_successfully"));
+      queryClient.invalidateQueries({ queryKey: ["comments"] });
+    },
+    onError: () => {
+      showErrorToast(t("failed_to_delete_comment"));
+    },
+  });
+};

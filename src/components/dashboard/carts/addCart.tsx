@@ -55,7 +55,7 @@ export default function UseCartForm() {
 
   return (
     <DashContainer>
-      <DashHeader category="Cart" title={t("title")} />
+      <DashHeader  title={t("title")} />
 
       <form
         onSubmit={handleSubmit(submitHandler)}

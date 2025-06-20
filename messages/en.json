@@ -257,7 +257,7 @@
       }
     },
     "users": {
-      "users": "Users",
+      "Users": "Users",
       "addUser": "Add User",
       "add_user": "Add User",
       "edit_user": "Edit User",
@@ -274,6 +274,11 @@
       "location": "Location",
       "select_role_placeholder": "Select a Role",
       "location_placeholder": "Enter Location",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "createdAt": "Created Date",
+      "updatedAt": "Updated Date",
+      "actions": "Actions",
       "roles": {
         "admin": "Admin",
         "user": "User",
@@ -295,7 +300,8 @@
       "competitions": "Competitions",
       "authors": "Authors",
       "Carts": "Carts",
-      "Faqs": "Faqs",
+      "Faqs":"Faqs",
+      "Comments":"Comments",
       "competitions_answers": "Answers",
       "competitions_questions": "Questions",
       "competitions_quizzes": "Quizzes",
@@ -500,7 +506,27 @@
         "ar_answer_required": "Arabic answer is required and must be at least 2 characters",
         "general": "Please fix the errors before submitting"
       }
+    },
+    "comments":{
+      "viewComments":"Comments",
+      "id": "ID",
+      "userName": "User Name",
+      "userEmail": "User Email",
+      "bookTitle": "Book Title",
+      "text": "Comment Text",
+      "likesCount": "Likes",
+      "repliesCount": "Replies",
+      "created_at": "Created Date",
+      "updated_at": "Updated Date",
+      "actions": "Actions",
+      "user": "User",
+      "book": "Book",
+      "likes": "Likes",
+      "replies": "Replies",
+      "viewComment": "View Comment"
+      
     }
+    
   },
   "SideBar": {
     "Home": "Home",
@@ -637,7 +663,7 @@
     },
     "standard": {
       "title": "Standard Plan",
-      "price": "$19.99/month",
+      "price": "$9.99/month",
       "feature1": "Free Reading",
       "feature2": "Unlimited access to the library",
       "feature3": "Download up to 10 books per month",
@@ -645,13 +671,15 @@
     },
     "premium": {
       "title": "Premium Plan",
-      "price": "$29.99/month",
+      "price": "$99.9/yearly",
       "feature1": "Free Reading",
       "feature2": "Unlimited access to the library",
       "feature3": "Download unlimited books",
       "feature4": "Access to translations",
       "feature5": "Exclusive book recommendations",
       "feature6": "VIP support"
-    }
+    },
+    "select": "Select",
+    "alreadySelected": "Already Selected"
   }
 }

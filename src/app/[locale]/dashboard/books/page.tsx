@@ -24,7 +24,7 @@ import {
 } from "@/hooks/react-query/books/useBooksQuery";
 import { Book } from "@/types/book";
 import { Category } from "@/types/category";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
 import DashButton from "@/components/ui/Button";
 import { FaEdit } from "react-icons/fa";
@@ -51,7 +51,7 @@ export default function Books() {
         return { value: title, label: title.toLocaleUpperCase() };
       })
     : [];
-
+  
   const GenreEditCell = (params: GridRenderEditCellParams) => {
     const handleChange = (event: SelectChangeEvent) => {
       params.api.setEditCellValue({
@@ -60,6 +60,7 @@ export default function Books() {
         value: event.target.value,
       });
     };
+    const t = useTranslations("Dashboard.books");
 
     return (
       <Select

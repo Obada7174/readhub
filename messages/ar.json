@@ -270,9 +270,10 @@
       "categories": "التصنيفات",
       "competitions": "المسابقات",
       "Carts": "السلات",
-      "Faqs":"الأسئلة الشائعة",
-      "authors":"المؤلفين",
-      "StaticPages":"الواجهات الثابتة",
+      "Faqs": "الأسئلة الشائعة",
+      "Comments": "التعليقات",
+      "authors": "المؤلفين",
+      "StaticPages": "الواجهات الثابتة",
       "competitions_answers": "أنواع",
       "competitions_questions": "مستويات",
       "competitions_quizzes": "المشاركون",
@@ -282,7 +283,7 @@
       "return_to_site": "العودة للموقع"
     },
     "users": {
-      "users": "المستخدمون",
+      "Users": "المستخدمون",
       "addUser": "إضافة مستخدم",
       "add_user": "إضافة مستخدم",
       "edit_user": "تعديل المستخدم",
@@ -299,6 +300,11 @@
       "location": "الموقع",
       "select_role_placeholder": "اختر الدور",
       "location_placeholder": "أدخل الموقع",
+      "firstName": "الاسم الأول",
+      "lastName": "اسم العائلة",
+      "createdAt": "تاريخ الإنشاء",
+      "updatedAt": "تاريخ التحديث",
+      "actions": "الإجراءات",
       "roles": {
         "admin": "مدير",
         "user": "مستخدم",
@@ -456,7 +462,6 @@
       "submit_button": "حفظ التغييرات",
       "submitting": "جارٍ الحفظ...",
       "success_message": "تم تحديث السؤال بنجاح",
-
       "errors": {
         "en_question_required": "السؤال بالإنجليزية مطلوب ويجب أن يتكون من حروف لا تقل عن 2",
         "ar_question_required": "السؤال بالعربية مطلوب ويجب أن يتكون من حروف لا تقل عن 2",
@@ -479,9 +484,7 @@
       "status_active": "مفعل",
       "status_inactive": "غير مفعل",
       "submit_button": "إضافة",
-
       "success_message": "تم إضافة السؤال الشائع بنجاح",
-
       "error": {
         "en_question_required": "السؤال بالإنجليزية مطلوب (على الأقل حرفين)",
         "ar_question_required": "السؤال بالعربية مطلوب (على الأقل حرفين)",
@@ -489,6 +492,24 @@
         "ar_answer_required": "الإجابة بالعربية مطلوبة (على الأقل حرفين)",
         "something_went_wrong": "حدث خطأ ما، من فضلك حاول مجددًا"
       }
+    },
+    "comments": {
+      "viewComments": "التعليقات",
+      "id": "المعرّف",
+      "userName": "اسم المستخدم",
+      "userEmail": "البريد الإلكتروني",
+      "bookTitle": "عنوان الكتاب",
+      "text": "نص التعليق",
+      "likesCount": "الإعجابات",
+      "repliesCount": "الردود",
+      "created_at": "تاريخ الإنشاء",
+      "updated_at": "تاريخ التعديل",
+      "actions": "الإجراءات",
+      "user": "المستخدم",
+      "book": "الكتاب",
+      "likes": "الإعجابات",
+      "replies": "الردود",
+      "viewComment": "عرض التعليق"
     }
   },
   "columns": {
@@ -550,7 +571,7 @@
     },
     "standard": {
       "title": "الخطة القياسية",
-      "price": "١٩٫٩٩$/شهريًا",
+      "price": "٩٫٩٩$/شهريًا",
       "feature1": "قراءة مجانية",
       "feature2": "وصول غير محدود إلى المكتبة",
       "feature3": "تحميل حتى 10 كتب شهريًا",
@@ -558,14 +579,16 @@
     },
     "premium": {
       "title": "الخطة المميزة",
-      "price": "٢٩٫٩٩$/شهريًا",
+      "price": "٩٩.٩$/سنوياً",
       "feature1": "قراءة مجانية",
       "feature2": "وصول غير محدود إلى المكتبة",
       "feature3": "تحميل غير محدود للكتب",
       "feature4": "الوصول إلى الترجمات",
       "feature5": "توصيات حصرية للكتب",
       "feature6": "دعم VIP"
-    }
+    },
+    "select": "اختر",
+    "alreadySelected": "تم الاختيار"
   },
   "toastMessages": {
     "cartitem_created_successfully": "تم إنشاء عنصر جديد بنجاح",
