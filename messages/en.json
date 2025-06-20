@@ -440,6 +440,33 @@
         "books_fetch_error": "Failed to fetch books. Please try again later."
       }
     },
+    "static-pages":{
+      "add_page": "Add New Page",
+      "edit_page": "Edit Page",
+      "en_title": "English Title",
+      "en_title_placeholder": "Enter page title in English",
+      "en_content": "English Content",
+      "en_content_placeholder": "Write content in English...",
+      "ar_title": "Arabic Title",
+      "ar_title_placeholder": "Enter page title in Arabic",
+      "ar_content": "Arabic Content",
+      "ar_content_placeholder": "Write content in Arabic...",
+      "url": "URL Path",
+      "is_published": "Published",
+      "submitting": "Submitting...",
+      "save_changes": "Save Changes",
+      "updatedAt":"Updated At",
+      "createdAt":"Created At",
+      "actions":"Actions",
+      "errors": {
+        "en_title_required": "English title is required and must be at least 2 characters.",
+        "en_content_required": "English content is required and must be at least 10 characters.",
+        "ar_title_required": "Arabic title is required and must be at least 2 characters.",
+        "ar_content_required": "Arabic content is required and must be at least 10 characters.",
+        "url_invalid": "URL path is invalid. Example: /about-us",
+        "is_published_required": "Published status is required."
+      }
+    },
     "faq_columns": {
       "id": "ID",
       "question": "Question",

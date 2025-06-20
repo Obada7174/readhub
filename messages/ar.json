@@ -282,6 +282,33 @@
       "Copons": "الكوبونات",
       "return_to_site": "العودة للموقع"
     },
+    "static-pages":{
+      "edit_page": "تعديل الصفحة",
+      "en_title": "العنوان الإنجليزي",
+      "en_title_placeholder": "أدخل العنوان باللغة الإنجليزية",
+      "en_content": "المحتوى الإنجليزي",
+      "en_content_placeholder": "اكتب المحتوى بالإنجليزية...",
+      "ar_title": "العنوان العربي",
+      "ar_title_placeholder": "أدخل العنوان باللغة العربية",
+      "ar_content": "المحتوى العربي",
+      "ar_content_placeholder": "اكتب المحتوى بالعربية...",
+      "url": "رابط الصفحة",
+      "is_published": "حالة النشر",
+      "submitting": "جاري الإرسال...",
+      "add_page": "إضافة صفحة",
+      "save_changes": "حفظ التغييرات",
+      "updatedAt": "تاريخ التحديث",
+      "createdAt": "تاريخ الإنشاء",
+      "actions":"الإجراءات",
+      "errors": {
+        "en_title_required": "العنوان الإنجليزي مطلوب ويجب أن يكون على الأقل حرفين.",
+        "en_content_required": "المحتوى الإنجليزي مطلوب ويجب أن يكون على الأقل 10 أحرف.",
+        "ar_title_required": "العنوان العربي مطلوب ويجب أن يكون على الأقل حرفين.",
+        "ar_content_required": "المحتوى العربي مطلوب ويجب أن يكون على الأقل 10 أحرف.",
+        "url_invalid": "الرابط غير صالح. مثال: /about-us",
+        "is_published_required": "حالة النشر مطلوبة."
+      }
+    },
     "users": {
       "Users": "المستخدمون",
       "addUser": "إضافة مستخدم",
