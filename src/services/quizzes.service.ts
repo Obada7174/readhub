@@ -1,5 +1,5 @@
 import axios from "@/services/axios";
-import {Quiz ,QuizIndexResponse,CreateQuiz} from "@/types/competitions";
+import {Quiz ,QuizIndexResponse,CreateQuiz ,QuizOption} from "@/types/competitions";
 
 export const getQuizzes = async (
   page = 1,
@@ -21,7 +21,7 @@ export const createQuiz = async (quiz: Omit<CreateQuiz, "id">): Promise<CreateQu
   return res.data;
 };
 
-export const updateQuiz = async (id: number, payload: Quiz): Promise<Quiz> => {
+export const updateQuiz = async (id: number, payload: CreateQuiz): Promise<Quiz> => {
   const res = await axios.patch(`/quizzes/${id}`, payload);
   return res.data;
 };
@@ -40,6 +40,11 @@ export const getQuizzesWinners = async (
   const res = await axios.get("http://localhost:5000/quiz-winners", {
     params: { page, limit, search },
   });
+  return res.data;
+};
+
+export const getQuizzesOptions = async (): Promise<QuizOption[]> => {
+  const res = await axios.get("http://127.0.0.1:5000/quizzes/all-formatted");
   return res.data;
 };
 

@@ -1,40 +1,36 @@
 'use client';
 
-import { useUserQuery } from '@/hooks/react-query/users/useUsersQuery';
-import { useUpdateUser } from '@/hooks/react-query/users/useUsersQuery';
-import UserForm from '@/components/dashboard/users/UserForm';
+import { useQuizQuery } from '@/hooks/react-query/quizzes/useQuizzesQuery';
+import { useUpdateQuiz } from '@/hooks/react-query/quizzes/useQuizzesQuery';
 import { useParams } from 'next/navigation';
-import { UpdateUserPayload } from '@/types/user';
+import { CreateQuiz } from '@/types/competitions';
+import QuizForm from '@/components/dashboard/competitions/quizzes/QuizForm';
 
 export default function EditUser() {
     const params = useParams<{ id: string }>();
-    const userId = parseInt(params.id);
-    const { data: user, isLoading } = useUserQuery(userId);
-    const updateUserMutation = useUpdateUser();
+    const quizId = parseInt(params.id);
+    const { data: quiz, isLoading } = useQuizQuery(quizId);
+    const updateQuizMutation = useUpdateQuiz();
 
-    if (isLoading || !user) return <div>جارٍ التحميل...</div>;
+    if (isLoading || !quiz) return <div>جارٍ التحميل...</div>;
 
-    const handleUpdate = async (data: UpdateUserPayload) => {
+    const handleUpdate = async (data: CreateQuiz) => {
         const updateData = {
-            first_name: data?.first_name,
-            last_name: data?.last_name,
-            email: data?.email,
-            role: data?.role,
-            location: data?.location
+            title: data?.title,
+            ar_title: data?.ar_title,
+            bookId: data?.bookId
         };
 
-        await updateUserMutation.mutateAsync({ id: userId, data: updateData });
+        await updateQuizMutation.mutateAsync({ id: quizId, data: updateData });
     };
 
     return (
-        <UserForm
+        <QuizForm
             mode="edit"
             defaultValues={{
-                first_name: user.first_name,
-                last_name: user.last_name,
-                email: user.email,
-                role: user.role,
-                location: user.location
+                title: quiz.title,
+                ar_title: quiz.ar_title,
+                bookId: quiz.book.id,
             }}
             onSubmit={handleUpdate}
         />

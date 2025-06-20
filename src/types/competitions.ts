@@ -13,7 +13,49 @@ export type CreateQuiz = {
     bookId:number;
 };
 
+export interface QuestionFormValues {
+  bookId?: number;
+  quizId?: number;
+  question_text: string;
+  option_a: string;
+  option_b: string;
+  option_c: string;
+  option_d: string;
+  correct_option: string;
 
+  ar_question_text: string;
+  ar_option_a: string;
+  ar_option_b: string;
+  ar_option_c: string;
+  ar_option_d: string;
+}
+
+export interface QuestionPayload {
+  bookId: number | undefined;
+  quizId?: number | undefined;
+  question_text: string;
+  option_a: string;
+  option_b: string;
+  option_c: string;
+  option_d: string;
+  correct_option: string;
+  translations: {
+      lang: string;
+      question_text: string;
+      option_a: string;
+      option_b: string;
+      option_c: string;
+      option_d: string;
+  }[];
+}
+
+export type QuizOption = {
+  id:number,
+  title:{
+    en:string,
+    ar:string
+  }
+}
 export interface Question {
   id: number;
   bookId: number;

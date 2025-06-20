@@ -243,9 +243,8 @@
     "quizzes": {
       "add_quiz": "Add Quiz",
       "edit_quiz": "Edit Quiz",
-      "ar_title":"Quiz Title (Arabic)",
+      "ar_title": "Quiz Title (Arabic)",
       "ar_title_placeholder": "Enter quiz title in Arabic",
-      
       "title": "Quiz Title (English)",
       "title_placeholder": "Enter quiz title",
       "book_id": "Related Book",
@@ -393,6 +392,8 @@
       "submit_edit_result": "Save Changes"
     },
     "question": {
+      "quiz_id": "Quiz",
+      "select_quiz_placeholder": "Select a quiz",
       "add_question_answer": "Add Question Answer",
       "edit_question_answer": "Edit Question Answer",
       "question_id": "Question ID",
@@ -410,7 +411,28 @@
       "incorrect": "Incorrect",
       "select_correctness": "Select correctness",
       "add_answer": "Add Answer",
-      "update_answer": "Update Answer"
+      "update_answer": "Update Answer",
+      "add_question": "Add Question",
+      "edit_question": "Edit Question",
+      "book_id": "Book",
+      "select_book_placeholder": "Select a book",
+      "question_text": "Question Text",
+      "correct_option": "Correct Option",
+      "translation_ar": "Arabic Translation",
+      "ar_question_text": "Arabic Question Text",
+      "ar_option_a": "Arabic Option A",
+      "ar_option_b": "Arabic Option B",
+      "ar_option_c": "Arabic Option C",
+      "ar_option_d": "Arabic Option D",
+      "submitting": "Submitting...",
+      "save_changes": "Save Changes",
+      "errors": {
+        "question_required": "Question text is required and must be at least 2 characters.",
+        "quiz_required": "Quiz is required",
+        "correct_option_required": "Correct option is required.",
+        "book_required": "Please select a book.",
+        "books_fetch_error": "Failed to fetch books. Please try again later."
+      }
     },
     "faq_columns": {
       "id": "ID",
@@ -446,9 +468,7 @@
       "status_active": "Active",
       "status_inactive": "Inactive",
       "submit_button": "Add",
-
       "success_message": "FAQ added successfully",
-
       "error": {
         "en_question_required": "English question is required (min 2 characters)",
         "ar_question_required": "Arabic question is required (min 2 characters)",
@@ -473,7 +493,6 @@
       "submit_button": "Save Changes",
       "submitting": "Saving...",
       "success_message": "FAQ updated successfully",
-
       "errors": {
         "en_question_required": "English question is required and must be at least 2 characters",
         "ar_question_required": "Arabic question is required and must be at least 2 characters",

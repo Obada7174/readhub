@@ -3,7 +3,6 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
-
 import Input from '@/components/dashboard/Input';
 import Select from '@/components/dashboard/Select';
 import DashContainer from '@/components/dashboard/DashContainer';
@@ -11,6 +10,8 @@ import DashHeader from '@/components/dashboard/Header';
 import DashButton from '@/components/ui/Button';
 import { useBooksOptions } from '@/hooks/react-query/books/useBooksQuery';
 import { QuizFormValues } from '@/lib/validators/quiz.validator';
+import { useEffect } from 'react';
+import { useMemo } from 'react';
 
 
 interface QuizFormProps {
@@ -30,6 +31,7 @@ export default function QuizForm({ mode, defaultValues, onSubmit }: QuizFormProp
         handleSubmit,
         setValue,
         setError,
+        watch,
         formState: { errors, isSubmitting },
     } = useForm<QuizFormValues>({
         defaultValues: defaultValues || {
@@ -38,6 +40,26 @@ export default function QuizForm({ mode, defaultValues, onSubmit }: QuizFormProp
             bookId: undefined,
         },
     });
+    const watchedBookId = watch('bookId');
+
+
+
+    const bookOptions = useMemo(() => {
+        return books?.map((book) => ({
+            value: book.id,
+            label: book.title[locale as keyof typeof book.title],
+        })) || [];
+
+    }, [books, locale]);
+    useEffect(() => {
+        if (defaultValues?.bookId) {
+            const exists = bookOptions.some(opt => opt.value === defaultValues.bookId);
+            if (exists) {
+                setValue('bookId', defaultValues.bookId);
+            }
+        }
+    }, [defaultValues?.bookId, bookOptions, setValue]);
+
 
     const submitHandler: SubmitHandler<QuizFormValues> = async (data) => {
         const validationErrors: Partial<Record<keyof QuizFormValues, string>> = {};
@@ -82,10 +104,6 @@ export default function QuizForm({ mode, defaultValues, onSubmit }: QuizFormProp
         );
     }
 
-    const bookOptions = books?.map((book) => ({
-        value: book.id,
-        label: book.title[locale as keyof typeof book.title],
-    })) || [];
 
     return (
         <DashContainer>
@@ -105,11 +123,17 @@ export default function QuizForm({ mode, defaultValues, onSubmit }: QuizFormProp
                     error={errors.ar_title?.message}
                 />
 
+
                 <Select
                     label={t('book_id')}
                     options={bookOptions}
                     placeholder={t('select_book_placeholder')}
-                    onChange={(e) => setValue('bookId', Number(e.target.value))}
+                    value={watchedBookId ?? ''}
+                    name="bookId"
+                    onChange={(e) => {
+                        const selectedValue = Number(e.target.value);
+                        setValue('bookId', selectedValue);
+                    }}
                     error={errors.bookId?.message}
                 />
 

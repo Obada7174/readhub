@@ -34,10 +34,10 @@ export const links = [
         url: "/dashboard/competitions",
         children: [
           { name: "quizzes", url: "/dashboard/competitions/quizzes", icon: <LuFileQuestion />},
-          { name: "winners", url: "/dashboard/competitions/winners", icon: <GiPodiumWinner />},
+          { name: "winners", url: "/dashboard/competitions/quizzes-winners", icon: <GiPodiumWinner />},
           { name: "questions", url: "/dashboard/competitions/book-questions", icon: <MdOutlineQuiz />},
-          { name: "results", url: "/dashboard/competitions/results", icon: <MdOutlineAssignmentTurnedIn /> },
-          { name: "answers", url: "/dashboard/competitions/answers", icon: <IoDocumentTextOutline /> }
+          { name: "results", url: "/dashboard/competitions/quizzes-results", icon: <MdOutlineAssignmentTurnedIn /> },
+          { name: "answers", url: "/dashboard/competitions/quizzes-answers", icon: <IoDocumentTextOutline /> }
         ],
         roleShow: ["admin"],
       },
