@@ -706,5 +706,28 @@
     "success": "تم إرسال رسالتك بنجاح!",
     "error": "حدث خطأ، يرجى المحاولة مرة أخرى.",
     "sending": "جارٍ الإرسال..."
+  },
+  "Panel":{
+    "edit_account":{
+      "title": "تعديل الحساب",
+      "first_name_label": "الاسم الأول",
+      "first_name_placeholder": "أدخل الاسم الأول",
+      "last_name_label": "اسم العائلة",
+      "last_name_placeholder": "أدخل اسم العائلة",
+      "location_label": "الموقع",
+      "location_placeholder": "أدخل موقعك",
+      "role_label": "الدور",
+      "role_placeholder": "مثال: user أو admin",
+      "email_label": "البريد الإلكتروني",
+      "email_placeholder": "أدخل بريدك الإلكتروني",
+      "password_label": "كلمة المرور",
+      "password_placeholder": "أدخل كلمة المرور",
+      "img_label": "الصورة الشخصية",
+      "submit_button": "حفظ التعديلات",
+      "success_message": "تم تحديث الحساب بنجاح",
+      "error_message": "حدث خطأ أثناء تحديث الحساب",
+      "required": "هذا الحقل مطلوب"
+    }
+    
   }
 }

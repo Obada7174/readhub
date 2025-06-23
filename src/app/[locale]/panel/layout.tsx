@@ -1,3 +1,5 @@
+// PanelLayout.tsx
+
 'use client';
 
 import Sidebar from '@/components/panel/sidebar';
@@ -5,8 +7,12 @@ import Header from '@/components/panel/header';
 import { useEffect, useState } from 'react';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import ThemeSwitcher from '@/components/ThemeSwitcher';
+import { useLocale } from 'next-intl';
 
 export default function PanelLayout({ children }: { children: React.ReactNode }) {
+  const locale = useLocale();
+  const isRTL = locale === 'ar';
+
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isLargeScreen, setIsLargeScreen] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
@@ -15,34 +21,38 @@ export default function PanelLayout({ children }: { children: React.ReactNode })
     const handleResize = () => {
       const large = window.innerWidth >= 768;
       setIsLargeScreen(large);
-      const mobile = window.innerWidth < 768;
-      setIsMobile(mobile);
-      if (large) {
-        setIsSidebarOpen(true);
-      }
+      setIsMobile(!large);
+      if (large) setIsSidebarOpen(true);
     };
-
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  let contentMarginClass = 'm-0';
+  if (isLargeScreen) {
+    if (isSidebarOpen) {
+      contentMarginClass = isRTL ? 'mr-48' : 'ml-48'; // أقل من 64 (16rem)
+    } else {
+      contentMarginClass = isRTL ? 'mr-20' : 'ml-20';
+    }
+  }
 
   return (
     <>
       <Header isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
 
       <div className="flex h-screen bg-gray-100 dark:bg-gray-800">
-        {/* Sidebar + Mobile Switchers */}
         <Sidebar
           isSidebarOpen={isSidebarOpen}
           setIsSidebarOpen={setIsSidebarOpen}
-
           languageSwitcher={isMobile ? <LanguageSwitcher /> : undefined}
           themeSwitcher={isMobile ? <ThemeSwitcher /> : undefined}
         />
 
-        {/* Main Content */}
-        <main className={`flex-1 p-6 overflow-auto transition-all duration-300 ${isLargeScreen ? 'ml-64' : 'ml-0'}`}>
+        <main
+          className={`flex-1 p-6 overflow-auto transition-all duration-300 ${contentMarginClass}`}
+        >
           {children}
         </main>
 
@@ -50,7 +60,7 @@ export default function PanelLayout({ children }: { children: React.ReactNode })
           <div
             className="fixed inset-0 bg-gray-100 dark:bg-gray-800 bg-opacity-50 z-30 md:hidden"
             onClick={() => setIsSidebarOpen(false)}
-          ></div>
+          />
         )}
       </div>
     </>
