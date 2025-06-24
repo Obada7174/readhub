@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import Link from "@mui/material/Link";
 import { FcGoogle } from "react-icons/fc";
-
+import Cookies from 'js-cookie';
 export default function Page() {
   const t = useTranslations("signup"); 
 
@@ -63,9 +63,10 @@ export default function Page() {
     if (window.location.pathname === "/auth/google/callback") {
       handleGoogleCallback(window.location.href)
         .then((result) => {
-          localStorage.setItem("access_token", result.access_token);
-          localStorage.setItem("user", JSON.stringify(result.user));
-          console.log("✓ Token stored in localStorage:", result.access_token);
+          Cookies.set("access_token", result.access_token, { expires: 7 });
+          Cookies.set("user", JSON.stringify(result.user), { expires: 7 });
+  
+          console.log("✓ Token stored in cookies:", result.access_token);
           setSuccessMessage(t("successMessage"));
         })
         .catch((err) => {
@@ -74,6 +75,7 @@ export default function Page() {
         });
     }
   }, [t]);
+  
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 dark:bg-gray-900 overflow-y-auto">

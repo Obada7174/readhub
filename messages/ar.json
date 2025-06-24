@@ -44,7 +44,10 @@
     "competitions": "المسابقات",
     "contact": "تواصل معنا",
     "categories": "التصنيفات",
-    "search": "البحث"
+    "search": "البحث",
+    "logout":"تسجيل الخروج",
+    "panel":"لوحة التحكم",
+    "login":"تسجيل الدخول"
   },
   "footer": {
     "about": {

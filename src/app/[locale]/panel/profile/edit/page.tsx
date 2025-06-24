@@ -1,13 +1,13 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import axios from 'axios';
 import Input from '@/components/dashboard/Input';
 import DashContainer from '@/components/dashboard/DashContainer';
 import DashHeader from '@/components/dashboard/Header';
-import Button from '@/components/dashboard/Button';
 import { useTranslations } from 'next-intl';
+import { useUser } from '@/hooks/userContext';
 
 type FormValues = {
   first_name: string;
@@ -21,15 +21,50 @@ type FormValues = {
 
 export default function UserEditForm() {
   const t = useTranslations('Panel.edit_account');
+  const { user, setUser } = useUser();
 
   const {
     register,
     handleSubmit,
+    setValue,
+    watch,
     formState: { errors },
-  } = useForm<FormValues>();
+  } = useForm<FormValues>({
+    defaultValues: {
+      first_name: user?.first_name || '',
+      last_name: user?.last_name || '',
+      location: user?.location || '',
+      role: user?.role || '',
+      email: user?.email || '',
+    },
+  });
 
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean>(false);
+  const [previewImg, setPreviewImg] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (user) {
+      setValue('first_name', user.first_name);
+      setValue('last_name', user.last_name);
+      setValue('location', user.location || '');
+      setValue('role', user.role);
+      setValue('email', user.email);
+      setPreviewImg(user.img || null);
+    }
+  }, [user, setValue]);
+
+  const watchImg = watch('img');
+  useEffect(() => {
+    if (watchImg && watchImg.length > 0) {
+      const file = watchImg[0];
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setPreviewImg(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  }, [watchImg]);
 
   const submitHandler: SubmitHandler<FormValues> = async (data) => {
     setError(null);
@@ -43,55 +78,73 @@ export default function UserEditForm() {
       formData.append('role', data.role ?? '');
       formData.append('email', data.email ?? '');
 
-      // إضافة كلمة المرور فقط إذا كانت غير فارغة
       if (data.password?.trim()) {
         formData.append('password', data.password);
       }
 
-      // إضافة الصورة إذا تم رفعها
       if (data.img && data.img.length > 0 && data.img[0]) {
         formData.append('img', data.img[0]);
       }
 
-      // ✅ طباعة البيانات للـ Debug
-      for (let [key, value] of formData.entries()) {
-        console.log(`${key}:`, value);
-      }
-
-      const response = await axios.patch('http://localhost:5000/users/6', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-          Accept: 'application/json',
-        },
-      });
+      const response = await axios.patch(
+        `http://localhost:5000/users/${user?.id}`,
+        formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+            Accept: 'application/json',
+          },
+        }
+      );
 
       if (response.status === 200) {
         setSuccess(true);
+        setUser(response.data);
       }
     } catch (err: any) {
-      console.error('Error object:', err);
-      console.error('Response data:', err.response?.data);
-
       const message = err?.response?.data?.message || t('error_message');
       setError(message);
     }
   };
 
+  if (!user) {
+    return <div className="text-center p-10">{t('loading')}</div>;
+  }
+
   return (
     <DashContainer>
       <DashHeader title={t('title')} />
 
-      {error && <div className="text-red-500 text-center mb-4">{error}</div>}
-      {success && (
-        <div className="text-green-500 text-center mb-4">
-          {t('success_message')}
-        </div>
-      )}
+      {error && <div className="text-red-600 text-center mb-4 font-medium">{error}</div>}
+      {success && <div className="text-green-600 text-center mb-4 font-medium">{t('success_message')}</div>}
 
       <form
         onSubmit={handleSubmit(submitHandler)}
-        className="space-y-6 max-w-3xl mx-auto"
+        className="space-y-6 max-w-3xl mx-auto bg-white dark:bg-gray-900 p-8 rounded-3xl shadow-xl"
+        encType="multipart/form-data"
       >
+        <h2 className="text-2xl font-bold text-[#36419B] text-center mb-4">{t('title')}</h2>
+
+        <div className="flex flex-col items-center mb-6">
+          <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-[#36419B] shadow-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center">
+            {previewImg ? (
+              <img
+                src={previewImg}
+                alt="Preview"
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <div className="text-gray-500">No Image</div>
+            )}
+          </div>
+          <input
+            type="file"
+            accept="image/*"
+            {...register('img')}
+            className="mt-4"
+          />
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <Input
             label={t('first_name_label')}
@@ -111,7 +164,7 @@ export default function UserEditForm() {
           <Input
             label={t('location_label')}
             placeholder={t('location_placeholder')}
-            {...register('location', { required: t('required') })}
+            {...register('location')}
             error={errors.location?.message}
           />
           <Input
@@ -139,24 +192,12 @@ export default function UserEditForm() {
           />
         </div>
 
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            {t('img_label')}
-          </label>
-          <input
-            type="file"
-            accept="image/*"
-            {...register('img')}
-            className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50"
-          />
-        </div>
-
-        <Button
-          text={t('submit_button')}
+        <button
           type="submit"
-          className="w-full mt-4"
-          borderRadius="8px"
-        />
+          className="w-full mt-4 bg-[#36419B] hover:bg-[#2e377f] text-white font-semibold py-3 rounded-xl shadow-md transition"
+        >
+          {t('submit_button')}
+        </button>
       </form>
     </DashContainer>
   );

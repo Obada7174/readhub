@@ -1,113 +1,140 @@
-"use client";
+'use client';
 
 import React from "react";
-import { MdOutlineAlternateEmail } from "react-icons/md";
+import { useRouter } from "next/navigation";
+import {
+  MdModeEditOutline,
+  MdOutlineAlternateEmail,
+  MdJoinRight,
+  MdVerifiedUser,
+} from "react-icons/md";
 import { IoLocation } from "react-icons/io5";
-import { MdVerifiedUser, MdJoinRight } from "react-icons/md";
-import { FaRegCheckCircle, FaRegTimesCircle } from "react-icons/fa";
 import { FaUserCircle } from "react-icons/fa";
-import { MdModeEditOutline } from "react-icons/md";
-
-type User = {
-  id: number;
-  first_name: string;
-  last_name: string;
-  location: string;
-  role: string;
-  email: string;
-  img: string;
-  created_at: string;
-  last_login_at: string;
-  isVerified: boolean;
-  isSubscribed: boolean;
-  subscriptionType?: string | null;
-  subscriptionEndsAt?: string | null;
-};
-
-const mockUser: User = {
-  id: 1,
-  first_name: "Johne",
-  last_name: "Doe",
-  location: "New York",
-  role: "user",
-  email: "john.doe@example.com",
-  img: "https://randomuser.me/api/portraits/men/1.jpg",
-  created_at: "2023-01-15T06:00:00.000Z",
-  last_login_at: "2023-05-18T11:30:00.000Z",
-  isVerified: true,
-  isSubscribed: false,
-};
+import { BiUserCheck } from "react-icons/bi";
+import { useUser } from "@/hooks/userContext";
 
 export default function UserProfilePage() {
-  const user = mockUser;
+  const router = useRouter();
+  const { user } = useUser();
+
+  if (!user) {
+    return (
+      <div className="text-center p-10 text-gray-500 dark:text-gray-400">
+        Loading profile...
+      </div>
+    );
+  }
+
+  const baseURL = "http://localhost:5000"; 
+
+  const imageUrl = user.img
+    ? user.img.startsWith("http")
+      ? user.img
+      : user.img.startsWith("/")
+      ? baseURL + user.img
+      : baseURL + "/" + user.img
+    : null;
+
+  const goToEditProfile = () => {
+    router.push("profile/edit");
+  };
 
   return (
-    <div className="max-w-6xl mx-auto bg-white dark:bg-gray-900 rounded-2xl shadow-lg p-10 mt-10">
-      {/* Title */}
-      <h1 className="text-3xl font-bold text-gray-800 dark:text-white mb-8 border-b pb-4 flex items-center gap-2">
-        <FaUserCircle className="text-blue-600" size={28} />
+    <div className="w-full max-w-5xl mx-auto bg-white dark:bg-gray-900 rounded-3xl shadow-xl p-8 md:p-12 mt-14">
+      <h1 className="text-3xl font-extrabold text-gray-900 dark:text-white mb-10 flex items-center gap-3">
+        <FaUserCircle className="text-[#36419B]" size={32} />
         Account Information
       </h1>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-        {/* Left Column: Image and Edit */}
-        <div className="flex flex-col items-center">
-          <img
-            src={user.img}
-            alt={`${user.first_name} ${user.last_name}`}
-            className="w-40 h-40 rounded-full border-4 border-blue-500 shadow-lg object-cover"
-          />
-          <h2 className="text-xl font-semibold mt-4 text-gray-800 dark:text-white">
+      <div className="flex flex-col md:flex-row items-center md:items-start gap-12">
+      
+        <div className="flex flex-col items-center w-full md:w-1/3">
+          <div className="w-40 h-40 rounded-full border-4 border-[#36419B]  shadow-lg overflow-hidden bg-gray-100 dark:bg-gray-700 flex items-center justify-center transition-transform hover:scale-105 duration-300">
+            {imageUrl ? (
+              <img
+                src={imageUrl}
+                alt={`${user.first_name} ${user.last_name}`}
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <FaUserCircle
+                className="text-gray-400 dark:text-gray-300"
+                size={96}
+              />
+            )}
+          </div>
+          <h2 className="text-2xl font-semibold mt-6 text-gray-900 dark:text-white text-center">
             {user.first_name} {user.last_name}
           </h2>
-          <p className="text-sm text-gray-500 dark:text-gray-400">
+          <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 capitalize text-center">
             {user.role}
           </p>
-          <button className="flex items-center mt-6 px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition cursor-pointer">
-  <MdModeEditOutline className="mr-2" size={20} />
-  Edit Profile
-</button>
-
+          <button
+            onClick={goToEditProfile}
+            className="mt-8 inline-flex items-center gap-2 px-6 py-2 bg-[#36419B]  text-white rounded-full shadow-lg
+              hover:bg-[#36419B] focus:outline-none focus:ring-2 focus:ring-[#36419B]  transition"
+          >
+            <MdModeEditOutline size={20} />
+            Edit Profile
+          </button>
         </div>
 
-        {/* Right Column: Info */}
-        <div className="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div className="w-full md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-6">
           <InfoItem
             label="Email"
-            icon={<MdOutlineAlternateEmail className="text-lg" />}
+            icon={<MdOutlineAlternateEmail className="text-[#36419B] " />}
             value={user.email}
           />
           <InfoItem
             label="Location"
-            icon={<IoLocation className="text-lg" />}
-            value={user.location}
+            icon={<IoLocation className="text-[#36419B] " />}
+            value={user.location || "Not set"}
           />
           <InfoItem
-            label="Verified"
-            icon={<MdVerifiedUser className="text-lg" />}
-            value={user.isVerified ? "Yes" : "No"}
+            label="Role"
+            icon={<BiUserCheck className="text-[#36419B] " />}
+            value={user.role}
           />
           <InfoItem
-            label="Joined"
-            icon={<MdJoinRight className="text-lg" />}
+            label="Joined At"
+            icon={<MdJoinRight className="text-[#36419B] " />}
             value={new Date(user.created_at).toLocaleDateString()}
           />
           <InfoItem
-            label="Subscription"
-            icon={
-              user.isSubscribed ? (
-                <FaRegCheckCircle className="text-green-600" />
-              ) : (
-                <FaRegTimesCircle className="text-red-500" />
-              )
-            }
+            label="Last Login"
+            icon={<MdVerifiedUser className="text-[#36419B] " />}
             value={
-              user.isSubscribed
-                ? `Yes (${user.subscriptionType}) until ${new Date(
-                    user.subscriptionEndsAt!
-                  ).toLocaleDateString()}`
-                : "No"
+              user.last_login_at
+                ? new Date(user.last_login_at).toLocaleString()
+                : "Unknown"
             }
+          />
+          <InfoItem
+            label="Last Updated"
+            icon={<MdModeEditOutline className="text-[#36419B] " />}
+            value={
+              user.updated_at
+                ? new Date(user.updated_at).toLocaleString()
+                : "Not updated yet"
+            }
+          />
+          <InfoItem
+            label="Verified"
+            icon={
+              <MdVerifiedUser
+                className={`text-${user.isVerified ? "green" : "red"}-500`}
+              />
+            }
+            value={user.isVerified ? "Yes" : "No"}
+          />
+          <InfoItem
+            label="Subscribed"
+            icon={
+              <MdOutlineAlternateEmail
+                className={`text-${user.isSubscribed ? "green" : "red"}-500`}
+              />
+            }
+            value={user.isSubscribed ? "Yes" : "No"}
           />
         </div>
       </div>
@@ -125,13 +152,16 @@ function InfoItem({
   icon: React.ReactNode;
 }) {
   return (
-    <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg shadow-sm border dark:border-gray-700">
-      <p className="flex items-center text-sm text-gray-500 dark:text-gray-400 gap-2 mb-1">
-        {icon} {label}
-      </p>
-      <p className="text-md font-medium text-gray-800 dark:text-white">
-        {value}
-      </p>
+    <div className="bg-gray-50 dark:bg-gray-800 p-5 rounded-2xl shadow-md border border-gray-200 dark:border-gray-700 flex items-start gap-4 min-w-0">
+      <div className="text-[#36419B]  text-2xl flex-shrink-0">{icon}</div>
+      <div className="min-w-0">
+        <p className="text-sm font-semibold text-gray-600 dark:text-gray-300 mb-1 truncate">
+          {label}
+        </p>
+        <p className="text-base font-medium text-gray-900 dark:text-white break-words overflow-auto max-w-full whitespace-pre-wrap">
+          {value}
+        </p>
+      </div>
     </div>
   );
 }

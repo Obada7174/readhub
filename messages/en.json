@@ -39,7 +39,10 @@
     "categories": "Categories",
     "competitions": "Competitions",
     "contact": "Contact",
-    "search": "Search"
+    "search": "Search",
+    "logout":"Logout",
+    "panel":"Panel",
+    "login":"Login"
   },
   "BooksPage": {
     "categories": "Categories",

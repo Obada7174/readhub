@@ -1,5 +1,3 @@
-// PanelLayout.tsx
-
 'use client';
 
 import Sidebar from '@/components/panel/sidebar';
@@ -8,6 +6,7 @@ import { useEffect, useState } from 'react';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import ThemeSwitcher from '@/components/ThemeSwitcher';
 import { useLocale } from 'next-intl';
+import { UserProvider } from '@/context/userContext';
 
 export default function PanelLayout({ children }: { children: React.ReactNode }) {
   const locale = useLocale();
@@ -32,14 +31,14 @@ export default function PanelLayout({ children }: { children: React.ReactNode })
   let contentMarginClass = 'm-0';
   if (isLargeScreen) {
     if (isSidebarOpen) {
-      contentMarginClass = isRTL ? 'mr-48' : 'ml-48'; // أقل من 64 (16rem)
+      contentMarginClass = isRTL ? 'mr-48' : 'ml-48';
     } else {
       contentMarginClass = isRTL ? 'mr-20' : 'ml-20';
     }
   }
 
   return (
-    <>
+    <UserProvider>
       <Header isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
 
       <div className="flex h-screen bg-gray-100 dark:bg-gray-800">
@@ -50,9 +49,7 @@ export default function PanelLayout({ children }: { children: React.ReactNode })
           themeSwitcher={isMobile ? <ThemeSwitcher /> : undefined}
         />
 
-        <main
-          className={`flex-1 p-6 overflow-auto transition-all duration-300 ${contentMarginClass}`}
-        >
+        <main className={`flex-1 p-6 overflow-auto transition-all duration-300 ${contentMarginClass}`}>
           {children}
         </main>
 
@@ -63,6 +60,6 @@ export default function PanelLayout({ children }: { children: React.ReactNode })
           />
         )}
       </div>
-    </>
+    </UserProvider>
   );
 }
