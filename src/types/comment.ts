@@ -45,3 +45,29 @@ export interface CommentBody {
   userId: number;
   bookId: number;
 }
+export interface BookCommentsResponse {
+  id: number;
+  title: string;
+  comments: BookComment[];
+}
+
+export interface BookComment {
+  id: number;
+  text: string;
+  created_at: string;
+  user: {
+    id: number;
+    first_name: string;
+    last_name: string;
+    img: string;
+  };
+  likes: {
+    id: number;
+    user: {
+      id: number;
+      first_name: string;
+      last_name: string;
+    };
+  }[];
+  replies: any[]; 
+}

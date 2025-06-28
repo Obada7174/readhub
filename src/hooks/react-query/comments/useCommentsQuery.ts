@@ -5,8 +5,9 @@ import {
   createComment,
   updateComment,
   deleteComments,
+  getBookComments,
 } from "@/services/comments.service";
-import { CommentBody, CommentsResponse, Comment } from "@/types/comment";
+import { CommentBody, CommentsResponse, Comment, BookCommentsResponse } from "@/types/comment";
 import { useTranslations } from "next-intl";
 import { showErrorToast, showSuccessToast } from "@/helpers/Toast";
 
@@ -79,5 +80,12 @@ export const useDeleteComments = () => {
     onError: () => {
       showErrorToast(t("failed_to_delete_comment"));
     },
+  });
+};
+export const useBookCommentsQuery = (bookId: string | number) => {
+  return useQuery<BookCommentsResponse>({
+    queryKey: ["book-comments", bookId],
+    queryFn: () => getBookComments(bookId),
+    enabled: !!bookId,
   });
 };

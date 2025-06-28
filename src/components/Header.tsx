@@ -50,7 +50,7 @@ export default function Header() {
     };
   
     checkAuth();
-    window.addEventListener("storage", checkAuth); // هذا لن يعمل للكوكيز لكنه آمن للإبقاء
+    window.addEventListener("storage", checkAuth); 
   
     return () => {
       window.removeEventListener("storage", checkAuth);
@@ -60,18 +60,15 @@ export default function Header() {
   const handleLogout = () => {
     Cookies.remove("access_token");
     Cookies.remove("user");
-    setIsLoggedIn(false);
-    setUser(null);
-    setShowDropdown(false);
+    localStorage.setItem("auth_event", Date.now().toString());
+    window.location.href = "/";
   };
-
+  
   return (
     <header className="border-b border-gray-300 bg-gray-200 dark:bg-gray-900 dark:border-gray-700 shadow-lg fixed w-full top-0 left-0 z-50">
       <div className="container mx-auto px-4 py-1.5">
         <div className="flex items-center justify-between">
           <Logo />
-
-          {/* الروابط */}
           <nav className="hidden md:flex items-center space-x-8">
             <Link href="/" className="text-gray-800 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white duration-150">{t("navigation.home")}</Link>
             <Link href="/books" className="text-gray-800 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white duration-150">{t("navigation.books")}</Link>
@@ -79,8 +76,6 @@ export default function Header() {
             <Link href="/categories" className="text-gray-800 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white duration-150">{t("navigation.categories")}</Link>
             <Link href="/competitions" className="text-gray-800 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white duration-150">{t("navigation.competitions")}</Link>
           </nav>
-
-          {/* أدوات البحث وغيرها */}
           <div className="hidden md:flex items-center space-x-4">
             <div className="relative">
               <Input
@@ -90,23 +85,18 @@ export default function Header() {
               />
               <LuSearch className="absolute left-2 top-2.5 h-4 w-4 text-gray-600 dark:text-gray-300" />
             </div>
-
             <LanguageSwitcher />
             <ThemeSwitcher />
-
             <Link href="/dashboard">
               <Button variant="ghost" size="icon">
                 <LuLayoutDashboard className="h-5 w-5 text-gray-800 dark:text-white" />
               </Button>
             </Link>
-
             <Link href="/cart">
               <Button variant="ghost" size="icon">
                 <LuShoppingCart className="h-5 w-5 text-gray-800 dark:text-white" />
               </Button>
             </Link>
-
-            {/* ✅ الحساب */}
             <div className="relative">
               <Button
                 variant="ghost"
@@ -125,7 +115,6 @@ export default function Header() {
             👋 {user.name}
           </div>
         )}
-
 <Link
   href={`/panel/${user?.id}`}
   className="flex items-center gap-2 px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition"
@@ -133,7 +122,6 @@ export default function Header() {
   <LuLayoutPanelLeft  className="h-4 w-4" />
   {t("navigation.panel")}
 </Link>
-
         <button
           onClick={handleLogout}
           className="flex w-full items-center gap-2 px-4 py-2 text-left text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition"
@@ -153,11 +141,8 @@ export default function Header() {
     )}
   </div>
 )}
-
             </div>
           </div>
-
-          {/* زر الموبايل */}
           <Button
             variant="ghost"
             size="icon"

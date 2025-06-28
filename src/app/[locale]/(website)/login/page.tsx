@@ -32,9 +32,10 @@ const LoginPage = () => {
 
     login(formData, {
       onSuccess: (data) => {
-        // تخزين التوكن وبيانات المستخدم في الكوكيز
         Cookies.set("access_token", data.access_token, { expires: 7 });
-        Cookies.set("user", JSON.stringify(data.user), { expires: 7 });
+        Cookies.set("user", JSON.stringify({ ...data.user, token: data.access_token }), { expires: 7 });
+localStorage.setItem("auth_event", Date.now().toString());
+
 
         // التوجيه إلى صفحة البانيل مع معرف المستخدم
         window.location.href = `/panel/${data.user.id}`;

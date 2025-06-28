@@ -12,6 +12,10 @@ import BookLoadingSkeleton from "../components/BookLoadingSkeleton";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { Rating } from "@mui/material";
+import { useUser } from "@/hooks/userContext";
+import { createCart, createCartItem, getCarts } from "@/services/carts.service";
+import { useCartsQuery, useCreateCartItem } from "@/hooks/react-query/carts/useCartsQuery";
+
 
 interface Props {
   params: { id: string };
@@ -21,8 +25,48 @@ const page = ({ params: { id } }: Props) => {
   const local = useLocale();
   const ar = local === "ar";
   const t = useTranslations("BookPage");
+  const { user } = useUser();
   const { data: book, isLoading, error } = useBookQuery(id);
+  
 
+  const { data: carts = [] } = useCartsQuery();
+
+  const { mutateAsync: handleAddToCart } = useMutation({
+    mutationFn: async () => {
+      if (!user) {
+        alert("يرجى تسجيل الدخول أولاً");
+        return;
+      }
+  
+      let activeCart = carts.find(
+        (cart) => cart.user?.id === user.id && cart.status === "unpaid"
+      );
+  
+      if (!activeCart) {
+        const newCart = await createCart(user.id);
+        activeCart = newCart;
+        console.log("✅ New cart created:", activeCart);
+      } else {
+        console.log("📦 Existing cart found:", activeCart);
+      }
+
+      if (!activeCart) {
+        throw new Error("Error occurred while creating cart.");
+      }
+  
+      const addedItem = await createCartItem({
+        id: activeCart.id,
+        bookId: +id,
+        quantity: 1,
+      });
+      console.log("✅ Book added to cart:", addedItem);
+      return addedItem;
+    },
+    onError: (error) => {
+      console.error("❌ Error adding item to cart:", error);
+    },
+  });
+  
   const queryClient = useQueryClient();
   const { mutateAsync: addRating } = useMutation({
     mutationFn: async (rate: number) => {
@@ -52,7 +96,7 @@ const page = ({ params: { id } }: Props) => {
   if (!book) return <div>Book not found</div>;
 
   const discount = +book.discount > 0;
-
+  
   return (
     <div className="container mx-auto flex justify-center my-10">
       <div className="w-full md:w-4/5 px-2 sm:px-0 grid grid-cols-12 gap-6">
@@ -94,17 +138,17 @@ const page = ({ params: { id } }: Props) => {
                 </div>
               </div>
               {discount && (
-                <div
-                  className={`border cursor-pointer hover:bg-[#0000000d] px-5 py-2.5 rounded-full transition-colors`}
-                >
-                  <div
-                    className={`flex gap-2 justify-center flex-wrap text-sm sm:text-base text-center w-full font-bold cursor-pointer`}
-                  >
-                    <span>{t("Kindle")}</span>
-                    <span>${book.discounted_price}</span>
-                  </div>
-                </div>
-              )}
+  <div
+    onClick={() => handleAddToCart()}
+    className="bg-white border border-[#101828] px-5 py-2.5 rounded-full cursor-pointer transition-colors hover:bg-[#f5f5f5]"
+  >
+    <button className="text-sm sm:text-base text-center w-full font-bold text-[#101828]">
+      {t("Kindle")} - {discount ? `$${book.discounted_price}` : `$${book.price}`}
+    </button>
+  </div>
+)}
+
+
               <Rate fn={(val: number) => addRating(val)} />
             </div>
           </div>

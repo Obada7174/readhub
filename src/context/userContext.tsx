@@ -1,10 +1,12 @@
+'use client'
 import { createContext, useContext, useState, ReactNode, useEffect } from "react";
 import Cookies from "js-cookie";
 
 interface User {
   id: number;
-  name: string;
-  email: string;
+  token: string;
+  name?: string;
+  email?: string;
   [key: string]: any;
 }
 
@@ -18,35 +20,38 @@ const UserContext = createContext<UserContextType | undefined>(undefined);
 export const UserProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
 
-  useEffect(() => {
+  const loadUser = () => {
     const stored = Cookies.get("user");
     if (stored) {
       try {
-        const parsed = JSON.parse(stored);
-        const token = parsed.token;
-
-        fetch(`http://localhost:5000/users/${parsed.id}`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
-          .then((res) => res.json())
-          .then((fullUser) => {
-            setUser(fullUser);
-
-            if (process.env.NODE_ENV === "development") {
-              console.log("✅ Full user loaded:", fullUser);
-            }
-          })
-          .catch((err) => {
-            console.error("❌ Failed to load full user data", err);
-          });
+        const parsed: User = JSON.parse(stored);
+        if (!parsed.id || !parsed.token) {
+          Cookies.remove("user");
+          setUser(null);
+          return;
+        }
+        setUser(parsed);
       } catch {
+        Cookies.remove("user");
         setUser(null);
       }
+    } else {
+      setUser(null);
     }
-  }, []);
+  };
 
+  useEffect(() => {
+    loadUser();
+    const onStorage = (e: StorageEvent) => {
+      if (e.key === "auth_event") {
+        loadUser();
+      }
+    };
+    window.addEventListener("storage", onStorage);
+    return () => {
+      window.removeEventListener("storage", onStorage);
+    };
+  }, []);
   return (
     <UserContext.Provider value={{ user, setUser }}>
       {children}
@@ -55,9 +60,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
 };
 
 export const useUserContext = () => {
-  const context = useContext(UserContext);
-  if (!context) {
-    throw new Error("useUserContext must be used within a UserProvider");
-  }
-  return context;
+  const ctx = useContext(UserContext);
+  if (!ctx) throw new Error("useUserContext must be within UserProvider");
+  return ctx;
 };

@@ -729,8 +729,40 @@
       "submit_button": "حفظ التعديلات",
       "success_message": "تم تحديث الحساب بنجاح",
       "error_message": "حدث خطأ أثناء تحديث الحساب",
-      "required": "هذا الحقل مطلوب"
+      "required": "هذا الحقل مطلوب"},
+      "UserPanel": {
+        "notAllowed": "لا يُسمح لك بالوصول إلى هذه الصفحة.",
+        "loading": "جاري تحميل البيانات...",
+        "welcome": "مرحبًا ",
+        "description": "هذه هي لوحة تحكم المستخدم الخاصة بك."
+      },
+      "UserProfile": {
+        "accountInfo": "معلومات الحساب",
+        "editProfile": "تعديل الملف الشخصي",
+        "email": "البريد الإلكتروني",
+        "location": "الموقع",
+        "role": "الدور",
+        "joinedAt": "تاريخ الانضمام",
+        "lastLogin": "آخر تسجيل دخول",
+        "lastUpdated": "آخر تعديل",
+        "verified": "تم التحقق",
+        "subscribed": "مشترك",
+        "yes": "نعم",
+        "no": "لا",
+        "notSet": "غير محدد",
+        "unknown": "غير معروف",
+        "notUpdatedYet": "لم يتم التحديث بعد",
+        "loading": "جاري تحميل الملف الشخصي..."
+      },
+      "userComments":
+      {
+        "title": "تعليقاتي على الكتب",
+        "loading": "جاري تحميل التعليقات...",
+        "noComments": "لا توجد تعليقات حتى الآن.",
+        "onBook": "على الكتاب:",
+        "commentedOn": "تم التعليق بتاريخ"
+      }
+      
     }
     
   }
-}

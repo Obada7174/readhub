@@ -42,17 +42,27 @@ export const useCreateCart = () => {
   });
 };
 
-export const useCreateCartItem = (id: number) => {
+export const useCreateCartItem = () => {
   const queryClient = useQueryClient();
   const t = useTranslations("toastMessages");
 
   return useMutation({
-    mutationFn: (bookId: number) => createCartItem({ id, bookId }),
-    onSuccess: () => {
+    mutationFn: ({
+      id,
+      bookId,
+      quantity,
+    }: {
+      id: number;
+      bookId: number;
+      quantity: number;
+    }) => createCartItem({ id, bookId, quantity }),
+    
+    onSuccess: (_, variables) => {
       showSuccessToast(t("cartitem_created_successfully"));
       queryClient.invalidateQueries({ queryKey: ["carts"] });
-      queryClient.invalidateQueries({ queryKey: ["carts", id] });
+      queryClient.invalidateQueries({ queryKey: ["carts", variables.id] });
     },
+    
     onError: () => {
       showErrorToast(t("failed_to_create_cartitem"));
     },

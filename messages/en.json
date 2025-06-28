@@ -698,7 +698,38 @@
       "success_message": "Account updated successfully",
       "error_message": "An error occurred while updating the account",
       "required": "This field is required"
+    },
+    "UserPanel":
+    {
+      "notAllowed": "You are not allowed to access this page.",
+      "loading": "Loading data...",
+      "welcome": "Welcome",
+      "description": "This is your user panel."
+    },
+    "UserProfile": {
+      "accountInfo": "Account Information",
+      "editProfile": "Edit Profile",
+      "email": "Email",
+      "location": "Location",
+      "role": "Role",
+      "joinedAt": "Joined At",
+      "lastLogin": "Last Login",
+      "lastUpdated": "Last Updated",
+      "verified": "Verified",
+      "subscribed": "Subscribed",
+      "yes": "Yes",
+      "no": "No",
+      "notSet": "Not set",
+      "unknown": "Unknown",
+      "notUpdatedYet": "Not updated yet",
+      "loading": "Loading profile..."
+    },
+    "userComments":{ 
+    "title": "My Book Comments",
+    "loading": "Loading comments...",
+    "noComments": "No comments yet.",
+    "onBook": "On book:",
+    "commentedOn": "Commented on"
     }
-    
-  }
-}
+  }}
+  

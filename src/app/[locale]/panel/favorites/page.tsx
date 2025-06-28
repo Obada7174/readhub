@@ -1,42 +1,55 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import BookCardSecond from '@/components/booksui/bookcardsecond';
 import { useLocale } from 'next-intl';
+import { useUser } from '@/hooks/userContext';
+import axios from 'axios';
 
-const mockFavorites = [
-  {
-    id: 1,
-    book: {
-      id: 24,
-      title: 'The Fault in Our Stars',
-      ar_title: 'خطأ في نجومنا',
-      img: 'https://images-na.ssl-images-amazon.com/images/I/71hTq4TwxBL.jpg',
-      author: 'John Green',
-      price: '$8.49',
-      rating: '4.5',
-      total_pages: 313,
-      description: 'A novel about love, life, and dealing with terminal illness.',
-    },
-  },
-  {
-    id: 2,
-    book: {
-      id: 22,
-      title: 'The Girl on the Train',
-      ar_title: 'الفتاة على القطار',
-      img: 'https://images-na.ssl-images-amazon.com/images/I/71hTq4TwxBL.jpg',
-      author: 'Paula Hawkins',
-      price: '$10.79',
-      rating: '4.3',
-      total_pages: 336,
-      description: 'A psychological thriller that will keep you guessing.',
-    },
-  },
-];
+interface Favorite {
+  id: number;
+  book: {
+    id: number;
+    title: string;
+    ar_title: string;
+    img: string;
+    author: string;
+    price: string;
+    rating: string;
+    total_pages: number;
+    discounted_price?: string;
+    discount?: string;
+    description?: string;
+    categories?: { id: number; title: string }[];
+  };
+}
 
 export default function FavoriteBooksUI() {
   const locale = useLocale();
   const isRTL = locale === 'ar';
+  const { user } = useUser();
+  const [favorites, setFavorites] = useState<Favorite[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (user?.id) {
+      axios
+        .get(`http://127.0.0.1:5000/favorite/user/${user.id}`)
+        .then((res) => setFavorites(res.data.data))
+        .catch((err) => {
+          console.error('❌ Failed to fetch favorites:', err);
+        })
+        .finally(() => setLoading(false));
+    }
+  }, [user?.id]);
+
+  if (loading) {
+    return (
+      <div className="text-center py-20 text-gray-500 dark:text-gray-400">
+        {isRTL ? 'جاري التحميل...' : 'Loading...'}
+      </div>
+    );
+  }
 
   return (
     <section
@@ -44,17 +57,15 @@ export default function FavoriteBooksUI() {
         isRTL ? 'text-right' : 'text-left'
       }`}
     >
-    {/* Favorite Books Grid */}
-      {Array.isArray(mockFavorites) && mockFavorites.length > 0 ? (
+      {favorites.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
-          {mockFavorites.map((fav) => (
+          {favorites.map((fav) => (
             <BookCardSecond key={fav.id} book={fav.book} />
           ))}
         </div>
       ) : (
-        // Empty State Message
         <div className="text-center py-20 text-gray-500 dark:text-gray-400">
-          لا توجد كتب مفضلة بعد.
+          {isRTL ? 'لا توجد كتب مفضلة بعد.' : 'No favorite books yet.'}
         </div>
       )}
     </section>
