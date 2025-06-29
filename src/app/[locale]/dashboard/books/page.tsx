@@ -31,6 +31,8 @@ import { FaEdit } from "react-icons/fa";
 import { LuEye } from "react-icons/lu";
 
 export default function Books() {
+  const t = useTranslations("Dashboard.Books");
+
   const local = useLocale();
   const ar = local === "ar";
   const [searchText, setSearchText] = useState("");
@@ -60,7 +62,6 @@ export default function Books() {
         value: event.target.value,
       });
     };
-    const t = useTranslations("Dashboard.books");
 
     return (
       <Select
@@ -84,30 +85,25 @@ export default function Books() {
       </Select>
     );
   };
-
   const columns: GridColDef[] = [
-    {
-      field: "id",
-      headerName: "ID",
-      width: 30,
-    },
+    { field: "id", headerName: "ID", width: 30 },
     {
       field: "title",
-      headerName: "Title",
+      headerName: t("title"),
       editable: true,
       minWidth: 120,
       flex: 2,
     },
     {
       field: "author",
-      headerName: "Author",
+      headerName: t("author"),
       editable: true,
       minWidth: 100,
       flex: 1,
     },
     {
       field: "price",
-      headerName: "Price",
+      headerName: t("price"),
       type: "number",
       editable: true,
       minWidth: 80,
@@ -115,23 +111,21 @@ export default function Books() {
     },
     {
       field: "discount",
-      headerName: "Discounted",
+      headerName: t("discount"),
       type: "number",
       minWidth: 100,
       valueFormatter: (value) => `${value * 100}%`,
     },
     {
       field: "categories",
-      headerName: "Category",
+      headerName: t("category"),
       editable: true,
       type: "singleSelect",
       valueOptions: genresOption,
       renderEditCell: GenreEditCell,
       renderCell: (params) => {
         const arr = params.value || [];
-
         if (!arr.length) return "-";
-
         return (
           <div className="flex flex-wrap gap-1 justify-center">
             {arr.map((category: Category) => {
@@ -146,7 +140,7 @@ export default function Books() {
     },
     {
       field: "rating",
-      headerName: "Rating",
+      headerName: t("rating"),
       type: "number",
       minWidth: 80,
       renderCell: (params) => (
@@ -158,13 +152,13 @@ export default function Books() {
     },
     {
       field: "total_pages",
-      headerName: "Pages",
+      headerName: t("pages"),
       type: "number",
       minWidth: 70,
     },
     {
       field: "created_at",
-      headerName: "Added Date",
+      headerName: t("createdAt"),
       minWidth: 130,
       renderCell: (params: GridRenderCellParams) => {
         const date: DateObject = TransformDate(params.value as string);
@@ -173,7 +167,7 @@ export default function Books() {
     },
     {
       field: "updated_at",
-      headerName: "Updated Date",
+      headerName: t("updatedAt"),
       minWidth: 130,
       renderCell: (params: GridRenderCellParams) => {
         const date: DateObject = TransformDate(params.value as string);
@@ -182,7 +176,7 @@ export default function Books() {
     },
     {
       field: "actions",
-      headerName: "Actions",
+      headerName: t("actions"),
       sortable: false,
       filterable: false,
       minWidth: 140,
@@ -216,7 +210,7 @@ export default function Books() {
   return (
     <DashTable<Book>
       ITEM="Book"
-      ITEMS="Books"
+      ITEMS={t("Books")}
       ADD="books/addbook"
       columns={columns}
       isEditable={true}

@@ -3,6 +3,8 @@
 import DashTable from "@/components/dashboard/DashTable";
 import TransformDate from "@/helpers/TransformDate";
 
+import { useTranslations } from "next-intl"; // إضافة
+
 interface DateObject {
   getFullYear: number;
   getMonth: number;
@@ -12,7 +14,6 @@ import {
   GridRenderCellParams,
   GridColDef,
   GridRowId,
-  // GridValueFormatterParams,
 } from "@mui/x-data-grid";
 import DashButton from "@/components/ui/Button";
 import { FaEdit } from "react-icons/fa";
@@ -25,9 +26,10 @@ import { useState } from "react";
 import { Cart } from "@/types/carts";
 import { LuEye } from "react-icons/lu";
 import router from "next/router";
-import { useTranslations } from "next-intl";
 
 export default function Carts() {
+  const t = useTranslations("Dashboard.carts"); // تهيئة الترجمة
+
   const [searchText, setSearchText] = useState("");
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
@@ -38,32 +40,32 @@ export default function Carts() {
   const columns: GridColDef[] = [
     {
       field: "id",
-      headerName: "ID",
+      headerName: t("id"),
       width: 30,
     },
     {
       field: "status",
-      headerName: "Status",
+      headerName: t("status"),
       editable: true,
       minWidth: 50,
       flex: 1,
     },
     {
       field: "userId",
-      headerName: "User ID",
+      headerName: t("userId"),
       minWidth: 70,
-      renderCell: (params) => params.row.user?.id || "N/A",
+      renderCell: (params) => params.row.user?.id || t("notAvailable"),
     },
     {
       field: "userEmail",
-      headerName: "User Email",
+      headerName: t("userEmail"),
       minWidth: 180,
       flex: 2,
-      renderCell: (params) => params.row.user?.email || "N/A",
+      renderCell: (params) => params.row.user?.email || t("notAvailable"),
     },
     {
       field: "created_at",
-      headerName: "Added Date",
+      headerName: t("addedDate"),
       minWidth: 130,
       renderCell: (params: GridRenderCellParams) => {
         const date: DateObject = TransformDate(params.value as string);
@@ -72,7 +74,7 @@ export default function Carts() {
     },
     {
       field: "updated_at",
-      headerName: "Updated Date",
+      headerName: t("updatedDate"),
       minWidth: 130,
       renderCell: (params: GridRenderCellParams) => {
         const date: DateObject = TransformDate(params.value as string);
@@ -81,7 +83,7 @@ export default function Carts() {
     },
     {
       field: "actions",
-      headerName: "Actions",
+      headerName: t("actions"),
       sortable: false,
       filterable: false,
       minWidth: 140,
@@ -130,8 +132,8 @@ export default function Carts() {
 
   return (
     <DashTable<Cart>
-      ITEM="Cart"
-      ITEMS="Carts"
+      ITEM={t("cart")}
+      ITEMS={t("carts")}
       ADD="carts/addcart"
       columns={columns}
       isEditable={true}

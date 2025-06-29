@@ -44,7 +44,10 @@
     "competitions": "المسابقات",
     "contact": "تواصل معنا",
     "categories": "التصنيفات",
-    "search": "البحث"
+    "search": "البحث",
+    "logout":"تسجيل الخروج",
+    "panel":"لوحة التحكم",
+    "login":"تسجيل الدخول"
   },
   "footer": {
     "about": {
@@ -308,6 +311,61 @@
         "url_invalid": "الرابط غير صالح. مثال: /about-us",
         "is_published_required": "حالة النشر مطلوبة."
       }
+    },
+    "faq_columns": {
+      "id": "المعرف",
+      "question": "السؤال",
+      "answer": "الإجابة",
+      "status": "الحالة",
+      "actions": "الإجراءات",
+      "arabic": "العربية",
+      "english": "الإنجليزية",
+      "choose_lang": "اختر اللغة",
+      "all": "الكل",
+      "active": "نشط",
+      "inactive": "غير نشط",
+      "switch_to_arabic": "التبديل إلى العربية",
+      "switch_to_english": "التبديل إلى الإنجليزية",
+      "filter_by_status": "التصفية حسب الحالة",
+      "edit": "تعديل",
+      "view": "عرض",
+      "faqs": "الأسئلة المتكررة",
+      "faq": "سؤال"
+    },
+    "Categories": {
+      "id": "المعرف",
+      "title": "العنوان",
+      "arTitle": "العنوان بالعربية",
+      "createdAt": "تاريخ الإنشاء",
+      "updatedAt": "تاريخ التحديث",
+      "actions": "الإجراءات",
+      "category": "الفئة",
+      "categories": "الفئات"
+    },
+    "carts": {
+      "id": "المعرف",
+      "status": "الحالة",
+      "userId": "معرف المستخدم",
+      "userEmail": "البريد الإلكتروني للمستخدم",
+      "notAvailable": "غير متوفر",
+      "addedDate": "تاريخ الإضافة",
+      "updatedDate": "تاريخ التحديث",
+      "actions": "الإجراءات",
+      "cart": "سلة التسوق",
+      "carts": "سلال التسوق"
+    },
+    "Books": {
+      "Books": "الكتب",
+      "title": "العنوان",
+      "author": "المؤلف",
+      "price": "السعر",
+      "discount": "الخصم",
+      "category": "الفئة",
+      "rating": "التقييم",
+      "pages": "عدد الصفحات",
+      "createdAt": "تاريخ الإضافة",
+      "updatedAt": "تاريخ التحديث",
+      "actions": "الإجراءات"
     },
     "users": {
       "Users": "المستخدمون",
@@ -678,5 +736,60 @@
     "success": "تم إرسال رسالتك بنجاح!",
     "error": "حدث خطأ، يرجى المحاولة مرة أخرى.",
     "sending": "جارٍ الإرسال..."
+  },
+  "Panel":{
+    "edit_account":{
+      "title": "تعديل الحساب",
+      "first_name_label": "الاسم الأول",
+      "first_name_placeholder": "أدخل الاسم الأول",
+      "last_name_label": "اسم العائلة",
+      "last_name_placeholder": "أدخل اسم العائلة",
+      "location_label": "الموقع",
+      "location_placeholder": "أدخل موقعك",
+      "role_label": "الدور",
+      "role_placeholder": "مثال: user أو admin",
+      "email_label": "البريد الإلكتروني",
+      "email_placeholder": "أدخل بريدك الإلكتروني",
+      "password_label": "كلمة المرور",
+      "password_placeholder": "أدخل كلمة المرور",
+      "img_label": "الصورة الشخصية",
+      "submit_button": "حفظ التعديلات",
+      "success_message": "تم تحديث الحساب بنجاح",
+      "error_message": "حدث خطأ أثناء تحديث الحساب",
+      "required": "هذا الحقل مطلوب"},
+      "UserPanel": {
+        "notAllowed": "لا يُسمح لك بالوصول إلى هذه الصفحة.",
+        "loading": "جاري تحميل البيانات...",
+        "welcome": "مرحبًا ",
+        "description": "هذه هي لوحة تحكم المستخدم الخاصة بك."
+      },
+      "UserProfile": {
+        "accountInfo": "معلومات الحساب",
+        "editProfile": "تعديل الملف الشخصي",
+        "email": "البريد الإلكتروني",
+        "location": "الموقع",
+        "role": "الدور",
+        "joinedAt": "تاريخ الانضمام",
+        "lastLogin": "آخر تسجيل دخول",
+        "lastUpdated": "آخر تعديل",
+        "verified": "تم التحقق",
+        "subscribed": "مشترك",
+        "yes": "نعم",
+        "no": "لا",
+        "notSet": "غير محدد",
+        "unknown": "غير معروف",
+        "notUpdatedYet": "لم يتم التحديث بعد",
+        "loading": "جاري تحميل الملف الشخصي..."
+      },
+      "userComments":
+      {
+        "title": "تعليقاتي على الكتب",
+        "loading": "جاري تحميل التعليقات...",
+        "noComments": "لا توجد تعليقات حتى الآن.",
+        "onBook": "على الكتاب:",
+        "commentedOn": "تم التعليق بتاريخ"
+      }
+      
+    }
+    
   }
-}

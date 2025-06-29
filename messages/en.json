@@ -39,7 +39,10 @@
     "categories": "Categories",
     "competitions": "Competitions",
     "contact": "Contact",
-    "search": "Search"
+    "search": "Search",
+    "logout":"Logout",
+    "panel":"Panel",
+    "login":"Login"
   },
   "BooksPage": {
     "categories": "Categories",
@@ -240,6 +243,40 @@
     "addPublisher": "Add Publisher",
     "competitions": "Competitions",
     "addCompetition": "Add Competition",
+    "Categories": {
+      "id": "ID",
+      "title": "Title",
+      "arTitle": "Arabic Title",
+      "createdAt": "Created Date",
+      "updatedAt": "Updated Date",
+      "actions": "Actions",
+      "category": "Category",
+      "categories": "Categories"},
+    "carts": {
+      "id": "ID",
+      "status": "Status",
+      "userId": "User ID",
+      "userEmail": "User Email",
+      "notAvailable": "N/A",
+      "addedDate": "Added Date",
+      "updatedDate": "Updated Date",
+      "actions": "Actions",
+      "cart": "Cart",
+      "carts": "Carts"
+    },
+    "Books": {
+      "Books": "Books",
+      "title": "Title",
+      "author": "Author",
+      "price": "Price",
+      "discount": "Discount",
+      "category": "Category",
+      "rating": "Rating",
+      "pages": "Pages",
+      "createdAt": "Added Date",
+      "updatedAt": "Updated Date",
+      "actions": "Actions"
+    },
     "quizzes": {
       "add_quiz": "Add Quiz",
       "edit_quiz": "Edit Quiz",
@@ -300,8 +337,8 @@
       "competitions": "Competitions",
       "authors": "Authors",
       "Carts": "Carts",
-      "Faqs":"Faqs",
-      "Comments":"Comments",
+      "Faqs": "Faqs",
+      "Comments": "Comments",
       "competitions_answers": "Answers",
       "competitions_questions": "Questions",
       "competitions_quizzes": "Quizzes",
@@ -534,8 +571,8 @@
         "general": "Please fix the errors before submitting"
       }
     },
-    "comments":{
-      "viewComments":"Comments",
+    "comments": {
+      "viewComments": "Comments",
       "id": "ID",
       "userName": "User Name",
       "userEmail": "User Email",
@@ -551,9 +588,7 @@
       "likes": "Likes",
       "replies": "Replies",
       "viewComment": "View Comment"
-      
     }
-    
   },
   "SideBar": {
     "Home": "Home",
@@ -708,5 +743,59 @@
     },
     "select": "Select",
     "alreadySelected": "Already Selected"
-  }
-}
+  },
+  "Panel":{
+    "edit_account":{
+      "title": "Edit Account",
+      "first_name_label": "First Name",
+      "first_name_placeholder": "Enter your first name",
+      "last_name_label": "Last Name",
+      "last_name_placeholder": "Enter your last name",
+      "location_label": "Location",
+      "location_placeholder": "Enter your location",
+      "role_label": "Role",
+      "role_placeholder": "e.g. user or admin",
+      "email_label": "Email",
+      "email_placeholder": "Enter your email",
+      "password_label": "Password",
+      "password_placeholder": "Enter your password",
+      "img_label": "Profile Image",
+      "submit_button": "Save Changes",
+      "success_message": "Account updated successfully",
+      "error_message": "An error occurred while updating the account",
+      "required": "This field is required"
+    },
+    "UserPanel":
+    {
+      "notAllowed": "You are not allowed to access this page.",
+      "loading": "Loading data...",
+      "welcome": "Welcome",
+      "description": "This is your user panel."
+    },
+    "UserProfile": {
+      "accountInfo": "Account Information",
+      "editProfile": "Edit Profile",
+      "email": "Email",
+      "location": "Location",
+      "role": "Role",
+      "joinedAt": "Joined At",
+      "lastLogin": "Last Login",
+      "lastUpdated": "Last Updated",
+      "verified": "Verified",
+      "subscribed": "Subscribed",
+      "yes": "Yes",
+      "no": "No",
+      "notSet": "Not set",
+      "unknown": "Unknown",
+      "notUpdatedYet": "Not updated yet",
+      "loading": "Loading profile..."
+    },
+    "userComments":{ 
+    "title": "My Book Comments",
+    "loading": "Loading comments...",
+    "noComments": "No comments yet.",
+    "onBook": "On book:",
+    "commentedOn": "Commented on"
+    }
+  }}
+  
