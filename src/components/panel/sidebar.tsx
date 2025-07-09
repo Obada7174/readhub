@@ -14,7 +14,13 @@ interface User {
   first_name: string;
   last_name: string;
   email?: string;
-  [key: string]: any;
+  location?: string;
+  last_login_at?: string;
+  isVerified?: boolean;
+  isSubscribed?: boolean;
+  updated_at?: string;
+  created_at?: string;
+  [key: string]: any; // تبقى للسماح بأي خصائص أخرى غير معرفة
 }
 
 interface SidebarProps {
@@ -33,25 +39,24 @@ export default function Sidebar({
   const pathname = usePathname();
   const t = useTranslations('SideBar');
   const [user, setUser] = useState<User | null>(null);
-
   useEffect(() => {
-    const stored = Cookies.get("user");
-
-    if (!stored) {
-      console.log("❌ No user found in cookies");
-      setUser(null);
-      return;
+    // تأكد أن الكوكي موجودة فعلاً قبل التحقق
+    const userCookie = Cookies.get("user");
+  
+    if (typeof userCookie !== "string") {
+      return; // لا تطبع شيء إذا لم يكن الكوكي موجود
     }
-
+  
     try {
-      const parsed: User = JSON.parse(stored);
+      const parsed: User = JSON.parse(userCookie);
       console.log("✅ User loaded from cookies:", parsed);
       setUser(parsed);
     } catch (err) {
-      console.error("Failed to parse user from cookies:", err);
+      console.error("❌ Failed to parse user from cookies:", err);
       setUser(null);
     }
   }, []);
+  
 
   const getInitials = (firstName: string, lastName: string) => {
     const first = firstName?.[0]?.toUpperCase() || '';

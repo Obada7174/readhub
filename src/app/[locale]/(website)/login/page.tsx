@@ -32,11 +32,12 @@ const LoginPage = () => {
 
     login(formData, {
       onSuccess: (data) => {
+        console.log('Login response user data:', data.user);  // <== طباعة بيانات المستخدم
+    
         Cookies.set("access_token", data.access_token, { expires: 7 });
         Cookies.set("user", JSON.stringify({ ...data.user, token: data.access_token }), { expires: 7 });
-localStorage.setItem("auth_event", Date.now().toString());
-
-
+        localStorage.setItem("auth_event", Date.now().toString());
+    
         // التوجيه إلى صفحة البانيل مع معرف المستخدم
         window.location.href = `/panel/${data.user.id}`;
       },
@@ -44,6 +45,7 @@ localStorage.setItem("auth_event", Date.now().toString());
         setErrorMessage(err.message);
       }
     });
+    
   };
 
   const inputClasses = "bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white font-mono ring-1 ring-slate-400 focus:ring-2 focus:ring-slate-500 outline-none duration-300 placeholder:text-slate-600 dark:placeholder:text-gray-400 placeholder:opacity-70 rounded-full px-4 py-2 shadow-md focus:shadow-lg focus:shadow-slate-400 w-full";

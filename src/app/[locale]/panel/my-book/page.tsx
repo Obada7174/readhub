@@ -1,7 +1,8 @@
 'use client';
 
-import PurchasedBookCard from '@/components/panel/PurchasedBookCard';
-import { useLocale } from 'next-intl';
+import MyBookCard from '@/components/panel/mybookcard';
+import MyBookCardSkeleton from '@/components/panel/mybookskelton';
+import { useLocale, useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
 
 interface PurchasedBook {
@@ -14,14 +15,19 @@ interface PurchasedBook {
     img: string;
     author: string;
     rating: string;
-    total_pages: number; // تأكد أنك تضيفها أو عيّن رقم افتراضي
+    total_pages: number;
     file_url: string;
     description?: string;
+    price: string;
+    discounted_price?: string;
+    categories?: { id: number; title: string }[];
   };
 }
 
 export default function PurchasedBooks() {
   const locale = useLocale();
+  const t = useTranslations('Panel.MyBooks');
+  const isRTL = locale === 'ar';
   const [purchasedBooks, setPurchasedBooks] = useState<PurchasedBook[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -41,6 +47,9 @@ export default function PurchasedBooks() {
             total_pages: 208,
             file_url: '/pdfs/the-alchemist.pdf',
             description: 'رواية تحفيزية عن البحث عن الذات.',
+            price: '15.00$',
+            discounted_price: '10.00$',
+            categories: [{ id: 1, title: 'تنمية ذاتية' }],
           },
         },
         {
@@ -56,6 +65,9 @@ export default function PurchasedBooks() {
             total_pages: 320,
             file_url: '/pdfs/atomic-habits.pdf',
             description: 'كتاب يشرح كيفية بناء العادات الجيدة وتغيير السيئة.',
+            price: '20.00$',
+            discounted_price: '14.00$',
+            categories: [{ id: 2, title: 'تطوير الذات' }],
           },
         },
       ]);
@@ -64,20 +76,28 @@ export default function PurchasedBooks() {
   }, []);
 
   if (loading) {
-    return <div className="text-center py-20 text-gray-500 dark:text-gray-400">جاري تحميل الكتب...</div>;
+    return (
+      <section className={`py-10 px-4 sm:px-8 md:px-12 max-w-5xl mx-auto ${isRTL ? 'text-right' : 'text-left'}`}>
+        <div className="flex flex-col gap-6">
+          {[...Array(3)].map((_, idx) => (
+            <MyBookCardSkeleton key={idx} />
+          ))}
+        </div>
+      </section>
+    );
   }
+  
 
   return (
-    <section className={`py-10 px-4 sm:px-8 md:px-12 ${locale === 'ar' ? 'text-right' : 'text-left'}`}>
-   
+    <section className={`py-10 px-4 sm:px-8 md:px-12 max-w-5xl mx-auto ${isRTL ? 'text-right' : 'text-left'}`}>
       {purchasedBooks.length === 0 ? (
         <div className="text-center py-20 text-gray-500 dark:text-gray-400">
-          لم تقم بشراء أي كتاب بعد.
+          {t('noBooks')}
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 justify-center">
+        <div className="flex flex-col gap-6">
           {purchasedBooks.map(({ id, book }) => (
-            <PurchasedBookCard key={id} book={book} />
+            <MyBookCard key={id} book={book} />
           ))}
         </div>
       )}

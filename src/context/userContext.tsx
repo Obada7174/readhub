@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import { createContext, useContext, useState, ReactNode, useEffect } from "react";
 import Cookies from "js-cookie";
 
@@ -7,6 +7,16 @@ interface User {
   token: string;
   name?: string;
   email?: string;
+  first_name?: string;
+  last_name?: string;
+  img?: string;
+  role?: string;
+  location?: string;
+  created_at?: string;
+  updated_at?: string;
+  last_login_at?: string;
+  isVerified?: boolean;
+  isSubscribed?: boolean;
   [key: string]: any;
 }
 
@@ -52,6 +62,16 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
       window.removeEventListener("storage", onStorage);
     };
   }, []);
+
+  // ✅ احفظ دائمًا بيانات المستخدم في الكوكيز
+  useEffect(() => {
+    if (user) {
+      Cookies.set("user", JSON.stringify(user), { expires: 7 });
+    } else {
+      Cookies.remove("user");
+    }
+  }, [user]);
+
   return (
     <UserContext.Provider value={{ user, setUser }}>
       {children}

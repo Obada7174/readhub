@@ -730,6 +730,20 @@
     "noComments": "No comments yet.",
     "onBook": "On book:",
     "commentedOn": "Commented on"
+    },
+    "favorites":{
+      "loading": "Loading...",
+    "empty": "No favorite books yet.",
+    "read": "Read",
+    "pages": "{count} pages"
+    },
+    "MyBooks": {
+      "loading": "Loading your books...",
+      "noBooks": "You haven’t purchased any books yet.",
+      "pages": "{count} pages",
+      "download": "Download",
+      "read": "Read",
+      "openReading": "Opening reading page..."
     }
   }}
   
