@@ -2,7 +2,6 @@
 
 import { useTranslations, useLocale } from 'next-intl';
 import FavoriteCard from '@/components/panel/favoritecard';
- // ⬅️ استدعاء الـ Skeleton
 import { useFavoriteBooks } from '@/hooks/favoritepanel/usefavpanel';
 import FavoriteCardSkeleton from '@/components/panel/favcardskelton';
 
@@ -13,29 +12,45 @@ export default function FavoriteBooksUI() {
 
   const { favorites, loading } = useFavoriteBooks();
 
-  return (
-    <section
-      className={`py-10 px-4 sm:px-8 md:px-12 max-w-xl mx-auto ${
-        isRTL ? 'text-right' : 'text-left'
-      }`}
-    >
-      {loading ? (
-        <div className="flex flex-col gap-6">
+  if (loading) {
+    return (
+      <section
+        className={`max-w-7xl mx-auto p-6 ${isRTL ? 'text-right' : 'text-left'}`}
+      >
+        <h2 className="text-3xl font-bold mb-10 text-slate-800 dark:text-white ">
+          {t('title')}
+        </h2>
+
+        <ul className="flex flex-col items-center gap-6">
           {[...Array(3)].map((_, idx) => (
             <FavoriteCardSkeleton key={idx} />
           ))}
-        </div>
-      ) : favorites.length > 0 ? (
-        <div className="flex flex-col gap-6">
-          {favorites.map((fav) => (
-            <FavoriteCard key={fav.id} book={fav.book} />
-          ))}
-        </div>
-      ) : (
-        <div className="text-center py-20 text-gray-500 dark:text-gray-400">
-          {t('empty')}
-        </div>
-      )}
+        </ul>
+      </section>
+    );
+  }
+
+  if (favorites.length === 0) {
+    return (
+      <div className="py-20 text-center text-gray-500 dark:text-gray-400">
+        {t('empty')}
+      </div>
+    );
+  }
+
+  return (
+    <section
+      className={`max-w-7xl mx-auto p-6 ${isRTL ? 'text-right' : 'text-left'}`}
+    >
+      <h2 className="text-3xl font-bold mb-10 text-slate-800 dark:text-white text-center">
+        {t('title')}
+      </h2>
+
+      <ul className="flex flex-col items-center gap-6">
+        {favorites.map((fav) => (
+          <FavoriteCard key={fav.id} book={fav.book} />
+        ))}
+      </ul>
     </section>
   );
 }

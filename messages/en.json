@@ -732,10 +732,11 @@
     "commentedOn": "Commented on"
     },
     "favorites":{
+      "title":"My Favorites",
       "loading": "Loading...",
     "empty": "No favorite books yet.",
     "read": "Read",
-    "pages": "{count} pages"
+    "pages": "pages"
     },
     "MyBooks": {
       "loading": "Loading your books...",
