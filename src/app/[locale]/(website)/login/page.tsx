@@ -5,9 +5,11 @@ import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { useLoginMutation } from "@/hooks/react-query/auth/usequeryloginmutation";
 import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
 
 const LoginPage = () => {
   const t = useTranslations("login");
+  const router = useRouter();
 
   const [formData, setFormData] = useState({
     email: "",
@@ -32,14 +34,12 @@ const LoginPage = () => {
 
     login(formData, {
       onSuccess: (data) => {
-        console.log('Login response user data:', data.user);  // <== طباعة بيانات المستخدم
+        console.log('Login response user data:', data.user);  
     
         Cookies.set("access_token", data.access_token, { expires: 7 });
         Cookies.set("user", JSON.stringify({ ...data.user, token: data.access_token }), { expires: 7 });
         localStorage.setItem("auth_event", Date.now().toString());
-    
-        // التوجيه إلى صفحة البانيل مع معرف المستخدم
-        window.location.href = `/panel/${data.user.id}`;
+        window.location.href ="/panel";
       },
       onError: (err: Error) => {
         setErrorMessage(err.message);

@@ -1,27 +1,12 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { Link } from '@/i18n/navigation';
 import { Dispatch, SetStateAction } from 'react';
 import { useTranslations } from 'next-intl';
 import { sidebarLinks } from '@/assets/files/json';
 import { LuMenu, LuX } from 'react-icons/lu';
-import Cookies from "js-cookie";
-
-interface User {
-  id: number;
-  first_name: string;
-  last_name: string;
-  email?: string;
-  location?: string;
-  last_login_at?: string;
-  isVerified?: boolean;
-  isSubscribed?: boolean;
-  updated_at?: string;
-  created_at?: string;
-  [key: string]: any; // تبقى للسماح بأي خصائص أخرى غير معرفة
-}
+import { useUser } from '@/context/userContext';  // استخدم الـ context بدل الكوكيز
 
 interface SidebarProps {
   isSidebarOpen: boolean;
@@ -38,27 +23,9 @@ export default function Sidebar({
 }: SidebarProps) {
   const pathname = usePathname();
   const t = useTranslations('SideBar');
-  const [user, setUser] = useState<User | null>(null);
-  useEffect(() => {
-    // تأكد أن الكوكي موجودة فعلاً قبل التحقق
-    const userCookie = Cookies.get("user");
-  
-    if (typeof userCookie !== "string") {
-      return; // لا تطبع شيء إذا لم يكن الكوكي موجود
-    }
-  
-    try {
-      const parsed: User = JSON.parse(userCookie);
-      console.log("✅ User loaded from cookies:", parsed);
-      setUser(parsed);
-    } catch (err) {
-      console.error("❌ Failed to parse user from cookies:", err);
-      setUser(null);
-    }
-  }, []);
-  
+  const { user } = useUser();  // جلب المستخدم من الـ context
 
-  const getInitials = (firstName: string, lastName: string) => {
+  const getInitials = (firstName?: string, lastName?: string) => {
     const first = firstName?.[0]?.toUpperCase() || '';
     const last = lastName?.[0]?.toUpperCase() || '';
     return `${first}${last}`;
@@ -75,6 +42,7 @@ export default function Sidebar({
         <button
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
           className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+          aria-label={isSidebarOpen ? 'Close sidebar' : 'Open sidebar'}
         >
           {isSidebarOpen ? <LuX size={20} /> : <LuMenu size={20} />}
         </button>
@@ -83,7 +51,7 @@ export default function Sidebar({
       {/* User Info */}
       {isSidebarOpen && user && (
         <div className="flex flex-col items-center py-6">
-          <div className="w-16 h-16 rounded-full bg-[#36419B]  text-white flex items-center justify-center text-xl font-bold">
+          <div className="w-16 h-16 rounded-full bg-[#36419B] text-white flex items-center justify-center text-xl font-bold">
             {getInitials(user.first_name, user.last_name)}
           </div>
           <span className="mt-2 font-semibold text-gray-800 dark:text-white">
@@ -100,11 +68,11 @@ export default function Sidebar({
             href={link.href}
             className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200
               ${pathname === link.href
-                ? 'bg-gray-200 dark:bg-gray-700 text-[#36419B] '
+                ? 'bg-gray-200 dark:bg-gray-700 text-[#36419B]'
                 : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'}
               ${!isSidebarOpen ? 'justify-center' : ''}`}
           >
-            <span className="text-lg text-[#36419B] ">{link.icon}</span>
+            <span className="text-lg text-[#36419B]">{link.icon}</span>
             {isSidebarOpen && <span>{t(link.label)}</span>}
           </Link>
         ))}
