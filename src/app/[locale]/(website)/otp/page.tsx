@@ -1,29 +1,28 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useSearchParams } from "next/navigation";
 import { useVerifyOTPMutation } from "@/hooks/react-query/auth/useOtpVerifyMutation";
 import { useResendOTPMutation } from "@/hooks/react-query/auth/useresendotpmutation";
 import { useTranslations } from "next-intl";
-
+import Cookies from "js-cookie";
+import { useUser } from "@/context/userContext";
+ 
 export default function OTPPage() {
   const t = useTranslations("otp");
   const router = useRouter();
   const searchParams = useSearchParams();
-
   const email = searchParams.get("email") || "";
-  const mode = searchParams.get("mode") || "signup"; 
-
+  const mode = searchParams.get("mode") || "signup";
   const [otp, setOtp] = useState(["", "", "", ""]);
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [canResend, setCanResend] = useState(true);
   const [timeLeft, setTimeLeft] = useState(0);
-
   const { mutate: verify, isPending: verifying } = useVerifyOTPMutation();
   const { mutate: resendOTP, isPending: sending } = useResendOTPMutation();
+  const { setUser } = useUser();
 
   useEffect(() => {
     if (!canResend && timeLeft > 0) {
@@ -70,35 +69,36 @@ export default function OTPPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const otpCode = otp.join("");
-  
+
     if (otpCode.length !== 4) {
       setError(t("invalidCode"));
       return;
     }
-  
+
     setError("");
-    console.log("Verifying OTP...", { mode, email, otp: otpCode }); // 👈 تسجيل للتحقق
-  
+
     verify(
       { email, otp: otpCode },
       {
-        onSuccess: () => {
-          console.log("OTP Verified Successfully"); // 👈 تأكيد النجاح
-  
+        onSuccess: (data) => {
           if (mode === "signup") {
-            router.push("/");
-          } else if (mode === "forgot-password") {
-            router.push(`/reset-password?email=${encodeURIComponent(email)}&otp=${otpCode}`); 
+            Cookies.set("access_token", data.access_token, { expires: 7 });
+            Cookies.set("user", JSON.stringify({ ...data.user, token: data.access_token, isVerified: true }), { expires: 7 });
+            setUser({ ...data.user, token: data.access_token, isVerified: true }); 
+            localStorage.setItem("auth_event", Date.now().toString());
+            router.push("/panel");
+                     } else if (mode === "forgot-password") {
+            router.push(`/reset-password?email=${encodeURIComponent(email)}&otp=${otpCode}`);
           } else {
             setError(t("invalidMode"));
           }
         },
         onError: (err: any) => {
-          console.error("OTP Verification Failed", err); // 👈 تسجيل الخطأ
           setError(err.message || t("resendError"));
         },
       }
     );
+    
   };
 
   const handleResendClick = () => {

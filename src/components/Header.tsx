@@ -27,7 +27,8 @@ export default function Header() {
   const [showDropdown, setShowDropdown] = useState(false);
 
   const { user, setUser } = useUser();
-  const isLoggedIn = !!user;
+  const isLoggedIn = !!user && user.isVerified;
+
 
   const handleLogout = () => {
     Cookies.remove("access_token");
