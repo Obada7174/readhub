@@ -11,7 +11,7 @@ export default function PanelLayout({ children }: { children: React.ReactNode })
   const locale = useLocale();
   const isRTL = locale === 'ar';
 
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [isLargeScreen, setIsLargeScreen] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -20,42 +20,36 @@ export default function PanelLayout({ children }: { children: React.ReactNode })
       const large = window.innerWidth >= 768;
       setIsLargeScreen(large);
       setIsMobile(!large);
-      if (large) setIsSidebarOpen(true);
+      setIsSidebarOpen(large);
     };
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  let contentMarginClass = 'm-0';
-  if (isLargeScreen) {
-    if (isSidebarOpen) {
-      contentMarginClass = isRTL ? 'mr-48' : 'ml-48';
-    } else {
-      contentMarginClass = isRTL ? 'mr-20' : 'ml-20';
-    }
-  }
+  const contentMargin = isSidebarOpen && isLargeScreen
+    ? isRTL ? 'mr-60' : 'ml-60'
+    : isRTL ? 'mr-16' : 'ml-16';
 
   return (
     <>
       <Header isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
 
-      <div className="flex h-screen bg-gray-100 dark:bg-gray-800">
+      <div className="pt-16 flex min-h-screen bg-gray-100 dark:bg-gray-800">
         <Sidebar
           isSidebarOpen={isSidebarOpen}
           setIsSidebarOpen={setIsSidebarOpen}
           languageSwitcher={isMobile ? <LanguageSwitcher /> : undefined}
           themeSwitcher={isMobile ? <ThemeSwitcher /> : undefined}
         />
-        <Header isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
 
-        <main className={`flex-1 p-6 overflow-auto transition-all duration-300 ${contentMarginClass}`}>
+        <main className={`flex-1 p-6 transition-all duration-300 ${contentMargin}`}>
           {children}
         </main>
 
         {isSidebarOpen && !isLargeScreen && (
           <div
-            className="fixed inset-0 bg-gray-100 dark:bg-gray-800 bg-opacity-50 z-30 md:hidden"
+            className="fixed inset-0 bg-black bg-opacity-40 z-30 md:hidden"
             onClick={() => setIsSidebarOpen(false)}
           />
         )}

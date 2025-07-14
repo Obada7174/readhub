@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
@@ -7,7 +7,7 @@ import LanguageSwitcher from '@/components/LanguageSwitcher';
 import Image from 'next/image';
 import Link from 'next/link';
 import readhub from '@/assets/images/readhub-logo.svg';
-import readhubdarkmode from "@/assets/images/readhub-darkmode.svg";
+import readhubdarkmode from '@/assets/images/readhub-darkmode.svg';
 import { useLocale } from 'next-intl';
 
 interface HeaderProps {
@@ -23,30 +23,27 @@ export default function Header({ isSidebarOpen, setIsSidebarOpen }: HeaderProps)
 
   useEffect(() => {
     setMounted(true);
-
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
     checkMobile();
     window.addEventListener('resize', checkMobile);
-
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
   return (
-    <header className={`border-b border-gray-300 bg-white dark:bg-gray-800 dark:border-gray-700 shadow-sm py-2 px-4 sm:px-6 z-50 fixed w-[85.9%]  ${locale=='ar' ? 'left-0' : 'right-0'}`}>
-      <div className="container mx-auto flex items-center justify-between">
+    <header className="fixed top-0 left-0 w-full h-16 border-b border-gray-200 bg-white dark:bg-gray-800 dark:border-gray-700 shadow-sm z-50 px-4 sm:px-6">
+      <div className="flex h-full items-center justify-between">
         <div className="flex items-center gap-4">
+          {/* Sidebar toggle button (mobile only) */}
           <button
             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
             className="md:hidden text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-200"
-            >{}
+          >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
             </svg>
           </button>
 
+          {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
             {mounted && (
               <Image
@@ -55,14 +52,15 @@ export default function Header({ isSidebarOpen, setIsSidebarOpen }: HeaderProps)
                 width={40}
               />
             )}
-            <h1 className="font-funnel-display text-base sm:text-lg text-gray-800 dark:text-white whitespace-nowrap">
-              <span className='font-light'>read</span><strong>hub</strong>
+            <h1 className="text-lg font-semibold text-gray-800 dark:text-white whitespace-nowrap">
+              <span className="font-light">read</span><strong>hub</strong>
             </h1>
           </Link>
         </div>
 
+        {/* Theme + Language switchers (desktop only) */}
         {!isMobile && (
-          <div className="flex items-center space-x-9 space-x-reverse">
+          <div className="flex items-center space-x-6">
             <LanguageSwitcher />
             <ThemeSwitcher />
           </div>

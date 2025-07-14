@@ -6,7 +6,7 @@ import { Dispatch, SetStateAction } from 'react';
 import { useTranslations } from 'next-intl';
 import { sidebarLinks } from '@/assets/files/json';
 import { LuMenu, LuX } from 'react-icons/lu';
-import { useUser } from '@/context/userContext';  // استخدم الـ context بدل الكوكيز
+import { useUser } from '@/context/userContext';
 
 interface SidebarProps {
   isSidebarOpen: boolean;
@@ -23,7 +23,7 @@ export default function Sidebar({
 }: SidebarProps) {
   const pathname = usePathname();
   const t = useTranslations('SideBar');
-  const { user } = useUser();  // جلب المستخدم من الـ context
+  const { user } = useUser();
 
   const getInitials = (firstName?: string, lastName?: string) => {
     const first = firstName?.[0]?.toUpperCase() || '';
@@ -35,10 +35,11 @@ export default function Sidebar({
     <aside
       className={`${
         isSidebarOpen ? 'w-60' : 'w-0 md:w-14'
-      } bg-white dark:bg-gray-900 shadow-md transition-all duration-300 ease-in-out h-screen fixed top-0 left-0 z-40 md:relative overflow-hidden border-r`}
+      } fixed top-16 left-0 h-[calc(100vh-64px)] bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-700
+        shadow-md transition-all duration-300 ease-in-out overflow-hidden z-40`}
     >
       {/* Toggle Button */}
-      <div className="p-4 flex justify-end">
+      <div className="flex justify-end p-4">
         <button
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
           className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
@@ -50,7 +51,7 @@ export default function Sidebar({
 
       {/* User Info */}
       {isSidebarOpen && user && (
-        <div className="flex flex-col items-center py-6">
+        <div className="flex flex-col items-center py-4">
           <div className="w-16 h-16 rounded-full bg-[#36419B] text-white flex items-center justify-center text-xl font-bold">
             {getInitials(user.first_name, user.last_name)}
           </div>
