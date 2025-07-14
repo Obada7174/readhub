@@ -8,6 +8,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import readhub from '@/assets/images/readhub-logo.svg';
 import readhubdarkmode from "@/assets/images/readhub-darkmode.svg";
+import { useLocale } from 'next-intl';
 
 interface HeaderProps {
   isSidebarOpen: boolean;
@@ -18,6 +19,7 @@ export default function Header({ isSidebarOpen, setIsSidebarOpen }: HeaderProps)
   const [mounted, setMounted] = useState(false);
   const { theme } = useTheme();
   const [isMobile, setIsMobile] = useState(false);
+  const locale = useLocale();
 
   useEffect(() => {
     setMounted(true);
@@ -33,7 +35,7 @@ export default function Header({ isSidebarOpen, setIsSidebarOpen }: HeaderProps)
   }, []);
 
   return (
-    <header className="border-b border-gray-300 bg-white dark:bg-gray-800 dark:border-gray-700 shadow-sm py-2 px-4 sm:px-6 z-50">
+    <header className={`border-b border-gray-300 bg-white dark:bg-gray-800 dark:border-gray-700 shadow-sm py-2 px-4 sm:px-6 z-50 fixed w-[85.9%]  ${locale=='ar' ? 'left-0' : 'right-0'}`}>
       <div className="container mx-auto flex items-center justify-between">
         <div className="flex items-center gap-4">
           <button

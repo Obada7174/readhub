@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import { LuStar, LuBookOpen, LuDownload } from 'react-icons/lu';
 import { useLocale } from 'next-intl';
 

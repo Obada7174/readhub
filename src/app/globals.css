@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import '../styles/_keyframe-animations.scss';
+@import '../styles/_variables.scss';
 
 :root {
   --background: #ffffff;
@@ -7,6 +9,7 @@
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
+
 
 @theme inline {
   --color-background: var(--background);
@@ -43,4 +46,59 @@ input[type="number"] {
 
 .sticky-right-column {
   @apply !sticky right-0 bg-white z-50 shadow border-l border-gray-100 dark:border-gray-800 dark:bg-[#1f2937]
+}
+
+
+.gradient-bg {
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 100%);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #882ffb 0%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Reading mode styles */
+.reading-mode {
+  font-family: 'Georgia', serif;
+  line-height: 1.8;
+  font-size: 1.1rem;
+}
+
+.reading-mode h1, .reading-mode h2, .reading-mode h3 {
+  font-family: inherit;
+  line-height: 1.4;
+}
+
+/* Quiz animation */
+@keyframes quiz-correct {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.quiz-correct {
+  animation: quiz-correct 0.3s ease-in-out;
+}
+
+/* Book card hover effects */
+.book-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.book-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Loading animation */
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }

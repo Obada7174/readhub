@@ -1,16 +1,15 @@
 'use client';
 
-import { useCreateUser } from '@/hooks/react-query/users/useUsersQuery';
-import UserForm from '@/components/dashboard/users/UserForm';
-import { UserFormValues } from '@/lib/validators/user.validator';
-import { User } from '@/types/user';
+import { useCreateQuestion } from '@/hooks/react-query/questions/useQuestionsQuery';
+import { QuestionPayload, Question } from '@/types/competitions';
+import QuestionForm from '@/components/dashboard/competitions/book-questions/BookQuestionForm';
 
 export default function AddUser() {
-    const createUserMutation = useCreateUser();
+    const createQuestionMutation = useCreateQuestion();
 
-    const handleAdd = async (data: UserFormValues) => {
-        await createUserMutation.mutateAsync(data as User);
+    const handleAdd = async (data: QuestionPayload) => {
+        await createQuestionMutation.mutateAsync(data as Question);
     };
 
-    return <UserForm mode="add" onSubmit={handleAdd} />;
+    return <QuestionForm mode="add" onSubmit={handleAdd} />;
 }

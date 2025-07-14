@@ -29,23 +29,26 @@ export default function BooksGrid({
 }: Props) {
   return (
     <>
-      
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6">
         {loading &&
-          Array.from({ length: 6 }).map((_, index) => (
+          Array.from({ length: 15 }).map((_, index) => (
             <BookCardSkeleton key={index} />
           ))
         }
+
         {!loading && error && (
           <p className="col-span-full text-red-500 text-center">{error}</p>
         )}
+
         {!loading && !error && books.length === 0 && (
           <p className="col-span-full text-center">{t("no_books_found")}</p>
         )}
+
         {!loading && !error && books.length > 0 && books.map(book => (
           <BookCardSecond key={book.id} book={book} />
         ))}
       </div>
+
       {!loading && !error && books.length > 0 && totalPages > 1 && (
         <div className="flex justify-center mt-6">
           <Stack spacing={2}>

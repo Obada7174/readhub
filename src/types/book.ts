@@ -28,3 +28,10 @@ export interface CategoryOption {
   id: number;
   title: string;
 }
+export type BookOption = {
+  id:number,
+  title:{
+    en:string,
+    ar:string
+  }
+}

@@ -1,7 +1,19 @@
 {
   "HomePage": {
-    "title": "Hello world!",
     "about": "Go to the about page",
+    "title": "Transform Your",
+    "highlight": "Reading Journey",
+    "description": "Discover, read, and engage with books like never before. Join our community of passionate readers and unlock a world of interactive learning.",
+    "searchPlaceholder": "Search for books...",
+    "exploreButton": "Explore Books",
+    "readers": "50k+ Readers",
+    "reviews": "(2.5k reviews)",
+    "currentReading": "Current Reading",
+    "bookTitle": "The Art of Learning",
+    "bookAuthor": "by Josh Waitzkin",
+    "chapterProgress": "Chapter 8 of 12",
+    "comments": "124 comments",
+    "offline": "Offline",
     "topRatedSection": {
       "topRatedBooks": "Top Rated Books"
     },
@@ -277,6 +289,22 @@
       "updatedAt": "Updated Date",
       "actions": "Actions"
     },
+    "quizzes": {
+      "add_quiz": "Add Quiz",
+      "edit_quiz": "Edit Quiz",
+      "ar_title": "Quiz Title (Arabic)",
+      "ar_title_placeholder": "Enter quiz title in Arabic",
+      "title": "Quiz Title (English)",
+      "title_placeholder": "Enter quiz title",
+      "book_id": "Related Book",
+      "select_book_placeholder": "Select a related book",
+      "submitting": "Submitting...",
+      "save_changes": "Save Changes",
+      "errors": {
+        "title_required": "Quiz title is required.",
+        "bookId_required": "Please select a valid book."
+      }
+    },
     "users": {
       "Users": "Users",
       "addUser": "Add User",
@@ -419,6 +447,8 @@
       "submit_edit_result": "Save Changes"
     },
     "question": {
+      "quiz_id": "Quiz",
+      "select_quiz_placeholder": "Select a quiz",
       "add_question_answer": "Add Question Answer",
       "edit_question_answer": "Edit Question Answer",
       "question_id": "Question ID",
@@ -436,7 +466,55 @@
       "incorrect": "Incorrect",
       "select_correctness": "Select correctness",
       "add_answer": "Add Answer",
-      "update_answer": "Update Answer"
+      "update_answer": "Update Answer",
+      "add_question": "Add Question",
+      "edit_question": "Edit Question",
+      "book_id": "Book",
+      "select_book_placeholder": "Select a book",
+      "question_text": "Question Text",
+      "correct_option": "Correct Option",
+      "translation_ar": "Arabic Translation",
+      "ar_question_text": "Arabic Question Text",
+      "ar_option_a": "Arabic Option A",
+      "ar_option_b": "Arabic Option B",
+      "ar_option_c": "Arabic Option C",
+      "ar_option_d": "Arabic Option D",
+      "submitting": "Submitting...",
+      "save_changes": "Save Changes",
+      "errors": {
+        "question_required": "Question text is required and must be at least 2 characters.",
+        "quiz_required": "Quiz is required",
+        "correct_option_required": "Correct option is required.",
+        "book_required": "Please select a book.",
+        "books_fetch_error": "Failed to fetch books. Please try again later."
+      }
+    },
+    "static-pages":{
+      "add_page": "Add New Page",
+      "edit_page": "Edit Page",
+      "en_title": "English Title",
+      "en_title_placeholder": "Enter page title in English",
+      "en_content": "English Content",
+      "en_content_placeholder": "Write content in English...",
+      "ar_title": "Arabic Title",
+      "ar_title_placeholder": "Enter page title in Arabic",
+      "ar_content": "Arabic Content",
+      "ar_content_placeholder": "Write content in Arabic...",
+      "url": "URL Path",
+      "is_published": "Published",
+      "submitting": "Submitting...",
+      "save_changes": "Save Changes",
+      "updatedAt":"Updated At",
+      "createdAt":"Created At",
+      "actions":"Actions",
+      "errors": {
+        "en_title_required": "English title is required and must be at least 2 characters.",
+        "en_content_required": "English content is required and must be at least 10 characters.",
+        "ar_title_required": "Arabic title is required and must be at least 2 characters.",
+        "ar_content_required": "Arabic content is required and must be at least 10 characters.",
+        "url_invalid": "URL path is invalid. Example: /about-us",
+        "is_published_required": "Published status is required."
+      }
     },
     "faq_columns": {
       "id": "ID",
@@ -746,5 +824,88 @@
       "read": "Read",
       "openReading": "Opening reading page..."
     }
-  }}
+  },
+  "Categories": {
+    "title": "Explore Categories",
+    "subtitle": "Discover books across diverse genres and find your next favorite read",
+    "booksLabel": "books",
+    "viewAll": "View All Categories",
+    "fiction": {
+      "name": "Fiction",
+      "description": "Immerse yourself in captivating stories"
+    },
+    "science": {
+      "name": "Science & Tech",
+      "description": "Explore the frontiers of knowledge"
+    },
+    "romance": {
+      "name": "Romance",
+      "description": "Love stories that touch the heart"
+    },
+    "thriller": {
+      "name": "Thriller",
+      "description": "Edge-of-your-seat excitement"
+    },
+    "biography": {
+      "name": "Biography",
+      "description": "Real stories of remarkable lives"
+    },
+    "self-help": {
+      "name": "Self-Help",
+      "description": "Transform your life and mindset"
+    }
+  },
+  "Stats": {
+    "books": "Books Available",
+    "readers": "Active Readers",
+    "rating": "Average Rating",
+    "quizzes": "Quizzes Completed"
+  },
+  "Features": {
+    "title": "Powerful Features",
+    "subtitle": "Experience reading like never before with our comprehensive suite of interactive features designed to enhance your literary journey",
+    "reading": {
+      "title": "Interactive Reading",
+      "description": "Read PDF and EPUB books directly in your browser with bookmarks and text extraction."
+    },
+    "social": {
+      "title": "Social Engagement",
+      "description": "Comment, like, and discuss books with a vibrant community of readers."
+    },
+    "quizzes": {
+      "title": "Interactive Quizzes",
+      "description": "Test your knowledge after reading and earn discount coupons for your achievements."
+    },
+    "audiobooks": {
+      "title": "Audiobook Library",
+      "description": "Stream and download audiobooks with playback speed control and repeat modes."
+    },
+    "chat": {
+      "title": "Live Chat",
+      "description": "Connect with fellow readers in real-time discussions and topic-based groups."
+    },
+    "notifications": {
+      "title": "Smart Notifications",
+      "description": "Get instant alerts for new comments, quiz results, and special offers."
+    },
+    "library": {
+      "title": "Personal Library",
+      "description": "Build your digital library with favorites, reading history, and personalized recommendations."
+    },
+    "offline": {
+      "title": "Offline Reading",
+      "description": "Download books for offline reading and sync your progress across devices."
+    },
+    "search": {
+      "title": "Advanced Search",
+      "description": "Find books by category, rating, language, or keywords with powerful filtering options."
+    },
+    "cta": {
+      "title": "Ready to Transform Your Reading Experience?",
+      "description": "Join thousands of readers who have already discovered the future of digital reading",
+      "start": "Start Reading Now",
+      "learn": "Learn More"
+    }
+  }
+}
   

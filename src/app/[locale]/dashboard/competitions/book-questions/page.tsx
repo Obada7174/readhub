@@ -140,7 +140,7 @@ export default function Questions() {
         return (
           <div className="flex gap-2 items-center text-lg">
             <DashButton
-              href={`/dashboard/questions/${id}/update`}
+              href={`/dashboard/book-questions/${id}/update`}
               className="text-blue-600 hover:text-blue-800 rounded-full shadow p-3"
               size="icon"
             >
@@ -164,7 +164,7 @@ export default function Questions() {
       <DashTable
         ITEM="Question"
         ITEMS="Questions"
-        ADD="/dashboard/competitions/questions/addquestion"
+        ADD="/dashboard/competitions/book-questions/addquestion"
         columns={columns}
         isEditable={true}
         query={{

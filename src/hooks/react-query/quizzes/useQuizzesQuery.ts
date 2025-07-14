@@ -16,9 +16,10 @@ import {
   createQuizResult,
   getQuizResult,
   getQuizWinner,
+  getQuizzesOptions,
 } from "@/services/quizzes.service";
 
-import { Quiz, QuizIndexResponse } from "@/types/competitions";
+import { CreateQuiz, QuizIndexResponse, QuizOption } from "@/types/competitions";
 import { useTranslations } from "next-intl";
 import { showErrorToast, showSuccessToast } from "@/helpers/Toast";
 import { QuizResult, QuizWinner } from "@/types/quiz";
@@ -27,6 +28,13 @@ export const useQuizzesQuery = (page = 1, limit = 10, lang = "en") => {
   return useQuery<QuizIndexResponse>({
     queryKey: ["book-quizzes", page, limit, lang],
     queryFn: () => getQuizzes(page, limit, lang),
+  });
+};
+
+export const useQuizzesOptions = () => {
+  return useQuery<QuizOption[]>({
+    queryKey: ["books-quizzes"],
+    queryFn: async() => getQuizzesOptions(),
   });
 };
 
@@ -59,7 +67,7 @@ export const useUpdateQuiz = () => {
   const t = useTranslations("toastMessages");
 
   return useMutation({
-    mutationFn: ({ id, data }: { id: number; data: Quiz }) =>
+    mutationFn: ({ id, data }: { id: number; data: CreateQuiz }) =>
       updateQuiz(id, data),
     onSuccess: () => {
       showSuccessToast(t("quiz_updated_successfully"));

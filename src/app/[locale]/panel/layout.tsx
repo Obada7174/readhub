@@ -39,6 +39,7 @@ export default function PanelLayout({ children }: { children: React.ReactNode })
   return (
     <>
       <Header isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
+    <UserProvider>
 
       <div className="flex h-screen bg-gray-100 dark:bg-gray-800">
         <Sidebar
@@ -47,6 +48,7 @@ export default function PanelLayout({ children }: { children: React.ReactNode })
           languageSwitcher={isMobile ? <LanguageSwitcher /> : undefined}
           themeSwitcher={isMobile ? <ThemeSwitcher /> : undefined}
         />
+        <Header isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
 
         <main className={`flex-1 p-6 overflow-auto transition-all duration-300 ${contentMarginClass}`}>
           {children}

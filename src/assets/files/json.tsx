@@ -15,19 +15,19 @@ export const links = [
         name: "users",
         icon: <FiUsers />,
         url: "/dashboard/users",
-        roleShow: ["admin", "editor"],
+        roleShow: ["admin"],
       },
       {
         name: "books",
         icon: <TbBooks />,
         url: "/dashboard/books",
-        roleShow: ["admin", "editor"],
+        roleShow: ["admin"],
       },
       {
         name: "categories",
         icon: <MdOutlineCategory />,
         url: "/dashboard/categories",
-        roleShow: ["admin", "editor"],
+        roleShow: ["admin"],
       },
       {
         name: "competitions",
@@ -35,30 +35,30 @@ export const links = [
         url: "/dashboard/competitions",
         children: [
           { name: "quizzes", url: "/dashboard/competitions/quizzes", icon: <LuFileQuestion />},
-          { name: "winners", url: "/dashboard/competitions/winners", icon: <GiPodiumWinner />},
+          { name: "winners", url: "/dashboard/competitions/quizzes-winners", icon: <GiPodiumWinner />},
           { name: "questions", url: "/dashboard/competitions/book-questions", icon: <MdOutlineQuiz />},
-          { name: "results", url: "/dashboard/competitions/results", icon: <MdOutlineAssignmentTurnedIn /> },
-          { name: "answers", url: "/dashboard/competitions/answers", icon: <IoDocumentTextOutline /> }
+          { name: "results", url: "/dashboard/competitions/quizzes-results", icon: <MdOutlineAssignmentTurnedIn /> },
+          { name: "answers", url: "/dashboard/competitions/quizzes-answers", icon: <IoDocumentTextOutline /> }
         ],
-        roleShow: ["admin", "editor"],
+        roleShow: ["admin"],
       },
       {
         name: "Copons",
         icon:<LuTag />,
         url: "/dashboard/copons",
-        roleShow: ["admin", "editor"],
+        roleShow: ["admin"],
       },
       {
         name: "Carts",
         icon: <GiShoppingCart />,
         url: "/dashboard/carts",
-        roleShow: ["admin", "editor"],
+        roleShow: ["admin"],
       },
       {
         name: "Faqs",
         icon:  <FiHelpCircle />,
         url: "/dashboard/faqs",
-        roleShow: ["admin", "editor"],
+        roleShow: ["admin"],
       },
       {
         name: "Comments",
@@ -70,7 +70,7 @@ export const links = [
         name: "StaticPages",
         icon: <CgWebsite />,
         url: "/dashboard/static-pages",
-        roleShow: ["admin", "editor"],
+        roleShow: ["admin"],
       },
     ]
   ;

@@ -85,14 +85,14 @@ export default function Quizzes() {
         return (
           <div className="flex gap-2 items-center text-lg">
             <DashButton
-              href={`/dashboard/quizzes/${id}/update`}
+              href={`/dashboard/competitions/quizzes/${id}/update`}
               className="text-blue-600 hover:text-blue-800 rounded-full shadow p-3"
               size="icon"
             >
               <FaEdit className="translate-x-0.5" />
             </DashButton>
             <DashButton
-              href={`/dashboard/quizzes/${id}`}
+              href={`/dashboard/competitions/quizzes/${id}`}
               className="text-green-600 hover:text-green-800 rounded-full shadow p-3"
               size="icon"
             >
@@ -109,7 +109,7 @@ export default function Quizzes() {
       <DashTable
         ITEM="Quiz"
         ITEMS={t("quizzes")}
-        ADD="/dashboard/competitions/quizzes/addquiz"
+        ADD="competitions/quizzes/addquiz"
         columns={columns}
         isEditable={true}
         query={{

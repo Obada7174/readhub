@@ -9,8 +9,8 @@ const BookCardSecond = ({ book }: any) => {
 
   return (
     <Link href={`/${locale}/book/${book.id}`} passHref>
-      <div className="relative w-[220px] rounded-[10px] border border-gray-300 bg-white dark:bg-slate-800 text-gray-900 dark:text-gray-100 shadow-sm hover:shadow-md transition-shadow duration-200 cursor-pointer">
-        <div className="relative w-full h-[330px] rounded-t-[10px] overflow-hidden">
+      <div className="relative w-[220px] rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-slate-800 text-gray-900 dark:text-gray-100 shadow-sm hover:shadow-md transition-shadow duration-200 cursor-pointer h-full">
+        <div className="relative w-full h-[330px]">
           <img
             src={book.img}
             alt={book.title}
