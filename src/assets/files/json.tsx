@@ -77,7 +77,6 @@ export const links = [
 export const sidebarLinks = [
   { href: `/panel`, label: 'Home', icon: <IoHome size={20} /> },
   { href: `/panel/profile`, label: 'Profile', icon: <LuUser size={20} /> },
-  { href: `/panel/library`, label: 'Library', icon: <LuBookOpen size={20} /> },
   { href: `/panel/favorites`, label: 'Favorites', icon: <LuStar size={20} /> },
   { href: `/panel/my-book`, label: 'My Books', icon: <LuBook size={20} /> },
   { href: `/panel/pdf-reader`, label: 'Pdf Reader', icon: <LuFileText size={20} /> },
@@ -85,5 +84,4 @@ export const sidebarLinks = [
   { href: `/panel/competitions`, label: 'Competitions', icon: <LuTrophy size={20} /> },
   { href: `/panel/settings`, label: 'Settings', icon: <LuSettings size={20} /> },
   { href: `/panel/notifications`, label: 'Notifications', icon: <LuBell size={20} /> },
-
 ];
