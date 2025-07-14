@@ -39,8 +39,6 @@ export default function PanelLayout({ children }: { children: React.ReactNode })
   return (
     <>
       <Header isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
-    <UserProvider>
-
       <div className="flex h-screen bg-gray-100 dark:bg-gray-800">
         <Sidebar
           isSidebarOpen={isSidebarOpen}
