@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // ✅ hooks/useUserProfile.ts (نسخة تعتمد على API)
 
 'use client';

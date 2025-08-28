@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import DashTable from "@/components/dashboard/DashTable";
-import TransformDate from "@/helpers/TransformDate";
 import {
   useCommentsQuery,
   useDeleteComments,
@@ -18,10 +17,8 @@ import {
 
 import DashButton from "@/components/ui/Button";
 import { LuEye } from "react-icons/lu";
-import { FaEdit } from "react-icons/fa";
 
-import { Comment, CommentBody } from "@/types/comment";
-import { DateObject } from "@/types";
+import { Comment } from "@/types/comment";
 import { useTranslations } from "next-intl";
 
 export default function CommentsPage() {

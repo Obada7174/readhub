@@ -1,9 +1,9 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { Reply } from "@/types/comment";
 
 interface Props {
-  reply: Reply;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  reply: any;
 }
 
 const ReplyCard = ({ reply: { user, text } }: Props) => {

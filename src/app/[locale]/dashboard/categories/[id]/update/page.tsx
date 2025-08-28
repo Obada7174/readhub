@@ -7,12 +7,12 @@ import {
 import UseCategoryForm from "@/components/dashboard/categories/UseCategoryForm";
 import { Category } from "@/types/category";
 import { CategoryFormValues } from "@/lib/validators/category.validator";
+import { useParams } from "next/navigation";
 
-interface Props {
-  params: { id: string };
-}
+export default function UpdateCategory() {
+  const params = useParams<{ id: string }>();
+  const id = String(params.id);
 
-export default function UpdateCategory({ params: { id } }: Props) {
   const { data: category, isLoading } = useCategoryQuery(id);
   const updateCategoryMutation = useUpdateCategory(id);
 

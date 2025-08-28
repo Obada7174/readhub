@@ -32,6 +32,7 @@ export default function ForgotPasswordPage() {
             router.push(`/otp?email=${encodeURIComponent(email)}&mode=forgot-password`);
             }, 1500);
       }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       setError(
         err.response?.data?.message || t("somethingWentWrong")

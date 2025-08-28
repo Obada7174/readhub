@@ -6,12 +6,12 @@ import {
   useUpdateQuizResult,
 } from "@/hooks/react-query/quizzes/useQuizzesQuery";
 import { QuizResultFormValues } from "@/lib/validators/quiz-result.validator";
+import { useParams } from "next/navigation";
 
-interface Props {
-  params: { id: string };
-}
+export default function AddQuizResult() {
+  const params = useParams<{ id: string }>();
+  const id = String(params.id);
 
-export default function AddQuizResult({ params: { id } }: Props) {
   const { data, isLoading, error } = useQuizResultQuery(id);
   const updateQuizResultMutation = useUpdateQuizResult(id);
 

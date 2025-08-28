@@ -144,7 +144,7 @@ export default function QuizzesWinners() {
           },
         }}
         updateMutation={async (row: Quiz) => {
-          return await updateMutation.mutateAsync({ id: row.id, data: row });
+          return await updateMutation.mutateAsync({ id: row.id, data: { ...row, bookId: row.book.id } });
         }}
       />
     </div>

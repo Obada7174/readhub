@@ -12,25 +12,22 @@ import {
   GridRenderCellParams,
   GridColDef,
   GridRowId,
-  // GridValueFormatterParams,
 } from "@mui/x-data-grid";
 import DashButton from "@/components/ui/Button";
-import { FaEdit } from "react-icons/fa";
 import {
   useCartQuery,
-  useCartsQuery,
-  useDeleteCart,
   useDeleteCartItem,
 } from "@/hooks/react-query/carts/useCartsQuery";
 import { useState } from "react";
 import { Cart } from "@/types/carts";
 import { LuEye } from "react-icons/lu";
+import { useParams } from "next/navigation";
 
-interface Props {
-  params: { id: string };
-}
 
-export default function CartItems({ params: { id } }: Props) {
+export default function CartItems() {
+  const params = useParams<{ id: string }>();
+  const id = String(params.id);
+
   const [searchText, setSearchText] = useState("");
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);

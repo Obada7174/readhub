@@ -2,19 +2,17 @@
 
 import UseQuizWinnerForm from "@/components/dashboard/quiz-winner/UseQuizWinnerForm";
 import { useQuizWinnerQuery } from "@/hooks/react-query/quizzes/useQuizzesQuery";
-// import { useUpdateCategory } from "@/hooks/react-query/categories/useCategoriesQuery";
-import { QuizWinnerFormValues } from "@/lib/validators/quiz-winner.validator";
-// import { QuizWinner } from "@/types/quiz";
+import { useParams } from "next/navigation";
 
-interface Props {
-  params: { id: string };
-}
+export default function UpdateQuizWinner() {
+  const params = useParams<{ id: string }>();
+  const id = String(params.id);
 
-export default function UpdateQuizWinner({ params: { id } }: Props) {
   const { data, isLoading, error } = useQuizWinnerQuery(id);
   //   const updateCategoryMutation = useUpdateCategory(id);
 
-  const handleUpdate = async (data: QuizWinnerFormValues) => {
+  // const handleUpdate = async (data: QuizWinnerFormValues) => {
+  const handleUpdate = async () => {
     // await updateCategoryMutation.mutateAsync({
     //   id,
     //   ...data,

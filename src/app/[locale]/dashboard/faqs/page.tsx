@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // app/dashboard/faqs/page.tsx
 
 'use client';
@@ -23,11 +24,9 @@ export default function FaqsPage() {
     refetchFaqs,
     deleteFaqs,
     updateFaq,
-    isDeleting,
-    isUpdating,
   } = useFaqsQuery(page, limit, lang, status, searchText);
 
-  const columns = useFaqColumns(lang);
+  const columns = useFaqColumns();
 
   return (
     <div className="p-4">

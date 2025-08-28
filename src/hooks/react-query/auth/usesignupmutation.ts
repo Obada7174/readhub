@@ -5,7 +5,6 @@ import { signupUser } from "@/services/auth.services";
 import { useTranslations } from "next-intl";
 import { showErrorToast, showSuccessToast } from "@/helpers/Toast";
 import { useQueryClient } from "@tanstack/react-query";
-import router from "next/router";
 
 export const useSignupMutation = () => {
   const queryClient = useQueryClient();
@@ -13,7 +12,7 @@ export const useSignupMutation = () => {
 
   return useMutation({
     mutationFn: signupUser,
-    onSuccess: (data) => {
+    onSuccess: () => {
        
         showSuccessToast(t("signup_success"));
         queryClient.invalidateQueries({ queryKey: ["auth"] });

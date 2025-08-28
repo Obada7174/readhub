@@ -56,13 +56,13 @@ export const useCreateCartItem = () => {
       bookId: number;
       quantity: number;
     }) => createCartItem({ id, bookId, quantity }),
-    
+
     onSuccess: (_, variables) => {
       showSuccessToast(t("cartitem_created_successfully"));
       queryClient.invalidateQueries({ queryKey: ["carts"] });
       queryClient.invalidateQueries({ queryKey: ["carts", variables.id] });
     },
-    
+
     onError: () => {
       showErrorToast(t("failed_to_create_cartitem"));
     },

@@ -93,6 +93,7 @@ export default function OTPPage() {
             setError(t("invalidMode"));
           }
         },
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         onError: (err: any) => {
           setError(err.message || t("resendError"));
         },
@@ -115,6 +116,7 @@ export default function OTPPage() {
           setCanResend(false);
           setTimeLeft(60);
         },
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         onError: (err: any) => {
           setError(err.message || t("resendError"));
         },

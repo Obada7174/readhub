@@ -13,21 +13,20 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { Rating } from "@mui/material";
 import { useUser } from "@/hooks/userContext";
-import { createCart, createCartItem, getCarts } from "@/services/carts.service";
-import { useCartsQuery, useCreateCartItem } from "@/hooks/react-query/carts/useCartsQuery";
+import { createCart, createCartItem } from "@/services/carts.service";
+import { useCartsQuery } from "@/hooks/react-query/carts/useCartsQuery";
+import { useParams } from "next/navigation";
 
+const page = () => {
+  const params = useParams<{ id: string }>();
+  const id = String(params.id);
 
-interface Props {
-  params: { id: string };
-}
-
-const page = ({ params: { id } }: Props) => {
   const local = useLocale();
   const ar = local === "ar";
   const t = useTranslations("BookPage");
   const { user } = useUser();
   const { data: book, isLoading, error } = useBookQuery(id);
-  
+
 
   const { data: carts = [] } = useCartsQuery();
 
@@ -37,11 +36,11 @@ const page = ({ params: { id } }: Props) => {
         alert("يرجى تسجيل الدخول أولاً");
         return;
       }
-  
+
       let activeCart = carts.find(
         (cart) => cart.user?.id === user.id && cart.status === "unpaid"
       );
-  
+
       if (!activeCart) {
         const newCart = await createCart(user.id);
         activeCart = newCart;
@@ -53,7 +52,7 @@ const page = ({ params: { id } }: Props) => {
       if (!activeCart) {
         throw new Error("Error occurred while creating cart.");
       }
-  
+
       const addedItem = await createCartItem({
         id: activeCart.id,
         bookId: +id,
@@ -66,7 +65,7 @@ const page = ({ params: { id } }: Props) => {
       console.error("❌ Error adding item to cart:", error);
     },
   });
-  
+
   const queryClient = useQueryClient();
   const { mutateAsync: addRating } = useMutation({
     mutationFn: async (rate: number) => {
@@ -95,8 +94,8 @@ const page = ({ params: { id } }: Props) => {
   if (error) return <div>Error loading book</div>;
   if (!book) return <div>Book not found</div>;
 
-  const discount = +book.discount > 0;
-  
+  const discount = (book.discount && Number(book.discount) > 0) ? +book.discount : 0;
+
   return (
     <div className="container mx-auto flex justify-center my-10">
       <div className="w-full md:w-4/5 px-2 sm:px-0 grid grid-cols-12 gap-6">
@@ -104,11 +103,10 @@ const page = ({ params: { id } }: Props) => {
           <div className="sticky top-28 max-w-2xs mx-auto">
             <div className="w-4/5 mx-auto">
               <Image
-                className={`w-full h-auto object-cover ${
-                  ar
-                    ? "rounded-tl-md rounded-bl-md"
-                    : "rounded-tr-md rounded-br-md"
-                } max-w-2xs mx-auto`}
+                className={`w-full h-auto object-cover ${ar
+                  ? "rounded-tl-md rounded-bl-md"
+                  : "rounded-tr-md rounded-br-md"
+                  } max-w-2xs mx-auto`}
                 width={500}
                 height={500}
                 src={book.img}
@@ -122,31 +120,29 @@ const page = ({ params: { id } }: Props) => {
                 </button>
               </div>
               <div
-                className={`border ${
-                  discount
-                    ? " border-red-500 cursor-not-allowed"
-                    : "cursor-pointer hover:bg-[#0000000d]"
-                } px-5 py-2.5 rounded-full transition-colors`}
+                className={`border ${discount
+                  ? " border-red-500 cursor-not-allowed"
+                  : "cursor-pointer hover:bg-[#0000000d]"
+                  } px-5 py-2.5 rounded-full transition-colors`}
               >
                 <div
-                  className={`flex gap-2 justify-center flex-wrap text-sm sm:text-base text-center w-full font-bold ${
-                    discount ? "line-through text-red-500" : "cursor-pointer"
-                  }`}
+                  className={`flex gap-2 justify-center flex-wrap text-sm sm:text-base text-center w-full font-bold ${discount ? "line-through text-red-500" : "cursor-pointer"
+                    }`}
                 >
                   <span>{t("Kindle")}</span>
                   <span>${book.price}</span>
                 </div>
               </div>
               {discount && (
-  <div
-    onClick={() => handleAddToCart()}
-    className="bg-white border border-[#101828] px-5 py-2.5 rounded-full cursor-pointer transition-colors hover:bg-[#f5f5f5]"
-  >
-    <button className="text-sm sm:text-base text-center w-full font-bold text-[#101828]">
-      {t("Kindle")} - {discount ? `$${book.discounted_price}` : `$${book.price}`}
-    </button>
-  </div>
-)}
+                <div
+                  onClick={() => handleAddToCart()}
+                  className="bg-white border border-[#101828] px-5 py-2.5 rounded-full cursor-pointer transition-colors hover:bg-[#f5f5f5]"
+                >
+                  <button className="text-sm sm:text-base text-center w-full font-bold text-[#101828]">
+                    {t("Kindle")} - {discount ? `$${book.discounted_price}` : `$${book.price}`}
+                  </button>
+                </div>
+              )}
 
 
               <Rate fn={(val: number) => addRating(val)} />

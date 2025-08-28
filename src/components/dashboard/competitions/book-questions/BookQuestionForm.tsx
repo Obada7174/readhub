@@ -61,7 +61,7 @@ export default function QuestionForm({ mode, defaultValues, onSubmit }: Question
         );
     }, [books, locale]);
 
-    const { data: quizzes, isLoading: loadingQuizzes } = useQuizzesOptions();
+    const { data: quizzes } = useQuizzesOptions();
 
     const watchedQuizId = watch('quizId');
 

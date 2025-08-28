@@ -2,13 +2,12 @@
 
 import { useCreateUser } from '@/hooks/react-query/users/useUsersQuery';
 import UserForm from '@/components/dashboard/users/UserForm';
-import { UserFormValues } from '@/lib/validators/user.validator';
-import { User } from '@/types/user';
+import { AddUserFormValues, User } from '@/types/user';
 
 export default function AddUser() {
     const createUserMutation = useCreateUser();
 
-    const handleAdd = async (data: UserFormValues) => {
+    const handleAdd = async (data: AddUserFormValues) => {
         await createUserMutation.mutateAsync(data as User);
     };
 

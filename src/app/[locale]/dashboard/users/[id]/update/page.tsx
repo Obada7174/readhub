@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 'use client';
 
 import { useEffect, useState } from 'react';
@@ -31,6 +32,7 @@ export default function EditCoupon() {
     try {
       await updateCouponMutation.mutateAsync({ id: couponId, coupon: data });
       showSuccessToast(t("coupon_updated_successfully"));
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       showErrorToast(t("failed_to_update_coupon"));
     }

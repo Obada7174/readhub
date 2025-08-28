@@ -8,12 +8,12 @@ import { Book } from "@/types/book";
 import { BookFormValues } from "@/lib/validators/book.validator";
 import UseBookForm from "@/components/dashboard/books/UseBookForm";
 import { useCategoriesQuery } from "@/hooks/react-query/categories/useCategoriesQuery";
+import { useParams } from "next/navigation";
 
-interface Props {
-  params: { id: string };
-}
+export default function UpdateBook() {
+  const params = useParams<{ id: string }>();
+  const id = String(params.id);
 
-export default function UpdateBook({ params: { id } }: Props) {
   const { data } = useCategoriesQuery({ limit: 1000 });
   const { data: book, isLoading } = useBookQuery(id);
   const updateBookMutation = useUpdateBook(id);

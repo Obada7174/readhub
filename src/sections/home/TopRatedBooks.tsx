@@ -5,12 +5,11 @@ import type { BooksResponse } from "@/types/book";
 
 const TopRatedBooks = async () => {
 
-    const books:BooksResponse = await getBooks(1,12,'');
-
+    const books: BooksResponse = await getBooks(1, 12, '');
     return (
         <section className="px-6 md:px-16 py-16 transition-colors duration-300">
             <TopRateTitle />
-            <BookCarousel books={books} />
+            <BookCarousel books={books.data} />
         </section>
     );
 };
@@ -21,10 +20,10 @@ export default TopRatedBooks;
 const TopRateTitle = () => {
     const t = useTranslations("HomePage.topRatedSection");
 
-  return (
-      <h2 className="text-2xl md:text-3xl font-bold text-gray-800 dark:text-gray-100 mb-6">
-          {t("topRatedBooks")}
-      </h2>
-  )
+    return (
+        <h2 className="text-2xl md:text-3xl font-bold text-gray-800 dark:text-gray-100 mb-6">
+            {t("topRatedBooks")}
+        </h2>
+    )
 }
 

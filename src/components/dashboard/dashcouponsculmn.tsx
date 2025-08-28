@@ -2,7 +2,6 @@ import { GridColDef, GridRenderCellParams } from '@mui/x-data-grid';
 import { useTranslations } from 'next-intl';
 import { FaEdit } from 'react-icons/fa';
 import DashButton from '@/components/ui/Button'
-import { LuEye } from 'react-icons/lu';
 export const useCouponColumns = () => {
   const t = useTranslations('Dashboard.coupon_columns');
 

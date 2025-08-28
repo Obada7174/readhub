@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import { useState, useEffect } from "react";
-import { ApiResponse, Book, CategoryOption } from "@/types/book";
+import { Book, CategoryOption } from "@/types/book";
 
 export function useBookData() {
   const [books, setBooks] = useState<Book[]>([]);
@@ -67,13 +68,13 @@ export function useBookData() {
         });
         if (!res.ok) throw new Error("Failed to fetch books");
 
-        const json: ApiResponse = await res.json();
+        const json = await res.json();
 
         let filteredBooks = [...json.data];
 
         if (selectedCategory.length) {
           filteredBooks = filteredBooks.filter(book =>
-            book.categories.some(cat => selectedCategory.includes(cat.id.toString()))
+            book.categories.some((cat: { id: { toString: () => string; }; }) => selectedCategory.includes(cat.id.toString()))
           );
         }
 
@@ -82,8 +83,8 @@ export function useBookData() {
 
         if (json.data.length > 0 && !categories.length) {
           const categoryMap = new Map<number, string>();
-          json.data.forEach(book => {
-            book.categories.forEach(cat => {
+          json.data.forEach((book: { categories: any[]; }) => {
+            book.categories.forEach((cat: { id: number; title: string; }) => {
               if (!categoryMap.has(cat.id)) {
                 categoryMap.set(cat.id, cat.title);
               }

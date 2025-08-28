@@ -1,11 +1,11 @@
 "use client";
 
 import UseCartItemForm from "@/components/dashboard/carts/addCartItem";
+import { useParams } from "next/navigation";
 
-interface Props {
-  params: { id: number };
-}
+export default function AddCartItem() {
+  const params = useParams<{ id: string }>();
+  const itemId = parseInt(params.id);
 
-export default function AddCartItem({ params: { id } }: Props) {
-  return <UseCartItemForm id={id} />;
+  return <UseCartItemForm id={itemId} />;
 }

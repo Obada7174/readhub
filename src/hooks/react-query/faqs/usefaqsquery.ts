@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // hooks/react-query/faqs/useFaqsQuery.ts
 
 import { useQuery, useMutation } from '@tanstack/react-query';
@@ -17,7 +18,7 @@ const fetchFaqs = async (
   limit: number,
   lang: string,
   status?: string,
-  search?: string
+  // search?: string
 ): Promise<{ data: Faq[]; total: number }> => {
   const response = await axios.get('http://127.0.0.1:5000/faqs', {
     params: {
@@ -103,7 +104,8 @@ export const useFaqsQuery = (
     error,
   } = useQuery({
     queryKey: ['faqs', page, limit, lang, status, search],
-    queryFn: () => fetchFaqs(page, limit, lang, status, search),
+    // queryFn: () => fetchFaqs(page, limit, lang, status, search),
+    queryFn: () => fetchFaqs(page, limit, lang, status),
   });
 
   const getFaqById = useQuery({

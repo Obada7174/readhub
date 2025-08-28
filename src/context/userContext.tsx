@@ -18,6 +18,7 @@ interface User {
   last_login_at?: string;
   isVerified?: boolean;
   isSubscribed?: boolean;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any;
 }
 

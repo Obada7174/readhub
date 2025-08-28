@@ -56,7 +56,10 @@
     "competitions": "المسابقات",
     "contact": "تواصل معنا",
     "categories": "التصنيفات",
+    "subscription": "لخطط",
     "search": "البحث",
+    "dashboard": "لوحة التحكم",
+    "cart": "سلة التسوق",
     "logout": "تسجيل الخروج",
     "panel": "لوحة التحكم",
     "login": "تسجيل الدخول"
@@ -289,6 +292,7 @@
       "Comments": "التعليقات",
       "authors": "المؤلفين",
       "StaticPages": "الواجهات الثابتة",
+      "Chat": "الدعم الفني",
       "competitions_answers": "أنواع",
       "competitions_questions": "مستويات",
       "competitions_quizzes": "المشاركون",
@@ -747,7 +751,8 @@
     "send": "إرسال الرسالة",
     "success": "تم إرسال رسالتك بنجاح!",
     "error": "حدث خطأ، يرجى المحاولة مرة أخرى.",
-    "sending": "جارٍ الإرسال..."
+    "sending": "جارٍ الإرسال...",
+    "loading": "جاري التحميل ..."
   },
   "Panel": {
     "edit_account": {
@@ -883,5 +888,28 @@
       "start": "ابدأ القراءة الآن",
       "learn": "اعرف المزيد"
     }
+  },
+  "Support": {
+    "Support Dashboard": "لوحة إدارة الدعم الفني",
+    "Connecting to support": "جاري الاتصال بخدمة الدعم الفني...",
+    "Retry": "إعادة المحاولة",
+    "Connecting": "جاري الاتصال...",
+    "Connected": "متصل",
+    "Disconnected": "غير متصل",
+    "Users": "المستخدمون",
+    "No users connected": "لا يوجد مستخدمون متصلون",
+    "Select a conversation": "اختر محادثة",
+    "Select a user from the list to start chatting": "اختر مستخدمًا من القائمة لبدء المحادثة",
+    "No previous messages": "لا توجد رسائل سابقة",
+    "Type your reply here": "اكتب ردك هنا...",
+    "Last message": "آخر رسالة",
+    "(you)": "(رد منك)",
+    "Support Chat": "الدعم الفني",
+    "Type your message here":"اكتب الرسالة هنا",
+    "Support Service": "خدمة الدعم الفني",
+    "Send": "إرسال",
+    "Common Questions": "الأسئلة الشائعة",
+    "You": "(أنت)",
+    "Support": "(الدعم الفني)"
   }
 }
