@@ -22,16 +22,13 @@ export const createCart = async (userId: number) => {
 export const createCartItem = async ({
   id,
   bookId,
-  quantity
 }: {
   id: number;      // cart id
   bookId: number;  // book id
-  quantity: number;
 }) => {
   const res = await axios.post("http://localhost:5000/cart-item", {
     cart: id,
     book: bookId,
-    quantity: quantity,
   });
   return res.data;
 };

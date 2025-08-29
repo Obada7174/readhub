@@ -39,7 +39,7 @@ export const links = [
       { name: "winners", url: "/dashboard/competitions/quizzes-winners", icon: <GiPodiumWinner /> },
       { name: "questions", url: "/dashboard/competitions/book-questions", icon: <MdOutlineQuiz /> },
       { name: "results", url: "/dashboard/competitions/quizzes-results", icon: <MdOutlineAssignmentTurnedIn /> },
-      { name: "answers", url: "/dashboard/competitions/quizzes-answers", icon: <IoDocumentTextOutline /> }
+      { name: "answers", url: "/dashboard/competitions/questions-answers", icon: <IoDocumentTextOutline /> }
     ],
     roleShow: ["admin"],
   },

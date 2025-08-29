@@ -1,4 +1,5 @@
 "use client";
+
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
@@ -12,28 +13,21 @@ import DashHeader from "@/components/dashboard/Header";
 import { z } from "zod";
 import { useCreateCartItem } from "@/hooks/react-query/carts/useCartsQuery";
 
+// تعريف الـ schema مع الرسائل المترجمة، مع جعل userId و quantity تلقائي
 const createCartSchema = (t: (key: string) => string) =>
   z.object({
     bookId: z
       .number()
-      .positive(t("error.required.bookId"))
-      .int(t("error.required.bookId")),
-    userId: z
-      .number()
-      .positive(t("error.required.userId"))
-      .int(t("error.required.userId")),
-    quantity: z
-      .number()
-      .positive(t("error.required.quantity"))
-      .int(t("error.required.quantity")),
-  },
-
-  );
+      .positive(t("errors.required.bookId"))
+      .int(t("errors.required.bookId")),
+    userId: z.number(),      // سنمرره تلقائياً
+    quantity: z.number(),    // سنمرره تلقائياً
+  });
 
 export type CartFormValues = z.infer<ReturnType<typeof createCartSchema>>;
 
 interface Props {
-  id: number;
+  id: number; // معرف المستخدم أو السلة
 }
 
 export default function UseCartItemForm({ id }: Props) {
@@ -47,17 +41,21 @@ export default function UseCartItemForm({ id }: Props) {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm<CartFormValues>({
     resolver: zodResolver(schema),
     defaultValues: {
       bookId: undefined,
-      userId: undefined,
-      quantity: undefined,
+      userId: id,    
+      quantity: 1,  
     },
   });
 
   const handleAdd = async (data: CartFormValues) => {
-    await createCartMutation.mutateAsync({ id: data.userId, bookId: data.bookId, quantity: data.quantity });
+    await createCartMutation.mutateAsync({
+      id: data.userId,     
+      bookId: data.bookId,
+    });
   };
 
   const submitHandler: SubmitHandler<CartFormValues> = async (data) => {
@@ -65,7 +63,7 @@ export default function UseCartItemForm({ id }: Props) {
       await handleAdd(data);
       router.push("/dashboard/carts/" + id);
     } catch (err) {
-      console.error("Error submitting form", err);
+      console.error("خطأ عند إرسال النموذج", err);
     }
   };
 
@@ -77,6 +75,7 @@ export default function UseCartItemForm({ id }: Props) {
         onSubmit={handleSubmit(submitHandler)}
         className="space-y-6 max-w-xl mx-auto"
       >
+        {/* حقل اختيار الكتاب */}
         <Input
           label={t("bookId_label")}
           placeholder={t("bookId_placeholder")}
@@ -85,6 +84,7 @@ export default function UseCartItemForm({ id }: Props) {
           error={errors.bookId?.message}
         />
 
+        {/* زر الإرسال */}
         <DashButton
           type="submit"
           size="md"

@@ -297,19 +297,21 @@
     "quizzes": {
       "add_quiz": "Add Quiz",
       "edit_quiz": "Edit Quiz",
-      "ar_title": "Quiz Title (Arabic)",
-      "ar_title_placeholder": "Enter quiz title in Arabic",
-      "title": "Quiz Title (English)",
-      "title_placeholder": "Enter quiz title",
-      "book_id": "Related Book",
-      "select_book_placeholder": "Select a related book",
-      "submitting": "Submitting...",
-      "save_changes": "Save Changes",
+      "title": "Title",
+      "title_placeholder": "Enter the quiz title in English",
+      "ar_title": "Title (Arabic)",
+      "ar_title_placeholder": "Enter the quiz title in Arabic",
+      "book_id": "Book",
+      "select_book_placeholder": "Select a book",
+      "save_changes":"Save Changes",
       "errors": {
-        "title_required": "Quiz title is required.",
-        "bookId_required": "Please select a valid book."
-      }
-    },
+        "title_required": "Title is required and must be at least 2 characters.",
+        "bookId_required": "Please select a book.",
+        "books_fetch_error": "Error fetching books."
+      },
+      "submitting": "Submitting..."
+    }
+   ,
     "users": {
       "Users": "Users",
       "addUser": "Add User",
@@ -375,15 +377,17 @@
       "error_required_userId": "User ID is required and must be a positive number"
     },
     "add_cart_item": {
-      "title": "Add New Cart Item",
-      "userId_label": "User ID",
-      "userId_placeholder": "User ID",
+      "cart_item": "Cart Item",
       "bookId_label": "Book ID",
-      "bookId_placeholder": "Book ID",
-      "submit_button": "Add Cart Item",
-      "success_message": "Cart Item added successfully!",
-      "error_required_userId": "User ID is required and must be a positive number",
-      "error_required_bookId": "Book ID is required and must be a positive number"
+      "bookId_placeholder": "Enter book ID",
+      "submit_button": "Add to Cart",
+      "errors": {
+        "required": {
+          "bookId": "Book ID is required",
+          "userId": "User ID is required",
+          "quantity": "Quantity is required"
+        }
+      }
     },
     "dashtable": {
       "add": "Add",
@@ -453,8 +457,6 @@
       "submit_edit_result": "Save Changes"
     },
     "question": {
-      "quiz_id": "Quiz",
-      "select_quiz_placeholder": "Select a quiz",
       "add_question_answer": "Add Question Answer",
       "edit_question_answer": "Edit Question Answer",
       "question_id": "Question ID",
@@ -473,28 +475,19 @@
       "select_correctness": "Select correctness",
       "add_answer": "Add Answer",
       "update_answer": "Update Answer",
-      "add_question": "Add Question",
-      "edit_question": "Edit Question",
-      "book_id": "Book",
-      "select_book_placeholder": "Select a book",
-      "question_text": "Question Text",
-      "correct_option": "Correct Option",
-      "translation_ar": "Arabic Translation",
-      "ar_question_text": "Arabic Question Text",
-      "ar_option_a": "Arabic Option A",
-      "ar_option_b": "Arabic Option B",
-      "ar_option_c": "Arabic Option C",
-      "ar_option_d": "Arabic Option D",
-      "submitting": "Submitting...",
-      "save_changes": "Save Changes",
+    
       "errors": {
-        "question_required": "Question text is required and must be at least 2 characters.",
-        "quiz_required": "Quiz is required",
-        "correct_option_required": "Correct option is required.",
-        "book_required": "Please select a book.",
-        "books_fetch_error": "Failed to fetch books. Please try again later."
+        "question_id_required": "Question ID is required",
+        "user_id_required": "User ID is required",
+        "selected_option_required": "Please select an option",
+        "is_correct_required": "Please select correctness",
+        "submit_failed": "Failed to submit the answer, please try again"
+      },
+      "success": {
+        "submit_success": "Answer submitted successfully"
       }
-    },
+    }
+,    
     "static-pages": {
       "add_page": "Add New Page",
       "edit_page": "Edit Page",
@@ -520,8 +513,49 @@
         "ar_content_required": "Arabic content is required and must be at least 10 characters.",
         "url_invalid": "URL path is invalid. Example: /about-us",
         "is_published_required": "Published status is required."
-      }
+      },
+      "published": "Published",
+      "unpublished": "Unpublished",
+      "pages": "Pages"
     },
+    "question_add": {
+      "add_question": "Add Question",
+      "edit_question": "Edit Question",
+      "save_changes": "Save Changes",
+      "submitting": "Submitting...",
+
+      "question_text": "Question Text (EN)",
+      "ar_question_text": "Question Text (AR)",
+
+      "option_a": "Option A (EN)",
+      "ar_option_a": "Option A (AR)",
+      "option_b": "Option B (EN)",
+      "ar_option_b": "Option B (AR)",
+      "option_c": "Option C (EN)",
+      "ar_option_c": "Option C (AR)",
+      "option_d": "Option D (EN)",
+      "ar_option_d": "Option D (AR)",
+
+      "correct_option": "Correct Option",
+      "book_id": "Book",
+      "quiz_id": "Quiz",
+
+      "select_book_placeholder": "Select a book",
+      "select_quiz_placeholder": "Select a quiz",
+
+      "errors": {
+        "question_required": "Question text is required",
+        "correct_option_required": "Correct option is required",
+        "book_required": "Book selection is required",
+        "books_fetch_error": "Failed to fetch books"
+      },
+
+      "success": {
+        "added": "Question added successfully",
+        "updated": "Question updated successfully"
+      }
+    }
+  ,
     "faq_columns": {
       "id": "ID",
       "question": "Question",
@@ -606,7 +640,65 @@
       "likes": "Likes",
       "replies": "Replies",
       "viewComment": "View Comment"
+    },
+    "BookForm": {
+      "addTitle": "Add Book",
+      "editTitle": "Edit Book",
+      "titleEn": "Title (English)",
+      "titleEnPlaceholder": "Book title in English",
+      "titleAr": "Title (Arabic)",
+      "titleArPlaceholder": "عنوان الكتاب بالعربية",
+      "descEn": "Description (English)",
+      "descEnPlaceholder": "Book description in English",
+      "descAr": "Description (Arabic)",
+      "descArPlaceholder": "وصف الكتاب بالعربية",
+      "author": "Author",
+      "authorPlaceholder": "Book author",
+      "cover": "Cover Image URL",
+      "price": "Price",
+      "discount": "Discount (0.00-1.00)",
+      "pdf": "PDF URL",
+      "pages": "Pages",
+      "categories": "Categories",
+      "btnAdd": "Add Book",
+      "btnSave": "Save Changes"
+    },
+    "bookQuestions": {
+      "addSuccess": "Question added successfully",
+      "addError": "Failed to add question"
+    },
+    "questionAnswers": {
+      "add_question_answer": "Add Question Answer",
+      "edit_question_answer": "Edit Question Answer",
+      "question_id": "Question ID",
+      "enter_question_id": "Enter question ID",
+      "user_id": "User ID",
+      "enter_user_id": "Enter user ID",
+      "selected_option": "Selected Option",
+      "option_a": "Option A",
+      "option_b": "Option B",
+      "option_c": "Option C",
+      "option_d": "Option D",
+      "select_option": "Select an option",
+      "is_correct": "Is Correct?",
+      "correct": "Correct",
+      "incorrect": "Incorrect",
+      "select_correctness": "Select correctness",
+      "add_answer": "Add Answer",
+      "update_answer": "Update Answer",
+    
+      "errors": {
+        "question_id_required": "Question ID is required",
+        "user_id_required": "User ID is required",
+        "selected_option_required": "Please select an option",
+        "is_correct_required": "Please select correctness",
+        "submit_failed": "Failed to submit the answer, please try again"
+      },
+      "success": {
+        "submit_success": "Answer submitted successfully"
+      }
     }
+    
   },
   "SideBar": {
     "Home": "Home",

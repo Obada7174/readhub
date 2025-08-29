@@ -38,19 +38,19 @@ export default function QuestionsAnswer() {
     {
       field: "questionId",
       headerName: t("question_id"),
-      minWidth: 50,
+      minWidth: 100,
       renderCell: (params) => params.row.question?.id || "N/A",
     },
     {
       field: "userId",
       headerName: t("user_id"),
-      minWidth: 50,
+      minWidth: 100,
       renderCell: (params) => params.row.user?.id || "N/A",
     },
     {
       field: "userName",
       headerName: t("user_name"),
-      minWidth: 50,
+      minWidth: 80,
       flex: 1,
       renderCell: (params) =>
         params.row.user?.first_name + " " + params.row.user?.last_name || "N/A",
@@ -58,33 +58,15 @@ export default function QuestionsAnswer() {
     {
       field: "isCorrect",
       headerName: t("is_correct"),
-      minWidth: 100,
+      minWidth: 60,
       flex: 1,
-    },
-    {
-      field: "created_at",
-      headerName: t("created_at"),
-      minWidth: 130,
-      renderCell: (params: GridRenderCellParams) => {
-        const date: DateObject = TransformDate(params.value as string);
-        return `${date.getDay}/${date.getMonth}/${date.getFullYear}`;
-      },
-    },
-    {
-      field: "updated_at",
-      headerName: t("updated_at"),
-      minWidth: 130,
-      renderCell: (params: GridRenderCellParams) => {
-        const date: DateObject = TransformDate(params.value as string);
-        return `${date.getDay}/${date.getMonth}/${date.getFullYear}`;
-      },
     },
     {
       field: "actions",
       headerName: t("actions"),
       sortable: false,
       filterable: false,
-      minWidth: 140,
+      minWidth: 100,
       headerClassName: "sticky-right-column",
       cellClassName: "sticky-right-column",
       renderCell: (params: GridRenderCellParams) => {
@@ -98,13 +80,6 @@ export default function QuestionsAnswer() {
               size="icon"
             >
               <FaEdit className="translate-x-0.5" />
-            </DashButton>
-            <DashButton
-              href={`/dashboard/users/${id}`}
-              className="text-green-600 hover:text-green-800 rounded-full shadow p-3"
-              size="icon"
-            >
-              <LuEye />
             </DashButton>
           </div>
         );

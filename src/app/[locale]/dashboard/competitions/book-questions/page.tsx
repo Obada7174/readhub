@@ -133,7 +133,7 @@ export default function Questions() {
       headerName: t("actions"),
       sortable: false,
       filterable: false,
-      minWidth: 140,
+      minWidth: 100,
       headerClassName: "sticky-right-column",
       cellClassName: "sticky-right-column",
       renderCell: (params: GridRenderCellParams) => {
@@ -142,18 +142,11 @@ export default function Questions() {
         return (
           <div className="flex gap-2 items-center text-lg">
             <DashButton
-              href={`/dashboard/book-questions/${id}/update`}
+              href={`/dashboard/competitions/book-questions/${id}/update`}
               className="text-blue-600 hover:text-blue-800 rounded-full shadow p-3"
               size="icon"
             >
               <FaEdit className="translate-x-0.5" />
-            </DashButton>
-            <DashButton
-              href={`/dashboard/questions/${id}`}
-              className="text-green-600 hover:text-green-800 rounded-full shadow p-3"
-              size="icon"
-            >
-              <LuEye />
             </DashButton>
           </div>
         );
@@ -166,7 +159,7 @@ export default function Questions() {
       <DashTable
         ITEM="Question"
         ITEMS="Questions"
-        ADD="/dashboard/competitions/book-questions/addquestion"
+        ADD="/competitions/book-questions/addquestion"
         columns={columns}
         isEditable={true}
         query={{

@@ -50,12 +50,10 @@ export const useCreateCartItem = () => {
     mutationFn: ({
       id,
       bookId,
-      quantity,
     }: {
       id: number;
       bookId: number;
-      quantity: number;
-    }) => createCartItem({ id, bookId, quantity }),
+    }) => createCartItem({ id, bookId }),
 
     onSuccess: (_, variables) => {
       showSuccessToast(t("cartitem_created_successfully"));

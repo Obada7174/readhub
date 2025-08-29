@@ -3,19 +3,19 @@
 import { useRef, useState } from "react";
 import { GiCloudUpload } from "react-icons/gi";
 
-interface ImageUploaderProps {
+interface PdfUploaderProps {
   sent: boolean;
   currentColor?: string;
   text: string;
   onUpload: (files: FileList) => void;
 }
 
-export default function ImageUploader({
+export default function PdfUploader({
   sent,
   currentColor = "#fcb700",
   text,
   onUpload,
-}: ImageUploaderProps) {
+}: PdfUploaderProps) {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [dragging, setDragging] = useState(false);
 
@@ -49,9 +49,8 @@ export default function ImageUploader({
         ref={inputRef}
         onChange={handleChange}
         hidden
-        multiple
         type="file"
-        accept="image/*"
+        accept="application/pdf"
         disabled={!sent}
       />
 

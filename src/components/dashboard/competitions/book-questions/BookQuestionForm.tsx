@@ -20,7 +20,7 @@ interface QuestionFormProps {
 }
 
 export default function QuestionForm({ mode, defaultValues, onSubmit }: QuestionFormProps) {
-    const t = useTranslations('Dashboard.question');
+    const t = useTranslations('Dashboard.question_add');
     const router = useRouter();
     const locale = useLocale();
     const { data: books, isLoading, error: fetchError } = useBooksOptions();

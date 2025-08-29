@@ -1,13 +1,6 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 import DashTable from "@/components/dashboard/DashTable";
 import TransformDate from "@/helpers/TransformDate";
-
-interface DateObject {
-  getFullYear: number;
-  getMonth: number;
-  getDay: number;
-}
 import {
   GridRenderCellParams,
   GridColDef,
@@ -23,7 +16,6 @@ import { Cart } from "@/types/carts";
 import { LuEye } from "react-icons/lu";
 import { useParams } from "next/navigation";
 
-
 export default function CartItems() {
   const params = useParams<{ id: string }>();
   const id = String(params.id);
@@ -34,15 +26,13 @@ export default function CartItems() {
   const { data, isLoading, refetch } = useCartQuery(id);
   const deleteMutation = useDeleteCartItem();
 
-  console.log(data);
+  const filteredItems =
+    data?.items?.filter((item: { book: { title: string; }; }) =>
+      item.book?.title?.toLowerCase().includes(searchText.toLowerCase())
+    ) ?? [];
 
   const columns: GridColDef[] = [
-    {
-      field: "id",
-      headerName: "Item ID",
-      width: 70,
-      flex: 1,
-    },
+    { field: "id", headerName: "Item ID", width: 70, flex: 1 },
     {
       field: "BookId",
       headerName: "Book ID",
@@ -62,27 +52,8 @@ export default function CartItems() {
       headerName: "Book Price",
       minWidth: 70,
       flex: 1,
-      renderCell: (params) => "$" + params.row.book?.price || "N/A",
-    },
-    {
-      field: "created_at",
-      headerName: "Added Date",
-      minWidth: 130,
-      flex: 1,
-      renderCell: (params: GridRenderCellParams) => {
-        const date: DateObject = TransformDate(params.value as string);
-        return `${date.getFullYear}/${date.getMonth}/${date.getDay}`;
-      },
-    },
-    {
-      field: "updated_at",
-      headerName: "Updated Date",
-      minWidth: 130,
-      flex: 1,
-      renderCell: (params: GridRenderCellParams) => {
-        const date: DateObject = TransformDate(params.value as string);
-        return `${date.getFullYear}/${date.getMonth}/${date.getDay}`;
-      },
+      renderCell: (params) =>
+        params.row.book?.price ? `$${params.row.book.price}` : "N/A",
     },
     {
       field: "actions",
@@ -94,7 +65,6 @@ export default function CartItems() {
       cellClassName: "sticky-right-column",
       renderCell: (params: GridRenderCellParams) => {
         const id = params.row.book.id;
-
         return (
           <div className="flex gap-2 items-center text-lg">
             <DashButton
@@ -118,15 +88,15 @@ export default function CartItems() {
       columns={columns}
       isEditable={true}
       query={{
-        data: data,
+        data: filteredItems,        // ✅ فلترة
         isLoading,
         refetch,
-        total: data?.length,
+        total: filteredItems.length, // ✅ عداد بعد الفلترة
         page,
         setPage,
         limit,
         setLimit,
-        setSearch: setSearchText,
+        setSearch: setSearchText,   // ✅ مربوط بالـ DashTable
       }}
       deleteMutation={{
         mutateAsync: async (ids: GridRowId[]) =>
