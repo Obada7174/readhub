@@ -17,6 +17,7 @@ export interface Book {
   total_ratings: number;
   created_at: string;
   categories: Category[];
+  isFavorite: boolean;
 }
 
 
@@ -30,9 +31,9 @@ export interface CategoryOption {
   title: string;
 }
 export type BookOption = {
-  id:number,
-  title:{
-    en:string,
-    ar:string
+  id: number,
+  title: {
+    en: string,
+    ar: string
   }
 }

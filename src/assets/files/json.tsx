@@ -3,7 +3,7 @@ import { TbBooks } from "react-icons/tb";
 import { MdOutlineCategory } from "react-icons/md";
 import { GiShoppingCart, GiTrophy } from "react-icons/gi";
 import { IoHome } from "react-icons/io5";
-import { LuBell, LuBook, LuFileQuestion, LuFileText, LuMessageSquare, LuSettings, LuStar, LuTag, LuTrophy, LuUser } from "react-icons/lu";
+import { LuBook, LuFileQuestion, LuMessageSquare, LuStar, LuTag, LuTrophy, LuUser } from "react-icons/lu";
 import { GiPodiumWinner } from "react-icons/gi";
 import { MdOutlineAssignmentTurnedIn, MdOutlineQuiz } from "react-icons/md";
 import { IoDocumentTextOutline } from "react-icons/io5";
@@ -86,9 +86,6 @@ export const sidebarLinks = [
   { href: `/panel/profile`, label: 'Profile', icon: <LuUser size={20} /> },
   { href: `/panel/favorites`, label: 'Favorites', icon: <LuStar size={20} /> },
   { href: `/panel/my-book`, label: 'My Books', icon: <LuBook size={20} /> },
-  { href: `/panel/pdf-reader`, label: 'Pdf Reader', icon: <LuFileText size={20} /> },
   { href: `/panel/comments`, label: 'Comments', icon: <LuMessageSquare size={20} /> },
   { href: `/panel/competitions`, label: 'Competitions', icon: <LuTrophy size={20} /> },
-  { href: `/panel/settings`, label: 'Settings', icon: <LuSettings size={20} /> },
-  { href: `/panel/notifications`, label: 'Notifications', icon: <LuBell size={20} /> },
 ];

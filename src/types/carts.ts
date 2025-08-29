@@ -1,5 +1,8 @@
+import { Book } from "./book";
+
 export type CartItem = {
   id: number;
+  book:Book;
   quantity: number;
 };
 

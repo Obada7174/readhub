@@ -39,7 +39,6 @@ const LoginPage = () => {
         Cookies.set("access_token", data.access_token, { expires: 7 });
         Cookies.set("user", JSON.stringify({ ...data.user, token: data.access_token }), { expires: 7 });
         localStorage.setItem("auth_event", Date.now().toString());
-        window.location.href ="/panel";
       },
       onError: (err: Error) => {
         setErrorMessage(err.message);

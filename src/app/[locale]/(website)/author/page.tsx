@@ -98,6 +98,7 @@ const convertedBooks: Book[] = booksRaw.map((b) => ({
   total_ratings: 0,
   created_at: b.publishedDate,
   categories: [],
+  isFavorite:false
 }));
 
 export default function AuthorProfile() {

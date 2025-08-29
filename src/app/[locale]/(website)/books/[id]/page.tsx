@@ -3,9 +3,10 @@
 'use client';
 
 import { useUser } from '@/context/userContext';
-import { showErrorToast } from '@/helpers/Toast';
+import { showErrorToast, showSuccessToast } from '@/helpers/Toast';
 import { useBookData } from '@/hooks/react-query/books/useBooksData';
 import { useBookQuery } from '@/hooks/react-query/books/useBooksQuery';
+import { useCreateCart, useCreateCartItem } from '@/hooks/react-query/carts/useCartsQuery';
 import { useBookCommentsQuery, useCreateComment } from '@/hooks/react-query/comments/useCommentsQuery';
 import { useToggleFavorite } from '@/hooks/react-query/favorites/useFavoritesQuery';
 import { useCreateReply } from '@/hooks/react-query/replies/useRepliesQuery';
@@ -20,6 +21,7 @@ import { useEffect, useState } from 'react';
 import { LuStar, LuHeart, LuMessageCircle, LuSend, LuShoppingCart, LuBookOpen, LuThumbsUp } from 'react-icons/lu';
 
 const mockCommentsAPI = {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   async toggleLike(commentId: number, isReply = false) {
     await new Promise(resolve => setTimeout(resolve, 300));
     return { success: true };
@@ -43,13 +45,12 @@ const RatingStars: React.FC<RatingStarsProps> = ({ rating, size = "w-4 h-4" }) =
         <LuStar
           key={i}
           title={t('rating.stars', { count: i + 1 })}
-          className={`${size} ${
-            i < fullStars
-              ? 'text-yellow-400 fill-current'
-              : i === fullStars && hasHalfStar
+          className={`${size} ${i < fullStars
+            ? 'text-yellow-400 fill-current'
+            : i === fullStars && hasHalfStar
               ? 'text-yellow-400 fill-current opacity-50'
               : 'text-gray-400 dark:text-gray-600'
-          }`}
+            }`}
         />
       ))}
     </div>
@@ -75,7 +76,6 @@ export interface Comment {
   replies: CommentReply[];
 }
 
-// === Props التعليق ===
 interface CommentProps {
   comment: BookComment;
   onReply: (commentId: number, content: string) => void;
@@ -91,7 +91,6 @@ const Comment: React.FC<CommentProps> = ({ comment, onReply, onLike }) => {
   const handleReply = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!replyContent.trim() || isSubmitting) return;
-
     setIsSubmitting(true);
     try {
       await onReply(comment.id, replyContent);
@@ -279,12 +278,12 @@ const CommentsSection: React.FC<CommentsSectionProps> = ({ bookId }) => {
               replies: c.replies.map((r) =>
                 r.id === id
                   ? {
-                      ...r,
-                      isLiked: !r.isLiked,
-                      likes: r.isLiked
-                        ? r.likes.filter(like => like !== user?.id)?.length
-                        : [...r.likes, user?.id]?.length,
-                    }
+                    ...r,
+                    isLiked: !r.isLiked,
+                    likes: r.isLiked
+                      ? r.likes.filter(like => like !== user?.id)?.length
+                      : [...r.likes, user?.id]?.length,
+                  }
                   : r
               ),
             };
@@ -470,12 +469,28 @@ const BookDetailsPage: React.FC = () => {
   const isArabic = locale === 'ar';
   const { data: book, isLoading } = useBookQuery(bookId);
   const { mutate } = useToggleFavorite();
-  const { user } = useUser();
   const t = useTranslations();
-  const router = useRouter();
-
+  const { mutate: cartMutate } = useCreateCart({
+    onSuccess: (data) => {
+      cartItemMutate({ id: data.id, bookId: parseInt(bookId) });
+      localStorage.setItem("cart", JSON.stringify(data));
+    },
+  }); const { mutate: cartItemMutate } = useCreateCartItem();
+  const cartJson = localStorage.getItem('cart');
+  const cart = cartJson ? JSON.parse(cartJson) : null;
+  const userJson = localStorage.getItem('user');
+  const user = userJson ? JSON.parse(userJson) : null;
   const handleAddToCart = () => {
-    alert(t('books.added_to_cart'));
+    if (user == null) {
+      showErrorToast('auth.login_required')
+      return
+    }
+    if (cart) {
+      cartItemMutate({ id: cart.id, bookId: parseInt(bookId) })
+    } else {
+      cartMutate(user.id);
+    }
+    showSuccessToast(t('books.added_to_cart'));
   };
 
   const handleRating = (newRating: number) => {
@@ -485,7 +500,15 @@ const BookDetailsPage: React.FC = () => {
 
   const handleFavorite = () => {
     if (user?.id) {
-      mutate({ userId: user.id, bookId: parseInt(bookId) });
+      mutate(
+        { userId: user.id, bookId: parseInt(bookId) },
+        {
+          onSuccess: () => {
+            if (book != undefined)
+              book.isFavorite = !book.isFavorite;
+          },
+        }
+      );
     } else {
       showErrorToast(t('auth.login_required'));
     }
@@ -544,9 +567,14 @@ const BookDetailsPage: React.FC = () => {
                     onClick={handleFavorite}
                     className="w-full bg-gray-900 text-white py-3 px-4 rounded-lg hover:bg-gray-800 transition-colors flex items-center justify-center gap-2"
                   >
-                    <LuHeart className="w-4 h-4" />
-                    {t('books.want_to_read')}
+                    {book.isFavorite ? (
+                      <LuHeart className="w-4 h-4 text-red-500 fill-red-500" /> // قلب ممتلئ
+                    ) : (
+                      <LuHeart className="w-4 h-4" /> // قلب فارغ
+                    )}
+                    {t("books.want_to_read")}
                   </button>
+
 
                   {discount > 0 ? (
                     <>
@@ -584,11 +612,10 @@ const BookDetailsPage: React.FC = () => {
                           aria-label={t('rating.stars', { count: star })}
                         >
                           <LuStar
-                            className={`w-6 h-6 ${
-                              star <= rating
-                                ? 'text-yellow-400 fill-current'
-                                : 'text-gray-400 hover:text-yellow-400 dark:text-gray-600'
-                            }`}
+                            className={`w-6 h-6 ${star <= rating
+                              ? 'text-yellow-400 fill-current'
+                              : 'text-gray-400 hover:text-yellow-400 dark:text-gray-600'
+                              }`}
                           />
                         </button>
                       ))}
@@ -620,7 +647,7 @@ const BookDetailsPage: React.FC = () => {
                   </p>
                 </div>
 
-                <div>
+                {book.categories.length > 0 && <div>
                   <h3 className="text-lg font-medium mb-3 dark:text-gray-100">{t('books.categories')}</h3>
                   <div className="flex flex-wrap gap-2">
                     {book.categories.map((category) => (
@@ -632,7 +659,7 @@ const BookDetailsPage: React.FC = () => {
                       </span>
                     ))}
                   </div>
-                </div>
+                </div>}
 
                 <div className="text-sm text-gray-600 dark:text-gray-400 space-y-1">
                   <p>{book.total_pages} {t('books.pages')}</p>

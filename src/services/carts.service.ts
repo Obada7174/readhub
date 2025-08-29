@@ -9,29 +9,29 @@ export const getCartById = async (id: string) => {
   const res = await axios.get(`http://localhost:5000/carts/${id}`);
   return res.data;
 };
-// export const getCartById = async (id: string) => {
-//   const res = await axios.get(`http://localhost:5000/carts/${id}`);
-//   return res.data.items;
-// };
+
+
 
 export const createCart = async (userId: number) => {
   const res = await axios.post("http://localhost:5000/carts", { userId });
   return res.data;
 };
 
+export const payStripeCart = async (amount: number) => {
+  const res = await axios.post("http://localhost:5000/payment/checkout", { amount });
+  return res.data;
+};
+
 export const createCartItem = async ({
   id,
   bookId,
-  quantity
 }: {
   id: number;      // cart id
   bookId: number;  // book id
-  quantity: number;
 }) => {
   const res = await axios.post("http://localhost:5000/cart-item", {
     cart: id,
     book: bookId,
-    quantity: quantity,
   });
   return res.data;
 };

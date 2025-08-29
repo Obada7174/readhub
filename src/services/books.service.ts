@@ -1,10 +1,19 @@
 import axios from "@/services/axios";
-import { Book, BooksResponse ,BookOption } from "@/types/book";
+import { Book, BooksResponse, BookOption } from "@/types/book";
+import Cookies from "js-cookie";
 
 export const getBook = async (id: string): Promise<Book> => {
-  const res = await axios.get("http://localhost:5000/books/" + id);
+  const token = Cookies.get("access_token");
+
+  const res = await axios.get(`http://localhost:5000/books/${id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
   return res.data;
 };
+
 
 export const getBooks = async (
   page: number,

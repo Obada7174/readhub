@@ -2,6 +2,7 @@
 
 import { LuStar, LuBookOpen } from 'react-icons/lu';
 import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/navigation';
 
 interface Category {
   id: number;
@@ -41,7 +42,7 @@ export default function FavoriteCard({ book }: FavoriteCardProps) {
   const hasDiscount = !!discounted_price && discounted_price !== price;
 
   return (
-    <div className="flex gap-4 p-4 rounded-2xl border border-gray-200 bg-white dark:bg-slate-800 text-gray-900 dark:text-gray-100 shadow-sm hover:shadow-md duration-200 transition-all max-w-xl w-full mx-auto">
+    <Link href={`/books/${book.id}`} className="cursor-pointer flex gap-4 p-4 rounded-2xl border border-gray-200 bg-white dark:bg-slate-800 text-gray-900 dark:text-gray-100 shadow-sm hover:shadow-md duration-200 transition-all max-w-xl w-full mx-auto">
       {/* Book Image */}
       <div className="min-w-[96px] h-36 rounded-xl overflow-hidden bg-gray-100 shadow-sm">
         <img src={img} alt={title} className="w-full h-full object-cover" />
@@ -118,6 +119,6 @@ export default function FavoriteCard({ book }: FavoriteCardProps) {
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }

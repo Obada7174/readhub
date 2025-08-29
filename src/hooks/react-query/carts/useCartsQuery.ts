@@ -1,4 +1,4 @@
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { useQuery, useMutation, useQueryClient, UseMutationOptions } from "@tanstack/react-query";
 import {
   getCarts,
   getCartById,
@@ -7,6 +7,7 @@ import {
   deleteCart,
   createCartItem,
   deleteCartItem,
+  payStripeCart,
 } from "@/services/carts.service";
 import { Cart } from "@/types/carts";
 import { showErrorToast, showSuccessToast } from "@/helpers/Toast";
@@ -26,18 +27,41 @@ export const useCartQuery = (id: string) => {
   });
 };
 
-export const useCreateCart = () => {
+
+export const useCreateCart = (
+  options?: UseMutationOptions<Cart, Error, number>
+) => {
   const queryClient = useQueryClient();
   const t = useTranslations("toastMessages");
 
-  return useMutation({
+  return useMutation<Cart, Error, number>({
     mutationFn: (userId: number) => createCart(userId),
-    onSuccess: () => {
+    onSuccess: (data, variables, context) => {
       showSuccessToast(t("cart_created_successfully"));
       queryClient.invalidateQueries({ queryKey: ["carts"] });
+      options?.onSuccess?.(data, variables, context);
     },
-    onError: () => {
+    onError: (error, variables, context) => {
       showErrorToast(t("failed_to_create_cart"));
+      options?.onError?.(error, variables, context);
+    },
+  });
+};
+
+export const usePayStripeCart = (
+  options?: UseMutationOptions<Cart, Error, number>
+) => {
+  const t = useTranslations("toastMessages");
+
+  return useMutation({
+    mutationFn: (amount: number) => payStripeCart(amount),
+    onSuccess: (data, variables, context) => {
+
+      options?.onSuccess?.(data, variables, context);
+    },
+    onError: (error, variables, context) => {
+      showErrorToast(t("failed_to_create_cart"));
+      options?.onError?.(error, variables, context);
     },
   });
 };
@@ -50,12 +74,10 @@ export const useCreateCartItem = () => {
     mutationFn: ({
       id,
       bookId,
-      quantity,
     }: {
       id: number;
       bookId: number;
-      quantity: number;
-    }) => createCartItem({ id, bookId, quantity }),
+    }) => createCartItem({ id, bookId }),
 
     onSuccess: (_, variables) => {
       showSuccessToast(t("cartitem_created_successfully"));
