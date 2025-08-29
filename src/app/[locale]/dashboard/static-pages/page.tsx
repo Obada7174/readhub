@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { Select, MenuItem } from "@mui/material";
 import DashTable from "@/components/dashboard/DashTable";
-import TransformDate from "@/helpers/TransformDate";
 import {
   usePagesQuery,
   useDeletePage,
@@ -20,8 +19,6 @@ import {
   GridColDef,
 } from "@mui/x-data-grid";
 
-import { DateObject } from "@/types";
-import { LuEye } from "react-icons/lu";
 import { FaEdit } from "react-icons/fa";
 import { useTranslations } from "next-intl";
 

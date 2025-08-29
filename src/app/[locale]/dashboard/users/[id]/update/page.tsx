@@ -31,6 +31,7 @@ export default function EditUser() {
       await updateUserMutation.mutateAsync({ id: userId, data });
       showSuccessToast(t("user_updated_successfully"));
     } catch (error) {
+      console.log(error)
       showErrorToast(t("failed_to_update_user"));
     }
   };

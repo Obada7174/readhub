@@ -15,7 +15,6 @@ import {
   GridRenderCellParams,
   GridColDef,
   GridRowId,
-  // GridValueFormatterParams,
 } from "@mui/x-data-grid";
 import { useCategoriesQuery } from "@/hooks/react-query/categories/useCategoriesQuery";
 import {
@@ -28,7 +27,6 @@ import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
 import DashButton from "@/components/ui/Button";
 import { FaEdit } from "react-icons/fa";
-import { LuEye } from "react-icons/lu";
 
 export default function Books() {
   const t = useTranslations("Dashboard.Books");

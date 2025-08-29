@@ -41,7 +41,6 @@ export default function UseCartItemForm({ id }: Props) {
     register,
     handleSubmit,
     formState: { errors },
-    setValue,
   } = useForm<CartFormValues>({
     resolver: zodResolver(schema),
     defaultValues: {

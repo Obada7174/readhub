@@ -17,7 +17,6 @@ import DashButton from "@/components/ui/Button";
 import { GridRenderCellParams, GridColDef } from "@mui/x-data-grid";
 
 import { DateObject } from "@/types";
-import { LuEye } from "react-icons/lu";
 import { FaEdit } from "react-icons/fa";
 import { useTranslations } from "next-intl";
 
