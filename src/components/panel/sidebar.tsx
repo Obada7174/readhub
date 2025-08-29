@@ -1,5 +1,5 @@
 'use client';
-
+import Image from "next/image";
 import { usePathname } from 'next/navigation';
 import { Link } from '@/i18n/navigation';
 import { Dispatch, SetStateAction } from 'react';
@@ -49,17 +49,32 @@ export default function Sidebar({
         </button>
       </div>
 
-      {/* User Info */}
-      {isSidebarOpen && user && (
-        <div className="flex flex-col items-center py-4">
-          <div className="w-16 h-16 rounded-full bg-[#36419B] text-white flex items-center justify-center text-xl font-bold">
-            {getInitials(user.first_name, user.last_name)}
-          </div>
-          <span className="mt-2 font-semibold text-gray-800 dark:text-white">
-            {user.first_name} {user.last_name}
-          </span>
-        </div>
-      )}
+ 
+{/* User Info */}
+{isSidebarOpen && user && (
+  <div className="flex flex-col items-center py-4">
+    {user.image ? (
+      <div className="relative w-16 h-16">
+        <Image
+          src={user.image}
+          alt={`${user.first_name} ${user.last_name}`}
+          fill
+          className="rounded-full object-cover"
+          sizes="64px"
+        />
+      </div>
+    ) : (
+      <div className="w-16 h-16 rounded-full bg-[#36419B] text-white flex items-center justify-center text-xl font-bold">
+        {getInitials(user.first_name, user.last_name)}
+      </div>
+    )}
+
+    <span className="mt-2 font-semibold text-gray-800 dark:text-white">
+      {user.first_name} {user.last_name}
+    </span>
+  </div>
+)}
+
 
       {/* Sidebar Links */}
       <nav className="mt-4 px-2 space-y-1">

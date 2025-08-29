@@ -71,11 +71,14 @@ export default function Header() {
             </div>
             <LanguageSwitcher />
             <ThemeSwitcher />
-            <Link href="/dashboard">
-              <Button variant="ghost" size="icon">
-                <LuLayoutDashboard className="h-5 w-5" />
-              </Button>
-            </Link>
+            {user?.role === "admin" && (
+  <Link href="/dashboard">
+    <Button variant="ghost" size="icon">
+      <LuLayoutDashboard className="h-5 w-5" />
+    </Button>
+  </Link>
+)}
+
             <NotificationBell />
             <Link href="/cart">
               <Button variant="ghost" size="icon">
