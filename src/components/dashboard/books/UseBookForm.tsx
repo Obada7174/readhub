@@ -190,7 +190,7 @@ export default function UseBookForm({
           type="submit"
           size="md"
           className="font-bold w-full mt-4 cursor-pointer"
-          text={mode === "add" ? "إضافة كتاب" : "حفظ التغييرات"}
+          text={mode === "add" ? "Add Book" : "Save Changes"}
         />
       </form>
     </DashContainer>

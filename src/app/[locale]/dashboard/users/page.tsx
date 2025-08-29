@@ -123,7 +123,7 @@ export default function Users() {
       headerName: t("actions"),
       sortable: false,
       filterable: false,
-      minWidth: 140,
+      minWidth: 100,
       headerClassName:"sticky-right-column",
       cellClassName: "sticky-right-column",
 
@@ -134,18 +134,12 @@ export default function Users() {
           <div className="flex gap-2 items-center text-lg">
             <DashButton
               href={`/dashboard/users/${id}/update`}
-              className="text-blue-600 hover:text-blue-800 rounded-full shadow p-3"
+              className="text-blue-600 hover:text-blue-800 rounded-full shadow"
               size="icon"
             >
               <FaEdit className="translate-x-0.5" />
             </DashButton>
-            <DashButton
-              href={`/dashboard/users/${id}`}
-              className="text-green-600 hover:text-green-800 rounded-full shadow p-3"
-              size="icon"
-            >
-              <LuEye />
-            </DashButton>
+            
           </div>
         );
       },

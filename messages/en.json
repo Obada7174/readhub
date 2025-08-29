@@ -116,6 +116,7 @@
     "resending": "Resending...",
     "resendSuccess": "Code has been sent successfully",
     "resendError": "Failed to resend code, please try again",
+    "signupVerification":"Sign Up Verification",
     "wait": "Wait"
   },
   "login": {
