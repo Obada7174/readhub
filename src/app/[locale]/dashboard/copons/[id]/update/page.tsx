@@ -1,10 +1,10 @@
 'use client';
 
-import { useCouponQuery, useCouponsQuery } from '@/hooks/react-query/coupons/usequerycoupons';
+import { useCouponQuery } from '@/hooks/react-query/coupons/usequerycoupons';
 import { useUpdateCoupon } from '@/hooks/react-query/coupons/usequerycoupons';
 import CouponForm from '@/components/dashboard/coupons/couponForm';
 import { useParams } from 'next/navigation';
-import { Coupon, UpdateCouponPayload } from '@/types/coupons';
+import { UpdateCouponPayload } from '@/types/coupons';
 
 export default function EditCoupon() {
   const params = useParams<{ id: string }>();

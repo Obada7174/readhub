@@ -1,9 +1,9 @@
 "use client";
 import Link from "next/link";
-import Image from "next/image";
 import { LuStar, LuShoppingCart } from "react-icons/lu";
 import { useLocale } from "next-intl";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const BookCardSecond = ({ book }: any) => {
   const locale = useLocale();
 

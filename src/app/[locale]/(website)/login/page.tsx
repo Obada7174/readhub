@@ -5,11 +5,11 @@ import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { useLoginMutation } from "@/hooks/react-query/auth/usequeryloginmutation";
 import Cookies from "js-cookie";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 
 const LoginPage = () => {
   const t = useTranslations("login");
-  const router = useRouter();
+  // const router = useRouter();
 
   const [formData, setFormData] = useState({
     email: "",

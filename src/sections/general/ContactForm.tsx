@@ -1,7 +1,6 @@
 'use client';
 import React, { useState } from 'react';
 import Lottie from 'lottie-react';
-// import contactAnimation from '@/assets/animations/contact.json';
 import { useTranslations } from 'next-intl';
 import Button from '@/components/ui/Button';
 import emailjs from 'emailjs-com';

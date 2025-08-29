@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Select, MenuItem } from "@mui/material";
 import DashTable from "@/components/dashboard/DashTable";
 import TransformDate from "@/helpers/TransformDate";
@@ -40,13 +40,12 @@ export default function Questions() {
       await params.api.setEditCellValue({ id: params.id, field: "correct_option", value });
       params.api.stopCellEditMode({ id: params.id, field: "correct_option" });
     };
-
     return (
       <Select
-        value={params.value || ''}
+      value={params.value || ''}
         onChange={handleChange}
         sx={{ width: "100%" }}
-      >
+        >
         <MenuItem value="a">a</MenuItem>
         <MenuItem value="b">b</MenuItem>
         <MenuItem value="c">c</MenuItem>
@@ -54,6 +53,9 @@ export default function Questions() {
       </Select>
     );
   };
+  useEffect(()=>{
+    console.log(searchText)
+  },[])
 
   const columns: GridColDef[] = [
     { field: "id", headerName: t("id"), width: 50 },

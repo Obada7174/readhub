@@ -1,17 +1,21 @@
 "use client";
 
 import { useState } from 'react';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
+import { useFaqsQuery } from '@/hooks/react-query/faqs/usefaqsquery';
 
-export default function FaqSection({ faqPath }: { faqPath: string }) {
+export default function FaqSection({ faqPath, limit = 10 }: { faqPath: string, limit?: number }) {
     const t = useTranslations(faqPath);
     const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+    const locale = useLocale();
+    const { faqs: faqsData, isLoading } = useFaqsQuery(1, limit, locale, 'active');
 
     const toggleAnswer = (index: number) => {
         setOpenIndex(openIndex === index ? null : index);
     };
 
-    const faqs = t.raw('faqs') as Array<{ question: string; answer: string }>;
+    const faqs = faqsData || [];
 
     return (
         <section className="py-16 bg-gray-100 dark:bg-gray-700">
@@ -26,44 +30,50 @@ export default function FaqSection({ faqPath }: { faqPath: string }) {
                 </div>
 
                 <div className="max-w-3xl mx-auto space-y-4">
-                    {faqs.map((faq, index) => (
-                        <div
-                            key={index}
-                            className="border border-gray-200 dark:border-gray-600 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200 bg-white dark:bg-gray-800"
-                        >
-                            <button
-                                onClick={() => toggleAnswer(index)}
-                                className="cursor-pointer w-full flex justify-between items-center px-6 py-4 text-left text-gray-900 dark:text-white bg-gray-50 dark:bg-gray-750 hover:bg-gray-100 dark:hover:bg-gray-750 transition-colors duration-200"
-                                aria-expanded={openIndex === index}
-                            >
-                                <span className="font-medium">{faq.question}</span>
-                                <svg
-                                    className={`w-5 h-5 text-gray-500 dark:text-gray-400 transform transition-transform duration-200 ${openIndex === index ? 'rotate-180' : ''
-                                        }`}
-                                    fill="none"
-                                    stroke="currentColor"
-                                    viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth={2}
-                                        d="M19 9l-7 7-7-7"
-                                    />
-                                </svg>
-                            </button>
-
+                    {isLoading ? (
+                        <p className="text-center text-gray-500">Loading...</p>
+                    ) : (
+                        faqs.map((faq, index) => (
                             <div
-                                className={`transition-all duration-300 ease-in-out overflow-hidden ${openIndex === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-90'
-                                    }`}
+                                key={faq.id}
+                                className="border border-gray-200 dark:border-gray-600 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200 bg-white dark:bg-gray-800"
                             >
-                                <div className="px-6 pb-4 pt-2 text-gray-600 dark:text-gray-300">
-                                    {faq.answer}
+                                <button
+                                    onClick={() => toggleAnswer(index)}
+                                    className="cursor-pointer w-full flex justify-between items-center px-6 py-4 text-left text-gray-900 dark:text-white bg-gray-50 dark:bg-gray-750 hover:bg-gray-100 dark:hover:bg-gray-750 transition-colors duration-200"
+                                    aria-expanded={openIndex === index}
+                                >
+                                    <span className="font-medium">{faq.question}</span>
+                                    <svg
+                                        className={`w-5 h-5 text-gray-500 dark:text-gray-400 transform transition-transform duration-200 ${
+                                            openIndex === index ? 'rotate-180' : ''
+                                        }`}
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth={2}
+                                            d="M19 9l-7 7-7-7"
+                                        />
+                                    </svg>
+                                </button>
+
+                                <div
+                                    className={`transition-all duration-300 ease-in-out overflow-hidden ${
+                                        openIndex === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                                    }`}
+                                >
+                                    <div className="px-6 pb-4 pt-2 text-gray-600 dark:text-gray-300">
+                                        {faq.answer}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    ))}
+                        ))
+                    )}
                 </div>
             </div>
         </section>

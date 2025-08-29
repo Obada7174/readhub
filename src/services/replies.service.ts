@@ -1,5 +1,5 @@
 import axios from "@/services/axios";
-import { Reply, ReplyBody } from "@/types/comment";
+// import { Reply, ReplyBody } from "@/types/comment";
 
 // export const getBookReplies = async (id: string): Promise<Reply[]> => {
 //   const res = await axios.get("http://127.0.0.1:5000/books/reply/" + id);
@@ -11,7 +11,8 @@ import { Reply, ReplyBody } from "@/types/comment";
 //   return res.data.data;
 // };
 
-export const createReply = async (reply: ReplyBody): Promise<Reply> => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const createReply = async (reply: any): Promise<any> => {
   const response = await axios.post("http://localhost:5000/replies", reply);
   return response.data;
 };

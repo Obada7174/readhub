@@ -1,8 +1,8 @@
 import Image from "next/image";
-import { book } from "./books";
 import bookImage from "@/assets/images/Rich_Dad_Poor_Dad.jpg";
 import { MdStar } from "react-icons/md";
 import Link from "next/link";
+import { book } from "../books";
 
 interface Props {
   book: book;

@@ -18,7 +18,17 @@ const createCartSchema = (t: (key: string) => string) =>
       .number()
       .positive(t("error.required.bookId"))
       .int(t("error.required.bookId")),
-  });
+    userId: z
+      .number()
+      .positive(t("error.required.userId"))
+      .int(t("error.required.userId")),
+    quantity: z
+      .number()
+      .positive(t("error.required.quantity"))
+      .int(t("error.required.quantity")),
+  },
+
+  );
 
 export type CartFormValues = z.infer<ReturnType<typeof createCartSchema>>;
 
@@ -29,7 +39,7 @@ interface Props {
 export default function UseCartItemForm({ id }: Props) {
   const router = useRouter();
   const t = useTranslations("Dashboard.add_cart_item");
-  const createCartMutation = useCreateCartItem(id);
+  const createCartMutation = useCreateCartItem();
 
   const schema = createCartSchema(t);
 
@@ -41,11 +51,13 @@ export default function UseCartItemForm({ id }: Props) {
     resolver: zodResolver(schema),
     defaultValues: {
       bookId: undefined,
+      userId: undefined,
+      quantity: undefined,
     },
   });
 
   const handleAdd = async (data: CartFormValues) => {
-    await createCartMutation.mutateAsync(data.bookId);
+    await createCartMutation.mutateAsync({ id: data.userId, bookId: data.bookId, quantity: data.quantity });
   };
 
   const submitHandler: SubmitHandler<CartFormValues> = async (data) => {
@@ -59,7 +71,7 @@ export default function UseCartItemForm({ id }: Props) {
 
   return (
     <DashContainer>
-      <DashHeader category="Cart Item" title={t("title")} />
+      <DashHeader title={t("cart_item")} />
 
       <form
         onSubmit={handleSubmit(submitHandler)}

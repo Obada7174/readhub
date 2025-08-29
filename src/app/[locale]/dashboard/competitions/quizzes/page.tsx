@@ -33,7 +33,7 @@ export default function Quizzes() {
   const [searchText, setSearchText] = useState('');
   const { data, isLoading, refetch } = useQuizzesQuery(page, limit, locale);
   const t = useTranslations('columns');
-
+  console.log(searchText);
   const columns: GridColDef[] = [
     { field: "id", headerName: t("id"), width: 50 },
     {
@@ -129,7 +129,7 @@ export default function Quizzes() {
           },
         }}
         updateMutation={async (row: Quiz) => {
-          return await updateMutation.mutateAsync({ id: row.id, data: row });
+          return await updateMutation.mutateAsync({ id: row.id, data: { ...row, bookId: row.book.id } });
         }}
       />
     </div>

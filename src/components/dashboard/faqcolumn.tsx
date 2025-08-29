@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // components/dashboard/dashfaqcolumns.ts
 
 import { GridColDef } from '@mui/x-data-grid';
@@ -26,7 +27,7 @@ const StatusEditCell = (props: any) => {
   );
 };
 
-export const useFaqColumns = (lang: string) => {
+export const useFaqColumns = () => {
   const t = useTranslations('Dashboard.faq_columns');
 
   const columns: GridColDef[] = [

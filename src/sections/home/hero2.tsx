@@ -3,22 +3,24 @@
 import { motion } from 'framer-motion';
 import Button from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
-import { LuBookOpen, LuSearch, LuStar, LuUsers, LuDownload } from 'react-icons/lu';
+import { LuSearch, LuStar } from 'react-icons/lu';
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import Lottie from 'lottie-react';
+import BookAnimation from '@/assets/animations/ITTR.json';
+
 export function Hero() {
   const [searchTerm, setSearchTerm] = useState('');
-
   const t = useTranslations('HomePage');
   const router = useRouter();
 
   return (
     <section className="relative min-h-[92vh] flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900" />
-
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* النصوص والبحث */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -46,6 +48,7 @@ export function Hero() {
               </motion.p>
             </div>
 
+            {/* البحث */}
             <motion.div
               className="flex flex-col sm:flex-row gap-4 max-w-md"
               initial={{ opacity: 0, y: 20 }}
@@ -60,27 +63,33 @@ export function Hero() {
                   placeholder={t('searchPlaceholder')}
                   onKeyDown={(e) => {
                     if (e.key === 'Enter') {
-                      if (searchTerm.trim()) {
-                        router.push(`/books?search=${encodeURIComponent(searchTerm)}`);
-                      } else {
-                        router.push('/books');
-                      }
+                      router.push(
+                        searchTerm.trim()
+                          ? `/books?search=${encodeURIComponent(searchTerm)}`
+                          : '/books'
+                      );
                     }
                   }}
                   className="pl-10 h-12 bg-gray-700 hover:ring-0"
                 />
               </div>
-              <Button onClick={() => {
-                if (searchTerm.trim()) {
-                  router.push(`/books?search=${encodeURIComponent(searchTerm)}`);
-                } else {
-                  router.push('/books');
-                }
-              }} size="lg" variant='outline' className="h-12 px-6">
+              <Button
+                onClick={() => {
+                  router.push(
+                    searchTerm.trim()
+                      ? `/books?search=${encodeURIComponent(searchTerm)}`
+                      : '/books'
+                  );
+                }}
+                size="lg"
+                variant="outline"
+                className="h-12 px-6"
+              >
                 {t('exploreButton')}
               </Button>
             </motion.div>
 
+            {/* قراء وتقييم */}
             <motion.div
               className="flex items-center gap-8"
               initial={{ opacity: 0, y: 20 }}
@@ -104,72 +113,18 @@ export function Hero() {
             </motion.div>
           </motion.div>
 
+          {/* الانميشن بدل الكارد */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative"
+            className="relative flex justify-center"
           >
-            <div className="relative">
-              <motion.div
-                animate={{
-                  rotate: [0, 5, 0, -5, 0],
-                  scale: [1, 1.02, 1, 1.02, 1]
-                }}
-                transition={{
-                  duration: 6,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-                className="w-80 h-96 bg-gradient-to-br from-primary via-blue-600 to-purple-600 rounded-2xl shadow-2xl mx-auto relative overflow-hidden"
-              >
-                <div className="absolute inset-4 bg-white dark:bg-gray-800 rounded-xl p-6 flex flex-col">
-                  <div className="flex items-center gap-3 mb-4">
-                    <LuBookOpen className="h-6 w-6 text-primary" />
-                    <span className="font-semibold">{t('currentReading')}</span>
-                  </div>
-
-                  <div className="space-y-4 flex-1">
-                    <div className="h-32 bg-gradient-to-br from-orange-400 to-red-500 rounded-lg" />
-                    <div className="space-y-2">
-                      <h3 className="font-bold text-lg">{t('bookTitle')}</h3>
-                      <p className="text-sm text-muted-foreground">{t('bookAuthor')}</p>
-                      <div className="w-full bg-muted rounded-full h-2">
-                        <div className="bg-primary h-2 rounded-full w-3/4" />
-                      </div>
-                      <p className="text-xs text-muted-foreground">{t('chapterProgress')}</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center justify-between pt-4 border-t">
-                    <div className="flex items-center gap-2">
-                      <LuUsers className="h-4 w-4" />
-                      <span className="text-sm">{t('comments')}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <LuDownload className="h-4 w-4" />
-                      <span className="text-sm">{t('offline')}</span>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-
-              <motion.div
-                animate={{ y: [-10, 10, -10] }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-4 -right-4 w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center shadow-lg"
-              >
-                <LuStar className="h-8 w-8 text-white" />
-              </motion.div>
-
-              <motion.div
-                animate={{ y: [10, -10, 10] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -bottom-4 -left-4 w-12 h-12 bg-green-500 rounded-full flex items-center justify-center shadow-lg"
-              >
-                <LuBookOpen className="h-6 w-6 text-white" />
-              </motion.div>
-            </div>
+            <Lottie
+              animationData={BookAnimation}
+              loop
+              className="w-[350px] lg:w-[450px] h-auto"
+            />
           </motion.div>
         </div>
       </div>

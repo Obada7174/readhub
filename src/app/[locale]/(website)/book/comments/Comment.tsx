@@ -22,7 +22,7 @@ const Comment = ({ id, commentId }: Props) => {
   return (
     <>
       <div className="flex gap-5 items-center mt-2 mb-6">
-        <Like />
+        <Like commentId={commentId} />
         <div
           onClick={() => setAdd(!add)}
           className="flex items-end gap-1 cursor-pointer"

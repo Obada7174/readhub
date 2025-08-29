@@ -61,6 +61,7 @@ export default function ResetPasswordPage() {
         router.push("/"); 
       }, 1000);
     
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       console.error("❌ Error during reset:", err.message);
       if (err.response) {

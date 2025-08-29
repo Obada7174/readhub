@@ -94,7 +94,7 @@ const convertedBooks: Book[] = booksRaw.map((b) => ({
   pdf: "#", // رابط وهمي
   rating: b.rating.toFixed(1),
   rating_count: 0,
-  total_pages: 0,
+  total_pages: "0",
   total_ratings: 0,
   created_at: b.publishedDate,
   categories: [],

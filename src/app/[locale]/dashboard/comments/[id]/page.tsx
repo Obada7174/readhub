@@ -1,25 +1,25 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DashTable from "@/components/dashboard/DashTable";
 import { useCommentQuery } from "@/hooks/react-query/comments/useCommentsQuery";
 import { GridColDef, GridRenderCellParams } from "@mui/x-data-grid";
-import { GridRowId } from "@mui/x-data-grid";
 import { useTranslations } from "next-intl";
-import DashButton from "@/components/ui/Button";
-import { LuEye } from "react-icons/lu";
+import { useParams } from "next/navigation";
 
-interface Props {
-  params: { id: string };
-}
+export default function CommentDetailsTable() {
+  const params = useParams<{ id: string }>();
+  const id = String(params.id);
 
-export default function CommentDetailsTable({ params: { id } }: Props) {
   const [searchText, setSearchText] = useState("");
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
   const { data, isLoading, refetch } = useCommentQuery(id);
   const t = useTranslations("Dashboard.comments");
 
+  useEffect(() => {
+    console.log(searchText)
+  }, [])
   const columns: GridColDef[] = [
     {
       field: "id",
@@ -61,6 +61,7 @@ export default function CommentDetailsTable({ params: { id } }: Props) {
       minWidth: 200,
       flex: 2,
       renderCell: (params: GridRenderCellParams) =>
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         params.row.replies?.map((reply: any) => reply.text).join(", ") || "-",
     },
   ];

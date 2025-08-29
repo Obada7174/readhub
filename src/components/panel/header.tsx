@@ -8,7 +8,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import readhub from '@/assets/images/readhub-logo.svg';
 import readhubdarkmode from '@/assets/images/readhub-darkmode.svg';
-import { useLocale } from 'next-intl';
 
 interface HeaderProps {
   isSidebarOpen: boolean;
@@ -19,7 +18,6 @@ export default function Header({ isSidebarOpen, setIsSidebarOpen }: HeaderProps)
   const [mounted, setMounted] = useState(false);
   const { theme } = useTheme();
   const [isMobile, setIsMobile] = useState(false);
-  const locale = useLocale();
 
   useEffect(() => {
     setMounted(true);

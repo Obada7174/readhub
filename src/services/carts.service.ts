@@ -7,8 +7,12 @@ export const getCarts = async () => {
 
 export const getCartById = async (id: string) => {
   const res = await axios.get(`http://localhost:5000/carts/${id}`);
-  return res.data.items;
+  return res.data;
 };
+// export const getCartById = async (id: string) => {
+//   const res = await axios.get(`http://localhost:5000/carts/${id}`);
+//   return res.data.items;
+// };
 
 export const createCart = async (userId: number) => {
   const res = await axios.post("http://localhost:5000/carts", { userId });

@@ -50,11 +50,14 @@
     "about": "About",
     "categories": "Categories",
     "competitions": "Competitions",
+    "subscription": "Subscription",
     "contact": "Contact",
     "search": "Search",
-    "logout":"Logout",
-    "panel":"Panel",
-    "login":"Login"
+    "logout": "Logout",
+    "panel": "Panel",
+    "dashboard": "Dashboard",
+    "cart": "Cart",
+    "login": "Login"
   },
   "BooksPage": {
     "categories": "Categories",
@@ -264,7 +267,8 @@
       "updatedAt": "Updated Date",
       "actions": "Actions",
       "category": "Category",
-      "categories": "Categories"},
+      "categories": "Categories"
+    },
     "carts": {
       "id": "ID",
       "status": "Status",
@@ -359,7 +363,8 @@
       "competitions_winners": "Winners",
       "Copons": "Coupons",
       "return_to_site": "Return to Site",
-      "StaticPages": "Static Pages"
+      "StaticPages": "Static Pages",
+      "Chat": "Chat"
     },
     "add_cart": {
       "title": "Add New Cart",
@@ -490,7 +495,7 @@
         "books_fetch_error": "Failed to fetch books. Please try again later."
       }
     },
-    "static-pages":{
+    "static-pages": {
       "add_page": "Add New Page",
       "edit_page": "Edit Page",
       "en_title": "English Title",
@@ -505,9 +510,9 @@
       "is_published": "Published",
       "submitting": "Submitting...",
       "save_changes": "Save Changes",
-      "updatedAt":"Updated At",
-      "createdAt":"Created At",
-      "actions":"Actions",
+      "updatedAt": "Updated At",
+      "createdAt": "Created At",
+      "actions": "Actions",
       "errors": {
         "en_title_required": "English title is required and must be at least 2 characters.",
         "en_content_required": "English content is required and must be at least 10 characters.",
@@ -723,7 +728,8 @@
     "sending": "sending...",
     "failed_to_delete_book": "Failed to delete book",
     "login_successful": "Login successful!",
-    "login_failed": "Login failed. Please check your credentials."
+    "login_failed": "Login failed. Please check your credentials.",
+    "loading": "loading..."
   },
   "subscription": {
     "title": "Choose Your Subscription Plan",
@@ -757,8 +763,8 @@
     "select": "Select",
     "alreadySelected": "Already Selected"
   },
-  "Panel":{
-    "edit_account":{
+  "Panel": {
+    "edit_account": {
       "title": "Edit Account",
       "first_name_label": "First Name",
       "first_name_placeholder": "Enter your first name",
@@ -778,8 +784,7 @@
       "error_message": "An error occurred while updating the account",
       "required": "This field is required"
     },
-    "UserPanel":
-    {
+    "UserPanel": {
       "notAllowed": "You are not allowed to access this page.",
       "loading": "Loading data...",
       "welcome": "Welcome",
@@ -803,19 +808,19 @@
       "notUpdatedYet": "Not updated yet",
       "loading": "Loading profile..."
     },
-    "userComments":{ 
-    "title": "My Book Comments",
-    "loading": "Loading comments...",
-    "noComments": "No comments yet.",
-    "onBook": "On book:",
-    "commentedOn": "Commented on"
+    "userComments": {
+      "title": "My Book Comments",
+      "loading": "Loading comments...",
+      "noComments": "No comments yet.",
+      "onBook": "On book:",
+      "commentedOn": "Commented on"
     },
-    "favorites":{
-      "title":"My Favorites",
+    "favorites": {
+      "title": "My Favorites",
       "loading": "Loading...",
-    "empty": "No favorite books yet.",
-    "read": "Read",
-    "pages": "pages"
+      "empty": "No favorite books yet.",
+      "read": "Read",
+      "pages": "pages"
     },
     "MyBooks": {
       "loading": "Loading your books...",
@@ -907,6 +912,28 @@
       "start": "Start Reading Now",
       "learn": "Learn More"
     }
+  },
+  "Support": {
+    "Support Dashboard": "Support Management Dashboard",
+    "Connecting to support": "Connecting to support service...",
+    "Retry": "Retry",
+    "Connecting": "Connecting...",
+    "Connected": "Connected",
+    "Disconnected": "Disconnected",
+    "Users": "Users",
+    "No users connected": "No users connected",
+    "Select a conversation": "Select a conversation",
+    "Select a user from the list to start chatting": "Select a user from the list to start chatting",
+    "No previous messages": "No previous messages",
+    "Type your reply here": "Type your reply here...",
+    "Send": "Send",
+    "Last message": "Last message",
+    "(you)": "(you)",
+    "Support Chat": "Support Chat",
+    "Support Service": "Support Service",
+    "Common Questions": "Common Questions",
+    "You": "(You)",
+    "Type your message here": "Type your message here",
+    "Support": "(Support)"
   }
 }
-  

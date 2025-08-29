@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import { useSignupMutation } from "@/hooks/react-query/auth/usesignupmutation";
 import { handleGoogleCallback } from "@/services/auth.services";
-import { SignupResponse } from "@/types/auth";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import Link from "@mui/material/Link";
