@@ -195,7 +195,7 @@ export default function Books() {
               <FaEdit className="translate-x-0.5" />
             </DashButton>
             <DashButton
-              href={`/book/${id}`}
+              href={`/books/${id}`}
               className="text-green-600 hover:text-green-800 rounded-full shadow p-3"
               size="icon"
             >

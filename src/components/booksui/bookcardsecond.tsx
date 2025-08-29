@@ -8,7 +8,7 @@ const BookCardSecond = ({ book }: any) => {
   const locale = useLocale();
 
   return (
-    <Link href={`/${locale}/book/${book.id}`} passHref>
+    <Link href={`/${locale}/books/${book.id}`} passHref>
       <div className="relative rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-slate-800 text-gray-900 dark:text-gray-100 shadow-sm hover:shadow-md transition-shadow duration-200 cursor-pointer h-full">
         <div className="relative w-full min-h-[420px]">
           <img

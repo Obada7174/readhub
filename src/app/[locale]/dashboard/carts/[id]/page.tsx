@@ -98,7 +98,7 @@ export default function CartItems() {
         return (
           <div className="flex gap-2 items-center text-lg">
             <DashButton
-              href={`/book/${id}`}
+              href={`/books/${id}`}
               className="text-green-600 hover:text-green-800 rounded-full shadow p-3"
               size="icon"
             >

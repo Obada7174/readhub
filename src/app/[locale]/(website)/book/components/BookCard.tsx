@@ -12,7 +12,7 @@ interface Props {
 
 const BookCard = ({ book, style = "", ar }: Props) => {
   return (
-    <Link href={"/book/" + book.id} className={style}>
+    <Link href={"/books/" + book.id} className={style}>
       <Image
         className={`w-full h-auto ${
           ar ? "rounded-tl-md rounded-bl-md" : "rounded-tr-md rounded-br-md"
