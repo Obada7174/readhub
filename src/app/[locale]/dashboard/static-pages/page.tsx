@@ -103,24 +103,6 @@ export default function Pages() {
       flex: 1,
     },
     {
-      field: "created_at",
-      headerName: t("createdAt"),
-      minWidth: 140,
-      renderCell: (params: GridRenderCellParams) => {
-        const date: DateObject = TransformDate(params.value as string);
-        return `${date.getFullYear}/${date.getMonth}/${date.getDay}`;
-      },
-    },
-    {
-      field: "updated_at",
-      headerName: t("updatedAt"),
-      minWidth: 140,
-      renderCell: (params: GridRenderCellParams) => {
-        const date: DateObject = TransformDate(params.value as string);
-        return `${date.getFullYear}/${date.getMonth}/${date.getDay}`;
-      },
-    },
-    {
       field: "actions",
       headerName: t("actions"),
       sortable: false,
@@ -139,13 +121,6 @@ export default function Pages() {
               size="icon"
             >
               <FaEdit className="translate-x-0.5" />
-            </DashButton>
-            <DashButton
-              href={`/dashboard/static-pages/${id}`}
-              className="text-green-600 hover:text-green-800 rounded-full shadow p-3"
-              size="icon"
-            >
-              <LuEye />
             </DashButton>
           </div>
         );

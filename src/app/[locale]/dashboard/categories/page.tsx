@@ -3,54 +3,42 @@
 import DashTable from "@/components/dashboard/DashTable";
 import TransformDate from "@/helpers/TransformDate";
 
-import { useTranslations } from "next-intl";  // إضافة
-import {
-  GridRenderCellParams,
-  GridColDef,
-  GridRowId,
-} from "@mui/x-data-grid";
-import {
-  useCategoriesQuery,
-  useDeleteCategory,
-} from "@/hooks/react-query/categories/useCategoriesQuery";
+import { useTranslations } from "next-intl";
+import { GridRenderCellParams, GridColDef, GridRowId } from "@mui/x-data-grid";
+import { useCategoriesQuery, useDeleteCategory } from "@/hooks/react-query/categories/useCategoriesQuery";
 import { Category } from "@/types/category";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import DashButton from "@/components/ui/Button";
 import { FaEdit } from "react-icons/fa";
 
 export default function Categories() {
-  const t = useTranslations("Dashboard.Categories"); // تهيئة الترجمة
+  const t = useTranslations("Dashboard.Categories");
 
   const [searchText, setSearchText] = useState("");
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
+
   const { data, isLoading, refetch } = useCategoriesQuery({
     page,
     limit,
-    search: searchText,
+    search: "", 
   });
+
   const deleteMutation = useDeleteCategory();
 
+  const filteredData = useMemo(() => {
+    if (!data?.data) return [];
+    return data.data.filter(
+      (cat) =>
+        cat.title.toLowerCase().includes(searchText.toLowerCase()) ||
+        (cat.ar_title && cat.ar_title.toLowerCase().includes(searchText.toLowerCase()))
+    );
+  }, [data, searchText]);
+
   const columns: GridColDef[] = [
-    {
-      field: "id",
-      headerName: t("id"),
-      width: 30,
-    },
-    {
-      field: "title",
-      headerName: t("title"),
-      editable: true,
-      minWidth: 100,
-      flex: 1,
-    },
-    {
-      field: "ar_title",
-      headerName: t("arTitle"),
-      editable: true,
-      minWidth: 100,
-      flex: 1,
-    },
+    { field: "id", headerName: t("id"), width: 30 },
+    { field: "title", headerName: t("title"), editable: true, minWidth: 100, flex: 1 },
+    { field: "ar_title", headerName: t("arTitle"), editable: true, minWidth: 100, flex: 1 },
     {
       field: "created_at",
       headerName: t("createdAt"),
@@ -102,10 +90,10 @@ export default function Categories() {
       columns={columns}
       isEditable={true}
       query={{
-        data: data?.data,
+        data: filteredData,
         isLoading,
         refetch,
-        total: data?.meta.total,
+        total: filteredData?.length,
         page,
         setPage,
         limit,

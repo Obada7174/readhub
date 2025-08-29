@@ -3,47 +3,45 @@
 
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
-import { useCouponQuery, useUpdateCoupon } from '@/hooks/react-query/coupons/usequerycoupons';
-import CouponForm from '@/components/dashboard/coupons/couponForm';
-import { UpdateCouponPayload } from '@/types/coupons';
+import UserForm from '@/components/dashboard/users/UserForm';
 import { useTranslations } from 'next-intl';
 import { showErrorToast, showSuccessToast } from '@/helpers/Toast';
+import { useUpdateUser, useUserQuery } from '@/hooks/react-query/users/useUsersQuery';
+import { UpdateUserPayload } from '@/types/user';
 
-export default function EditCoupon() {
+export default function EditUser() {
   const t = useTranslations("toastMessages");
   const params = useParams<{ id: string }>();
   const [isClient, setIsClient] = useState(false);
 
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
+  useEffect(() => setIsClient(true), []);
+
+  const userId = parseInt(params.id);
+
+  // استدعاء الـ hooks بدون شروط
+  const { data: user, isLoading } = useUserQuery(userId);
+  const updateUserMutation = useUpdateUser();
 
   if (!isClient) return null;
+  if (isNaN(userId)) return <div>{t("invalid_user_id")}</div>;
+  if (isLoading || !user) return <div>{t("loading")}</div>;
 
-  const couponId = parseInt(params.id);
-  if (isNaN(couponId)) return <div>{t("invalid_coupon_id")}</div>;
-
-  const { data: coupon, isLoading } = useCouponQuery(couponId);
-  const updateCouponMutation = useUpdateCoupon();
-
-  if (isLoading || !coupon) return <div>{t("loading")}</div>;
-
-  const handleUpdate = async (data: UpdateCouponPayload) => {
+  const handleUpdate = async (data: UpdateUserPayload) => {
     try {
-      await updateCouponMutation.mutateAsync({ id: couponId, coupon: data });
-      showSuccessToast(t("coupon_updated_successfully"));
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      await updateUserMutation.mutateAsync({ id: userId, data });
+      showSuccessToast(t("user_updated_successfully"));
     } catch (error) {
-      showErrorToast(t("failed_to_update_coupon"));
+      showErrorToast(t("failed_to_update_user"));
     }
   };
 
   return (
-    <CouponForm
+    <UserForm
       mode="edit"
       defaultValues={{
-        code: coupon.code,
-        discount_value: coupon.discount_value,
+        
+        email: user.email,
+        role: user.role,
       }}
       onSubmit={handleUpdate}
     />

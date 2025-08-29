@@ -149,6 +149,7 @@
     "resending": "جاري إعادة الإرسال...",
     "resendSuccess": "تم إرسال الكود بنجاح",
     "resendError": "فشل في إعادة إرسال الكود، حاول مجدداً",
+    "signupVerification":"التحقق من تسجيل الدخول",
     "wait": "انتظر"
   },
   "login": {
@@ -326,7 +327,11 @@
         "ar_content_required": "المحتوى العربي مطلوب ويجب أن يكون على الأقل 10 أحرف.",
         "url_invalid": "الرابط غير صالح. مثال: /about-us",
         "is_published_required": "حالة النشر مطلوبة."
-      }
+      },
+      "published": "منشور",
+      "unpublished": "غير منشور",
+      "pages": "الصفحات"
+
     },
     "faq_columns": {
       "id": "المعرف",
@@ -428,6 +433,19 @@
       "success_message": "تمت إضافة السلة بنجاح!",
       "error_required_userId": "رقم المستخدم مطلوب ويجب أن يكون رقمًا موجبًا"
     },
+    "add_cart_item": {
+      "cart_item": "عنصر السلة",
+      "bookId_label": "معرف الكتاب",
+      "bookId_placeholder": "أدخل معرف الكتاب",
+      "submit_button": "أضف إلى السلة",
+      "errors": {
+        "required": {
+          "bookId": "حقل معرف الكتاب مطلوب",
+          "userId": "حقل معرف المستخدم مطلوب",
+          "quantity": "حقل الكمية مطلوب"
+        }
+      }
+    },
     "dashtable": {
       "add": "إضافة",
       "delete": "حذف",
@@ -499,8 +517,20 @@
       "incorrect": "غير صحيح",
       "select_correctness": "اختر صحة الإجابة",
       "add_answer": "إضافة إجابة",
-      "update_answer": "تحديث الإجابة"
+      "update_answer": "تحديث الإجابة",
+    
+      "errors": {
+        "question_id_required": "معرف السؤال مطلوب",
+        "user_id_required": "معرف المستخدم مطلوب",
+        "selected_option_required": "يجب اختيار خيار",
+        "is_correct_required": "يجب اختيار صحة الإجابة",
+        "submit_failed": "فشل في إرسال الإجابة، حاول مرة أخرى"
+      },
+      "success": {
+        "submit_success": "تم إرسال الإجابة بنجاح"
+      }
     },
+    
     "toastMessages": {
       "cartitem_created_successfully": "تم إنشاء عنصر جديد بنجاح",
       "failed_to_create_cartitem": "فشل في إنشاء عنصر جديد",
@@ -611,7 +641,120 @@
       "likes": "الإعجابات",
       "replies": "الردود",
       "viewComment": "عرض التعليق"
+    },
+    "BookForm": {
+      "addTitle": "إضافة كتاب",
+      "editTitle": "تعديل كتاب",
+      "titleEn": "العنوان (بالإنجليزية)",
+      "titleEnPlaceholder": "أدخل عنوان الكتاب بالإنجليزية",
+      "titleAr": "العنوان (بالعربية)",
+      "titleArPlaceholder": "أدخل عنوان الكتاب بالعربية",
+      "descEn": "الوصف (بالإنجليزية)",
+      "descEnPlaceholder": "أدخل وصف الكتاب بالإنجليزية",
+      "descAr": "الوصف (بالعربية)",
+      "descArPlaceholder": "أدخل وصف الكتاب بالعربية",
+      "author": "المؤلف",
+      "authorPlaceholder": "اسم مؤلف الكتاب",
+      "cover": "رابط صورة الغلاف",
+      "price": "السعر",
+      "discount": "الخصم (0.00 - 1.00)",
+      "pdf": "رابط ملف PDF",
+      "pages": "عدد الصفحات",
+      "categories": "التصنيفات",
+      "btnAdd": "إضافة كتاب",
+      "btnSave": "حفظ التغييرات"
+    },
+    "quizzes": {
+      "add_quiz": "إضافة اختبار",
+      "edit_quiz": "تعديل اختبار",
+      "title": "العنوان",
+      "title_placeholder": "أدخل عنوان الاختبار بالإنجليزية",
+      "ar_title": "العنوان (عربي)",
+      "ar_title_placeholder": "أدخل عنوان الاختبار بالعربية",
+      "book_id": "الكتاب",
+      "select_book_placeholder": "اختر كتابًا",
+      "save_changes":"حفظ التغييرات",
+      "errors": {
+        "title_required": "العنوان مطلوب ويجب أن يكون أكثر من حرفين.",
+        "bookId_required": "يرجى اختيار كتاب.",
+        "books_fetch_error": "حدث خطأ أثناء جلب الكتب."
+      },
+      "submitting": "جاري الإرسال..."
+    },
+    "bookQuestions": {
+      "addSuccess": "تمت إضافة السؤال بنجاح",
+      "addError": "فشل في إضافة السؤال"
+    },
+    "questionAnswers": {
+      "add_question_answer": "إضافة إجابة سؤال",
+      "edit_question_answer": "تعديل إجابة سؤال",
+      "question_id": "معرف السؤال",
+      "enter_question_id": "أدخل معرف السؤال",
+      "user_id": "معرف المستخدم",
+      "enter_user_id": "أدخل معرف المستخدم",
+      "selected_option": "الخيار المحدد",
+      "option_a": "الخيار أ",
+      "option_b": "الخيار ب",
+      "option_c": "الخيار ج",
+      "option_d": "الخيار د",
+      "select_option": "اختر خيارًا",
+      "is_correct": "هل الإجابة صحيحة؟",
+      "correct": "صحيح",
+      "incorrect": "غير صحيح",
+      "select_correctness": "اختر صحة الإجابة",
+      "add_answer": "إضافة إجابة",
+      "update_answer": "تحديث الإجابة",
+    
+      "errors": {
+        "question_id_required": "معرف السؤال مطلوب",
+        "user_id_required": "معرف المستخدم مطلوب",
+        "selected_option_required": "يجب اختيار خيار",
+        "is_correct_required": "يجب اختيار صحة الإجابة",
+        "submit_failed": "فشل في إرسال الإجابة، حاول مرة أخرى"
+      },
+      "success": {
+        "submit_success": "تم إرسال الإجابة بنجاح"
+      }
+    },
+    "question_add": {
+      "add_question": "إضافة سؤال",
+      "edit_question": "تعديل سؤال",
+      "save_changes": "حفظ التغييرات",
+      "submitting": "جاري الإرسال...",
+
+      "question_text": "نص السؤال (إنجليزي)",
+      "ar_question_text": "نص السؤال (عربي)",
+
+      "option_a": "الخيار أ (إنجليزي)",
+      "ar_option_a": "الخيار أ (عربي)",
+      "option_b": "الخيار ب (إنجليزي)",
+      "ar_option_b": "الخيار ب (عربي)",
+      "option_c": "الخيار ج (إنجليزي)",
+      "ar_option_c": "الخيار ج (عربي)",
+      "option_d": "الخيار د (إنجليزي)",
+      "ar_option_d": "الخيار د (عربي)",
+
+      "correct_option": "الخيار الصحيح",
+      "book_id": "الكتاب",
+      "quiz_id": "الاختبار",
+
+      "select_book_placeholder": "اختر كتابًا",
+      "select_quiz_placeholder": "اختر اختبارًا",
+
+      "errors": {
+        "question_required": "نص السؤال مطلوب",
+        "correct_option_required": "الخيار الصحيح مطلوب",
+        "book_required": "يجب اختيار كتاب",
+        "books_fetch_error": "فشل في جلب قائمة الكتب"
+      },
+
+      "success": {
+        "added": "تمت إضافة السؤال بنجاح",
+        "updated": "تم تعديل السؤال بنجاح"
+      }
     }
+  
+    
   },
   "columns": {
     "id": "المعرف",

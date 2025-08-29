@@ -77,21 +77,11 @@ export default function QuizzesWinners() {
       },
     },
     {
-      field: "updated_at",
-      headerName: t("updated_at"),
-      minWidth: 130,
-      flex: 1,
-      renderCell: (params: GridRenderCellParams) => {
-        const date: DateObject = TransformDate(params.value as string);
-        return `${date.getDay}/${date.getMonth}/${date.getFullYear}`;
-      },
-    },
-    {
       field: "actions",
       headerName: t("actions"),
       sortable: false,
       filterable: false,
-      minWidth: 140,
+      minWidth: 100,
       headerClassName: "sticky-right-column",
       cellClassName: "sticky-right-column",
       renderCell: (params: GridRenderCellParams) => {
@@ -105,13 +95,6 @@ export default function QuizzesWinners() {
               size="icon"
             >
               <FaEdit className="translate-x-0.5" />
-            </DashButton>
-            <DashButton
-              href={`/dashboard/users/${id}`}
-              className="text-green-600 hover:text-green-800 rounded-full shadow p-3"
-              size="icon"
-            >
-              <LuEye />
             </DashButton>
           </div>
         );
