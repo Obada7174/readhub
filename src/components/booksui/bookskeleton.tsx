@@ -2,7 +2,7 @@
 
 export default function BookCardSkeleton() {
   return (
-    <div className="relative w-[220px] rounded border border-gray-200 dark:border-gray-500 bg-white dark:bg-slate-800 shadow-lg animate-pulse">
+    <div className="relative rounded border border-gray-200 dark:border-gray-500 bg-white dark:bg-slate-800 shadow-lg animate-pulse">
       {/* صورة الغلاف */}
       <div className="relative w-full h-[280px] bg-gray-300 dark:bg-gray-700"></div>
 

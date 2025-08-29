@@ -29,7 +29,7 @@ export const useCreateReply = (id: string) => {
       createReply({
         text: replyData.text,
         userId: replyData.userId,
-        comment: replyData.comment,
+        commentId: replyData.comment,
       }),
     onSuccess: () => {
       showSuccessToast(t("reply_created_successfully"));

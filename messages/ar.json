@@ -905,11 +905,36 @@
     "Last message": "آخر رسالة",
     "(you)": "(رد منك)",
     "Support Chat": "الدعم الفني",
-    "Type your message here":"اكتب الرسالة هنا",
+    "Type your message here": "اكتب الرسالة هنا",
     "Support Service": "خدمة الدعم الفني",
     "Send": "إرسال",
     "Common Questions": "الأسئلة الشائعة",
     "You": "(أنت)",
     "Support": "(الدعم الفني)"
+  },
+  "comments": {
+    "title": "التعليقات",
+    "reply": "رد",
+    "write_reply": "اكتب ردك...",
+    "share_your_opinion": "شاركنا رأيك في هذا الكتاب...",
+    "send": "إرسال",
+    "current_user": "المستخدم الحالي"
+  },
+  "books": {
+    "suggested": "كتب مقترحة",
+    "added_to_cart": "تم إضافة الكتاب إلى السلة بنجاح!",
+    "not_found": "الكتاب غير موجود",
+    "not_found_desc": "لم نتمكن من العثور على الكتاب المطلوب",
+    "want_to_read": "أريد قراءته",
+    "rate_this_book": "قيم هذا الكتاب",
+    "categories": "الفئات",
+    "pages": "صفحة",
+    "first_published": "نُشر لأول مرة في"
+  },
+  "rating": {
+    "stars": "تقييم بـ {count} نجوم"
+  },
+  "auth": {
+    "login_required": "يجب تسجيل الدخول أولاً"
   }
 }

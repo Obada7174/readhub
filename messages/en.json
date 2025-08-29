@@ -934,5 +934,30 @@
     "You": "(You)",
     "Type your message here": "Type your message here",
     "Support": "(Support)"
+  },
+  "comments": {
+    "title": "Comments",
+    "reply": "Reply",
+    "write_reply": "Write your reply...",
+    "share_your_opinion": "Share your opinion on this book...",
+    "send": "Send",
+    "current_user": "Current user"
+  },
+  "books": {
+    "suggested": "Suggested Books",
+    "added_to_cart": "Book added to cart successfully!",
+    "not_found": "Book not found",
+    "not_found_desc": "We couldn't find the requested book",
+    "want_to_read": "I want to read it",
+    "rate_this_book": "Rate this book",
+    "categories": "Categories",
+    "pages": "pages",
+    "first_published": "First published in"
+  },
+  "rating": {
+    "stars": "Rated {count} stars"
+  },
+  "auth": {
+    "login_required": "Login required"
   }
 }
