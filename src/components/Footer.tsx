@@ -1,7 +1,7 @@
 'use client';
 
 import { Link } from "@/i18n/navigation";
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import Image from "next/image";
 import logo from '@/assets/images/readhub-darkmode.svg'
 import { usePagesQuery } from "@/hooks/react-query/static-pages/usePagesQuery";
@@ -9,7 +9,7 @@ import { usePagesQuery } from "@/hooks/react-query/static-pages/usePagesQuery";
 export default function Footer() {
     const t = useTranslations('footer');
     const { data: pages } = usePagesQuery();
-
+    const locale = useLocale();
     const quickLinks = [
         { href: "/books", label: t('quickLinks.books') },
         { href: "/competitions", label: t('quickLinks.competitions') },
@@ -87,7 +87,7 @@ export default function Footer() {
                                             href={String(page.id)}
                                             className="text-gray-400 hover:text-primary transition-colors duration-200"
                                         >
-                                            {page.ar_title || page.en_title}
+                                            {locale == 'ar' ? page.ar_title : page.en_title}
                                         </Link>
                                     </li>
                                 ))}

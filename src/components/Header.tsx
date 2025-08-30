@@ -41,7 +41,6 @@ export default function Header() {
     window.location.href = "/";
   };
 
-  // تحديد اتجاه القائمة حسب اللغة
   const isEnglish = locale === "en";
   const sideClass = isEnglish ? "right-0" : "left-0";
 
@@ -56,7 +55,7 @@ export default function Header() {
           <nav className="hidden md:flex items-center space-x-8">
             <Link href="/">{t("navigation.home")}</Link>
             <Link href="/books">{t("navigation.books")}</Link>
-            <Link href="/about">{t("navigation.about")}</Link>
+            <Link href="/1">{t("navigation.about")}</Link>
             <Link href="/subscription">{t("navigation.subscription")}</Link>
             <Link href="/competitions">{t("navigation.competitions")}</Link>
           </nav>
@@ -74,12 +73,12 @@ export default function Header() {
             <LanguageSwitcher />
             <ThemeSwitcher />
             {user?.role === "admin" && (
-  <Link href="/dashboard">
-    <Button variant="ghost" size="icon">
-      <LuLayoutDashboard className="h-5 w-5" />
-    </Button>
-  </Link>
-)}
+              <Link href="/dashboard">
+                <Button variant="ghost" size="icon">
+                  <LuLayoutDashboard className="h-5 w-5" />
+                </Button>
+              </Link>
+            )}
 
             <NotificationBell />
             <Link href="/cart">

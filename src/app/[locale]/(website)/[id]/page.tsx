@@ -1,12 +1,13 @@
 'use client';
 
 import { usePageQuery } from "@/hooks/react-query/static-pages/usePagesQuery";
+import { useLocale } from "next-intl";
 import { useParams } from "next/navigation";
 
 const StaticPage = () => {
     const { id } = useParams();
-    const pageId = Number(id); // param بيرجع string، فلازم نحوله لـ number
-
+    const pageId = Number(id);
+    const locale = useLocale();
     const { data, isLoading, isError } = usePageQuery(pageId);
     if (isLoading) {
         return (
@@ -27,12 +28,12 @@ const StaticPage = () => {
     return (
         <div className="container mx-auto py-10 prose max-w-3xl">
             <h1 className="text-3xl font-bold mb-6">
-                {data.ar_title || data.en_title}
+                {locale == 'ar' ? data.ar_title : data.en_title}
             </h1>
             <div
                 className="prose prose-lg"
                 dangerouslySetInnerHTML={{
-                    __html: data.ar_content || data.en_content,
+                    __html: locale == 'ar' ? data.ar_content : data.en_content,
                 }}
             />
         </div>
