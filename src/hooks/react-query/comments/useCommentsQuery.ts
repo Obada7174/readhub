@@ -35,9 +35,13 @@ export const useCreateComment = () => {
 
   return useMutation({
     mutationFn: (comment: CommentBody) => createComment(comment),
-    onSuccess: () => {
+    onSuccess: (data) => {
       showSuccessToast(t("comment_created_successfully"));
+
       queryClient.invalidateQueries({ queryKey: ["comments"] });
+      if (data?.book?.id) {
+        queryClient.invalidateQueries({ queryKey: ["book-comments", data.book.id] });
+      }
     },
     onError: () => {
       showErrorToast(t("failed_to_create_comment"));
@@ -57,9 +61,9 @@ export const useUpdateComment = () => {
       id: number;
       data: Partial<CommentBody>;
     }) => updateComment(id, data),
-    onSuccess: () => {
+    onSuccess: (data) => {
       showSuccessToast(t("comment_updated_successfully"));
-      queryClient.invalidateQueries({ queryKey: ["comments"] });
+      queryClient.invalidateQueries({ queryKey: ["book-comments",data.book.id] });
     },
     onError: () => {
       showErrorToast(t("failed_to_update_comment"));

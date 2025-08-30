@@ -6,10 +6,10 @@ import { handleGoogleCallback } from "@/services/auth.services";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import Link from "@mui/material/Link";
-import { FcGoogle } from "react-icons/fc";
+// import { FcGoogle } from "react-icons/fc";
 import Cookies from 'js-cookie';
 export default function Page() {
-  const t = useTranslations("signup"); 
+  const t = useTranslations("signup");
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -52,9 +52,9 @@ export default function Page() {
     });
   };
 
-  const signUpWithGoogle = () => {
-    window.location.href = "http://localhost:5000/auth/google";
-  };
+  // const signUpWithGoogle = () => {
+  //   window.location.href = "http://localhost:5000/auth/google";
+  // };
 
   const inputClasses = "bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white font-mono ring-1 ring-slate-400 focus:ring-2 focus:ring-slate-500 outline-none duration-300 placeholder:text-slate-600 dark:placeholder:text-gray-400 placeholder:opacity-70 rounded-full px-4 py-2 shadow-md focus:shadow-lg focus:shadow-slate-400 w-full";
 
@@ -64,7 +64,8 @@ export default function Page() {
         .then((result) => {
           Cookies.set("access_token", result.access_token, { expires: 7 });
           Cookies.set("user", JSON.stringify(result.user), { expires: 7 });
-  
+          localStorage.setItem("access_token", result.access_token);
+          localStorage.setItem("user", JSON.stringify(result.user));
           console.log("✓ Token stored in cookies:", result.access_token);
           setSuccessMessage(t("successMessage"));
         })
@@ -74,7 +75,7 @@ export default function Page() {
         });
     }
   }, [t]);
-  
+
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 dark:bg-gray-900 overflow-y-auto">
@@ -159,44 +160,43 @@ export default function Page() {
           <button
             type="submit"
             disabled={isPending}
-            className={`mt-4 bg-slate-600 hover:bg-slate-700 dark:bg-slate-700 dark:hover:bg-slate-600 text-white font-semibold py-2 rounded-full shadow-md transition duration-300 ${
-              isPending ? "opacity-70 cursor-not-allowed" : ""
-            }`}
+            className={`mt-4 bg-slate-600 hover:bg-slate-700 dark:bg-slate-700 dark:hover:bg-slate-600 text-white font-semibold py-2 rounded-full shadow-md transition duration-300 ${isPending ? "opacity-70 cursor-not-allowed" : ""
+              }`}
           >
             {isPending ? t("pendingButton") : t("signUpButton")}
           </button>
 
-          <button
+          {/* <button
             type="button"
             onClick={signUpWithGoogle}
             className="mt-2 flex items-center justify-center gap-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600 font-semibold py-2 rounded-full shadow-md transition duration-300"
           >
             {t("signUpWithGoogle")}
             <FcGoogle />
-          </button>
+          </button> */}
           <p className="text-center text-sm text-gray-600 dark:text-gray-400 mt-6">
-  {t("haveAccount")}{" "}
-  <Link href="/login" className="text-blue-600 dark:text-blue-400 underline font-medium">
-    {t("signInLink")}
-  </Link>
-</p>
+            {t("haveAccount")}{" "}
+            <Link href="/login" className="text-blue-600 dark:text-blue-400 underline font-medium">
+              {t("signInLink")}
+            </Link>
+          </p>
           <p className="text-center text-sm text-gray-600 dark:text-gray-400 mt-6">
-    <span className="inline-flex items-center gap-1">
-      <svg className="w-5 h-5 text-red-500" viewBox="0 0 533.5 544.3" xmlns="http://www.w3.org/2000/svg">
-        <path fill="#4285f4" d="M533.5 278.4c0-18.4-1.6-36.1-4.6-53.3H272v100.9h146.9c-6.3 34.1-25.1 62.9-53.5 82.2v68h86.4c50.6-46.6 81.7-115.4 81.7-198z"/>
-      </svg>
-      {t("termsAgree")}
-    </span>
-    <br />
-    <Link href="/terms" className="text-blue-600 dark:text-blue-400 underline mx-1">
-      {t("termsLink")}
-    </Link>
-    {" & "}
-    <Link href="/privacy-policy" className="text-blue-600 dark:text-blue-400 underline mx-1">
-      {t("privacyLink")}
-    </Link>
-  </p>
-</form>
+            <span className="inline-flex items-center gap-1">
+              <svg className="w-5 h-5 text-red-500" viewBox="0 0 533.5 544.3" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#4285f4" d="M533.5 278.4c0-18.4-1.6-36.1-4.6-53.3H272v100.9h146.9c-6.3 34.1-25.1 62.9-53.5 82.2v68h86.4c50.6-46.6 81.7-115.4 81.7-198z" />
+              </svg>
+              {t("termsAgree")}
+            </span>
+            <br />
+            <Link href="/terms" className="text-blue-600 dark:text-blue-400 underline mx-1">
+              {t("termsLink")}
+            </Link>
+            {" & "}
+            <Link href="/privacy-policy" className="text-blue-600 dark:text-blue-400 underline mx-1">
+              {t("privacyLink")}
+            </Link>
+          </p>
+        </form>
 
       </div>
     </div>

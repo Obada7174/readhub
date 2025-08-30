@@ -1,5 +1,3 @@
-// src/hooks/useSignupMutation.ts
-
 import { useMutation } from "@tanstack/react-query";
 import { signupUser } from "@/services/auth.services";
 import { useTranslations } from "next-intl";
@@ -12,10 +10,11 @@ export const useSignupMutation = () => {
 
   return useMutation({
     mutationFn: signupUser,
-    onSuccess: () => {
-       
-        showSuccessToast(t("signup_success"));
-        queryClient.invalidateQueries({ queryKey: ["auth"] });
+    onSuccess: (data) => {
+      localStorage.setItem("access_token", data.access_token);
+      localStorage.setItem("user", JSON.stringify(data.user));
+      showSuccessToast(t("signup_success"));
+      queryClient.invalidateQueries({ queryKey: ["auth"] });
     },
     onError: (error: Error) => {
       showErrorToast(error.message || t("signup_failed"));

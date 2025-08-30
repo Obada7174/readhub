@@ -223,7 +223,7 @@ const CommentsSection: React.FC<CommentsSectionProps> = ({ bookId }) => {
         userId: user.id,
       });
 
-      queryClient.setQueryData(['bookComments', bookId], (old: any) => ({
+      queryClient.setQueryData(['book-comments', bookId], (old: any) => ({
         ...old,
         comments: [newCommentData, ...(old?.comments || [])],
       }));
@@ -244,7 +244,7 @@ const CommentsSection: React.FC<CommentsSectionProps> = ({ bookId }) => {
         userId: user.id,
       });
 
-      queryClient.setQueryData(['bookComments', bookId], (old: any) => ({
+      queryClient.setQueryData(['book-comments', bookId], (old: any) => ({
         ...old,
         comments: old?.comments?.map((c: Comment) =>
           c.id === commentId ? { ...c, replies: [...c.replies, reply] } : c
