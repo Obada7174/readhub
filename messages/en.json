@@ -58,6 +58,7 @@
     "dashboard": "Dashboard",
     "cart": "Cart",
     "login": "Login"
+    
   },
   "BooksPage": {
     "categories": "Categories",
@@ -167,7 +168,10 @@
       "books": "Books",
       "ebooks": "eBooks",
       "categories": "Categories",
-      "aboutUs": "About Us"
+      "aboutUs": "About Us",
+      "contact":"Contact",
+      "subscription":"Subscription",
+      "competitions":"Competitions"
     },
     "customerService": {
       "title": "Customer Service",

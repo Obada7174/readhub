@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import axios from "@/services/axios";
 import {UpdatePagePayload, PageResponse ,Page} from "@/types/static-page";
 
@@ -11,7 +12,7 @@ export const getPages = async (
   });
   return res.data;
 };
-export const getPage = async (id: number): Promise<Page> => {
+export const getPage = async (id: number): Promise<any> => {
   const res = await axios.get(`http://localhost:5000/static-pages/${id}`);
   return res.data;
 };

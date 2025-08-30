@@ -74,7 +74,10 @@
       "books": "كتب",
       "ebooks": "كتب إلكترونية",
       "categories": "فئات",
-      "aboutUs": "من نحن"
+      "aboutUs": "من نحن",
+      "contact":"تواصل معنا",
+      "subscription":"الخطط",
+      "competitions":"المسابقات"
     },
     "customerService": {
       "title": "خدمة العملاء",

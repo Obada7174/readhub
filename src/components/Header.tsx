@@ -19,7 +19,6 @@ import {
   LuLayoutPanelLeft
 } from "react-icons/lu";
 import ThemeSwitcher from "./ThemeSwitcher";
-import { useUser } from "@/context/userContext";
 import NotificationBell from "./NotificationBell";
 
 export default function Header() {
@@ -27,15 +26,18 @@ export default function Header() {
   const locale = useLocale();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
+  const userJson = localStorage.getItem('user');
+  const user = userJson ? JSON.parse(userJson) : null;
 
-  const { user, setUser } = useUser();
-  const isLoggedIn = !!user && user.isVerified;
+  const isLoggedIn = !!user;
 
   const handleLogout = () => {
     Cookies.remove("access_token");
     Cookies.remove("user");
     localStorage.setItem("auth_event", Date.now().toString());
-    setUser(null);
+    localStorage.removeItem('user');
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('cart');
     window.location.href = "/";
   };
 
@@ -101,6 +103,13 @@ export default function Header() {
                           👋 {user.name}
                         </div>
                       )}
+                      {user.role == 'admin' && <Link
+                        href="/dashboard"
+                        className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+                      >
+                        <LuLayoutPanelLeft className="h-4 w-4" />
+                        {t("navigation.dashboard")}
+                      </Link>}
                       <Link
                         href="/panel"
                         className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"

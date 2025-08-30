@@ -3,25 +3,20 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { useUser } from "@/context/userContext";
 
 export default function UserPanelPage() {
   const t = useTranslations("Panel.UserPanel");
-  const { user, loading } = useUser();
   const router = useRouter();
+  const userJson = localStorage.getItem('user');
+  const user = userJson ? JSON.parse(userJson) : null;
 
   useEffect(() => {
-    if (!loading && !user) {
+    if (!user) {
       router.push("/login");
     }
-  }, [loading, user]);
-
-  if (loading) {
-    return <div className="p-10 text-center">{t("loading")}</div>;
-  }
+  }, [user]);
 
   if (!user) {
-    // ممكن تضيف صفحة خطأ هنا أو null لأن التوجيه شغال
     return null;
   }
 
