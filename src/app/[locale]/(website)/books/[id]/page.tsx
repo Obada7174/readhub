@@ -495,7 +495,6 @@ const BookDetailsPage: React.FC = () => {
 
   const handleRating = (newRating: number) => {
     setRating(newRating);
-    // alert(t('books.thank_you_rating', { stars: newRating }));
   };
 
   const handleFavorite = () => {

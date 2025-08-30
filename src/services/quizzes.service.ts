@@ -1,5 +1,5 @@
 import axios from "@/services/axios";
-import {Quiz ,QuizIndexResponse,CreateQuiz ,QuizOption} from "@/types/competitions";
+import { Quiz, QuizIndexResponse, CreateQuiz, QuizOption } from "@/types/competitions";
 
 export const getQuizzes = async (
   page = 1,
@@ -59,6 +59,18 @@ export const updateQuizWinner = async (
   coupon: number
 ) => {
   const res = await axios.patch(`http://localhost:5000/quiz-winners/${id}`, {
+    userId,
+    coupon,
+  });
+  return res.data;
+};
+export const createQuizWinner = async (
+  id: number,
+  userId: number,
+  coupon: number
+) => {
+  const res = await axios.post(`http://localhost:5000/quiz-winners`, {
+    quizId:id,
     userId,
     coupon,
   });

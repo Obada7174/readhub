@@ -17,6 +17,7 @@ import {
   getQuizResult,
   getQuizWinner,
   getQuizzesOptions,
+  createQuizWinner,
 } from "@/services/quizzes.service";
 
 import { CreateQuiz, QuizIndexResponse, QuizOption } from "@/types/competitions";
@@ -127,6 +128,30 @@ export const useUpdateQuizWinner = () => {
       userId: number;
       coupon: number;
     }) => updateQuizWinner(id, userId, coupon),
+    onSuccess: () => {
+      showSuccessToast(t("quiz_winner_updated_successfully"));
+      queryClient.invalidateQueries({ queryKey: ["quizzes"] });
+    },
+    onError: () => {
+      showErrorToast(t("failed_to_updated_quiz_winner"));
+    },
+  });
+};
+
+export const useCreateQuizWinner = () => {
+  const queryClient = useQueryClient();
+  const t = useTranslations("toastMessages");
+
+  return useMutation({
+    mutationFn: ({
+      id,
+      userId,
+      coupon,
+    }: {
+      id: number;
+      userId: number;
+      coupon: number;
+    }) => createQuizWinner(id, userId, coupon),
     onSuccess: () => {
       showSuccessToast(t("quiz_winner_updated_successfully"));
       queryClient.invalidateQueries({ queryKey: ["quizzes"] });

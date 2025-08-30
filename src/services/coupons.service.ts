@@ -19,8 +19,8 @@ export const getCoupons = async (
 };
 
 // إنشاء كوبون جديد
-export const createCoupon = async (coupon: Omit<Coupon, "id">): Promise<Coupon> => {
-  const res = await axios.post("/coupons", coupon);
+export const createCoupon = async (data: { coupon: string, value: number }): Promise<Coupon> => {
+  const res = await axios.post("/coupons", data);
   return res.data;
 };
 
